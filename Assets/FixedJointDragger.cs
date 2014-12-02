@@ -143,7 +143,9 @@ public class FixedJointDragger : MonoBehaviour
 	{
 		Ray ray;
 		while
-			(Input.GetMouseButton(0) && joint)
+			(
+				joint
+				)
 		{
 			ray = gameCamera.ScreenPointToRay(Input.mousePosition);
 			rigidbody.MovePosition(ray.GetPoint(distance));
