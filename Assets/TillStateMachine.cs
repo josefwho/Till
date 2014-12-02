@@ -39,7 +39,7 @@ public class IdleState : FSMState
 	public override void Reason(GameObject owner)
 	{
 		//todo: when item is grabbed transition to next state
-		if (Event has happened) 
+		if (false) 
 		{
 			owner.GetComponent<TillStateMachine>().SetTransition(Transition.ItemGrabbed);
 		}
