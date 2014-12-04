@@ -43,8 +43,8 @@ public class DragRigidBody : MonoBehaviour
 		if (!hit.rigidbody || hit.rigidbody.isKinematic)
 			return;
 
-		if (hit.collider.gameObject != gameObject)
-						return;
+		if (hit.collider.gameObject != gameObject.transform.parent.gameObject)
+			return;
 
 		if (!springJoint)
 		{
