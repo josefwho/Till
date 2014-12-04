@@ -86,16 +86,28 @@ public class DragRigidBody : MonoBehaviour
 			springJoint.transform.position = ray.GetPoint(distance);
 			yield return null;
 		}
-		if (springJoint.connectedBody)
+
+		
+		springJoint.connectedBody.drag = oldDrag;
+		springJoint.connectedBody.angularDrag = oldAngularDrag;
+		detach ();
+	
+	}
+
+	void OnDisable()
+	{
+		detach ();
+	}
+
+	void detach()
+	{
+		if (springJoint.connectedBody) 
 		{
-			springJoint.connectedBody.drag = oldDrag;
-			springJoint.connectedBody.angularDrag = oldAngularDrag;
 			springJoint.connectedBody = null;
 
 			machine.itemGrabbed = false;
 		}
 	}
-	
 	
 	Camera FindCamera ()
 	{

@@ -19,6 +19,7 @@ public class ScannerTrigger : MonoBehaviour
 		if (other.gameObject.tag == "ShoppingItem") 
 		{
 			machine.itemAtScanner = true;
+			machine.itemToPin = other.gameObject;
 		}
 
 	}
@@ -28,7 +29,7 @@ public class ScannerTrigger : MonoBehaviour
 	{
 		if (other.gameObject.tag == "ShoppingItem") 
 		{
-						machine.itemAtScanner = false;
-				}
+			machine.itemAtScanner = false;
+		}
 	}
 }
