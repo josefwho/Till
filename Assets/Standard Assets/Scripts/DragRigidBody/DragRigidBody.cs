@@ -83,7 +83,7 @@ public class DragRigidBody : MonoBehaviour
 		springJoint.connectedBody.drag = drag;
 		springJoint.connectedBody.angularDrag = angularDrag;
 		Camera mainCamera = FindCamera();
-		while (Input.GetMouseButton (0))
+		while (Input.GetMouseButton (0) && springJoint)
 		{
 			Ray ray = mainCamera.ScreenPointToRay (Input.mousePosition);
 			springJoint.transform.position = ray.GetPoint(distance);
@@ -104,7 +104,7 @@ public class DragRigidBody : MonoBehaviour
 
 	void detach()
 	{
-		if (!springJoint) 
+		if (springJoint) 
 		{
 			Destroy(springJoint.gameObject);
 			springJoint = null;

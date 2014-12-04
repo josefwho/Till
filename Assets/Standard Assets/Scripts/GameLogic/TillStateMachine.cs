@@ -72,7 +72,6 @@ public class TillStateMachine : MonoBehaviour
 //			Destroy(itemToPin.GetComponent<DragRigidBody>());
 			
 			itemToPin.transform.Find("Dragger").gameObject.SetActive(false);
-			itemToPin.transform.Find("Dragger").gameObject.GetComponent<DragRigidBody>().enabled = false;
 
 //			itemToPin.AddComponent<>
 		}
