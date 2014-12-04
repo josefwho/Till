@@ -42,7 +42,10 @@ public class DragRigidBody : MonoBehaviour
 		// We need to hit a rigidbody that is not kinematic
 		if (!hit.rigidbody || hit.rigidbody.isKinematic)
 			return;
-		
+
+		if (hit.collider.gameObject != gameObject)
+						return;
+
 		if (!springJoint)
 		{
 			GameObject go = new GameObject("Rigidbody dragger");
@@ -101,10 +104,10 @@ public class DragRigidBody : MonoBehaviour
 
 	void detach()
 	{
-		if (springJoint.connectedBody) 
+		if (!springJoint) 
 		{
-			springJoint.connectedBody = null;
-
+			Destroy(springJoint.gameObject);
+			springJoint = null;
 			machine.itemGrabbed = false;
 		}
 	}
