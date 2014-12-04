@@ -31,15 +31,22 @@ public class TillStateMachine : MonoBehaviour
 	}
 
 	void Update ()
-	{
-		if (currentState == States.Setup && setupDone) 
-			switchToState (States.Idle);
-		else if (currentState == States.Idle && itemGrabbed)
-			switchToState (States.Drag);
-		else if (currentState == States.Drag && !itemGrabbed)
-			switchToState (States.Idle);
+		{
+				if (currentState == States.Setup && setupDone) 
+						switchToState (States.Idle);
+				else if (currentState == States.Idle && itemGrabbed)
+						switchToState (States.Drag);
+				else if (currentState == States.Drag) {
+						if (itemAtScanner)
+								switchToState (States.Scan);
+						else if (!itemGrabbed)
+								switchToState (States.Idle);
+				} else if (currentState == States.Scan) {
+						if (!itemAtScanner)
+								switchToState (States.Drag);
+				}
 
-	}
+		}
 
 
 	void switchToState(States nextState)
