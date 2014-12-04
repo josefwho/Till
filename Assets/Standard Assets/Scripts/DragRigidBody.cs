@@ -12,10 +12,13 @@ public class DragRigidBody : MonoBehaviour
 	
 	private SpringJoint springJoint;
 
+	private TillStateMachine machine;
+
 
 	// Use this for initialization
-	void Start () {
-	
+	void Awake () 
+	{
+		machine = GameObject.FindGameObjectWithTag ("GameController").GetComponent<TillStateMachine> ();
 	}
 	
 	// Update is called once per frame
@@ -25,6 +28,11 @@ public class DragRigidBody : MonoBehaviour
 		if (!Input.GetMouseButtonDown (0))
 			return;
 		
+		//	//TODO: make sure only one item can be gradde at the same time
+		//	if(machine.itemDragged)
+		//		return;
+
+
 		var mainCamera = FindCamera();
 		
 		// We need to actually hit an object
@@ -59,7 +67,9 @@ public class DragRigidBody : MonoBehaviour
 		springJoint.damper = damper;
 		springJoint.maxDistance = distance;
 		springJoint.connectedBody = hit.rigidbody;
-		
+
+		machine.itemGrabbed = true;
+
 		StartCoroutine ("DragObject", hit.distance);
 	}
 	
@@ -81,6 +91,8 @@ public class DragRigidBody : MonoBehaviour
 			springJoint.connectedBody.drag = oldDrag;
 			springJoint.connectedBody.angularDrag = oldAngularDrag;
 			springJoint.connectedBody = null;
+
+			machine.itemGrabbed = false;
 		}
 	}
 	

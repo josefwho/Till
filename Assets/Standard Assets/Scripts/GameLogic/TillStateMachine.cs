@@ -1,71 +1,54 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TillStateMachine : MonoBehaviour {
-
-	private FSMSystem machine;
-	
-	public void SetTransition(Transition t) { machine.PerformTransition(t); }
-
-	// Use this for initialization
-	void Start () 
-	{
-		IdleState idle = new IdleState();
-		idle.AddTransition (Transition.ItemGrabbed, StateID.Drag);
-
-		DragState drag = new DragState ();
-		drag.AddTransition (Transition.ItemAtScanner, StateID.Scan);
-
-		machine = new FSMSystem();
-		machine.AddState (idle);
-		machine.AddState (drag);
-
-//		machine
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-}
-
-public class IdleState : FSMState
+public enum States
 {
-	public IdleState()
-	{
-		stateID = StateID.Idle;
-	}
-
-	public override void Reason(GameObject owner)
-	{
-		//todo: when item is grabbed transition to next state
-		if (false) 
-		{
-			owner.GetComponent<TillStateMachine>().SetTransition(Transition.ItemGrabbed);
-		}
-	}
-
-	public override void Act(GameObject owner)
-	{
-				//do nothing
-	}
+	Setup = 0,
+	Idle,
+	Drag,
+	Scan,
+	Throw,
+	Done
 }
 
-public class DragState : FSMState
+public class TillStateMachine : MonoBehaviour 
 {
-	public DragState() {
-		stateID = StateID.Drag;
+
+	public bool setupDone;
+	public bool itemGrabbed;
+	public bool itemAtScanner;
+	public bool itemScanned;
+	public bool itemInBasket;
+	public bool itemOnFloor;
+
+	public States currentState;
+
+	void Start()
+	{
+		currentState = States.Setup;
+
+		setupDone = true;
 	}
 
-	public override void Reason(GameObject owner)
+	void Update ()
 	{
-		//todo: when item at scanner transition to next state
+		if (currentState == States.Setup && setupDone) 
+			switchToState (States.Idle);
+		else if (currentState == States.Idle && itemGrabbed)
+			switchToState (States.Drag);
+		else if (currentState == States.Drag && !itemGrabbed)
+			switchToState (States.Idle);
+
 	}
-	
-	public override void Act(GameObject owner)
+
+
+	void switchToState(States nextState)
 	{
-		//TODO: count how many objects have hit the floor
+		//TODO: call specific onExitState function
+
+		currentState = nextState;
+
+		//TODO: call specific onEnterState function
 	}
 }
-
 
