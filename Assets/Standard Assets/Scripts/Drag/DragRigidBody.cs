@@ -25,7 +25,7 @@ public class DragRigidBody : MonoBehaviour
 	void Update () 
 	{
 		// Make sure the user pressed the mouse down
-		if (!Input.GetMouseButtonDown (0))
+		if (!Input.GetMouseButtonDown (0) || (machine.currentState != States.Drag && machine.currentState != States.Idle)  )
 			return;
 		
 		//	//TODO: make sure only one item can be gradde at the same time
@@ -48,7 +48,8 @@ public class DragRigidBody : MonoBehaviour
 
 		if (!springJoint)
 		{
-			GameObject go = new GameObject("Rigidbody dragger");
+			string name = "Joint Carrier " + gameObject.transform.parent.gameObject.name;
+			GameObject go = new GameObject(name);
 			Rigidbody body  = go.AddComponent ("Rigidbody") as Rigidbody;
 			springJoint = go.AddComponent ("SpringJoint") as SpringJoint;
 			body.isKinematic = true;
