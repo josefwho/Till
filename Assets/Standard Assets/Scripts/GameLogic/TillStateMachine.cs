@@ -100,7 +100,8 @@ public class TillStateMachine : MonoBehaviour
 
 		itemToPin.rigidbody.isKinematic = false;
 		itemToPin.rigidbody.useGravity = false;
-		itemToPin.transform.Find("Dragger").gameObject.SetActive(true);
+
+		itemToPin.transform.Find("Spinner").gameObject.SetActive(true);
 
 	}
 

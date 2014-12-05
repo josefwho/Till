@@ -53,6 +53,7 @@
      <Compile Include="Assets\Standard Assets\Scripts\GameLogic\TillStateMachine.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\General Scripts\ActivateTrigger.cs" />
      <Compile Include="Assets\Standard Assets\Scripts\ScannerTrigger.cs" />
+     <Compile Include="Assets\Standard Assets\Scripts\SpinItem.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
