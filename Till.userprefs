@@ -2,9 +2,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Standard Assets/Scripts/GameLogic/TillStateMachine.cs">
     <Files>
-      <File FileName="Assets/Standard Assets/Scripts/GameLogic/TillStateMachine.cs" Line="74" Column="23" />
-      <File FileName="Assets/Standard Assets/Scripts/Drag/DragShoppingItem.cs" Line="66" Column="24" />
-      <File FileName="Assets/Standard Assets/Scripts/Drag/DragRigidBody.cs" Line="28" Column="79" />
+      <File FileName="Assets/Standard Assets/Scripts/GameLogic/TillStateMachine.cs" Line="86" Column="3" />
+      <File FileName="Assets/Standard Assets/Scripts/Drag/DragShoppingItem.cs" Line="25" Column="24" />
+      <File FileName="Assets/Standard Assets/Scripts/Drag/DragRigidBody.cs" Line="46" Column="61" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -21,10 +21,14 @@ public class TillStateMachine : MonoBehaviour
 	public bool itemInBasket;
 	public bool itemOnFloor;
 
+	public float moveToPinThreshold = 0.1f;
+	public float moveToPinDuration = 1.0f;
+
 	public States currentState;
 	public GameObject itemToPin;
 	private GameObject pin;
-	private ConfigurableJoint pinJoint;
+	private float lerpStartTime;
+	private Vector3 lerpStartPosition;
 
 	void Start()
 	{
@@ -33,7 +37,6 @@ public class TillStateMachine : MonoBehaviour
 		setupDone = true;
 
 		pin = GameObject.FindGameObjectWithTag ("Pin");
-		pinJoint = pin.GetComponent<ConfigurableJoint> ();
 	}
 
 	void Update ()
@@ -77,11 +80,43 @@ public class TillStateMachine : MonoBehaviour
 //			Destroy(itemToPin.GetComponent<DragRigidBody>());
 			
 			itemToPin.transform.Find("Dragger").gameObject.SetActive(false);
-
-			pinJoint.connectedBody = itemToPin.rigidbody;
+			itemToPin.rigidbody.isKinematic = true;
+			lerpStartTime = Time.time;
+			lerpStartPosition = itemToPin.transform.position;
+			StartCoroutine("moveToPin");
 
 //			itemToPin.AddComponent<>
 		}
 	}
+
+	void pinItem()
+	{
+		ConfigurableJoint joint = itemToPin.AddComponent<ConfigurableJoint>();
+		joint.xMotion = ConfigurableJointMotion.Locked;
+		joint.yMotion = ConfigurableJointMotion.Locked;
+		joint.zMotion = ConfigurableJointMotion.Locked;
+		joint.anchor = Vector3.zero;
+		joint.connectedBody = pin.rigidbody;
+
+		itemToPin.rigidbody.isKinematic = false;
+		itemToPin.rigidbody.useGravity = false;
+		itemToPin.transform.Find("Dragger").gameObject.SetActive(true);
+
+	}
+
+	IEnumerator moveToPin()
+	{
+		while(Vector3.Distance(itemToPin.transform.position, pin.transform.position) > moveToPinThreshold)
+		{
+			float t = (Time.time - lerpStartTime)/moveToPinDuration;
+			itemToPin.transform.position = Vector3.Lerp(lerpStartPosition, pin.transform.position, t);
+			yield return null;
+		}
+
+		itemToPin.transform.position = pin.transform.position;
+		pinItem();
+
+	}
+
 }
 
