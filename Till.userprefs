@@ -1,10 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Standard Assets/Scripts/DragRigidBody/DragRigidBody.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Standard Assets/Scripts/GameLogic/TillStateMachine.cs">
     <Files>
-      <File FileName="Assets/Standard Assets/Scripts/DragRigidBody/DragRigidBody.cs" Line="109" Column="34" />
-      <File FileName="Assets/Standard Assets/Scripts/GameLogic/TillStateMachine.cs" Line="14" Column="46" />
+      <File FileName="Assets/Standard Assets/Scripts/GameLogic/TillStateMachine.cs" Line="78" Column="1" />
+      <File FileName="Assets/Standard Assets/Scripts/GameLogic/FSMSystem.cs" Line="1" Column="1" />
       <File FileName="Assets/Standard Assets/Scripts/ScannerTrigger.cs" Line="1" Column="1" />
+      <File FileName="Assets/Standard Assets/Scripts/DragRigidBody/DragRigidBody.cs" Line="124" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
