@@ -52,7 +52,7 @@ public class DragShoppingItem : MonoBehaviour {
 	{
 		// We need to actually hit an object
 		RaycastHit hit;
-		if (!Physics.Raycast(mainCamera.ScreenPointToRay(Input.mousePosition),out hit, 100))
+		if (!Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition),out hit, 100))
 			return;
 		// We need to hit a rigidbody that is not kinematic
 		if (!hit.rigidbody || hit.rigidbody.isKinematic)

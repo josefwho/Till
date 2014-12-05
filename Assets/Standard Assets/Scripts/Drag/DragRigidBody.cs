@@ -106,9 +106,9 @@ public class DragRigidBody : MonoBehaviour
 	{
 		if (springJoint) 
 		{
-//			Destroy(springJoint.gameObject);
-			springJoint.gameObject.SetActive (false);
-//			springJoint = null;
+			Destroy(springJoint.gameObject);
+//			springJoint.gameObject.SetActive (false);
+			springJoint = null;
 			machine.itemGrabbed = false;
 		}
 	}
