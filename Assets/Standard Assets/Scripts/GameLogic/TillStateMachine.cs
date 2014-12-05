@@ -23,12 +23,17 @@ public class TillStateMachine : MonoBehaviour
 
 	public States currentState;
 	public GameObject itemToPin;
+	private GameObject pin;
+	private ConfigurableJoint pinJoint;
 
 	void Start()
 	{
 		currentState = States.Setup;
 		itemToPin = null;
 		setupDone = true;
+
+		pin = GameObject.FindGameObjectWithTag ("Pin");
+		pinJoint = pin.GetComponent<ConfigurableJoint> ();
 	}
 
 	void Update ()
@@ -72,6 +77,8 @@ public class TillStateMachine : MonoBehaviour
 //			Destroy(itemToPin.GetComponent<DragRigidBody>());
 			
 			itemToPin.transform.Find("Dragger").gameObject.SetActive(false);
+
+			pinJoint.connectedBody = itemToPin.rigidbody;
 
 //			itemToPin.AddComponent<>
 		}
