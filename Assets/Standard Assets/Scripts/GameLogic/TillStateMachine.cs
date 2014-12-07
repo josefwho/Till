@@ -26,6 +26,7 @@ public class TillStateMachine : MonoBehaviour
 
 	public States currentState;
 	public GameObject itemToPin;
+	public GameObject itemIsScanned;
 	private GameObject pin;
 	private float lerpStartTime;
 	private Vector3 lerpStartPosition;
@@ -70,6 +71,9 @@ public class TillStateMachine : MonoBehaviour
 		//TODO: call specific onEnterState function
 		if(currentState == States.Scan)
 			onEnterScan(lastState);
+
+		if (currentState == States.Throw)
+			itemOnEnterScanner (lastState);
 	}
 	
 	
@@ -89,6 +93,14 @@ public class TillStateMachine : MonoBehaviour
 		}
 	}
 
+	void itemOnEnterScanner(States lastState)
+	{
+			if (itemIsScanned != null) 
+			{
+				unpinItem();
+			}
+	}
+
 	void pinItem()
 	{
 		ConfigurableJoint joint = itemToPin.AddComponent<ConfigurableJoint>();
@@ -104,6 +116,16 @@ public class TillStateMachine : MonoBehaviour
 		itemToPin.transform.Find("Spinner").gameObject.SetActive(true);
 
 	}
+
+
+	void unpinItem()
+	{
+		itemIsScanned.rigidbody.isKinematic = true;
+		itemIsScanned.rigidbody.useGravity = true;
+	}
+	 
+
+
 
 	IEnumerator moveToPin()
 	{
