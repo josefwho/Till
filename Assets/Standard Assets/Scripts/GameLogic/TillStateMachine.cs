@@ -31,6 +31,11 @@ public class TillStateMachine : MonoBehaviour
 	private float lerpStartTime;
 	private Vector3 lerpStartPosition;
 
+	private int countScannedObjects;
+	private int countBasketObjects;
+	public GUIText countScanned;
+	public GUIText countBasket; 
+
 	void Start()
 	{
 		currentState = States.Setup;
@@ -38,6 +43,12 @@ public class TillStateMachine : MonoBehaviour
 		setupDone = true;
 
 		pin = GameObject.FindGameObjectWithTag ("Pin");
+
+		countScannedObjects = 0;
+//		setCountText();
+		countBasketObjects = 0;
+//		countBasket.text = "Items in Basket: " + countBasket.ToString ();
+
 	}
 
 	void Update ()
@@ -98,7 +109,14 @@ public class TillStateMachine : MonoBehaviour
 			if (itemIsScanned != null) 
 			{
 				unpinItem();
+				countScannedObjects ++;
+//				setCountText();
 			}
+	}
+
+	void setCountText()
+	{
+		countScanned.text = "Items Scanned: " + countScanned.ToString ();
 	}
 
 	void pinItem()
