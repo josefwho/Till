@@ -18,8 +18,6 @@ public class ScanDetection : MonoBehaviour {
 		if (other.gameObject.tag == "Scanner") 
 		{
 			machine.itemScanned = true;
-			machine.itemAtScanner = false;
-			machine.itemIsScanned = transform.parent.gameObject;
 		}
 		
 	}

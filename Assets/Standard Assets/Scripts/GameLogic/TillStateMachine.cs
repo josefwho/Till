@@ -26,7 +26,6 @@ public class TillStateMachine : MonoBehaviour
 
 	public States currentState;
 	public GameObject itemToPin;
-	public GameObject itemIsScanned;
 	private GameObject pin;
 	private float lerpStartTime;
 	private Vector3 lerpStartPosition;
@@ -68,6 +67,8 @@ public class TillStateMachine : MonoBehaviour
 		{
 			if (!itemAtScanner)
 				switchToState (States.Drag);
+			if (itemScanned)
+				switchToState (States.Throw);
 		}
 	}
 
@@ -84,7 +85,7 @@ public class TillStateMachine : MonoBehaviour
 			onEnterScan(lastState);
 
 		if (currentState == States.Throw)
-			itemOnEnterScanner (lastState);
+			onEnterThrow (lastState);
 	}
 	
 	
@@ -104,9 +105,9 @@ public class TillStateMachine : MonoBehaviour
 		}
 	}
 
-	void itemOnEnterScanner(States lastState)
+	void onEnterThrow(States lastState)
 	{
-			if (itemIsScanned != null) 
+		if (itemToPin != null) 
 			{
 				unpinItem();
 				countScannedObjects ++;
@@ -138,8 +139,8 @@ public class TillStateMachine : MonoBehaviour
 
 	void unpinItem()
 	{
-		itemIsScanned.rigidbody.isKinematic = true;
-		itemIsScanned.rigidbody.useGravity = true;
+		Destroy (itemToPin.GetComponent<ConfigurableJoint> ());
+		itemToPin.rigidbody.useGravity = true;
 	}
 	 
 
