@@ -85,7 +85,7 @@ GameObject:
   - 33: {fileID: 26956279}
   - 64: {fileID: 26956278}
   - 23: {fileID: 26956277}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - 33: {fileID: 94170968}
   - 65: {fileID: 94170967}
   - 23: {fileID: 94170966}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Scanner
   m_TagString: Scanner
   m_Icon: {fileID: 0}
@@ -574,7 +574,7 @@ GameObject:
   - 33: {fileID: 264306199}
   - 65: {fileID: 264306198}
   - 23: {fileID: 264306197}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: basket border left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1003,7 +1003,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 802371390}
   - 132: {fileID: 802371391}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Items in Basket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1148,7 +1148,7 @@ GameObject:
   - 33: {fileID: 858745152}
   - 65: {fileID: 858745151}
   - 23: {fileID: 858745150}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Barrier Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1263,7 +1263,7 @@ GameObject:
   - 33: {fileID: 980184544}
   - 65: {fileID: 980184543}
   - 23: {fileID: 980184542}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: basket border bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1332,7 +1332,7 @@ GameObject:
   - 33: {fileID: 1024739261}
   - 65: {fileID: 1024739260}
   - 23: {fileID: 1024739259}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Barrier Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1564,7 +1564,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1448867101}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Display Counts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1584,7 +1584,7 @@ Transform:
   - {fileID: 1495632932}
   - {fileID: 802371390}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
 --- !u!1 &1495632931
 GameObject:
   m_ObjectHideFlags: 0
@@ -1594,7 +1594,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1495632932}
   - 132: {fileID: 1495632933}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Items Scanned
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1720,7 +1720,7 @@ GameObject:
   - 33: {fileID: 1502329422}
   - 65: {fileID: 1502329421}
   - 23: {fileID: 1502329420}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Conveyer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1787,7 +1787,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1525401681}
   - 114: {fileID: 1525401682}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GameController
   m_TagString: GameController
   m_Icon: {fileID: 0}
@@ -1903,7 +1903,7 @@ GameObject:
   - 33: {fileID: 1559126320}
   - 65: {fileID: 1559126319}
   - 23: {fileID: 1559126318}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: InBasketTrigger
   m_TagString: InBasket
   m_Icon: {fileID: 0}
@@ -2034,33 +2034,6 @@ MonoBehaviour:
   mouseStartPosition: {x: 0, y: 0, z: 0}
   speed: .5
   maxAngularVelocity: 4
---- !u!1 &1700450296
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1700450297}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1700450297
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1700450296}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
 --- !u!1001 &1742934946
 Prefab:
   m_ObjectHideFlags: 0
@@ -2120,7 +2093,7 @@ GameObject:
   - 33: {fileID: 1751502913}
   - 65: {fileID: 1751502912}
   - 23: {fileID: 1751502911}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Scanner Field
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2189,7 +2162,7 @@ GameObject:
   - 33: {fileID: 1761260628}
   - 65: {fileID: 1761260627}
   - 23: {fileID: 1761260626}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: basket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2315,7 +2288,7 @@ GameObject:
   - 33: {fileID: 1830245927}
   - 65: {fileID: 1830245926}
   - 23: {fileID: 1830245925}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: basket border right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2550,7 +2523,7 @@ GameObject:
   - 33: {fileID: 2105315772}
   - 65: {fileID: 2105315771}
   - 23: {fileID: 2105315770}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: basket border top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
