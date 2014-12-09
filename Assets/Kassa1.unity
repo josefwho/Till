@@ -1030,7 +1030,7 @@ GUIText:
   m_GameObject: {fileID: 802371389}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: 'Items in Basket:'
+  m_Text: 
   m_Anchor: 0
   m_Alignment: 0
   m_PixelOffset: {x: 10, y: -30}
@@ -1621,7 +1621,7 @@ GUIText:
   m_GameObject: {fileID: 1495632931}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: 'Items Scanned:'
+  m_Text: 
   m_Anchor: 0
   m_Alignment: 0
   m_PixelOffset: {x: 10, y: -10}
@@ -1827,8 +1827,8 @@ MonoBehaviour:
   moveToPinDuration: .200000003
   currentState: 0
   itemToPin: {fileID: 0}
-  countScanned: {fileID: 0}
-  countBasket: {fileID: 0}
+  countScanned: {fileID: 1495632933}
+  countBasket: {fileID: 802371391}
 --- !u!1 &1554400404
 GameObject:
   m_ObjectHideFlags: 0

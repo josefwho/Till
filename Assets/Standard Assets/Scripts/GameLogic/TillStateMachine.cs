@@ -44,9 +44,9 @@ public class TillStateMachine : MonoBehaviour
 		pin = GameObject.FindGameObjectWithTag ("Pin");
 
 		countScannedObjects = 0;
-//		setCountText();
+		countScanned.text = "Items Scanned: "+ countScannedObjects.ToString ();
 		countBasketObjects = 0;
-//		countBasket.text = "Items in Basket: " + countBasket.ToString ();
+		countBasket.text = "Items in Basket: " + countBasketObjects.ToString ();
 
 	}
 
@@ -111,14 +111,15 @@ public class TillStateMachine : MonoBehaviour
 			{
 				unpinItem();
 				countScannedObjects ++;
-//				setCountText();
+				setCountText();
 			}
 	}
 
-	void setCountText()
-	{
-		countScanned.text = "Items Scanned: " + countScanned.ToString ();
-	}
+		void setCountText()
+		{
+			countScanned.text = "Items Scanned: " + countScannedObjects.ToString ();
+			countBasket.text = "Items in Basket: " + countBasketObjects.ToString ();
+		}
 
 	void pinItem()
 	{
