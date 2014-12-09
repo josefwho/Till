@@ -141,6 +141,7 @@ public class TillStateMachine : MonoBehaviour
 	{
 		Destroy (itemToPin.GetComponent<ConfigurableJoint> ());
 		itemToPin.rigidbody.useGravity = true;
+		makeThrowableAgain ();
 	}
 	 
 
@@ -158,6 +159,12 @@ public class TillStateMachine : MonoBehaviour
 		itemToPin.transform.position = pin.transform.position;
 		pinItem();
 
+	}
+
+	void makeThrowableAgain()
+	{
+		itemToPin.transform.Find("Spinner").gameObject.SetActive(false);
+		itemToPin.transform.Find("Dragger").gameObject.SetActive(true);
 	}
 
 }
