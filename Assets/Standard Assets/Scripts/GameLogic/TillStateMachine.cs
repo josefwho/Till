@@ -53,23 +53,26 @@ public class TillStateMachine : MonoBehaviour
 	void Update ()
 	{
 		if (currentState == States.Setup && setupDone) 
-			switchToState (States.Idle);
-		else if (currentState == States.Idle && itemGrabbed)
-			switchToState (States.Drag);
-		else if (currentState == States.Drag) 
-		{
-			if (itemAtScanner)
-				switchToState (States.Scan);
-			else if (!itemGrabbed)
-				switchToState (States.Idle);
-		} 
-		else if (currentState == States.Scan) 
-		{
-			if (!itemAtScanner)
-				switchToState (States.Drag);
-			if (itemScanned)
-				switchToState (States.Throw);
-		}
+						switchToState (States.Idle);
+				else if (currentState == States.Idle && itemGrabbed)
+						switchToState (States.Drag);
+				else if (currentState == States.Drag) {
+						if (itemAtScanner)
+								switchToState (States.Scan);
+						else if (!itemGrabbed)
+								switchToState (States.Idle);
+				} else if (currentState == States.Scan) {
+						if (!itemAtScanner)
+								switchToState (States.Drag);
+						if (itemScanned)
+								switchToState (States.Throw);
+				} else if (currentState == States.Throw) 
+					{
+						if(itemScanned && itemInBasket)
+						{
+							switchToState (States.Done);
+						}
+					}
 	}
 
 
@@ -86,6 +89,9 @@ public class TillStateMachine : MonoBehaviour
 
 		if (currentState == States.Throw)
 			onEnterThrow (lastState);
+
+		if (currentState == States.Done)
+						onEnterBasket ();
 	}
 	
 	
@@ -112,7 +118,20 @@ public class TillStateMachine : MonoBehaviour
 				unpinItem();
 				countScannedObjects ++;
 				setCountText();
+//				itemToPin.transform.Find("Already Scanned").gameObject.SetActive(true);
+//			itemToPin.AddComponent<>;
+
 			}
+	}
+
+	void onEnterBasket()
+	{
+		if (itemToPin != null) 
+		{
+			countBasketObjects ++;
+			setCountText();
+		}
+
 	}
 
 		void setCountText()

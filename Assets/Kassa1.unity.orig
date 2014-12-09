@@ -1489,6 +1489,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+<<<<<<< HEAD
+=======
 --- !u!1 &1057442824
 GameObject:
   m_ObjectHideFlags: 0
@@ -1576,6 +1578,7 @@ Prefab:
   m_RootGameObject: {fileID: 849064241}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+>>>>>>> FETCH_HEAD
 --- !u!1 &1239425259
 GameObject:
   m_ObjectHideFlags: 0

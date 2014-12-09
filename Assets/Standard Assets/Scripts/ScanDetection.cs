@@ -28,38 +28,10 @@ public class ScanDetection : MonoBehaviour {
 		}
 		
 	}
-	
-	void OnTriggerExit (Collider other)
-		
-	{
-		if (other.gameObject.tag == "Scanner") 
-		{
-			currentScanDuration = 0.0f;
-		}
-	}
-
 	void OnEnable()
 	{
 		currentScanDuration = 0.0f;
 	}
 }
 
-
-/* PSEUDOCODE
- * 
- * innerhalb der Klasse definier ich eine StateMachine
- * 
- * im Awake hol ich mir die TillStateMachine, um sie benutzen zu können
- * 
- * eine Methode scannedItemLongEnough überprüft, ob sich das Triggerobjekt des Shopping Items lange genug mit dem Scanner trifft (collidet)
- * void scannedItemLongEnough (Collider ???)
- * 
- * if (???)
- * machine.itemScanned = true;
- * 
- * 
- * 
- * 
- * 
- * 
- */
+ 
