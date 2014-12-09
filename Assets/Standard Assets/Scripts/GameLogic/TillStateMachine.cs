@@ -112,6 +112,8 @@ public class TillStateMachine : MonoBehaviour
 				unpinItem();
 				countScannedObjects ++;
 				setCountText();
+			itemToPin.transform.Find("Already Scanned").gameObject.SetActive(true);
+//			itemToPin.AddComponent<>;
 			}
 	}
 

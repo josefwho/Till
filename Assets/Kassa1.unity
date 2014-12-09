@@ -1076,6 +1076,7 @@ Transform:
   m_Children:
   - {fileID: 1301994180}
   - {fileID: 1672079018}
+  - {fileID: 1057442825}
   - {fileID: 1499892121}
   m_Father: {fileID: 1593880069}
   m_RootOrder: 1
@@ -1390,6 +1391,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!1 &1057442824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1057442825}
+  m_Layer: 0
+  m_Name: Already Scanned
+  m_TagString: AlreadyScanned
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1057442825
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1057442824}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .269999981, y: -1.89999998, z: -3.46666741}
+  m_LocalScale: {x: 1, y: 1, z: 2.42424297}
+  m_Children: []
+  m_Father: {fileID: 849064242}
+  m_RootOrder: 2
 --- !u!1001 &1222282409
 Prefab:
   m_ObjectHideFlags: 0
@@ -1432,6 +1460,18 @@ Prefab:
     - target: {fileID: 100000, guid: 82d21b7473fb04a439266424d9ba268a, type: 2}
       propertyPath: m_Name
       value: Cornflakes Cube 002
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 82d21b7473fb04a439266424d9ba268a, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: 82d21b7473fb04a439266424d9ba268a, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 82d21b7473fb04a439266424d9ba268a, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82d21b7473fb04a439266424d9ba268a, type: 2}
@@ -1666,7 +1706,7 @@ Transform:
   m_Children:
   - {fileID: 462751239}
   m_Father: {fileID: 849064242}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!23 &1499892122
 Renderer:
   m_ObjectHideFlags: 0
