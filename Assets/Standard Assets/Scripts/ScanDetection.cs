@@ -4,6 +4,10 @@ using System.Collections;
 public class ScanDetection : MonoBehaviour {
 
 	private TillStateMachine machine;
+
+	public float scanDuration = 2.0f;
+
+	public float currentScanDuration = 0.0f;
 	
 	
 	// Use this for initialization
@@ -13,11 +17,14 @@ public class ScanDetection : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void OnTriggerEnter (Collider other) 
+	void OnTriggerStay (Collider other) 
 	{
 		if (other.gameObject.tag == "Scanner") 
 		{
-			machine.itemScanned = true;
+			currentScanDuration += Time.deltaTime;
+
+			if(currentScanDuration > scanDuration)
+				machine.itemScanned = true;
 		}
 		
 	}
@@ -27,8 +34,13 @@ public class ScanDetection : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Scanner") 
 		{
-			machine.itemScanned = false;
+			currentScanDuration = 0.0f;
 		}
+	}
+
+	void OnEnable()
+	{
+		currentScanDuration = 0.0f;
 	}
 }
 
