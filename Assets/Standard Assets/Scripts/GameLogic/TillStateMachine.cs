@@ -134,15 +134,18 @@ public class TillStateMachine : MonoBehaviour
 		itemToPin.rigidbody.useGravity = false;
 
 		itemToPin.transform.Find("Spinner").gameObject.SetActive(true);
+		itemToPin.transform.Find ("Barcode").GetChild(0).gameObject.SetActive (true);
 
 	}
 
 
 	void unpinItem()
 	{
+		itemToPin.rigidbody.velocity = Vector3.zero;
+		itemToPin.rigidbody.angularVelocity = Vector3.zero;
 		Destroy (itemToPin.GetComponent<ConfigurableJoint> ());
 		itemToPin.rigidbody.useGravity = true;
-		makeThrowableAgain ();
+		makeThrowable ();
 	}
 	 
 
@@ -162,10 +165,11 @@ public class TillStateMachine : MonoBehaviour
 
 	}
 
-	void makeThrowableAgain()
+	void makeThrowable()
 	{
 		itemToPin.transform.Find("Spinner").gameObject.SetActive(false);
 		itemToPin.transform.Find("Dragger").gameObject.SetActive(true);
+		itemToPin.transform.Find ("Barcode").GetChild(0).gameObject.SetActive (false);
 	}
 
 }
