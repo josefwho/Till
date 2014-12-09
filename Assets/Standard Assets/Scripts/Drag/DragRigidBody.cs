@@ -12,6 +12,9 @@ public class DragRigidBody : MonoBehaviour
 	
 	private SpringJoint springJoint;
 
+	private float oldDrag;
+	private float oldAngularDrag;
+
 	private TillStateMachine machine;
 
 
@@ -57,6 +60,9 @@ public class DragRigidBody : MonoBehaviour
 			Rigidbody body  = go.AddComponent ("Rigidbody") as Rigidbody;
 			springJoint = go.AddComponent ("SpringJoint") as SpringJoint;
 			body.isKinematic = true;
+			
+			oldDrag = hit.rigidbody.drag;
+			oldAngularDrag = hit.rigidbody.angularDrag;
 		}
 		
 		springJoint.transform.position = hit.point;
@@ -75,6 +81,9 @@ public class DragRigidBody : MonoBehaviour
 		springJoint.damper = damper;
 		springJoint.maxDistance = distance;
 		springJoint.connectedBody = hit.rigidbody;
+		
+		springJoint.connectedBody.drag = drag;
+		springJoint.connectedBody.angularDrag = angularDrag;
 
 		machine.itemGrabbed = true;
 
@@ -83,10 +92,6 @@ public class DragRigidBody : MonoBehaviour
 	
 	IEnumerator DragObject (float distance)
 	{
-		float oldDrag = springJoint.connectedBody.drag;
-		float oldAngularDrag = springJoint.connectedBody.angularDrag;
-		springJoint.connectedBody.drag = drag;
-		springJoint.connectedBody.angularDrag = angularDrag;
 		Camera mainCamera = FindCamera();
 		while (Input.GetMouseButton (0) && springJoint)
 		{
@@ -94,10 +99,6 @@ public class DragRigidBody : MonoBehaviour
 			springJoint.transform.position = ray.GetPoint(distance);
 			yield return null;
 		}
-
-		
-		springJoint.connectedBody.drag = oldDrag;
-		springJoint.connectedBody.angularDrag = oldAngularDrag;
 		detach ();
 	
 	}
@@ -110,7 +111,10 @@ public class DragRigidBody : MonoBehaviour
 	void detach()
 	{
 		if (springJoint) 
-		{
+		{	
+			springJoint.connectedBody.drag = oldDrag;
+			springJoint.connectedBody.angularDrag = oldAngularDrag;
+
 			Destroy(springJoint.gameObject);
 //			springJoint.gameObject.SetActive (false);
 			springJoint = null;

@@ -6,8 +6,13 @@ public class SpinItem : MonoBehaviour {
 	public Vector3 mouseStartPosition;
 	public float speed = 2.0f;
 	public float maxAngularVelocity = 3;
+	public float drag = 10;
+	public float angularDrag = 5;
 
 	private float oldMaxAngularVelocity;
+
+	private float oldDrag;
+	private float oldAngularDrag;
 
 
 	// Use this for initialization
@@ -22,6 +27,11 @@ public class SpinItem : MonoBehaviour {
 		oldMaxAngularVelocity = transform.parent.rigidbody.maxAngularVelocity;
 		transform.parent.rigidbody.maxAngularVelocity = maxAngularVelocity;
 
+		oldDrag = transform.parent.rigidbody.drag;
+		oldAngularDrag = transform.parent.rigidbody.angularDrag;
+
+		transform.parent.rigidbody.drag = drag;
+		transform.parent.rigidbody.angularDrag = angularDrag;
 	}
 
 	void Update()
@@ -49,5 +59,8 @@ public class SpinItem : MonoBehaviour {
 		mouseStartPosition.x = Mathf.Infinity;
 
 		transform.parent.rigidbody.maxAngularVelocity = oldMaxAngularVelocity;
+		
+		transform.parent.rigidbody.drag = oldDrag;
+		transform.parent.rigidbody.angularDrag = oldAngularDrag;
 	}
 }
