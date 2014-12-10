@@ -68,10 +68,10 @@ public class TillStateMachine : MonoBehaviour
 						else if (!itemGrabbed)
 								switchToState (States.Idle);
 				} else if (currentState == States.Scan) {
-						if (itemScanned)
-							switchToState (States.Idle);
-						if(conveyorTrigger.empty && currentItemStatus != null && (currentItemStatus.inBasket || currentItemStatus.onFloor))
-							switchToState(States.CustomerDone);
+					if (currentItemStatus != null && currentItemStatus.scanned)
+						switchToState (States.Idle);
+					if(conveyorTrigger.empty && currentItemStatus != null && (currentItemStatus.inBasket || currentItemStatus.onFloor))
+						switchToState(States.CustomerDone);
 			   }
 	}
 
