@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ScannedAndInBasket : MonoBehaviour 
+public class BasketTrigger : ItemTrigger 
 {
 	
 	private TillStateMachine machine;
@@ -14,28 +14,30 @@ public class ScannedAndInBasket : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void OnTriggerEnter (Collider other) 
+	override void OnTriggerEnter (Collider other) 
 	{
+		base.OnTriggerEnter (other);
+
 		if (other.gameObject.tag == "ShoppingItem") 
 		{
-			other.GetComponent<ItemStatus>().inBasket = true;
-
-			if(other.GetComponent<ItemStatus>().inBasket && other.GetComponent<ItemStatus>().scanned)
-			{
 			machine.countBasketObjects++;
 			machine.setCountText();
-			}
 		}
+
 		
 	}
 
 	// Update is called once per frame
-	void OnTriggerExit (Collider other) 
+	override void OnTriggerExit (Collider other) 
 	{
+		base.OnTriggerExit (other);
+
 		if (other.gameObject.tag == "ShoppingItem") 
 		{
-			other.GetComponent<ItemStatus>().inBasket = false;
+			machine.countBasketObjects--;
+			machine.setCountText();
 		}
+
 	}
 
 }
