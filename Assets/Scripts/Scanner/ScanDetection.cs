@@ -24,7 +24,7 @@ public class ScanDetection : MonoBehaviour {
 			currentScanDuration += Time.deltaTime;
 
 			if(currentScanDuration > scanDuration)
-				machine.itemScanned = true;
+				machine.currentItemStatus.scanned = true;
 		}
 		
 	}

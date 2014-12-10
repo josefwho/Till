@@ -27,7 +27,7 @@ public class TillStateMachine : MonoBehaviour
 
 	public States currentState;
 	public GameObject currentItem;
-	private ItemStatus currentItemStatus;
+	public ItemStatus currentItemStatus;
 	private GameObject pin;
 	private float lerpStartTime;
 	private Vector3 lerpStartPosition;
