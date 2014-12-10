@@ -12,6 +12,7 @@ GameObject:
   - 65: {fileID: 6500000}
   - 23: {fileID: 2300000}
   - 54: {fileID: 5400000}
+  - 114: {fileID: 11400006}
   m_Layer: 0
   m_Name: Cornflakes Cube
   m_TagString: ShoppingItem
@@ -330,6 +331,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scanDuration: 2
   currentScanDuration: 0
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ace476988d5f41a48f4782faef0e9d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scanned: 0
+  onFloor: 0
+  inBasket: 0
+  atConveyorBelt: 0
+  pinned: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

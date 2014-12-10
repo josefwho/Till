@@ -808,6 +808,7 @@ GameObject:
   - 65: {fileID: 389550063}
   - 23: {fileID: 389550062}
   - 54: {fileID: 389550061}
+  - 114: {fileID: 389550065}
   m_Layer: 0
   m_Name: Cornflakes Cube 001
   m_TagString: ShoppingItem
@@ -888,6 +889,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1742934946}
   m_GameObject: {fileID: 389550059}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &389550065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: 82d21b7473fb04a439266424d9ba268a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1742934946}
+  m_GameObject: {fileID: 389550059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ace476988d5f41a48f4782faef0e9d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scanned: 0
+  onFloor: 0
+  inBasket: 0
+  atConveyorBelt: 0
+  pinned: 0
 --- !u!1 &410585656
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,6 +1039,7 @@ GameObject:
   - 65: {fileID: 558638267}
   - 23: {fileID: 558638266}
   - 54: {fileID: 558638265}
+  - 114: {fileID: 558638269}
   m_Layer: 0
   m_Name: Cornflakes Cube 002
   m_TagString: ShoppingItem
@@ -1101,6 +1120,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 659432127}
   m_GameObject: {fileID: 558638263}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &558638269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: 82d21b7473fb04a439266424d9ba268a,
+    type: 2}
+  m_PrefabInternal: {fileID: 659432127}
+  m_GameObject: {fileID: 558638263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ace476988d5f41a48f4782faef0e9d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scanned: 0
+  onFloor: 0
+  inBasket: 0
+  atConveyorBelt: 0
+  pinned: 0
 --- !u!1 &571120224
 GameObject:
   m_ObjectHideFlags: 0
@@ -2558,6 +2594,7 @@ GameObject:
   - 65: {fileID: 1993837453}
   - 23: {fileID: 1993837452}
   - 54: {fileID: 1993837451}
+  - 114: {fileID: 1993837455}
   m_Layer: 0
   m_Name: Cornflakes Cube 003
   m_TagString: ShoppingItem
@@ -2638,6 +2675,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 480390530}
   m_GameObject: {fileID: 1993837449}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1993837455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: 82d21b7473fb04a439266424d9ba268a,
+    type: 2}
+  m_PrefabInternal: {fileID: 480390530}
+  m_GameObject: {fileID: 1993837449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ace476988d5f41a48f4782faef0e9d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scanned: 0
+  onFloor: 0
+  inBasket: 0
+  atConveyorBelt: 0
+  pinned: 0
 --- !u!1 &2017801732
 GameObject:
   m_ObjectHideFlags: 0

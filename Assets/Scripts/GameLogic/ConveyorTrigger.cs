@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ScannedAndInBasket : MonoBehaviour 
-{
-	
+public class ConveyorTrigger : MonoBehaviour {
+
 	private TillStateMachine machine;
 	
 	
@@ -18,10 +17,18 @@ public class ScannedAndInBasket : MonoBehaviour
 	{
 		if (other.gameObject.tag == "ShoppingItem") 
 		{
-			machine.itemInBasket = true;
-//			machine.itemToPin = other.gameObject;
+			other.GetComponent<ItemStatus>().atConveyorBelt = true;
 		}
 		
 	}
 
+	// Update is called once per frame
+	void OnTriggerExit (Collider other) 
+	{
+		if (other.gameObject.tag == "ShoppingItem") 
+		{
+			other.GetComponent<ItemStatus>().atConveyorBelt = false;
+		}
+		
+	}
 }
