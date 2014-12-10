@@ -31,8 +31,6 @@ public class TillStateMachine : MonoBehaviour
 	private GameObject pin;
 	private float lerpStartTime;
 	private Vector3 lerpStartPosition;
-	private ConveyorTrigger conveyorTrigger;
-
 	public int countScannedObjects;
 	public int countBasketObjects;
 	public GUIText countScanned;
@@ -52,7 +50,6 @@ public class TillStateMachine : MonoBehaviour
 		countBasketObjects = 0;
 		countBasket.text = "Items in Basket: " + countBasketObjects.ToString ();
 
-		conveyorTrigger = GameObject.Find ("Conveyor/ConveyorTrigger").GetComponent<ConveyorTrigger> ();
 
 	}
 
@@ -70,8 +67,7 @@ public class TillStateMachine : MonoBehaviour
 				} else if (currentState == States.Scan) {
 					if (currentItemStatus != null && currentItemStatus.scanned)
 						switchToState (States.Idle);
-					if(conveyorTrigger.empty && currentItemStatus != null && (currentItemStatus.inBasket || currentItemStatus.onFloor))
-						switchToState(States.CustomerDone);
+
 			   }
 	}
 
