@@ -14,7 +14,7 @@ public class ItemTrigger : MonoBehaviour {
 
 	void OnDestroy()
 	{
-		Destroy (objectsInside);
+
 	}
 
 	public virtual void OnTriggerEnter(Collider other)

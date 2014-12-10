@@ -14,7 +14,7 @@ public class BasketTrigger : ItemTrigger
 	}
 	
 	// Update is called once per frame
-	override void OnTriggerEnter (Collider other) 
+	public override void OnTriggerEnter (Collider other) 
 	{
 		base.OnTriggerEnter (other);
 
@@ -28,7 +28,7 @@ public class BasketTrigger : ItemTrigger
 	}
 
 	// Update is called once per frame
-	override void OnTriggerExit (Collider other) 
+	public override void OnTriggerExit (Collider other) 
 	{
 		base.OnTriggerExit (other);
 

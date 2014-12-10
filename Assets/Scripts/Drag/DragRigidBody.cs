@@ -38,10 +38,6 @@ public class DragRigidBody : MonoBehaviour
 
 		var mainCamera = FindCamera();
 
-		if (transform.parent.name == "Cornflakes Cube 002") 
-		{
-				bool bla = true;
-		}
 		// We need to actually hit an object
 		RaycastHit hit;
 		if (!Physics.Raycast(mainCamera.ScreenPointToRay(Input.mousePosition),out hit, 100))
