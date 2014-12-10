@@ -22,15 +22,11 @@ public class TillStateMachine : MonoBehaviour
 	public bool itemInBasket;
 	public bool itemOnFloor;
 
-	public float moveToPinThreshold = 0.1f;
-	public float moveToPinDuration = 1.0f;
 
 	public States currentState;
 	public GameObject currentItem;
 	public ItemStatus currentItemStatus;
 	private GameObject pin;
-	private float lerpStartTime;
-	private Vector3 lerpStartPosition;
 	public int countScannedObjects;
 	public int countBasketObjects;
 	public GUIText countScanned;
@@ -94,11 +90,6 @@ public class TillStateMachine : MonoBehaviour
 		{
 //			Destroy(currentItem.GetComponent<DragRigidBody>());
 			
-			currentItem.transform.Find("Dragger").gameObject.SetActive(false);
-			currentItem.rigidbody.isKinematic = true;
-			lerpStartTime = Time.time;
-			lerpStartPosition = currentItem.transform.position;
-			StartCoroutine("moveToPin");
 
 //			currentItem.AddComponent<>
 		}
@@ -128,57 +119,6 @@ public class TillStateMachine : MonoBehaviour
 	{
 		countScanned.text = "Items Scanned: " + countScannedObjects.ToString ();
 		countBasket.text = "Items in Basket: " + countBasketObjects.ToString ();
-	}
-
-	void pinItem()
-	{
-		ConfigurableJoint joint = currentItem.AddComponent<ConfigurableJoint>();
-		joint.xMotion = ConfigurableJointMotion.Locked;
-		joint.yMotion = ConfigurableJointMotion.Locked;
-		joint.zMotion = ConfigurableJointMotion.Locked;
-		joint.anchor = Vector3.zero;
-		joint.connectedBody = pin.rigidbody;
-
-		currentItem.rigidbody.isKinematic = false;
-		currentItem.rigidbody.useGravity = false;
-
-		currentItem.transform.Find("Spinner").gameObject.SetActive(true);
-		currentItem.transform.Find ("Barcode").GetChild(0).gameObject.SetActive (true);
-
-	}
-
-
-	void unpinItem()
-	{
-		currentItem.rigidbody.velocity = Vector3.zero;
-		currentItem.rigidbody.angularVelocity = Vector3.zero;
-		Destroy (currentItem.GetComponent<ConfigurableJoint> ());
-		currentItem.rigidbody.useGravity = true;
-		makeThrowable ();
-	}
-	 
-
-
-
-	IEnumerator moveToPin()
-	{
-		while(Vector3.Distance(currentItem.transform.position, pin.transform.position) > moveToPinThreshold)
-		{
-			float t = (Time.time - lerpStartTime)/moveToPinDuration;
-			currentItem.transform.position = Vector3.Lerp(lerpStartPosition, pin.transform.position, t);
-			yield return null;
-		}
-
-		currentItem.transform.position = pin.transform.position;
-		pinItem();
-
-	}
-
-	void makeThrowable()
-	{
-		currentItem.transform.Find("Spinner").gameObject.SetActive(false);
-		currentItem.transform.Find("Dragger").gameObject.SetActive(true);
-		currentItem.transform.Find ("Barcode").GetChild(0).gameObject.SetActive (false);
 	}
 
 	public void setCurrentItem(GameObject newItem)

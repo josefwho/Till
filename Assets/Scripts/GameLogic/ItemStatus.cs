@@ -3,5 +3,5 @@ using System.Collections;
 
 public class ItemStatus : MonoBehaviour 
 {
-	public bool scanned;
+	public int scanned = 0;
 }

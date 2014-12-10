@@ -144,7 +144,7 @@ Transform:
   m_Children:
   - {fileID: 1208874498}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &75461516
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,8 +259,9 @@ Transform:
   m_Children:
   - {fileID: 1751502914}
   - {fileID: 175846370}
+  - {fileID: 1816475709}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!1 &169137060
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,10 +1042,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scanned: 0
-  onFloor: 0
-  inBasket: 0
-  atConveyorBelt: 0
-  pinned: 0
 --- !u!1 &410585656
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,10 +1338,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scanned: 0
-  onFloor: 0
-  inBasket: 0
-  atConveyorBelt: 0
-  pinned: 0
 --- !u!1 &571120224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1961,9 +1954,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1049279679}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2c3d152ebfef48edb0848a5b895aa51, type: 3}
+  m_Script: {fileID: 11500000, guid: 083a1884b596149708ae6c6487bfc7fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  empty: 1
 --- !u!23 &1049279682
 Renderer:
   m_ObjectHideFlags: 0
@@ -2076,9 +2070,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1208874493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecb8807c75f0040bfb5db6766fa22dec, type: 3}
+  m_Script: {fileID: 11500000, guid: 083a1884b596149708ae6c6487bfc7fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  empty: 1
 --- !u!23 &1208874495
 Renderer:
   m_ObjectHideFlags: 0
@@ -2300,7 +2295,7 @@ Transform:
   - {fileID: 1495632932}
   - {fileID: 802371390}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
 --- !u!1 &1495632931
 GameObject:
   m_ObjectHideFlags: 0
@@ -2471,7 +2466,10 @@ MonoBehaviour:
   moveToPinThreshold: .00100000005
   moveToPinDuration: .200000003
   currentState: 0
-  itemToPin: {fileID: 0}
+  currentItem: {fileID: 0}
+  currentItemStatus: {fileID: 0}
+  countScannedObjects: 0
+  countBasketObjects: 0
   countScanned: {fileID: 1495632933}
   countBasket: {fileID: 802371391}
 --- !u!1 &1554400404
@@ -2574,7 +2572,7 @@ Renderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1559126316}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
@@ -2618,6 +2616,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8be3a6469a246a9aba648801302ceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  empty: 1
+  machine: {fileID: 0}
 --- !u!1 &1591341624
 GameObject:
   m_ObjectHideFlags: 0
@@ -2997,7 +2997,7 @@ Transform:
   - {fileID: 2145548614}
   - {fileID: 1591341625}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!1 &1816475705
 GameObject:
   m_ObjectHideFlags: 0
@@ -3044,12 +3044,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1816475705}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.65110111, y: 1.04188347, z: 1.8506546}
-  m_LocalScale: {x: 1.41402936, y: 3.69680691, z: 3.69680691}
+  m_LocalRotation: {x: 0, y: -.707106829, z: 0, w: .707106709}
+  m_LocalPosition: {x: -.00295383716, y: 2.11980581, z: .033627674}
+  m_LocalScale: {x: .359955698, y: 6.16134501, z: 1.02488923}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 94170969}
+  m_RootOrder: 2
 --- !u!1 &1830245923
 GameObject:
   m_ObjectHideFlags: 0
@@ -3270,10 +3270,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scanned: 0
-  onFloor: 0
-  inBasket: 0
-  atConveyorBelt: 0
-  pinned: 0
 --- !u!1 &2017801732
 GameObject:
   m_ObjectHideFlags: 0
@@ -3350,7 +3346,7 @@ Transform:
   - {fileID: 314785444}
   - {fileID: 281595314}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
 --- !u!1 &2067594698
 GameObject:
   m_ObjectHideFlags: 0
@@ -3378,7 +3374,7 @@ Transform:
   m_Children:
   - {fileID: 1554400406}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!1 &2105315768
 GameObject:
   m_ObjectHideFlags: 0
