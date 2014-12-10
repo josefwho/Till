@@ -20,8 +20,11 @@ public class ScannedAndInBasket : MonoBehaviour
 		{
 			other.GetComponent<ItemStatus>().inBasket = true;
 
+			if(other.GetComponent<ItemStatus>().inBasket && other.GetComponent<ItemStatus>().scanned)
+			{
 			machine.countBasketObjects++;
 			machine.setCountText();
+			}
 		}
 		
 	}
