@@ -2,12 +2,13 @@
 using System.Collections;
 
 public class ScanDetection : MonoBehaviour {
-
-	private TillStateMachine machine;
-
+	
 	public float scanDuration = 2.0f;
 
 	public float currentScanDuration = 0.0f;
+
+	private TillStateMachine machine;
+
 	
 	
 	// Use this for initialization
@@ -24,7 +25,13 @@ public class ScanDetection : MonoBehaviour {
 			currentScanDuration += Time.deltaTime;
 
 			if(currentScanDuration > scanDuration)
-				machine.currentItemStatus.scanned = true;
+			{
+				transform.parent.parent.gameObject.GetComponent<ItemStatus>().scanned++;
+				GameObject.Find("Scanner/Scanner Trigger").GetComponent<ScannerTrigger>().unpinItem();
+
+				machine.countScannedObjects++;
+				machine.setCountText ();
+			}
 		}
 		
 	}

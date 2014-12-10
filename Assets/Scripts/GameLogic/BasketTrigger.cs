@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FloorTrigger : MonoBehaviour {
-
+public class BasketTrigger : ItemTrigger 
+{
+	
 	private TillStateMachine machine;
 	
 	
@@ -13,22 +14,30 @@ public class FloorTrigger : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void OnTriggerEnter (Collider other) 
+	public override void OnTriggerEnter (Collider other) 
 	{
+		base.OnTriggerEnter (other);
+
 		if (other.gameObject.tag == "ShoppingItem") 
 		{
-			other.GetComponent<ItemStatus>().onFloor = true;
+			machine.countBasketObjects++;
+			machine.setCountText();
 		}
+
 		
 	}
 
 	// Update is called once per frame
-	void OnTriggerExit (Collider other) 
+	public override void OnTriggerExit (Collider other) 
 	{
+		base.OnTriggerExit (other);
+
 		if (other.gameObject.tag == "ShoppingItem") 
 		{
-			other.GetComponent<ItemStatus>().onFloor = false;
+			machine.countBasketObjects--;
+			machine.setCountText();
 		}
-		
+
 	}
+
 }
