@@ -27,7 +27,7 @@ public class ItemTrigger : MonoBehaviour {
 	}
 	
 	
-	public virtual void OnTriggerExit (Collider other) 
+	public virtual void OnTriggerExit (Collider other)
 	{
 		if (other.gameObject.tag == "ShoppingItem") 
 		{
@@ -36,7 +36,11 @@ public class ItemTrigger : MonoBehaviour {
 			{
 				empty = true;
 			}
-		}
-		
+		}	
+	}
+
+	public int getObjectsInsideCount()
+	{
+		return objectsInside.Count;
 	}
 }
