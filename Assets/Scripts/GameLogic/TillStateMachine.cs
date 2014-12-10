@@ -8,7 +8,8 @@ public enum States
 			Drag,
 				Scan,
 					Throw,
-						Done
+						CustomerDone,
+	ShiftDone
 }
 
 public class TillStateMachine : MonoBehaviour 
@@ -25,20 +26,23 @@ public class TillStateMachine : MonoBehaviour
 	public float moveToPinDuration = 1.0f;
 
 	public States currentState;
-	public GameObject itemToPin;
+	public GameObject currentItem;
+	private ItemStatus currentItemStatus;
 	private GameObject pin;
 	private float lerpStartTime;
 	private Vector3 lerpStartPosition;
+	private ConveyorTrigger conveyorTrigger;
 
-	private int countScannedObjects;
-	private int countBasketObjects;
+	public int countScannedObjects;
+	public int countBasketObjects;
 	public GUIText countScanned;
 	public GUIText countBasket; 
 
 	void Start()
 	{
 		currentState = States.Setup;
-		itemToPin = null;
+		currentItem = null;
+		currentItemStatus = null;
 		setupDone = true;
 
 		pin = GameObject.FindGameObjectWithTag ("Pin");
@@ -47,6 +51,8 @@ public class TillStateMachine : MonoBehaviour
 		countScanned.text = "Items Scanned: "+ countScannedObjects.ToString ();
 		countBasketObjects = 0;
 		countBasket.text = "Items in Basket: " + countBasketObjects.ToString ();
+
+		conveyorTrigger = GameObject.Find ("Conveyor/ConveyorTrigger").GetComponent<ConveyorTrigger> ();
 
 	}
 
@@ -58,75 +64,63 @@ public class TillStateMachine : MonoBehaviour
 						switchToState (States.Drag);
 				else if (currentState == States.Drag) {
 						if (itemAtScanner)
-								switchToState (States.Scan);
+							switchToState (States.Scan);
 						else if (!itemGrabbed)
 								switchToState (States.Idle);
 				} else if (currentState == States.Scan) {
-						if (!itemAtScanner)
-								switchToState (States.Drag);
 						if (itemScanned)
-								switchToState (States.Throw);
-				} else if (currentState == States.Throw) 
-					{
-						if(itemScanned && itemInBasket)
-						{
-							switchToState (States.Done);
-						}
-					}
+							switchToState (States.Idle);
+						if(conveyorTrigger.empty && currentItemStatus != null && (currentItemStatus.inBasket || currentItemStatus.onFloor))
+							switchToState(States.CustomerDone);
+			   }
 	}
 
 
 	void switchToState(States nextState)
 	{
-		//TODO: call specific onExitState function
-
 		States lastState = currentState;
+
+		//call specific onExitState function
+		if (lastState == States.Scan)
+			onExitScan (nextState);
+
 		currentState = nextState;
 
 		//TODO: call specific onEnterState function
-		if(currentState == States.Scan)
+		if(nextState == States.Scan)
 			onEnterScan(lastState);
-
-		if (currentState == States.Throw)
-			onEnterThrow (lastState);
-
-		if (currentState == States.Done)
-						onEnterBasket ();
 	}
 	
 	
 	void onEnterScan(States lastState)
 	{
-		if(itemToPin != null)
+		if(currentItem != null)
 		{
-//			Destroy(itemToPin.GetComponent<DragRigidBody>());
+//			Destroy(currentItem.GetComponent<DragRigidBody>());
 			
-			itemToPin.transform.Find("Dragger").gameObject.SetActive(false);
-			itemToPin.rigidbody.isKinematic = true;
+			currentItem.transform.Find("Dragger").gameObject.SetActive(false);
+			currentItem.rigidbody.isKinematic = true;
 			lerpStartTime = Time.time;
-			lerpStartPosition = itemToPin.transform.position;
+			lerpStartPosition = currentItem.transform.position;
 			StartCoroutine("moveToPin");
 
-//			itemToPin.AddComponent<>
+//			currentItem.AddComponent<>
 		}
 	}
 
-	void onEnterThrow(States lastState)
+	void onExitScan(States nextState)
 	{
-		if (itemToPin != null) 
-			{
-				unpinItem();
-				countScannedObjects ++;
-				setCountText();
-//				itemToPin.transform.Find("Already Scanned").gameObject.SetActive(true);
-//			itemToPin.AddComponent<>;
-
-			}
+		if (currentItem != null) 
+		{
+			unpinItem ();
+			countScannedObjects ++;
+			setCountText ();
+		}
 	}
-
+	
 	void onEnterBasket()
 	{
-		if (itemToPin != null) 
+		if (currentItem != null) 
 		{
 			countBasketObjects ++;
 			setCountText();
@@ -134,36 +128,36 @@ public class TillStateMachine : MonoBehaviour
 
 	}
 
-		void setCountText()
-		{
-			countScanned.text = "Items Scanned: " + countScannedObjects.ToString ();
-			countBasket.text = "Items in Basket: " + countBasketObjects.ToString ();
-		}
+	public void setCountText()
+	{
+		countScanned.text = "Items Scanned: " + countScannedObjects.ToString ();
+		countBasket.text = "Items in Basket: " + countBasketObjects.ToString ();
+	}
 
 	void pinItem()
 	{
-		ConfigurableJoint joint = itemToPin.AddComponent<ConfigurableJoint>();
+		ConfigurableJoint joint = currentItem.AddComponent<ConfigurableJoint>();
 		joint.xMotion = ConfigurableJointMotion.Locked;
 		joint.yMotion = ConfigurableJointMotion.Locked;
 		joint.zMotion = ConfigurableJointMotion.Locked;
 		joint.anchor = Vector3.zero;
 		joint.connectedBody = pin.rigidbody;
 
-		itemToPin.rigidbody.isKinematic = false;
-		itemToPin.rigidbody.useGravity = false;
+		currentItem.rigidbody.isKinematic = false;
+		currentItem.rigidbody.useGravity = false;
 
-		itemToPin.transform.Find("Spinner").gameObject.SetActive(true);
-		itemToPin.transform.Find ("Barcode").GetChild(0).gameObject.SetActive (true);
+		currentItem.transform.Find("Spinner").gameObject.SetActive(true);
+		currentItem.transform.Find ("Barcode").GetChild(0).gameObject.SetActive (true);
 
 	}
 
 
 	void unpinItem()
 	{
-		itemToPin.rigidbody.velocity = Vector3.zero;
-		itemToPin.rigidbody.angularVelocity = Vector3.zero;
-		Destroy (itemToPin.GetComponent<ConfigurableJoint> ());
-		itemToPin.rigidbody.useGravity = true;
+		currentItem.rigidbody.velocity = Vector3.zero;
+		currentItem.rigidbody.angularVelocity = Vector3.zero;
+		Destroy (currentItem.GetComponent<ConfigurableJoint> ());
+		currentItem.rigidbody.useGravity = true;
 		makeThrowable ();
 	}
 	 
@@ -172,24 +166,36 @@ public class TillStateMachine : MonoBehaviour
 
 	IEnumerator moveToPin()
 	{
-		while(Vector3.Distance(itemToPin.transform.position, pin.transform.position) > moveToPinThreshold)
+		while(Vector3.Distance(currentItem.transform.position, pin.transform.position) > moveToPinThreshold)
 		{
 			float t = (Time.time - lerpStartTime)/moveToPinDuration;
-			itemToPin.transform.position = Vector3.Lerp(lerpStartPosition, pin.transform.position, t);
+			currentItem.transform.position = Vector3.Lerp(lerpStartPosition, pin.transform.position, t);
 			yield return null;
 		}
 
-		itemToPin.transform.position = pin.transform.position;
+		currentItem.transform.position = pin.transform.position;
 		pinItem();
 
 	}
 
 	void makeThrowable()
 	{
-		itemToPin.transform.Find("Spinner").gameObject.SetActive(false);
-		itemToPin.transform.Find("Dragger").gameObject.SetActive(true);
-		itemToPin.transform.Find ("Barcode").GetChild(0).gameObject.SetActive (false);
+		currentItem.transform.Find("Spinner").gameObject.SetActive(false);
+		currentItem.transform.Find("Dragger").gameObject.SetActive(true);
+		currentItem.transform.Find ("Barcode").GetChild(0).gameObject.SetActive (false);
 	}
 
+	public void setCurrentItem(GameObject newItem)
+	{
+				if (newItem.tag == "ShoppingItem") {
+						currentItem = newItem;
+						currentItemStatus = newItem.GetComponent<ItemStatus> ();
+				} else if (newItem == null) {
+						currentItem = null;
+						currentItemStatus = null;
+				} else {
+						print ("Trying to set " + newItem + "as current item but it doesnt have tag ShoppingItem");
+				}
+	}
 }
 

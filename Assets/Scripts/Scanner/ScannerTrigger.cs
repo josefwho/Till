@@ -19,7 +19,7 @@ public class ScannerTrigger : MonoBehaviour
 		if (other.gameObject.tag == "ShoppingItem") 
 		{
 			machine.itemAtScanner = true;
-			machine.itemToPin = other.gameObject;
+			machine.setCurrentItem(other.gameObject);
 		}
 
 	}

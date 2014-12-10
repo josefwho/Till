@@ -4,6 +4,9 @@ using System.Collections;
 public class ConveyorTrigger : MonoBehaviour {
 
 	private TillStateMachine machine;
+
+	public int numObjectsInside;
+	public bool empty = true;
 	
 	
 	// Use this for initialization
@@ -18,6 +21,9 @@ public class ConveyorTrigger : MonoBehaviour {
 		if (other.gameObject.tag == "ShoppingItem") 
 		{
 			other.GetComponent<ItemStatus>().atConveyorBelt = true;
+
+			empty = false;
+			numObjectsInside++;
 		}
 		
 	}
@@ -28,6 +34,12 @@ public class ConveyorTrigger : MonoBehaviour {
 		if (other.gameObject.tag == "ShoppingItem") 
 		{
 			other.GetComponent<ItemStatus>().atConveyorBelt = false;
+
+			if(--numObjectsInside <= 0)
+			{
+				numObjectsInside = 0; //just to be sure
+				empty = true;
+			}
 		}
 		
 	}

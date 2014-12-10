@@ -19,6 +19,9 @@ public class ScannedAndInBasket : MonoBehaviour
 		if (other.gameObject.tag == "ShoppingItem") 
 		{
 			other.GetComponent<ItemStatus>().inBasket = true;
+
+			machine.countBasketObjects++;
+			machine.setCountText();
 		}
 		
 	}
