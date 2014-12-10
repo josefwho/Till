@@ -81,8 +81,6 @@ public class DragRigidBody : MonoBehaviour
 		springJoint.connectedBody.drag = drag;
 		springJoint.connectedBody.angularDrag = angularDrag;
 
-		machine.itemGrabbed = true;
-
 		StartCoroutine ("DragObject", hit.distance);
 	}
 	
@@ -114,7 +112,6 @@ public class DragRigidBody : MonoBehaviour
 			Destroy(springJoint.gameObject);
 //			springJoint.gameObject.SetActive (false);
 			springJoint = null;
-			machine.itemGrabbed = false;
 		}
 	}
 	
