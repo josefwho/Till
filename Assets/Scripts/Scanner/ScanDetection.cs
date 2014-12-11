@@ -23,7 +23,7 @@ public class ScanDetection : MonoBehaviour {
 		if (other.gameObject.tag == "Scanner") 
 		{
 			currentScanDuration += Time.deltaTime;
-
+			changeColor(other, Color.green);
 			if(currentScanDuration > scanDuration)
 			{
 				transform.parent.parent.gameObject.GetComponent<ItemStatus>().scanned++;
@@ -34,6 +34,8 @@ public class ScanDetection : MonoBehaviour {
 				machine.countScannedObjects++;
 				machine.setCountText ();
 			}
+			//else
+			//changeColor(other, Color.grey);
 		}
 		
 	}
