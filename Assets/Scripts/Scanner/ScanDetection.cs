@@ -29,6 +29,8 @@ public class ScanDetection : MonoBehaviour {
 				transform.parent.parent.gameObject.GetComponent<ItemStatus>().scanned++;
 				GameObject.Find("Scanner/Scanner Trigger").GetComponent<ScannerTrigger>().unpinItem();
 
+				playScanSound(other);
+
 				machine.countScannedObjects++;
 				machine.setCountText ();
 			}
@@ -39,6 +41,22 @@ public class ScanDetection : MonoBehaviour {
 	{
 		currentScanDuration = 0.0f;
 	}
+
+	void playScanSound(Collider other)
+	{
+		other.GetComponent<AudioSource>().Play();
+		
+	}
+	
+	void changeColor(Collider other, Color col)
+	{
+		other.renderer.material.shader = Shader.Find("Diffuse");
+		other.renderer.material.SetColor("_Color", col);
+		
+		//other.renderer.material.shader = Shader.Find("Specular");
+		//other.renderer.material.SetColor("_SpecColor", Color.red);
+	}
+
 }
 
  
