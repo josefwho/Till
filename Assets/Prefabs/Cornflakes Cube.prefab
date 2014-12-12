@@ -314,10 +314,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseStartPosition: {x: 0, y: 0, z: 0}
-  speed: .5
-  maxAngularVelocity: 4
-  drag: 10
-  angularDrag: 5
+  speed: 1
+  maxFlickDuration: .200000003
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -343,10 +341,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scanned: 0
-  onFloor: 0
-  inBasket: 0
-  atConveyorBelt: 0
-  pinned: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

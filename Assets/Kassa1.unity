@@ -174,10 +174,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseStartPosition: {x: 0, y: 0, z: 0}
-  speed: .5
-  maxAngularVelocity: 4
-  drag: 10
-  angularDrag: 5
+  speed: 1
+  maxFlickDuration: .200000003
 --- !u!4 &75461518
 Transform:
   m_ObjectHideFlags: 0
@@ -348,6 +346,7 @@ GameObject:
   - 23: {fileID: 175846373}
   - 54: {fileID: 175846372}
   - 153: {fileID: 175846371}
+  - 114: {fileID: 175846376}
   m_Layer: 2
   m_Name: Scanner Pin
   m_TagString: Pin
@@ -513,6 +512,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 175846369}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &175846376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 175846369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8acb2b1328fed49ba9a1010bdd88ab08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngularVelocity: 20
+  drag: 0
+  angularDrag: 20
 --- !u!1 &177781038
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,10 +654,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseStartPosition: {x: 0, y: 0, z: 0}
-  speed: .5
-  maxAngularVelocity: 4
-  drag: 10
-  angularDrag: 5
+  speed: 2
+  maxFlickDuration: .200000003
 --- !u!1 &216189572
 GameObject:
   m_ObjectHideFlags: 0
@@ -2838,6 +2849,10 @@ Prefab:
       propertyPath: m_Name
       value: Cornflakes Cube 001
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 82d21b7473fb04a439266424d9ba268a, type: 2}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82d21b7473fb04a439266424d9ba268a, type: 2}
   m_RootGameObject: {fileID: 389550059}
@@ -3077,8 +3092,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   empty: 1
-  moveToPinThreshold: .100000001
-  moveToPinDuration: 1
+  moveToPinThreshold: .00999999978
+  moveToPinDuration: .100000001
 --- !u!65 &1816475707
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3213,10 +3228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseStartPosition: {x: 0, y: 0, z: 0}
-  speed: .5
-  maxAngularVelocity: 4
-  drag: 10
-  angularDrag: 5
+  speed: 1
+  maxFlickDuration: .200000003
 --- !u!1 &1993837449
 GameObject:
   m_ObjectHideFlags: 0
