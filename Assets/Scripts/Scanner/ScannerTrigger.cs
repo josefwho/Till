@@ -52,43 +52,8 @@ public class ScannerTrigger : ItemTrigger
 		}
 		
 		currentItem.transform.position = pin.transform.position;
-		pinItem();
+
+		pin.GetComponent<Pin>().pinItem(currentItem);
 		
-	}
-	
-	
-	void pinItem()
-	{
-		ConfigurableJoint joint = currentItem.AddComponent<ConfigurableJoint>();
-		joint.xMotion = ConfigurableJointMotion.Locked;
-		joint.yMotion = ConfigurableJointMotion.Locked;
-		joint.zMotion = ConfigurableJointMotion.Locked;
-		joint.anchor = Vector3.zero;
-		joint.connectedBody = pin.rigidbody;
-		
-		currentItem.rigidbody.isKinematic = false;
-		currentItem.rigidbody.useGravity = false;
-		
-		currentItem.transform.Find("Spinner").gameObject.SetActive(true);
-		currentItem.transform.Find ("Barcode").GetChild(0).gameObject.SetActive (true);
-	}
-	
-	
-	public void unpinItem()
-	{
-		currentItem.rigidbody.velocity = Vector3.zero;
-		currentItem.rigidbody.angularVelocity = Vector3.zero;
-		Destroy (currentItem.GetComponent<ConfigurableJoint> ());
-		currentItem.rigidbody.useGravity = true;
-		makeThrowable ();
-	}
-	
-	
-	
-	void makeThrowable()
-	{
-		currentItem.transform.Find("Spinner").gameObject.SetActive(false);
-		currentItem.transform.Find("Dragger").gameObject.SetActive(true);
-		currentItem.transform.Find ("Barcode").GetChild(0).gameObject.SetActive (false);
 	}
 }

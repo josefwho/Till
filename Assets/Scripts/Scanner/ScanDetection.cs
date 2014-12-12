@@ -30,7 +30,7 @@ public class ScanDetection : MonoBehaviour {
 			if(currentScanDuration > scanDuration)
 			{
 				transform.parent.parent.gameObject.GetComponent<ItemStatus>().scanned++;
-				GameObject.Find("Scanner/Scanner Trigger").GetComponent<ScannerTrigger>().unpinItem();
+				GameObject.FindGameObjectWithTag("Pin").GetComponent<Pin>().unpinItem();
 
 				playScanSound(other);
 				OnTriggerExit(other);
