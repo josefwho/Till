@@ -1169,6 +1169,10 @@ Prefab:
       propertyPath: m_Name
       value: Cornflakes Cube 003
       objectReference: {fileID: 0}
+    - target: {fileID: 11400004, guid: 82d21b7473fb04a439266424d9ba268a, type: 2}
+      propertyPath: scanDuration
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82d21b7473fb04a439266424d9ba268a, type: 2}
   m_RootGameObject: {fileID: 1993837449}
@@ -1560,7 +1564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c7521f703d64d189cb4c04a605f735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scanDuration: 2
+  scanDuration: 1
   currentScanDuration: 0
 --- !u!23 &808658232
 Renderer:

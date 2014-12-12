@@ -50,6 +50,7 @@ public class ScanDetection : MonoBehaviour {
 		if (other.gameObject.tag == "Scanner") 
 		{
 			changeColor (other.gameObject, Color.green);
+			currentScanDuration = 0.0f;
 		}
 	}
 
@@ -59,11 +60,6 @@ public class ScanDetection : MonoBehaviour {
 		{
 			changeColor (other.gameObject, Color.grey);
 		}
-	}
-	
-	void OnEnable()
-	{
-		currentScanDuration = 0.0f;
 	}
 
 	void playScanSound(Collider other)
