@@ -30,7 +30,10 @@ public class TillStateMachine : MonoBehaviour
 	public int countScannedObjects;
 	public int countBasketObjects;
 	public GUIText countScanned;
-	public GUIText countBasket; 
+	public GUIText countBasket;
+	public Vector2 customerCountRange;
+	public Vector2 itemCountRange;
+	public float spawnRadius;
 
 	private ItemTrigger floorTrigger;
 	private ItemTrigger scannerTrigger;
@@ -59,16 +62,34 @@ public class TillStateMachine : MonoBehaviour
 
 	void onEnterSetup()
 	{
-		Customer customer = new Customer ();
+		//get all shopping item prefabs to choose from
+		Object[] itemPrefabs = Resources.LoadAll ("Prefabs/Items");
 
-		GameObject[] allItems = GameObject.FindGameObjectsWithTag ("ShoppingItem");
+		//how many customers we will have this shift
+		int customerCount = (int)Mathf.Round((Random.Range (customerCountRange [0], customerCountRange [1])));
 
-		for (int i = 0; i < allItems.Length; i++) 
+		for (int c = 0; c < customerCount; c++) 
 		{
-			customer.shoppingItems.Add (allItems[i]);
-		}
 
-		customers.Add (customer);
+			Customer customer = new Customer ();
+
+			int itemCount = (int)Mathf.Round(Random.Range(itemCountRange[0], itemCountRange[1]));
+
+			for (int i = 0; i < itemCount; i++) 
+			{
+				//get a random prefab
+				Object prefab = itemPrefabs[Random.Range(0, itemPrefabs.Length)];
+
+				Vector3 pos = gameObject.transform.position;
+				pos += new Vector3(Random.Range(-spawnRadius, spawnRadius), 2, Random.Range(-spawnRadius, spawnRadius));
+
+				GameObject item = Instantiate(prefab, pos, Quaternion.identity ) as GameObject;
+				item.SetActive(false);
+				customer.shoppingItems.Add (item);
+			}
+			
+			customers.Add (customer);
+		}
 
 		switchToState (States.NextCustomer);
 	}
@@ -104,6 +125,12 @@ public class TillStateMachine : MonoBehaviour
 		if (customers.Count > 0) {
 			currentCustomer = (Customer)customers [customers.Count - 1];
 			customers.RemoveAt (customers.Count - 1);
+
+			for (int i = 0; i < currentCustomer.shoppingItems.Count; i++) 
+			{
+				GameObject temp = (GameObject)currentCustomer.shoppingItems[i];
+				temp.SetActive(true);
+			}
 
 			switchToState (States.InProgress);
 		} else
