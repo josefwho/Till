@@ -9,6 +9,8 @@ public class ScanDetection : MonoBehaviour {
 
 	private TillStateMachine machine;
 
+	private GameObject scannerField;
+
 	
 	
 	// Use this for initialization
@@ -22,14 +24,16 @@ public class ScanDetection : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Scanner") 
 		{
+
 			currentScanDuration += Time.deltaTime;
-			changeColor(other, Color.green);
+
 			if(currentScanDuration > scanDuration)
 			{
 				transform.parent.parent.gameObject.GetComponent<ItemStatus>().scanned++;
 				GameObject.Find("Scanner/Scanner Trigger").GetComponent<ScannerTrigger>().unpinItem();
 
 				playScanSound(other);
+
 
 				machine.countScannedObjects++;
 				machine.setCountText ();
@@ -39,6 +43,24 @@ public class ScanDetection : MonoBehaviour {
 		}
 		
 	}
+
+
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.tag == "Scanner") 
+		{
+			changeColor (other.gameObject, Color.green);
+		}
+	}
+
+	void OnTriggerExit(Collider other)
+	{
+		if (other.gameObject.tag == "Scanner") 
+		{
+			changeColor (other.gameObject, Color.grey);
+		}
+	}
+	
 	void OnEnable()
 	{
 		currentScanDuration = 0.0f;
@@ -50,7 +72,7 @@ public class ScanDetection : MonoBehaviour {
 		
 	}
 	
-	void changeColor(Collider other, Color col)
+	void changeColor(GameObject other, Color col)
 	{
 		other.renderer.material.shader = Shader.Find("Diffuse");
 		other.renderer.material.SetColor("_Color", col);
