@@ -33,7 +33,7 @@ public class ScanDetection : MonoBehaviour {
 				GameObject.Find("Scanner/Scanner Trigger").GetComponent<ScannerTrigger>().unpinItem();
 
 				playScanSound(other);
-
+				OnTriggerExit(other);
 
 				machine.countScannedObjects++;
 				machine.setCountText ();
