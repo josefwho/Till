@@ -122,6 +122,14 @@ public class TillStateMachine : MonoBehaviour
 	
 	void onEnterNextCustomer(States lastState)
 	{
+		if (currentCustomer != null) {
+			
+						for (int i = 0; i < currentCustomer.shoppingItems.Count; i++) {
+								GameObject temp = (GameObject)currentCustomer.shoppingItems [i];
+				Destroy (temp);
+						}
+				}
+
 		if (customers.Count > 0) {
 			currentCustomer = (Customer)customers [customers.Count - 1];
 			customers.RemoveAt (customers.Count - 1);
