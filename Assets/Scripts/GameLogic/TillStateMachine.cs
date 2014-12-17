@@ -36,6 +36,8 @@ public class TillStateMachine : MonoBehaviour
 	public float spawnRadius;
 	public float score;
 	public GUIText scoreText;
+	public float timeTaken;
+	public GUIText timeTakenText;
 
 
 	private ItemTrigger floorTrigger;
@@ -72,6 +74,8 @@ public class TillStateMachine : MonoBehaviour
 		Object[] itemPrefabs = Resources.LoadAll ("Prefabs/Items");
 
 		score = 0;
+
+		timeTaken = 0;
 
 		//how many customers we will have this shift
 		int customerCount = (int)Mathf.Round((Random.Range (customerCountRange [0], customerCountRange [1])));
@@ -134,8 +138,8 @@ public class TillStateMachine : MonoBehaviour
 	{
 		if (currentCustomer != null) {
 
-			score += basketTrigger.getScore();
-			score += floorTrigger.getScore();
+			score += ((BasketTrigger)basketTrigger).getScore();
+			score += ((FloorTrigger)floorTrigger).getScore();
 
 						for (int i = 0; i < currentCustomer.shoppingItems.Count; i++) {
 								GameObject toBeDestroyed = (GameObject)currentCustomer.shoppingItems [i];
@@ -166,6 +170,13 @@ public class TillStateMachine : MonoBehaviour
 		countBasket.text = "Items in Basket: " + basketTrigger.getObjectsInsideCount().ToString ();
 		countFloor.text = "Items on Floor: " + floorTrigger.getObjectsInsideCount().ToString ();
 		scoreText.text = "Total Score: " + score.ToString();
+
+		if (currentState != States.ShiftDone) 
+		{
+			timeTaken += Time.deltaTime;
+			int minutes = (int)timeTaken / 60 ;
+			timeTakenText.text = minutes.ToString() + ":" + timeTaken % 60;
+		}
 	}
 }
 
