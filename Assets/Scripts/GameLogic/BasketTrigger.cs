@@ -11,9 +11,13 @@ public class BasketTrigger : ItemTrigger {
 		for (int i = 0; i < objectsInside.Count; i++) 
 		{
 			GameObject temp = objectsInside[i] as GameObject;
-			if(temp.GetComponent<ItemStatus>().scanned > 0)
+			if(temp.GetComponent<ItemStatus>().scanned == 1)
 			{
 				score += 1.0f;
+			}
+			if(temp.GetComponent<ItemStatus>().scanned > 1)
+			{
+				score -= 1.0f;
 			}
 		}
 		return score;
