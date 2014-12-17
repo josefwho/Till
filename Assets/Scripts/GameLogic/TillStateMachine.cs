@@ -28,9 +28,9 @@ public class TillStateMachine : MonoBehaviour
 	public States currentState;
 
 	public int countScannedObjects;
-	public int countBasketObjects;
 	public GUIText countScanned;
 	public GUIText countBasket;
+	public GUIText countFloor;
 	public Vector2 customerCountRange;
 	public Vector2 itemCountRange;
 	public float spawnRadius;
@@ -49,14 +49,14 @@ public class TillStateMachine : MonoBehaviour
 	{
 		currentState = States.Setup;
 
-		countScannedObjects = 0;
-		countScanned.text = "Items Scanned: "+ countScannedObjects.ToString ();
-		countBasketObjects = 0;
-		countBasket.text = "Items in Basket: " + countBasketObjects.ToString ();
-
 		floorTrigger = GameObject.Find ("Floor/OnFloorTrigger").GetComponent<ItemTrigger>();
 		scannerTrigger = GameObject.Find ("Scanner/Scanner Trigger").GetComponent<ItemTrigger>();
 		basketTrigger = GameObject.Find ("basket/InBasketTrigger").GetComponent<ItemTrigger>();
+		
+		countScannedObjects = 0;
+		countScanned.text = "Items Scanned: "+ countScannedObjects.ToString ();
+		countBasket.text = "Items in Basket: " + basketTrigger.getObjectsInsideCount().ToString ();
+		countFloor.text = "Items on Floor: " + floorTrigger.getObjectsInsideCount ().ToString ();
 
 		customers = new ArrayList ();
 
@@ -99,6 +99,8 @@ public class TillStateMachine : MonoBehaviour
 
 	void Update ()
 	{
+		setCountText ();
+
 		if (currentState == States.InProgress) 
 		{
 			if(currentCustomer.shoppingItems.Count == floorTrigger.getObjectsInsideCount() + basketTrigger.getObjectsInsideCount())
@@ -154,6 +156,7 @@ public class TillStateMachine : MonoBehaviour
 	{
 		countScanned.text = "Items Scanned: " + countScannedObjects.ToString ();
 		countBasket.text = "Items in Basket: " + basketTrigger.getObjectsInsideCount().ToString ();
+		countFloor.text = "Items on Floor: " + floorTrigger.getObjectsInsideCount().ToString ();
 	}
 }
 
