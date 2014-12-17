@@ -15,6 +15,9 @@ public class ScannerTrigger : ItemTrigger
 	public float moveToPinDuration = 1.0f;
 
 
+	public GameObject scannerTriggerPublic;
+
+
 	// Use this for initialization
 	void Awake () 
 	{
@@ -30,18 +33,17 @@ public class ScannerTrigger : ItemTrigger
 
 		if (other.gameObject.tag == "ShoppingItem") 
 		{
-			currentItem = other.gameObject;
+				currentItem = other.gameObject;
 
-			currentItem.transform.Find("Dragger").gameObject.SetActive(false);
-			currentItem.rigidbody.isKinematic = true;
-			lerpStartTime = Time.time;
-			lerpStartPosition = currentItem.transform.position;
-			StartCoroutine("moveToPin");
+				currentItem.transform.Find ("Dragger").gameObject.SetActive (false);
+				currentItem.rigidbody.isKinematic = true;
+				lerpStartTime = Time.time;
+				lerpStartPosition = currentItem.transform.position;
+				StartCoroutine ("moveToPin");
 		}
-
 	}
 	
-	
+
 	IEnumerator moveToPin()
 	{
 		while(Vector3.Distance(currentItem.transform.position, pin.transform.position) > moveToPinThreshold)
@@ -54,6 +56,8 @@ public class ScannerTrigger : ItemTrigger
 		currentItem.transform.position = pin.transform.position;
 
 		pin.GetComponent<Pin>().pinItem(currentItem);
+//		GameObject.transform.Find("Scanner/Scanner Trigger").gameObject.setActive(true);
+		scannerTriggerPublic.SetActive (false);
 		
 	}
 }

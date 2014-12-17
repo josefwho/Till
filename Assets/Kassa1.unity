@@ -466,6 +466,7 @@ MonoBehaviour:
   maxAngularVelocity: 20
   drag: 0
   angularDrag: 20
+  scannerTriggerPublic: {fileID: 1816475705}
 --- !u!1 &216189572
 GameObject:
   m_ObjectHideFlags: 0
@@ -2172,6 +2173,7 @@ MonoBehaviour:
   empty: 1
   moveToPinThreshold: .00999999978
   moveToPinDuration: .100000001
+  scannerTriggerPublic: {fileID: 1816475705}
 --- !u!65 &1816475707
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2191,7 +2193,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1816475705}
   m_LocalRotation: {x: 0, y: -.707106829, z: 0, w: .707106709}
-  m_LocalPosition: {x: -.00295383716, y: 2.11980581, z: .033627674}
+  m_LocalPosition: {x: -.00300000003, y: 2.11999989, z: -.36500001}
   m_LocalScale: {x: .359955698, y: 6.16134501, z: 1.02488923}
   m_Children: []
   m_Father: {fileID: 94170969}

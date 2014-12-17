@@ -8,6 +8,8 @@ public class Pin : MonoBehaviour {
 	public float maxAngularVelocity = 3;
 	public float drag = 10;
 	public float angularDrag = 5;
+
+	public GameObject scannerTriggerPublic;
 	
 	private float oldMaxAngularVelocity;
 	
@@ -69,5 +71,6 @@ public class Pin : MonoBehaviour {
 		itemToPin.transform.Find("Spinner").gameObject.SetActive(false);
 		itemToPin.transform.Find("Dragger").gameObject.SetActive(true);
 		itemToPin.transform.Find ("Barcode").GetChild(0).gameObject.SetActive (false);
+		scannerTriggerPublic.SetActive (true);
 	}
 }
