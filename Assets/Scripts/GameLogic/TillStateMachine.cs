@@ -175,7 +175,7 @@ public class TillStateMachine : MonoBehaviour
 		{
 			timeTaken += Time.deltaTime;
 			int minutes = (int)timeTaken / 60 ;
-			timeTakenText.text = minutes.ToString() + ":" + timeTaken % 60;
+			timeTakenText.text = "Time Taken: " + minutes.ToString() + ":" + Mathf.Round(timeTaken % 60);
 		}
 	}
 }
