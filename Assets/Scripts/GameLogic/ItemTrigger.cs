@@ -27,6 +27,7 @@ public class ItemTrigger : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "ShoppingItem")
 		{
+			print (other.gameObject.name + " entered trigger " + name);
 			objectsInside.Add(other.gameObject);
 			empty = false;
 		}
@@ -34,6 +35,8 @@ public class ItemTrigger : MonoBehaviour {
 
 	public virtual void OnTriggerExit (Collider other)
 	{
+		
+		print (other.gameObject.name + " LEFT trigger " + name);
 		removeObject (other.gameObject);
 	}
 
@@ -41,6 +44,8 @@ public class ItemTrigger : MonoBehaviour {
 	{
 		if (toBeRemoved.tag == "ShoppingItem") 
 		{
+			
+			print (toBeRemoved.name + " was removed from trigger " + name);
 			objectsInside.Remove(toBeRemoved);
 			if(objectsInside.Count == 0)
 			{
@@ -52,6 +57,9 @@ public class ItemTrigger : MonoBehaviour {
 
 	public int getObjectsInsideCount()
 	{
+		if (objectsInside == null)
+						return 0;
+
 		return objectsInside.Count;
 	}
 }
