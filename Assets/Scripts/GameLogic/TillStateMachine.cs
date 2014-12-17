@@ -42,6 +42,9 @@ public class TillStateMachine : MonoBehaviour
 	private Customer currentCustomer;
 	private ArrayList customers;
 
+	public delegate void OnItemDestroy(GameObject toBeDestroyed);
+	public static event OnItemDestroy itemDestroy ;
+	
 	void Start()
 	{
 		currentState = States.Setup;
@@ -125,8 +128,9 @@ public class TillStateMachine : MonoBehaviour
 		if (currentCustomer != null) {
 			
 						for (int i = 0; i < currentCustomer.shoppingItems.Count; i++) {
-								GameObject temp = (GameObject)currentCustomer.shoppingItems [i];
-				Destroy (temp);
+								GameObject toBeDestroyed = (GameObject)currentCustomer.shoppingItems [i];
+				itemDestroy(toBeDestroyed);
+				Destroy (toBeDestroyed);
 						}
 				}
 
@@ -149,7 +153,7 @@ public class TillStateMachine : MonoBehaviour
 	public void setCountText()
 	{
 		countScanned.text = "Items Scanned: " + countScannedObjects.ToString ();
-		countBasket.text = "Items in Basket: " + countBasketObjects.ToString ();
+		countBasket.text = "Items in Basket: " + basketTrigger.getObjectsInsideCount().ToString ();
 	}
 }
 

@@ -12,9 +12,15 @@ public class ItemTrigger : MonoBehaviour {
 		objectsInside = new ArrayList ();
 	}
 
-	void OnDestroy()
+	void OnEnable()
 	{
+		TillStateMachine.itemDestroy += removeObject;
+	}
 
+
+	void OnDisable()
+	{
+		TillStateMachine.itemDestroy -= removeObject;
 	}
 
 	public virtual void OnTriggerEnter(Collider other)
@@ -25,19 +31,24 @@ public class ItemTrigger : MonoBehaviour {
 			empty = false;
 		}
 	}
-	
-	
+
 	public virtual void OnTriggerExit (Collider other)
 	{
-		if (other.gameObject.tag == "ShoppingItem") 
+		removeObject (other.gameObject);
+	}
+
+	void removeObject(GameObject toBeRemoved)
+	{
+		if (toBeRemoved.tag == "ShoppingItem") 
 		{
-			objectsInside.Remove(other.gameObject);
+			objectsInside.Remove(toBeRemoved);
 			if(objectsInside.Count == 0)
 			{
 				empty = true;
 			}
-		}	
-	}
+		}
+
+		}
 
 	public int getObjectsInsideCount()
 	{
