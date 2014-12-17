@@ -63,7 +63,7 @@ public class TillStateMachine : MonoBehaviour
 	void onEnterSetup()
 	{
 		//get all shopping item prefabs to choose from
-		Object[] itemPrefabs = Resources.LoadAll ("Prefabs/Items");
+		Object[] itemPrefabs = Resources.LoadAll ("Prefabs/Old Items");
 
 		//how many customers we will have this shift
 		int customerCount = (int)Mathf.Round((Random.Range (customerCountRange [0], customerCountRange [1])));

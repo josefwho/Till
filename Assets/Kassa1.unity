@@ -1573,7 +1573,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1525401680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -.266094208, y: 0, z: 1.72961283}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1596,9 +1596,9 @@ MonoBehaviour:
   countBasketObjects: 0
   countScanned: {fileID: 1495632933}
   countBasket: {fileID: 802371391}
-  customerCountRange: {x: 0, y: 0}
-  itemCountRange: {x: 0, y: 0}
-  spawnRadius: 0
+  customerCountRange: {x: 2, y: 2}
+  itemCountRange: {x: 3, y: 5}
+  spawnRadius: 1
 --- !u!1 &1554400404
 GameObject:
   m_ObjectHideFlags: 0
@@ -1963,8 +1963,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1751502909}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .109813839, y: .170000002, z: .128095448}
-  m_LocalScale: {x: .243318886, y: .675885201, z: .345485151}
+  m_LocalPosition: {x: -.00545337051, y: .170000002, z: -.0116121788}
+  m_LocalScale: {x: .638711929, y: .675885201, z: .699607491}
   m_Children: []
   m_Father: {fileID: 94170969}
   m_RootOrder: 0
