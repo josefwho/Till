@@ -1596,8 +1596,8 @@ MonoBehaviour:
   countBasketObjects: 0
   countScanned: {fileID: 1495632933}
   countBasket: {fileID: 802371391}
-  customerCountRange: {x: 1, y: 2}
-  itemCountRange: {x: 3, y: 5}
+  customerCountRange: {x: 0, y: 0}
+  itemCountRange: {x: 0, y: 0}
   spawnRadius: 0
 --- !u!1 &1554400404
 GameObject:
