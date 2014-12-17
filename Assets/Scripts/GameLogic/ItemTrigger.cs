@@ -57,6 +57,11 @@ public class ItemTrigger : MonoBehaviour {
 
 		}
 
+	public virtual float getScore()
+	{
+		return 0;
+	}
+
 	public int getObjectsInsideCount()
 	{
 		if (objectsInside == null)

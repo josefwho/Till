@@ -1308,7 +1308,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1208874493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 083a1884b596149708ae6c6487bfc7fd, type: 3}
+  m_Script: {fileID: 11500000, guid: fb859c36f48ee4f3c90babcd4114332c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   empty: 1
@@ -1533,6 +1533,7 @@ Transform:
   - {fileID: 1495632932}
   - {fileID: 802371390}
   - {fileID: 1804136337}
+  - {fileID: 2132657505}
   m_Father: {fileID: 0}
   m_RootOrder: 11
 --- !u!1 &1495632931
@@ -1748,6 +1749,8 @@ MonoBehaviour:
   customerCountRange: {x: 10, y: 10}
   itemCountRange: {x: 3, y: 5}
   spawnRadius: 1
+  score: 0
+  scoreText: {fileID: 2132657504}
 --- !u!1 &1554400404
 GameObject:
   m_ObjectHideFlags: 0
@@ -1889,7 +1892,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1559126316}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 083a1884b596149708ae6c6487bfc7fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 33a60626c555e4333a13bdae25083c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   empty: 1
@@ -2752,6 +2755,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1761260629}
   m_RootOrder: 2
+--- !u!1 &2132657503
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2132657505}
+  - 132: {fileID: 2132657504}
+  m_Layer: 2
+  m_Name: Total Score
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!132 &2132657504
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2132657503}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: 
+  m_Anchor: 0
+  m_Alignment: 0
+  m_PixelOffset: {x: 10, y: -70}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 14
+  m_FontStyle: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_PixelCorrect: 1
+  m_RichText: 1
+--- !u!4 &2132657505
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2132657503}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1448867101}
+  m_RootOrder: 3
 --- !u!1 &2145548610
 GameObject:
   m_ObjectHideFlags: 0

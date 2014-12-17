@@ -34,6 +34,9 @@ public class TillStateMachine : MonoBehaviour
 	public Vector2 customerCountRange;
 	public Vector2 itemCountRange;
 	public float spawnRadius;
+	public float score;
+	public GUIText scoreText;
+
 
 	private ItemTrigger floorTrigger;
 	private ItemTrigger scannerTrigger;
@@ -67,6 +70,8 @@ public class TillStateMachine : MonoBehaviour
 	{
 		//get all shopping item prefabs to choose from
 		Object[] itemPrefabs = Resources.LoadAll ("Prefabs/Items");
+
+		score = 0;
 
 		//how many customers we will have this shift
 		int customerCount = (int)Mathf.Round((Random.Range (customerCountRange [0], customerCountRange [1])));
@@ -128,7 +133,10 @@ public class TillStateMachine : MonoBehaviour
 	void onEnterNextCustomer(States lastState)
 	{
 		if (currentCustomer != null) {
-			
+
+			score += basketTrigger.getScore();
+			score += floorTrigger.getScore();
+
 						for (int i = 0; i < currentCustomer.shoppingItems.Count; i++) {
 								GameObject toBeDestroyed = (GameObject)currentCustomer.shoppingItems [i];
 				itemDestroy(toBeDestroyed);
@@ -157,6 +165,7 @@ public class TillStateMachine : MonoBehaviour
 		countScanned.text = "Items Scanned: " + countScannedObjects.ToString ();
 		countBasket.text = "Items in Basket: " + basketTrigger.getObjectsInsideCount().ToString ();
 		countFloor.text = "Items on Floor: " + floorTrigger.getObjectsInsideCount().ToString ();
+		scoreText.text = "Total Score: " + score.ToString();
 	}
 }
 
