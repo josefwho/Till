@@ -49,12 +49,15 @@ public class Pin : MonoBehaviour {
 		itemToPin.rigidbody.maxAngularVelocity = oldMaxAngularVelocity;
 		
 		print ("unpinItem resetting to oldDrag: " + oldDrag);
+
 		itemToPin.rigidbody.drag = oldDrag;
 		itemToPin.rigidbody.angularDrag = oldAngularDrag;
 
+		Destroy (itemToPin.GetComponent<ConfigurableJoint> ());
+		
 		itemToPin.rigidbody.velocity = Vector3.zero;
 		itemToPin.rigidbody.angularVelocity = Vector3.zero;
-		Destroy (itemToPin.GetComponent<ConfigurableJoint> ());
+
 		itemToPin.rigidbody.useGravity = true;
 		makeThrowable ();
 	}
