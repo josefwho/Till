@@ -2142,7 +2142,7 @@ GUIText:
   m_Text: 
   m_Anchor: 0
   m_Alignment: 0
-  m_PixelOffset: {x: 10, y: -90}
+  m_PixelOffset: {x: 600, y: -30}
   m_LineSpacing: 1
   m_TabSize: 4
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -2550,7 +2550,7 @@ GUIText:
   m_Text: 
   m_Anchor: 0
   m_Alignment: 0
-  m_PixelOffset: {x: 10, y: -70}
+  m_PixelOffset: {x: 600, y: -10}
   m_LineSpacing: 1
   m_TabSize: 4
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
