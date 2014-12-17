@@ -27,6 +27,8 @@ public class ItemTrigger : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "ShoppingItem")
 		{
+			other.gameObject.GetComponent<ItemStatus>().inTrigger = gameObject;
+
 			print (other.gameObject.name + " entered trigger " + name);
 			objectsInside.Add(other.gameObject);
 			empty = false;
@@ -35,7 +37,7 @@ public class ItemTrigger : MonoBehaviour {
 
 	public virtual void OnTriggerExit (Collider other)
 	{
-		
+		other.gameObject.GetComponent<ItemStatus>().inTrigger = null;
 		print (other.gameObject.name + " LEFT trigger " + name);
 		removeObject (other.gameObject);
 	}
