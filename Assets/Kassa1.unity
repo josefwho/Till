@@ -875,7 +875,7 @@ GUIText:
   m_FontStyle: 1
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4284374622
   m_PixelCorrect: 1
   m_RichText: 1
 --- !u!1 &858745149
@@ -1467,7 +1467,7 @@ GUIText:
   m_FontStyle: 1
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4284374622
   m_PixelCorrect: 1
   m_RichText: 1
 --- !u!1 &1502329419
@@ -2151,7 +2151,7 @@ GUIText:
   m_FontStyle: 1
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4284374622
   m_PixelCorrect: 1
   m_RichText: 1
 --- !u!1 &1804136335
@@ -2190,7 +2190,7 @@ GUIText:
   m_FontStyle: 1
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4284374622
   m_PixelCorrect: 1
   m_RichText: 1
 --- !u!4 &1804136337
@@ -2559,7 +2559,7 @@ GUIText:
   m_FontStyle: 1
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4284374622
   m_PixelCorrect: 1
   m_RichText: 1
 --- !u!4 &2132657505
