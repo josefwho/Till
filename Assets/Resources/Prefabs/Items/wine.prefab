@@ -121,7 +121,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0469999984, y: .189999998, z: -.208000004}
+  m_LocalPosition: {x: .00499999989, y: -.246999994, z: -.152999997}
   m_LocalScale: {x: .228974387, y: .151190758, z: .00386730745}
   m_Children:
   - {fileID: 400000}
@@ -146,7 +146,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .736000001, y: 1.19599998, z: 1.92499995}
+  m_LocalPosition: {x: .277999997, y: 1.12399995, z: 2.81200004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400006}
@@ -339,7 +339,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseStartPosition: {x: 0, y: 0, z: 0}
   speed: 2
-  maxFlickDuration: .200000003
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
