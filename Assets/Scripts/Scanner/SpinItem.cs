@@ -5,9 +5,8 @@ public class SpinItem : MonoBehaviour {
 
 	public Vector3 mouseStartPosition;
 	public float speed = 2.0f;
-	public float maxFlickDuration = 0.3f;
 
-	private float flickStartTime = 0.0f;
+	private Vector3 lastMousePosition;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +16,7 @@ public class SpinItem : MonoBehaviour {
 	void OnFirstGlobalMouseDown()
 	{
 		mouseStartPosition = Input.mousePosition;
-		flickStartTime = Time.time;
+		lastMousePosition = mouseStartPosition;
 	}
 
 	void Update()
@@ -34,13 +33,18 @@ public class SpinItem : MonoBehaviour {
 		if (mouseStartPosition.x == Mathf.Infinity)
 			return;
 
-		Vector3 drag = Input.mousePosition - mouseStartPosition;
-		transform.parent.gameObject.rigidbody.AddTorque (0, 0, -drag.x * speed);
-		transform.parent.gameObject.rigidbody.AddTorque (drag.y*speed, 0, 0);
+		Vector3 dragTotal = Input.mousePosition - mouseStartPosition;
+
+		Vector3 dragDelta = Input.mousePosition - lastMousePosition;
+
+		float xSign = (dragDelta.x<0) ? -1.0f : 1.0f;
+		float ySign = (dragDelta.y<0) ? -1.0f : 1.0f;
+
+		transform.parent.gameObject.rigidbody.AddTorque (0, 0, -xSign * Mathf.Pow(Mathf.Abs(dragDelta.x), 1.5f) * speed);
+		transform.parent.gameObject.rigidbody.AddTorque (ySign * Mathf.Pow (Mathf.Abs(dragDelta.y), 1.5f) * speed, 0, 0);
 		
-		
-		if (Time.time - flickStartTime > maxFlickDuration)
-						OnFirstGlobalMouseUp ();
+
+		lastMousePosition = Input.mousePosition;
 	}
 
 	void OnFirstGlobalMouseUp()
