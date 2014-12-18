@@ -31,15 +31,15 @@ public class ScannerTrigger : ItemTrigger
 	{
 		base.OnTriggerEnter (other);
 
-		if (other.gameObject.tag == "ShoppingItem") 
+		if (currentItem == null && other.gameObject.tag == "ShoppingItem") 
 		{
-				currentItem = other.gameObject;
+			currentItem = other.gameObject;
 
-				currentItem.transform.Find ("Dragger").gameObject.SetActive (false);
-				currentItem.rigidbody.isKinematic = true;
-				lerpStartTime = Time.time;
-				lerpStartPosition = currentItem.transform.position;
-				StartCoroutine ("moveToPin");
+			currentItem.transform.Find ("Dragger").gameObject.SetActive (false);
+			currentItem.rigidbody.isKinematic = true;
+			lerpStartTime = Time.time;
+			lerpStartPosition = currentItem.transform.position;
+			StartCoroutine ("moveToPin");
 		}
 	}
 	
@@ -55,6 +55,8 @@ public class ScannerTrigger : ItemTrigger
 		
 		currentItem.transform.position = pin.transform.position;
 		pin.GetComponent<Pin>().pinItem(currentItem);
+
+		currentItem = null;
 		
 	}
 }

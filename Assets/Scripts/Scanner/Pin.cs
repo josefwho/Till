@@ -18,6 +18,8 @@ public class Pin : MonoBehaviour {
 
 	public void pinItem(GameObject newItem)
 	{
+		scannerTriggerPublic.SetActive (false);
+
 		itemToPin = newItem;
 
 		ConfigurableJoint joint = itemToPin.AddComponent<ConfigurableJoint>();
@@ -43,7 +45,6 @@ public class Pin : MonoBehaviour {
 		
 		itemToPin.transform.Find("Spinner").gameObject.SetActive(true);
 		itemToPin.transform.Find ("Barcode").GetChild(0).gameObject.SetActive (true);
-		scannerTriggerPublic.SetActive (false);
 	}
 	
 	

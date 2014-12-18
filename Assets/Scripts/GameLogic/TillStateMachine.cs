@@ -84,7 +84,7 @@ public class TillStateMachine : MonoBehaviour
 		draggedItemCount = 0;
 
 		//how many customers we will have this shift
-		int customerCount = 3; //(int)Mathf.Round((Random.Range (customerCountRange [0], customerCountRange [1])));
+		int customerCount = 4; //(int)Mathf.Round((Random.Range (customerCountRange [0], customerCountRange [1])));
 
 		int[] itemCounts = {6,14,32,32,18,6};
 
@@ -141,6 +141,8 @@ public class TillStateMachine : MonoBehaviour
 		//call specific onEnterState function
 		if(nextState == States.NextCustomer)
 			onEnterNextCustomer(lastState);
+		if(nextState == States.ShiftDone)
+			onEnterShiftDone(lastState);
 	}
 	
 	
@@ -148,7 +150,7 @@ public class TillStateMachine : MonoBehaviour
 	{
 		if (currentCustomer != null) {
 
-			score += ((BasketTrigger)basketTrigger).getScore();
+			score += ((BasketTrigger)basketTrigger).getScore()*2;
 			score += ((FloorTrigger)floorTrigger).getScore();
 
 						for (int i = 0; i < currentCustomer.shoppingItems.Count; i++) {
@@ -168,6 +170,11 @@ public class TillStateMachine : MonoBehaviour
 		} else
 			switchToState (States.ShiftDone);
 
+	}
+
+	void onEnterShiftDone(States lastState)
+	{
+		score += (4.0f*60.0f - timeTaken);
 	}
 
 	public void setCountText()
