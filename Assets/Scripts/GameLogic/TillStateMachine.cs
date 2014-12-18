@@ -84,9 +84,9 @@ public class TillStateMachine : MonoBehaviour
 		draggedItemCount = 0;
 
 		//how many customers we will have this shift
-		int customerCount = 5; //(int)Mathf.Round((Random.Range (customerCountRange [0], customerCountRange [1])));
+		int customerCount = 4; //(int)Mathf.Round((Random.Range (customerCountRange [0], customerCountRange [1])));
 
-		int[] itemCounts = {8,12,16,10,18,6};
+		int[] itemCounts = {6,14,24,32,18,6};
 
 		for (int c = 0; c < customerCount; c++) 
 		{
@@ -103,6 +103,7 @@ public class TillStateMachine : MonoBehaviour
 				Vector3 pos = gameObject.transform.position;
 				pos += new Vector3(Random.Range(-spawnRadius, spawnRadius), 2, Random.Range(-spawnRadius, spawnRadius));
 				pos += new Vector3(betweenItemOffset*(i+1), 0, 0);
+				pos.x = Mathf.Max(pos.x, -8.5f);
 
 				GameObject item = Instantiate(prefab, pos, Quaternion.identity ) as GameObject;
 				item.SetActive(false);
@@ -125,7 +126,7 @@ public class TillStateMachine : MonoBehaviour
 				switchToState(States.NextCustomer);
 		}
 	}
-
+		
 
 	void switchToState(States nextState)
 	{
@@ -175,6 +176,8 @@ public class TillStateMachine : MonoBehaviour
 		countBasket.text = "Items in Basket: " + basketTrigger.getObjectsInsideCount().ToString ();
 		countFloor.text = "Items on Floor: " + floorTrigger.getObjectsInsideCount().ToString ();
 		scoreText.text = "Total Score: " + score.ToString();
+
+		//mindestlohn 1.159,08 Netto
 
 		if (currentState != States.ShiftDone) 
 		{
