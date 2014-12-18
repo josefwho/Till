@@ -312,10 +312,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b05324ff36045129fc89e90a3247b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spring: 50
+  spring: 500
   damper: 5
-  drag: 10
-  angularDrag: 5
+  drag: 3
+  angularDrag: 3
   distance: .200000003
   attachToCenterOfMass: 0
 --- !u!114 &11400004
