@@ -31,8 +31,8 @@ public class TillStateMachine : MonoBehaviour
 	public GUIText countScanned;
 	public GUIText countBasket;
 	public GUIText countFloor;
-	public Vector2 customerCountRange;
-	public Vector2 itemCountRange;
+//	public Vector2 customerCountRange;
+//	public Vector2 itemCountRange;
 	public float spawnRadius;
 	public float score;
 	public GUIText scoreText;
@@ -80,16 +80,18 @@ public class TillStateMachine : MonoBehaviour
 		draggedItemCount = 0;
 
 		//how many customers we will have this shift
-		int customerCount = (int)Mathf.Round((Random.Range (customerCountRange [0], customerCountRange [1])));
+		int customerCount = 6; //(int)Mathf.Round((Random.Range (customerCountRange [0], customerCountRange [1])));
+
+		int[] itemCounts = {4,6,8,5,12,3};
 
 		for (int c = 0; c < customerCount; c++) 
 		{
 
 			Customer customer = new Customer ();
 
-			int itemCount = (int)Mathf.Round(Random.Range(itemCountRange[0], itemCountRange[1]));
+//			int itemCount = itemCounts[c];
 
-			for (int i = 0; i < itemCount; i++) 
+			for (int i = 0; i < itemCounts[c]; i++) 
 			{
 				//get a random prefab
 				Object prefab = itemPrefabs[Random.Range(0, itemPrefabs.Length)];
@@ -151,8 +153,8 @@ public class TillStateMachine : MonoBehaviour
 				}
 
 		if (customers.Count > 0) {
-			currentCustomer = (Customer)customers [customers.Count - 1];
-			customers.RemoveAt (customers.Count - 1);
+			currentCustomer = (Customer)customers [0];
+			customers.RemoveAt (0);
 
 			for (int i = 0; i < currentCustomer.shoppingItems.Count; i++) 
 			{
