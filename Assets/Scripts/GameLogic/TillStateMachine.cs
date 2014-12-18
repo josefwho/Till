@@ -84,9 +84,9 @@ public class TillStateMachine : MonoBehaviour
 		draggedItemCount = 0;
 
 		//how many customers we will have this shift
-		int customerCount = 4; //(int)Mathf.Round((Random.Range (customerCountRange [0], customerCountRange [1])));
+		int customerCount = 3; //(int)Mathf.Round((Random.Range (customerCountRange [0], customerCountRange [1])));
 
-		int[] itemCounts = {6,14,24,32,18,6};
+		int[] itemCounts = {6,14,32,32,18,6};
 
 		for (int c = 0; c < customerCount; c++) 
 		{
