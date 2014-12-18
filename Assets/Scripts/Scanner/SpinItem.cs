@@ -7,12 +7,22 @@ public class SpinItem : MonoBehaviour {
 	public float speed = 2.0f;
 
 	private Vector3 lastMousePosition;
+	
+	private TillStateMachine machine;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		mouseStartPosition.x = Mathf.Infinity;
+
+	}	
+
+	void Awake () 
+	{
+		machine = GameObject.FindGameObjectWithTag ("GameController").GetComponent<TillStateMachine> ();
 	}
 
+	
 	void OnFirstGlobalMouseDown()
 	{
 		mouseStartPosition = Input.mousePosition;
@@ -33,16 +43,17 @@ public class SpinItem : MonoBehaviour {
 		if (mouseStartPosition.x == Mathf.Infinity)
 			return;
 
-		Vector3 dragTotal = Input.mousePosition - mouseStartPosition;
-
-		Vector3 dragDelta = Input.mousePosition - lastMousePosition;
-
-		float xSign = (dragDelta.x<0) ? -1.0f : 1.0f;
-		float ySign = (dragDelta.y<0) ? -1.0f : 1.0f;
-		//TODO raycasten, welches Objekt gerade getroffen wird
-		// und nur, wenn es das Object am Scanner ist, dann die kommenden zwei Zeilen anwenden
-		transform.parent.gameObject.rigidbody.AddTorque (0, 0, -xSign * Mathf.Pow(Mathf.Abs(dragDelta.x), 1.5f) * speed);
-		transform.parent.gameObject.rigidbody.AddTorque (ySign * Mathf.Pow (Mathf.Abs(dragDelta.y), 1.5f) * speed, 0, 0);
+		if (machine.draggedItemCount == 0) 
+		{
+			Vector3 dragTotal = Input.mousePosition - mouseStartPosition;
+			
+			Vector3 dragDelta = Input.mousePosition - lastMousePosition;
+			
+			float xSign = (dragDelta.x<0) ? -1.0f : 1.0f;
+			float ySign = (dragDelta.y<0) ? -1.0f : 1.0f;
+			transform.parent.gameObject.rigidbody.AddTorque (0, 0, -xSign * Mathf.Pow(Mathf.Abs(dragDelta.x), 1.5f) * speed);
+			transform.parent.gameObject.rigidbody.AddTorque (ySign * Mathf.Pow (Mathf.Abs(dragDelta.y), 1.5f) * speed, 0, 0);
+		}
 		
 
 		lastMousePosition = Input.mousePosition;
