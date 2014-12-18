@@ -54,10 +54,7 @@ public class ScannerTrigger : ItemTrigger
 		}
 		
 		currentItem.transform.position = pin.transform.position;
-
 		pin.GetComponent<Pin>().pinItem(currentItem);
-//		GameObject.transform.Find("Scanner/Scanner Trigger").gameObject.setActive(true);
-		scannerTriggerPublic.SetActive (false);
 		
 	}
 }

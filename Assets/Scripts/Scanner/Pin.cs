@@ -43,6 +43,7 @@ public class Pin : MonoBehaviour {
 		
 		itemToPin.transform.Find("Spinner").gameObject.SetActive(true);
 		itemToPin.transform.Find ("Barcode").GetChild(0).gameObject.SetActive (true);
+		scannerTriggerPublic.SetActive (false);
 	}
 	
 	
@@ -62,6 +63,7 @@ public class Pin : MonoBehaviour {
 
 		itemToPin.rigidbody.useGravity = true;
 		makeThrowable ();
+		scannerTriggerPublic.SetActive (true);
 	}
 	
 	
@@ -71,6 +73,5 @@ public class Pin : MonoBehaviour {
 		itemToPin.transform.Find("Spinner").gameObject.SetActive(false);
 		itemToPin.transform.Find("Dragger").gameObject.SetActive(true);
 		itemToPin.transform.Find ("Barcode").GetChild(0).gameObject.SetActive (false);
-		scannerTriggerPublic.SetActive (true);
 	}
 }
