@@ -33,13 +33,17 @@ public class TillStateMachine : MonoBehaviour
 	public GUIText countFloor;
 //	public Vector2 customerCountRange;
 //	public Vector2 itemCountRange;
-	public float spawnRadius;
+	public float spawnRadius = 2;
 	public float score;
 	public GUIText scoreText;
 	public float timeTaken;
 	public GUIText timeTakenText;
 
+	public float betweenItemOffset = -0.1f;
+
 	public int draggedItemCount;
+
+	public float spawnDelay = 0.1f;
 
 	private ItemTrigger floorTrigger;
 	private ItemTrigger scannerTrigger;
@@ -80,9 +84,9 @@ public class TillStateMachine : MonoBehaviour
 		draggedItemCount = 0;
 
 		//how many customers we will have this shift
-		int customerCount = 6; //(int)Mathf.Round((Random.Range (customerCountRange [0], customerCountRange [1])));
+		int customerCount = 5; //(int)Mathf.Round((Random.Range (customerCountRange [0], customerCountRange [1])));
 
-		int[] itemCounts = {4,6,8,5,12,3};
+		int[] itemCounts = {8,12,16,10,18,6};
 
 		for (int c = 0; c < customerCount; c++) 
 		{
@@ -98,6 +102,7 @@ public class TillStateMachine : MonoBehaviour
 
 				Vector3 pos = gameObject.transform.position;
 				pos += new Vector3(Random.Range(-spawnRadius, spawnRadius), 2, Random.Range(-spawnRadius, spawnRadius));
+				pos += new Vector3(betweenItemOffset*(i+1), 0, 0);
 
 				GameObject item = Instantiate(prefab, pos, Quaternion.identity ) as GameObject;
 				item.SetActive(false);
@@ -156,11 +161,7 @@ public class TillStateMachine : MonoBehaviour
 			currentCustomer = (Customer)customers [0];
 			customers.RemoveAt (0);
 
-			for (int i = 0; i < currentCustomer.shoppingItems.Count; i++) 
-			{
-				GameObject temp = (GameObject)currentCustomer.shoppingItems[i];
-				temp.SetActive(true);
-			}
+			StartCoroutine("spawnItems");
 
 			switchToState (States.InProgress);
 		} else
@@ -182,5 +183,17 @@ public class TillStateMachine : MonoBehaviour
 			timeTakenText.text = "Time Taken: " + minutes.ToString() + ":" + Mathf.Round(timeTaken % 60);
 		}
 	}
+
+	IEnumerator spawnItems()
+	{
+		for (int i = 0; i < currentCustomer.shoppingItems.Count; i++) 
+		{
+			GameObject temp = (GameObject)currentCustomer.shoppingItems[i];
+			temp.SetActive(true);
+
+			yield return new WaitForSeconds(spawnDelay);
+		}
+	}
+	
 }
 
