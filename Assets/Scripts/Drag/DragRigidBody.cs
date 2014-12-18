@@ -61,6 +61,8 @@ public class DragRigidBody : MonoBehaviour
 
 			oldDrag = hit.rigidbody.drag;
 			oldAngularDrag = hit.rigidbody.angularDrag;
+
+			machine.draggedItemCount++;
 		}
 		
 		springJoint.transform.position = hit.point;
@@ -116,6 +118,9 @@ public class DragRigidBody : MonoBehaviour
 			Destroy(springJoint.gameObject);
 //			springJoint.gameObject.SetActive (false);
 			springJoint = null;
+
+			
+			machine.draggedItemCount--;
 		}
 	}
 	

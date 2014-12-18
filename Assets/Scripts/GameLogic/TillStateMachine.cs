@@ -39,6 +39,7 @@ public class TillStateMachine : MonoBehaviour
 	public float timeTaken;
 	public GUIText timeTakenText;
 
+	public int draggedItemCount;
 
 	private ItemTrigger floorTrigger;
 	private ItemTrigger scannerTrigger;
@@ -76,6 +77,7 @@ public class TillStateMachine : MonoBehaviour
 		score = 0;
 
 		timeTaken = 0;
+		draggedItemCount = 0;
 
 		//how many customers we will have this shift
 		int customerCount = (int)Mathf.Round((Random.Range (customerCountRange [0], customerCountRange [1])));
