@@ -2039,14 +2039,14 @@ MonoBehaviour:
   countScanned: {fileID: 1495632933}
   countBasket: {fileID: 802371391}
   countFloor: {fileID: 1804136336}
-  customerCountRange: {x: 10, y: 10}
-  itemCountRange: {x: 3, y: 5}
   spawnRadius: 1
   score: 0
   scoreText: {fileID: 2132657504}
   timeTaken: 0
   timeTakenText: {fileID: 1761518909}
+  betweenItemOffset: -.100000001
   draggedItemCount: 0
+  spawnDelay: .100000001
 --- !u!1 &1554400404
 GameObject:
   m_ObjectHideFlags: 0
