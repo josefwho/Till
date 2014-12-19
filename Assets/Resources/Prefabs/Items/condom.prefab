@@ -314,9 +314,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spring: 500
   damper: 5
-  drag: 3
+  drag: 5
   angularDrag: 3
-  distance: .200000003
+  distance: 0
   attachToCenterOfMass: 0
 --- !u!114 &11400004
 MonoBehaviour:
