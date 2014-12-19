@@ -11,10 +11,9 @@ public class SpinItem : MonoBehaviour {
 	private TillStateMachine machine;
 
 	// Use this for initialization
-	void Start () 
+	void OnEnable () 
 	{
 		mouseStartPosition.x = Mathf.Infinity;
-
 	}	
 
 	void Awake () 
@@ -31,7 +30,7 @@ public class SpinItem : MonoBehaviour {
 
 	void Update()
 	{
-		if (Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButton(0) && mouseStartPosition.x == Mathf.Infinity)
 			OnFirstGlobalMouseDown ();
 
 		if (Input.GetMouseButtonUp (0) )
