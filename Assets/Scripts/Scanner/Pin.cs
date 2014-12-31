@@ -10,6 +10,7 @@ public class Pin : MonoBehaviour {
 	public float angularDrag = 5;
 
 	public GameObject scannerTriggerPublic;
+	public GameObject lastUnpinnedObject;
 	
 	private float oldMaxAngularVelocity;
 	
@@ -64,6 +65,9 @@ public class Pin : MonoBehaviour {
 
 		itemToPin.rigidbody.useGravity = true;
 		makeThrowable ();
+
+		lastUnpinnedObject = itemToPin;
+
 		scannerTriggerPublic.SetActive (true);
 	}
 	
