@@ -6,8 +6,8 @@ PhysicMaterial:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Conveyor Belt
-  dynamicFriction: 1
-  staticFriction: 10
+  dynamicFriction: 100
+  staticFriction: 1
   bounciness: 0
   frictionCombine: 3
   bounceCombine: 0
