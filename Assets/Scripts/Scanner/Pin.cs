@@ -9,6 +9,8 @@ public class Pin : MonoBehaviour {
 	public float drag = 10;
 	public float angularDrag = 5;
 
+	public bool pinning;
+
 	public GameObject scannerTriggerPublic;
 	public GameObject lastUnpinnedObject;
 	
@@ -19,7 +21,9 @@ public class Pin : MonoBehaviour {
 
 	public void pinItem(GameObject newItem)
 	{
-		scannerTriggerPublic.SetActive (false);
+		//scannerTriggerPublic.SetActive (false);
+
+		pinning = true;
 
 		itemToPin = newItem;
 
@@ -68,7 +72,8 @@ public class Pin : MonoBehaviour {
 
 		lastUnpinnedObject = itemToPin;
 
-		scannerTriggerPublic.SetActive (true);
+		pinning = false;
+//		scannerTriggerPublic.SetActive (true);
 	}
 	
 	

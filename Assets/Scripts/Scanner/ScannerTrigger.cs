@@ -26,12 +26,11 @@ public class ScannerTrigger : ItemTrigger
 		pin = GameObject.FindGameObjectWithTag ("Pin");
 	}
 	
-	// Update is called once per frame
 	public override void OnTriggerEnter (Collider other) 
 	{
 		base.OnTriggerEnter (other);
 
-		if (currentItem == null && other.gameObject.tag == "ShoppingItem") 
+		if (!pin.GetComponent<Pin>().pinning && currentItem == null && other.gameObject.tag == "ShoppingItem") 
 		{
 			currentItem = other.gameObject;
 

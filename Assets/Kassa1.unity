@@ -649,6 +649,7 @@ MonoBehaviour:
   maxAngularVelocity: 20
   drag: 0
   angularDrag: 20
+  pinning: 0
   scannerTriggerPublic: {fileID: 1816475705}
   lastUnpinnedObject: {fileID: 0}
 --- !u!1 &216189572
@@ -2867,8 +2868,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1816475705}
   m_LocalRotation: {x: 0, y: -.707106829, z: 0, w: .707106709}
-  m_LocalPosition: {x: -.00300000934, y: 2.11999989, z: -.20015049}
-  m_LocalScale: {x: .131718233, y: 6.16134501, z: 1.02488923}
+  m_LocalPosition: {x: -.00300002145, y: 2.11999989, z: -.106681406}
+  m_LocalScale: {x: .360578775, y: 6.16134501, z: 1.02488923}
   m_Children: []
   m_Father: {fileID: 94170969}
   m_RootOrder: 2
