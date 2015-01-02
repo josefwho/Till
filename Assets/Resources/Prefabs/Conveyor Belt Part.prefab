@@ -12,7 +12,7 @@ GameObject:
   - 65: {fileID: 6500000}
   - 23: {fileID: 2300000}
   - 54: {fileID: 5400000}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Conveyor Belt Part
   m_TagString: ConveyorBelt
   m_Icon: {fileID: 0}

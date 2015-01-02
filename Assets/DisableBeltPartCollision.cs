@@ -10,9 +10,11 @@ public class DisableBeltPartCollision : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.tag == "ConveyorBelt") 
-		{
-			other.gameObject.layer = 8;
-		}
+		//TODO: actually cahnge collision layer of shopiing items
+
+//		if (other.gameObject.tag == "ConveyorBelt") 
+//		{
+//			other.gameObject.layer = 8;
+//		}
 	}
 }
