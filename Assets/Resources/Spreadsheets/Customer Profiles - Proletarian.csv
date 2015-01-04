@@ -1,0 +1,7 @@
+,Global,Stereotype,Standard,Anti-Stereotype
+Name,Proletarian,,,
+Propability to be picked,0.4,0.50,0.30,0.20
+Item Count Range,,2 - 3,4 - 6,4 - 6
+Tags,,,junk,"vegetables, fruit"
+Specific Items,,"beer, soda, energy_drink,sandwich",beer,water
+Prefab Folder Path,prefabs/proletarian,,,

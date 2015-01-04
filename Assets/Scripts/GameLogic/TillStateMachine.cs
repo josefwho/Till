@@ -93,6 +93,10 @@ public class TillStateMachine : MonoBehaviour
 
 			Customer customer = new Customer ();
 
+			CustomerProfile profile = gameObject.GetComponent<CustomerManager>().getRandomProfile();
+
+			print ("new customer is of type " + profile.name);
+
 //			int itemCount = itemCounts[c];
 
 			for (int i = 0; i < itemCounts[c]; i++) 

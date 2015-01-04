@@ -1,0 +1,93 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+public class ProductRange : MonoBehaviour {
+
+	public TextAsset spreadsheet;
+
+	private Dictionary<string, string> allItems = new Dictionary<string, string>();
+	private Dictionary<string, Dictionary<string, string>> tagsToItems = new Dictionary<string, Dictionary<string, string>>();
+
+//	private Dictionary<string, string> basic = new Dictionary<string, string>();
+//	private Dictionary<string, string> premium = new Dictionary<string, string>();
+//	private Dictionary<string, string> organic = new Dictionary<string, string>();
+//	private Dictionary<string, string> luxury = new Dictionary<string, string>();
+//	private Dictionary<string, string> cheap = new Dictionary<string, string>();
+
+	// Use this for initialization
+	void Start () 
+	{
+		string[] lines = spreadsheet.text.Split ('\n');
+
+		print ("reading all lines of");
+
+		foreach (string l in lines) 
+		{
+			string[] columns = l.Split (',');
+			if(columns[0] == "Namen" || columns[0].Length < 1)
+				continue;
+			
+			string[] tags = columns[2].Split (';');
+
+			foreach(string t in tags)
+			{
+				string trimmedT = t.Trim();
+				Dictionary<string, string> itemsWithCurrentTag;
+				//make a new dictionary if we don't have on already
+				if(!tagsToItems.TryGetValue(trimmedT, out itemsWithCurrentTag))
+				{
+					itemsWithCurrentTag = new Dictionary<string, string>();
+					print("adding new dictionary for tag " + trimmedT);
+					tagsToItems.Add(trimmedT, itemsWithCurrentTag);
+				}
+
+				itemsWithCurrentTag.Add(columns[0], columns[2]);
+
+			}
+		}
+		print ("done reading in values");
+	}
+
+	Dictionary<string,string> itemsWithTag(string tag)
+	{
+		
+		Dictionary<string, string> temp;
+		if(tagsToItems.TryGetValue("premium", out temp))
+		{
+			return temp;
+		}
+
+		return null;
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		if (Input.GetKeyDown ("p")) 
+		{
+			Dictionary<string, string> temp;
+			if(tagsToItems.TryGetValue("premium", out temp))
+			{
+				print("all premium items:");
+				foreach(var pair in temp)
+					print (pair.Key);
+			}
+		}
+		if (Input.GetKeyDown ("c")) 
+		{
+			Dictionary<string, string> temp;
+			if(tagsToItems.TryGetValue("cheap", out temp))
+			{
+				print("all cheap items:");
+				foreach(var pair in temp)
+					print (pair.Key);
+			}
+		}
+		if (Input.GetKeyDown ("a")) 
+		{
+			print("all items:");
+			foreach(var pair in allItems)
+				print (pair.Key + "has tags: " + pair.Value);
+		}
+	}
+}

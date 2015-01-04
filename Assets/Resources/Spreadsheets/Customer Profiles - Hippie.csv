@@ -1,0 +1,8 @@
+,Global,Stereotype,Standard,Anti-Stereotype
+Name,Hippie,,,
+Propability to be picked,0.15,0.40,0.40,0.20
+Item Count Range,,5 - 8,8 - 12,15-20
+Tags,,"organic+basic,organic+vegetables, organic+fruit",organic,"cheap, deals, cheap+meat, junk"
+Not Tag,,meat,,
+Specific Items,,,,
+Prefab Folder Path,prefabs/hippie,,,
