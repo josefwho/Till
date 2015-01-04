@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public enum States
 {
@@ -94,15 +95,23 @@ public class TillStateMachine : MonoBehaviour
 			Customer customer = new Customer ();
 
 			CustomerProfile profile = gameObject.GetComponent<CustomerManager>().getRandomProfile();
+			CustomerVariation variation = profile.getRandomVariation();
 
-			print ("new customer is of type " + profile.name);
+			string[] wishList = gameObject.GetComponent<CustomerManager>().itemWishList(variation);
+
+			print ("new customer is of type " + profile.name + "." + variation.type);
 
 //			int itemCount = itemCounts[c];
 
 			for (int i = 0; i < itemCounts[c]; i++) 
 			{
 				//get a random prefab
-				Object prefab = itemPrefabs[Random.Range(0, itemPrefabs.Length)];
+				string prefabName = wishList[Random.Range(0, wishList.Length)];
+
+				Object prefab = Resources.Load ("Prefabs/Items"+prefabName);
+
+				if(prefab == null)
+					prefab = Resources.Load ("Prefabs/Items/dummy");
 
 				Vector3 pos = gameObject.transform.position;
 				pos += new Vector3(Random.Range(-spawnRadius, spawnRadius), 2, Random.Range(-spawnRadius, spawnRadius));

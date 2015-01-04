@@ -16,11 +16,11 @@ public class ProductRange : MonoBehaviour {
 //	private Dictionary<string, string> cheap = new Dictionary<string, string>();
 
 	// Use this for initialization
-	void Start () 
+	void Awake () 
 	{
 		string[] lines = spreadsheet.text.Split ('\n');
 
-		print ("reading all lines of");
+//		print ("reading all lines of");
 
 		foreach (string l in lines) 
 		{
@@ -38,7 +38,7 @@ public class ProductRange : MonoBehaviour {
 				if(!tagsToItems.TryGetValue(trimmedT, out itemsWithCurrentTag))
 				{
 					itemsWithCurrentTag = new Dictionary<string, string>();
-					print("adding new dictionary for tag " + trimmedT);
+//					print("adding new dictionary for tag " + trimmedT);
 					tagsToItems.Add(trimmedT, itemsWithCurrentTag);
 				}
 
@@ -46,14 +46,14 @@ public class ProductRange : MonoBehaviour {
 
 			}
 		}
-		print ("done reading in values");
+//		print ("done reading in values");
 	}
 
-	Dictionary<string,string> itemsWithTag(string tag)
+	public Dictionary<string,string> itemsWithTag(string tag)
 	{
 		
 		Dictionary<string, string> temp;
-		if(tagsToItems.TryGetValue("premium", out temp))
+		if(tagsToItems.TryGetValue(tag, out temp))
 		{
 			return temp;
 		}
