@@ -28,6 +28,8 @@ public class ProductRange : MonoBehaviour {
 			if(columns[0] == "Namen" || columns[0].Length < 1)
 				continue;
 			
+			allItems.Add (columns [0], columns [2]);
+
 			string[] tags = columns[2].Split (';');
 
 			foreach(string t in tags)
