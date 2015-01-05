@@ -96,19 +96,21 @@ public class TillStateMachine : MonoBehaviour
 
 			CustomerProfile profile = gameObject.GetComponent<CustomerManager>().getRandomProfile();
 			CustomerVariation variation = profile.getRandomVariation();
+			
+			
+			Debug.Log ("new customer is of type " + profile.name + "." + variation.type);
 
 			string[] wishList = gameObject.GetComponent<CustomerManager>().itemWishList(variation);
 
-			print ("new customer is of type " + profile.name + "." + variation.type + " and is");
-
 			int itemCount = (int)Random.Range(variation.countRange[0], variation.countRange[1]);
+			Debug.Log ("he/she has " + itemCount + " items on the belt:");
 
 			for (int i = 0; i < itemCount; i++) 
 			{
 				//get a random prefab
 				string prefabName = wishList[Random.Range(0, wishList.Length)];
 
-				Debug.Log("buying a " + prefabName);
+				Debug.Log(prefabName);
 
 				Object prefab = Resources.Load ("Prefabs/Items"+prefabName);
 

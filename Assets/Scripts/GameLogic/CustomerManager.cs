@@ -43,10 +43,14 @@ public class CustomerManager : MonoBehaviour {
 	private Dictionary<string, CustomerProfile> profiles;
 	private ArrayList profileNames;	//needed to pick a random profile
 
+	private ProductRange products;
+
 	// Use this for initialization
 	void Awake () {
 		profileNames = new ArrayList ();
 		profiles = new Dictionary<string, CustomerProfile> ();
+
+		products = gameObject.GetComponent<ProductRange> ();
 
 		TextAsset[] spreadsheets = Resources.LoadAll<TextAsset> ("Spreadsheets/CustomerProfiles");
 
@@ -140,38 +144,87 @@ public class CustomerManager : MonoBehaviour {
 	
 	public string[] itemWishList(CustomerVariation variation)
 	{
-		string[] splitTags = variation.tags.Split (';');
-		
-		ProductRange products = gameObject.GetComponent<ProductRange> ();
+		//the tags we should union together - aka boolean "or" - are delimited by ;
+		string[] tagsToUnite = variation.tags.Split (';');
 			
 		HashSet<string> itemNames = null;
-		foreach(string t in splitTags)
+		foreach(string tU in tagsToUnite)
 		{
-			string trimmedT = t.Trim();
+			string tUTrimmed = tU.Trim();
 
-			Dictionary<string,string> items = products.itemsWithTag(trimmedT);
-			if(items == null)
+			Dictionary<string,string> items;
+
+			HashSet<string> uniteWith = null;
+
+			//we might have to first intersect tags in this string -  aka boolean "and"
+			if(tUTrimmed.IndexOf('+') > -1)
 			{
-				Debug.LogWarning("couldn't find items for tag " + trimmedT);
-				continue;
+				string[] tagsToIntersect = tUTrimmed.Split ('+');
+				foreach(string tI in tagsToIntersect)
+				{
+					string tITrimmed = tI.Trim();
+
+					items = products.itemsWithTag(tITrimmed);
+					//make sure we have items with this tag
+					if(items == null)
+					{
+						Debug.LogWarning("couldn't find items for tag " + tITrimmed);
+						continue;
+					}
+
+					//the first iteration in the for loop
+					if(uniteWith == null)
+					{
+						uniteWith = new HashSet<string>(items.Keys);
+					}
+					//all other iterations
+					else
+					{
+						uniteWith.IntersectWith(items.Keys);
+					}
+				}
+
 			}
-			
-			if(itemNames == null)
-			{
-				itemNames = new HashSet<string>(products.itemsWithTag(trimmedT).Keys);
-			}
+			//we don't have to intersect tags, so just finde all items with the tag in tUTrimmed
 			else
 			{
-				itemNames.UnionWith(products.itemsWithTag(trimmedT).Keys);
+				items = products.itemsWithTag(tUTrimmed);
+				//make sure we have items with this tag
+				if(items == null)
+				{
+					Debug.LogWarning("couldn't find items for tag " + tUTrimmed);
+					continue;
+				}
+
+				uniteWith = new HashSet<string>(items.Keys);
+			}
+
+			//the first iteration in the for loop
+			if(itemNames == null)
+			{
+				itemNames = new HashSet<string>(uniteWith);
+			}
+			//all other iterations
+			else
+			{
+				itemNames.UnionWith(uniteWith);
 			}
 		}
 		
 		string[] temp = null;
-		if (itemNames != null) {
-						temp = new string[itemNames.Count];
-						itemNames.CopyTo (temp);
+		if (itemNames != null) 
+		{
+			temp = new string[itemNames.Count];
+			itemNames.CopyTo (temp);
+		}
 
-				}
+		//debug
+		Debug.Log ("got these items for tags: " + variation.tags);
+		for (int i = 0; i < temp.Length; i++) 
+		{
+			Debug.Log(temp[i]);
+		}
+
 		return temp;
 	}
 }
