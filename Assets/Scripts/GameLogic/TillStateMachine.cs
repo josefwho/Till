@@ -14,6 +14,9 @@ public enum States
 public class Customer
 {
 	public ArrayList shoppingItems;
+	public CustomerProfile profile;
+
+	public GameObject image;
 
 	public Customer()
 	{
@@ -147,6 +150,9 @@ public class TillStateMachine : MonoBehaviour
 				Destroy (toBeDestroyed);
 						}
 				}
+		
+		
+		StartCoroutine(customerLeaves(currentCustomer));
 
 		if (timeTaken < 120.0f) {
 			if(nextCustomer == null)
@@ -192,14 +198,24 @@ public class TillStateMachine : MonoBehaviour
 		}
 	}
 
+	public void onBeltMoved(float offset)
+	{
+		if (currentCustomer != null && currentCustomer.image.transform.position.x < 3.5f)
+			currentCustomer.image.transform.Translate (offset, 0, 0);
+
+		if (nextCustomer != null && nextCustomer.image.transform.position.x < 3.5f)
+			nextCustomer.image.transform.Translate (offset, 0, 0);
+	}
+
 	Customer getNewCustomer()
 	{
 		Customer customer = new Customer ();
 		
 		CustomerProfile profile = gameObject.GetComponent<CustomerManager>().getRandomProfile();
 		CustomerVariation variation = profile.getRandomVariation();
-		
-		
+
+		customer.profile = profile;
+
 		Debug.Log ("new customer is of type " + profile.name + "." + variation.type);
 		
 		string[] wishList = gameObject.GetComponent<CustomerManager>().itemWishList(variation);
@@ -244,6 +260,20 @@ public class TillStateMachine : MonoBehaviour
 			Instantiate (nextCustomerSign, signPos, Quaternion.identity);
 		}
 
+		//first spawn customer image
+		Object[] customerImages = Resources.LoadAll ("Prefabs/Customers/"+customer.profile.name);
+
+		Object customerImage;
+		if (customerImages.Length == 0)
+			customerImage = Resources.Load ("Prefabs/Customers/dummy_customer");
+		else
+			customerImage = customerImages [Random.Range (0, customerImages.Length)];
+
+		Vector3 imagePos = transform.position;
+		imagePos.z = 5.3f;
+		customer.image = Instantiate(customerImage, imagePos , Quaternion.identity ) as GameObject;
+
+		//then spawn his/her items 
 		isSpawningItems = true;
 		for (int i = 0; i < customer.shoppingItems.Count; i++) 
 		{
@@ -253,6 +283,18 @@ public class TillStateMachine : MonoBehaviour
 			yield return new WaitForSeconds(spawnDelay);
 		}
 		isSpawningItems = false;
+	}
+
+	IEnumerator customerLeaves(Customer customer)
+	{
+		while (customer.image.transform.position.x < 11.0f) 
+		{
+			customer.image.transform.Translate (0.05f,0,0.05f);
+
+			yield return null;
+		}
+
+		customer.image.SetActive (false);
 	}
 	
 }

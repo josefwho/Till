@@ -12,6 +12,7 @@ public class ConveyorBelt : MonoBehaviour {
 	private float distanceSinceLastNewPart;
 	private float removeAtXPos;
 
+	private TillStateMachine till;
 
 	// Use this for initialization
 	void Start () {
@@ -35,6 +36,8 @@ public class ConveyorBelt : MonoBehaviour {
 		distanceSinceLastNewPart = 0.0f;
 
 		newPartThreshold = partLength ;
+
+		till = GameObject.FindGameObjectWithTag ("GameController").GetComponent<TillStateMachine> ();
 	}
 	
 	// Update is called once per frame
@@ -65,6 +68,8 @@ public class ConveyorBelt : MonoBehaviour {
 				GameObject.Destroy(o);
 			}
 			toRemove.Clear();
+
+			till.onBeltMoved(offset);
 
 			distanceSinceLastNewPart += offset;
 		}
