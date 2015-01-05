@@ -50,16 +50,21 @@ public class ConveyorBelt : MonoBehaviour {
 			
 			float offset = speed * Time.deltaTime;
 
+			ArrayList toRemove = new ArrayList();
 			foreach(GameObject p in parts)
 			{
 				p.transform.Translate(offset, 0, 0);
 
 				if(p.transform.position.x > removeAtXPos)
-				{
-					parts.Remove(p);
-					GameObject.Destroy(p);
-				}
+					toRemove.Add(p);
 			}
+
+			foreach(GameObject o in toRemove)
+			{
+				parts.Remove(o);
+				GameObject.Destroy(o);
+			}
+			toRemove.Clear();
 
 			distanceSinceLastNewPart += offset;
 		}
