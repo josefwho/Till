@@ -57,6 +57,8 @@ public class TillStateMachine : MonoBehaviour
 	private ArrayList customers;
 	private bool isSpawningItems;
 
+	private Object nextCustomerSign;
+
 	public delegate void OnItemDestroy(GameObject toBeDestroyed);
 	public static event OnItemDestroy itemDestroy ;
 	
@@ -85,6 +87,8 @@ public class TillStateMachine : MonoBehaviour
 //		Object[] itemPrefabs = Resources.LoadAll ("Prefabs/Items");
 		
 		nextCustomer = null;
+
+		nextCustomerSign = Resources.Load ("Prefabs/next_customer_sign");
 
 		score = 0;
 
@@ -232,6 +236,14 @@ public class TillStateMachine : MonoBehaviour
 
 	IEnumerator spawnItems(Customer customer)
 	{
+		if (customers.Count > 1) 
+		{
+			Vector3 signPos = transform.position;
+			signPos.y += 2;
+			signPos.x = newCustomerTrigger.collider.bounds.max.x - 1;
+			Instantiate (nextCustomerSign, signPos, Quaternion.identity);
+		}
+
 		isSpawningItems = true;
 		for (int i = 0; i < customer.shoppingItems.Count; i++) 
 		{
