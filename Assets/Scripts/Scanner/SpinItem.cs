@@ -50,8 +50,8 @@ public class SpinItem : MonoBehaviour {
 			
 			float xSign = (dragDelta.x<0) ? -1.0f : 1.0f;
 			float ySign = (dragDelta.y<0) ? -1.0f : 1.0f;
-			transform.parent.gameObject.rigidbody.AddTorque (0, 0, -xSign * Mathf.Pow(Mathf.Abs(dragDelta.x), 1.5f) * speed);
-			transform.parent.gameObject.rigidbody.AddTorque (ySign * Mathf.Pow (Mathf.Abs(dragDelta.y), 1.5f) * speed, 0, 0);
+			transform.parent.gameObject.rigidbody.AddTorque (0, 0, -xSign * Mathf.Pow(Mathf.Abs(dragDelta.x), 1.5f) * speed * 5, ForceMode.Acceleration);
+			transform.parent.gameObject.rigidbody.AddTorque (ySign * Mathf.Pow (Mathf.Abs(dragDelta.y), 1.5f) * speed * 5, 0, 0, ForceMode.Acceleration);
 		}
 		
 
