@@ -50,9 +50,12 @@ public class TillStateMachine : MonoBehaviour
 	private ItemTrigger floorTrigger;
 	private ItemTrigger scannerTrigger;
 	private ItemTrigger basketTrigger;
+	private ItemTrigger newCustomerTrigger;
 
 	private Customer currentCustomer;
+	private Customer nextCustomer;
 	private ArrayList customers;
+	private bool isSpawningItems;
 
 	public delegate void OnItemDestroy(GameObject toBeDestroyed);
 	public static event OnItemDestroy itemDestroy ;
@@ -64,6 +67,7 @@ public class TillStateMachine : MonoBehaviour
 		floorTrigger = GameObject.Find ("Floor/OnFloorTrigger").GetComponent<ItemTrigger>();
 		scannerTrigger = GameObject.Find ("Scanner/Scanner Trigger").GetComponent<ItemTrigger>();
 		basketTrigger = GameObject.Find ("basket/InBasketTrigger").GetComponent<ItemTrigger>();
+		newCustomerTrigger = GameObject.Find ("NewCustomerTrigger").GetComponent<ItemTrigger>();
 		
 		countScannedObjects = 0;
 		countScanned.text = "Items Scanned: "+ countScannedObjects.ToString ();
@@ -79,6 +83,8 @@ public class TillStateMachine : MonoBehaviour
 	{
 		//get all shopping item prefabs to choose from
 //		Object[] itemPrefabs = Resources.LoadAll ("Prefabs/Items");
+		
+		nextCustomer = null;
 
 		score = 0;
 
@@ -96,6 +102,12 @@ public class TillStateMachine : MonoBehaviour
 		{
 			if(currentCustomer.shoppingItems.Count == floorTrigger.getObjectsInsideCount() + basketTrigger.getObjectsInsideCount())
 				switchToState(States.NextCustomer);
+
+			if(!isSpawningItems && nextCustomer == null && newCustomerTrigger.empty)
+			{
+				nextCustomer = getNewCustomer();
+				StartCoroutine(spawnItems(nextCustomer));
+			}
 		}
 	}
 		
@@ -133,10 +145,14 @@ public class TillStateMachine : MonoBehaviour
 				}
 
 		if (timeTaken < 120.0f) {
-			currentCustomer = getNewCustomer();
-			customers.RemoveAt (0);
+			if(nextCustomer == null)
+			{
+				nextCustomer = getNewCustomer();
+				StartCoroutine(spawnItems(nextCustomer));
+			}
 
-			StartCoroutine("spawnItems");
+			currentCustomer = nextCustomer;
+			nextCustomer = null;
 
 			switchToState (States.InProgress);
 		} else
@@ -214,15 +230,17 @@ public class TillStateMachine : MonoBehaviour
 		return customer;
 	}
 
-	IEnumerator spawnItems()
+	IEnumerator spawnItems(Customer customer)
 	{
-		for (int i = 0; i < currentCustomer.shoppingItems.Count; i++) 
+		isSpawningItems = true;
+		for (int i = 0; i < customer.shoppingItems.Count; i++) 
 		{
-			GameObject temp = (GameObject)currentCustomer.shoppingItems[i];
+			GameObject temp = (GameObject)customer.shoppingItems[i];
 			temp.SetActive(true);
 
 			yield return new WaitForSeconds(spawnDelay);
 		}
+		isSpawningItems = false;
 	}
 	
 }
