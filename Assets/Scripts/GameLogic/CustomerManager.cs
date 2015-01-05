@@ -204,15 +204,24 @@ public class CustomerManager : MonoBehaviour {
 		}
 
 		//finally we need to add the specific items
-//		string[] specificItems = variation.specificItems.Split (';');
-//		foreach (string sI in specificItems) 
-//		{
-//			string sITrimmed = sI.Trim();
-//			if(products.hasItem(sITrimmed)
-//			   itemNames.UnionWith(new HashSet<string>(sITrimmed));
-//			else
-//			   Debug.LogWarning("couldn't find specific item " + sITrimmed);
-//		}
+		if (variation.specificItems.Length > 0) 
+		{
+			string[] specificItems = variation.specificItems.Split (';');
+			Debug.Log ("Specific items are: " + variation.specificItems);
+			foreach (string sI in specificItems) 
+			{
+				string sITrimmed = sI.Trim();
+				if(products.hasItem(sITrimmed))
+				{
+					HashSet<string> oneItemSet = new HashSet<string>();
+					oneItemSet.Add(sITrimmed);
+					itemNames.UnionWith(oneItemSet);
+				}
+				else
+					Debug.LogWarning("couldn't find specific item " + sITrimmed);
+			}
+		}
+
 		
 		string[] temp = null;
 		if (itemNames != null) 
@@ -222,11 +231,11 @@ public class CustomerManager : MonoBehaviour {
 		}
 
 		//debug
-		Debug.Log ("got these items for tags: " + variation.tags);
-		for (int i = 0; i < temp.Length; i++) 
-		{
-			Debug.Log(temp[i]);
-		}
+//		Debug.Log ("got these items for tags: " + variation.tags);
+//		for (int i = 0; i < temp.Length; i++) 
+//		{
+//			Debug.Log(temp[i]);
+//		}
 
 		return temp;
 	}
