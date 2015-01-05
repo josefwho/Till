@@ -60,7 +60,12 @@ public class ProductRange : MonoBehaviour {
 
 		return null;
 	}
-	
+
+	public bool hasItem(string itemName)
+	{
+		return allItems.ContainsKey (itemName);
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown ("p")) 
