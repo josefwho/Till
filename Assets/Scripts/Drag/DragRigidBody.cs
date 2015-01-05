@@ -28,7 +28,7 @@ public class DragRigidBody : MonoBehaviour
 	void Update () 
 	{
 		// Make sure the user pressed the mouse down
-		if (!Input.GetMouseButton(0) || machine.draggedItemCount > 0 || springJoint) //|| (machine.currentState != States.Drag && machine.currentState != States.Idle && machine.currentState != States.Scan)  )
+		if (!Input.GetMouseButton(0) || machine.draggedItemCount > 0 || machine.isSpinning || springJoint) //|| (machine.currentState != States.Drag && machine.currentState != States.Idle && machine.currentState != States.Scan)  )
 			return;
 		
 		//	//TODO: make sure only one item can be gradde at the same time
