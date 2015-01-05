@@ -39,7 +39,6 @@ public class CustomerProfile
 
 public class CustomerManager : MonoBehaviour {
 
-	public TextAsset[] spreadsheets;
 
 	private Dictionary<string, CustomerProfile> profiles;
 	private ArrayList profileNames;	//needed to pick a random profile
@@ -48,6 +47,8 @@ public class CustomerManager : MonoBehaviour {
 	void Awake () {
 		profileNames = new ArrayList ();
 		profiles = new Dictionary<string, CustomerProfile> ();
+
+		TextAsset[] spreadsheets = Resources.LoadAll<TextAsset> ("Spreadsheets/CustomerProfiles");
 
 		foreach (TextAsset s in spreadsheets) 
 		{
@@ -164,10 +165,13 @@ public class CustomerManager : MonoBehaviour {
 				itemNames.UnionWith(products.itemsWithTag(trimmedT).Keys);
 			}
 		}
+		
+		string[] temp = null;
+		if (itemNames != null) {
+						temp = new string[itemNames.Count];
+						itemNames.CopyTo (temp);
 
-		string[] temp = new string[itemNames.Count];
-		itemNames.CopyTo (temp);
-
+				}
 		return temp;
 	}
 }
