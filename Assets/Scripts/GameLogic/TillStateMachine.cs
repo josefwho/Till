@@ -77,7 +77,7 @@ public class TillStateMachine : MonoBehaviour
 	void onEnterSetup()
 	{
 		//get all shopping item prefabs to choose from
-		Object[] itemPrefabs = Resources.LoadAll ("Prefabs/Items");
+//		Object[] itemPrefabs = Resources.LoadAll ("Prefabs/Items");
 
 		score = 0;
 
@@ -112,7 +112,7 @@ public class TillStateMachine : MonoBehaviour
 
 				Debug.Log(prefabName);
 
-				Object prefab = Resources.Load ("Prefabs/Items"+prefabName);
+				Object prefab = Resources.Load ("Prefabs/Items/"+prefabName);
 
 				if(prefab == null)
 					prefab = Resources.Load ("Prefabs/Items/dummy");
