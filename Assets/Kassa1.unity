@@ -1997,7 +1997,7 @@ Transform:
   - {fileID: 381105853}
   - {fileID: 1620305238}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!65 &1214428201
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2307,7 +2307,7 @@ Transform:
   - {fileID: 1049279680}
   - {fileID: 7493805}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1 &1525401680
 GameObject:
   m_ObjectHideFlags: 0
@@ -2387,11 +2387,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d301212f70f349e5b357bb2ccf5e212, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spreadsheets:
-  - {fileID: 4900000, guid: 3be3023865b484a8080e36e281e48553, type: 3}
-  - {fileID: 4900000, guid: 34f3d99b32d5f4602a432fdfc74a49ad, type: 3}
-  - {fileID: 4900000, guid: 451eb9e19a4d84223899acee9440562b, type: 3}
-  - {fileID: 4900000, guid: 9493a3831b72b4443817d8334a60d6aa, type: 3}
 --- !u!1 &1554400404
 GameObject:
   m_ObjectHideFlags: 0
