@@ -147,7 +147,7 @@ public class CustomerManager : MonoBehaviour {
 		//the tags we should union together - aka boolean "or" - are delimited by ;
 		string[] tagsToUnite = variation.tags.Split (';');
 			
-		HashSet<string> itemNames = null;
+		HashSet<string> itemNames = new HashSet<string>();
 		foreach(string tU in tagsToUnite)
 		{
 			string tUTrimmed = tU.Trim();
@@ -199,17 +199,20 @@ public class CustomerManager : MonoBehaviour {
 				uniteWith = new HashSet<string>(items.Keys);
 			}
 
-			//the first iteration in the for loop
-			if(itemNames == null)
-			{
-				itemNames = new HashSet<string>(uniteWith);
-			}
-			//all other iterations
-			else
-			{
-				itemNames.UnionWith(uniteWith);
-			}
+			//finally unite!
+			itemNames.UnionWith(uniteWith);
 		}
+
+		//finally we need to add the specific items
+//		string[] specificItems = variation.specificItems.Split (';');
+//		foreach (string sI in specificItems) 
+//		{
+//			string sITrimmed = sI.Trim();
+//			if(products.hasItem(sITrimmed)
+//			   itemNames.UnionWith(new HashSet<string>(sITrimmed));
+//			else
+//			   Debug.LogWarning("couldn't find specific item " + sITrimmed);
+//		}
 		
 		string[] temp = null;
 		if (itemNames != null) 
