@@ -47,6 +47,7 @@ public class TillStateMachine : MonoBehaviour
 	public float betweenItemOffset = -0.1f;
 
 	public int draggedItemCount;
+	public bool isSpinning;
 
 	public float spawnDelay = 0.1f;
 
@@ -110,7 +111,7 @@ public class TillStateMachine : MonoBehaviour
 			if(currentCustomer.shoppingItems.Count == floorTrigger.getObjectsInsideCount() + basketTrigger.getObjectsInsideCount())
 				switchToState(States.NextCustomer);
 
-			if(!isSpawningItems && nextCustomer == null && newCustomerTrigger.empty)
+			if(!isSpawningItems && timeTaken < 120.0f && nextCustomer == null && newCustomerTrigger.empty)
 			{
 				nextCustomer = getNewCustomer();
 				StartCoroutine(spawnItems(nextCustomer));
@@ -154,8 +155,13 @@ public class TillStateMachine : MonoBehaviour
 		
 		StartCoroutine(customerLeaves(currentCustomer));
 
-		if (timeTaken < 120.0f) {
-			if(nextCustomer == null)
+		if (timeTaken > 120.0f && nextCustomer == null) 
+		{
+			switchToState (States.ShiftDone);
+		}
+		else
+		{
+			if(nextCustomer == null && timeTaken < 120.0f)
 			{
 				nextCustomer = getNewCustomer();
 				StartCoroutine(spawnItems(nextCustomer));
@@ -165,8 +171,7 @@ public class TillStateMachine : MonoBehaviour
 			nextCustomer = null;
 
 			switchToState (States.InProgress);
-		} else
-			switchToState (States.ShiftDone);
+		}
 
 	}
 
@@ -191,7 +196,7 @@ public class TillStateMachine : MonoBehaviour
 			float startTime = 7;	// 07:00 
 			float endTime = 18; // 18:00
 
-			float time = Mathf.Lerp(startTime, endTime, timeTaken/shiftDuration);
+			float time = startTime + (endTime - startTime) * timeTaken/shiftDuration;
 			int hours = Mathf.FloorToInt(time);
 			int minutes = (int)((time-hours)*60) ;
 			timeTakenText.text = "Time: " + hours.ToString() + ":" + minutes.ToString();
