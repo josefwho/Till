@@ -38,6 +38,7 @@ public class TillStateMachine : MonoBehaviour
 	public float score;
 	public GUIText scoreText;
 	public float timeTaken;
+	public float shiftDuration = 120.0f;		//in seconds
 	public GUIText timeTakenText;
 
 	public float betweenItemOffset = -0.1f;
@@ -160,8 +161,14 @@ public class TillStateMachine : MonoBehaviour
 		if (currentState != States.ShiftDone) 
 		{
 			timeTaken += Time.deltaTime;
-			int minutes = (int)timeTaken / 60 ;
-			timeTakenText.text = "Time Taken: " + minutes.ToString() + ":" + Mathf.Round(timeTaken % 60);
+
+			float startTime = 7;	// 07:00 
+			float endTime = 18; // 18:00
+
+			float time = Mathf.Lerp(startTime, endTime, timeTaken/shiftDuration);
+			int hours = Mathf.FloorToInt(time);
+			int minutes = (int)((time-hours)*60) ;
+			timeTakenText.text = "Time: " + hours.ToString() + ":" + minutes.ToString();
 		}
 	}
 
