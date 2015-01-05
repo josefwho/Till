@@ -84,52 +84,6 @@ public class TillStateMachine : MonoBehaviour
 		timeTaken = 0;
 		draggedItemCount = 0;
 
-		//how many customers we will have this shift
-		int customerCount = 3; //(int)Mathf.Round((Random.Range (customerCountRange [0], customerCountRange [1])));
-
-//		int[] itemCounts = {6,14,32,32,18,6};
-
-		for (int c = 0; c < customerCount; c++) 
-		{
-
-			Customer customer = new Customer ();
-
-			CustomerProfile profile = gameObject.GetComponent<CustomerManager>().getRandomProfile();
-			CustomerVariation variation = profile.getRandomVariation();
-			
-			
-			Debug.Log ("new customer is of type " + profile.name + "." + variation.type);
-
-			string[] wishList = gameObject.GetComponent<CustomerManager>().itemWishList(variation);
-
-			int itemCount = (int)Random.Range(variation.countRange[0], variation.countRange[1]);
-			Debug.Log ("he/she has " + itemCount + " items on the belt:");
-
-			for (int i = 0; i < itemCount; i++) 
-			{
-				//get a random prefab
-				string prefabName = wishList[Random.Range(0, wishList.Length)];
-
-				Debug.Log(prefabName);
-
-				Object prefab = Resources.Load ("Prefabs/Items/"+prefabName);
-
-				if(prefab == null)
-					prefab = Resources.Load ("Prefabs/Items/dummy");
-
-				Vector3 pos = gameObject.transform.position;
-				pos += new Vector3(Random.Range(-spawnRadius, spawnRadius), 2, Random.Range(-spawnRadius, spawnRadius));
-				pos += new Vector3(betweenItemOffset*(i+1), 0, 0);
-				pos.x = Mathf.Max(pos.x, -8.5f);
-
-				GameObject item = Instantiate(prefab, pos, Quaternion.identity ) as GameObject;
-				item.SetActive(false);
-				customer.shoppingItems.Add (item);
-			}
-			
-			customers.Add (customer);
-		}
-
 		switchToState (States.NextCustomer);
 	}
 
@@ -177,8 +131,8 @@ public class TillStateMachine : MonoBehaviour
 						}
 				}
 
-		if (customers.Count > 0) {
-			currentCustomer = (Customer)customers [0];
+		if (timeTaken < 120.0f) {
+			currentCustomer = getNewCustomer();
 			customers.RemoveAt (0);
 
 			StartCoroutine("spawnItems");
@@ -193,7 +147,7 @@ public class TillStateMachine : MonoBehaviour
 	{
 		score += (4.0f*60.0f - timeTaken);
 	}
-
+	
 	public void setCountText()
 	{
 		countScanned.text = "Items Scanned: " + countScannedObjects.ToString ();
@@ -209,6 +163,48 @@ public class TillStateMachine : MonoBehaviour
 			int minutes = (int)timeTaken / 60 ;
 			timeTakenText.text = "Time Taken: " + minutes.ToString() + ":" + Mathf.Round(timeTaken % 60);
 		}
+	}
+
+	Customer getNewCustomer()
+	{
+		Customer customer = new Customer ();
+		
+		CustomerProfile profile = gameObject.GetComponent<CustomerManager>().getRandomProfile();
+		CustomerVariation variation = profile.getRandomVariation();
+		
+		
+		Debug.Log ("new customer is of type " + profile.name + "." + variation.type);
+		
+		string[] wishList = gameObject.GetComponent<CustomerManager>().itemWishList(variation);
+		
+		int itemCount = (int)Random.Range(variation.countRange[0], variation.countRange[1]);
+		Debug.Log ("he/she has " + itemCount + " items on the belt:");
+		
+		for (int i = 0; i < itemCount; i++) 
+		{
+			//get a random prefab
+			string prefabName = wishList[Random.Range(0, wishList.Length)];
+			
+			Debug.Log(prefabName);
+			
+			Object prefab = Resources.Load ("Prefabs/Items/"+prefabName);
+			
+			if(prefab == null)
+				prefab = Resources.Load ("Prefabs/Items/dummy");
+			
+			Vector3 pos = gameObject.transform.position;
+			pos += new Vector3(Random.Range(-spawnRadius, spawnRadius), 2, Random.Range(-spawnRadius, spawnRadius));
+			pos += new Vector3(betweenItemOffset*(i+1), 0, 0);
+			pos.x = Mathf.Max(pos.x, -8.5f);
+			
+			GameObject item = Instantiate(prefab, pos, Quaternion.identity ) as GameObject;
+			item.SetActive(false);
+			customer.shoppingItems.Add (item);
+		}
+		
+		customers.Add (customer);
+
+		return customer;
 	}
 
 	IEnumerator spawnItems()
