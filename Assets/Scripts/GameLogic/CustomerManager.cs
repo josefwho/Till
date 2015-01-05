@@ -147,6 +147,13 @@ public class CustomerManager : MonoBehaviour {
 		foreach(string t in splitTags)
 		{
 			string trimmedT = t.Trim();
+
+			Dictionary<string,string> items = products.itemsWithTag(trimmedT);
+			if(items == null)
+			{
+				Debug.LogWarning("couldn't find items for tag " + trimmedT);
+				continue;
+			}
 			
 			if(itemNames == null)
 			{

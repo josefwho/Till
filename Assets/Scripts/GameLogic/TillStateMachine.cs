@@ -87,7 +87,7 @@ public class TillStateMachine : MonoBehaviour
 		//how many customers we will have this shift
 		int customerCount = 3; //(int)Mathf.Round((Random.Range (customerCountRange [0], customerCountRange [1])));
 
-		int[] itemCounts = {6,14,32,32,18,6};
+//		int[] itemCounts = {6,14,32,32,18,6};
 
 		for (int c = 0; c < customerCount; c++) 
 		{
@@ -99,14 +99,16 @@ public class TillStateMachine : MonoBehaviour
 
 			string[] wishList = gameObject.GetComponent<CustomerManager>().itemWishList(variation);
 
-			print ("new customer is of type " + profile.name + "." + variation.type);
+			print ("new customer is of type " + profile.name + "." + variation.type + " and is");
 
-//			int itemCount = itemCounts[c];
+			int itemCount = (int)Random.Range(variation.countRange[0], variation.countRange[1]);
 
-			for (int i = 0; i < itemCounts[c]; i++) 
+			for (int i = 0; i < itemCount; i++) 
 			{
 				//get a random prefab
 				string prefabName = wishList[Random.Range(0, wishList.Length)];
+
+				Debug.Log("buying a " + prefabName);
 
 				Object prefab = Resources.Load ("Prefabs/Items"+prefabName);
 
