@@ -1,7 +1,7 @@
 ,Global,Stereotype,Standard,Anti-Stereotype
-Name,Rich Lady,,,
+Name,RichLady,,,
 Propability to be picked,0.1,0.20,0.60,0.20
 Item Count Range,,3 - 5,4 - 8,5 - 8
 Tags,,luxury; premium,premium,cheap; deals
 Specific Items,,,,
-Prefab Folder Path,prefabs/rich,,,
+Prefab Folder Path,,,,
