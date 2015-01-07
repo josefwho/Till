@@ -27,7 +27,7 @@ public class ScanDetection : MonoBehaviour {
 
 			currentScanDuration += Time.deltaTime;
 
-			if(currentScanDuration > scanDuration)
+			if(currentScanDuration > scanDuration/2)
 			{
 				transform.parent.parent.gameObject.GetComponent<ItemStatus>().scanned++;
 				GameObject.FindGameObjectWithTag("Pin").GetComponent<Pin>().unpinItem();
