@@ -44,14 +44,16 @@ public class SpinItem : MonoBehaviour {
 
 		if (machine.draggedItemCount == 0) 
 		{
+			machine.isSpinning = true;
+
 			Vector3 dragTotal = Input.mousePosition - mouseStartPosition;
 			
 			Vector3 dragDelta = Input.mousePosition - lastMousePosition;
 			
 			float xSign = (dragDelta.x<0) ? -1.0f : 1.0f;
 			float ySign = (dragDelta.y<0) ? -1.0f : 1.0f;
-			transform.parent.gameObject.rigidbody.AddTorque (0, 0, -xSign * Mathf.Pow(Mathf.Abs(dragDelta.x), 1.5f) * speed * 5, ForceMode.Acceleration);
-			transform.parent.gameObject.rigidbody.AddTorque (ySign * Mathf.Pow (Mathf.Abs(dragDelta.y), 1.5f) * speed * 5, 0, 0, ForceMode.Acceleration);
+			transform.parent.gameObject.rigidbody.AddTorque (0, 0, -xSign * Mathf.Pow(Mathf.Abs(dragDelta.x), 1.5f) * speed * 7, ForceMode.Acceleration);
+			transform.parent.gameObject.rigidbody.AddTorque (ySign * Mathf.Pow (Mathf.Abs(dragDelta.y), 1.5f) * speed * 7, 0, 0, ForceMode.Acceleration);
 		}
 		
 
@@ -60,6 +62,7 @@ public class SpinItem : MonoBehaviour {
 
 	void OnFirstGlobalMouseUp()
 	{
+		machine.isSpinning = false;
 		mouseStartPosition.x = Mathf.Infinity;
 	}
 }

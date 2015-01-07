@@ -2771,6 +2771,7 @@ MonoBehaviour:
   timeTakenText: {fileID: 1761518909}
   betweenItemOffset: -.150000006
   draggedItemCount: 0
+  isSpinning: 0
   spawnDelay: .300000012
 --- !u!114 &1525401683
 MonoBehaviour:
