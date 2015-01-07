@@ -292,7 +292,7 @@ public class TillStateMachine : MonoBehaviour
 	{
 		while (customer.image.transform.position.x < 11.0f) 
 		{
-			customer.image.transform.Translate (0.05f,0,0.05f);
+			customer.image.transform.Translate (0.05f,0,0.05f, Space.World);
 
 			yield return null;
 		}
