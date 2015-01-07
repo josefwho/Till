@@ -270,7 +270,7 @@ public class TillStateMachine : MonoBehaviour
 
 		GameObject customerImage;
 		if (customerImages.Length == 0)
-			customerImage = Resources.Load ("Prefabs/Customers/Rich/rich_lady") as GameObject;
+			customerImage = Resources.Load ("Prefabs/Customers/dummy_customer") as GameObject;
 		else
 			customerImage = customerImages [Random.Range (0, customerImages.Length)] as GameObject;
 
