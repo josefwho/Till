@@ -10,15 +10,16 @@ public class SpinItem : MonoBehaviour {
 	
 	private TillStateMachine machine;
 
-	// Use this for initialization
-	void OnEnable () 
+	void OnDisable()
 	{
+		machine.isSpinning = false;
 		mouseStartPosition.x = Mathf.Infinity;
-	}	
+	}
 
 	void Awake () 
 	{
 		machine = GameObject.FindGameObjectWithTag ("GameController").GetComponent<TillStateMachine> ();
+		mouseStartPosition.x = Mathf.Infinity;
 	}
 
 	
