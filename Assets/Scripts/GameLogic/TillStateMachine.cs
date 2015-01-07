@@ -268,15 +268,13 @@ public class TillStateMachine : MonoBehaviour
 		//first spawn customer image
 		Object[] customerImages = Resources.LoadAll ("Prefabs/Customers/"+customer.profile.name);
 
-		Object customerImage;
+		GameObject customerImage;
 		if (customerImages.Length == 0)
-			customerImage = Resources.Load ("Prefabs/Customers/Rich/rich_lady");
+			customerImage = Resources.Load ("Prefabs/Customers/Rich/rich_lady") as GameObject;
 		else
-			customerImage = customerImages [Random.Range (0, customerImages.Length)];
+			customerImage = customerImages [Random.Range (0, customerImages.Length)] as GameObject;
 
-		Vector3 imagePos = transform.position;
-		imagePos.z = 5.3f;
-		customer.image = Instantiate(customerImage, imagePos, Quaternion.identity ) as GameObject;
+		customer.image = Instantiate(customerImage, customerImage.transform.position, customerImage.transform.rotation ) as GameObject;
 
 		//then spawn his/her items 
 		isSpawningItems = true;
