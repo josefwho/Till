@@ -11,14 +11,14 @@ public enum States
 					ShiftDone
 }
 
-public class Customer
+public class CustomerTemp
 {
 	public ArrayList shoppingItems;
 	public CustomerProfile profile;
 
 	public GameObject image;
 
-	public Customer()
+	public CustomerTemp()
 	{
 		shoppingItems = new ArrayList ();
 	}
@@ -59,7 +59,7 @@ public class TillStateMachine : MonoBehaviour
 	private Customer currentCustomer;
 	private Customer nextCustomer;
 	private ArrayList customers;
-	private bool isSpawningItems;
+	public bool isSpawningItems;
 
 	private Object nextCustomerSign;
 
@@ -114,7 +114,6 @@ public class TillStateMachine : MonoBehaviour
 			if(!isSpawningItems && timeTaken < 120.0f && nextCustomer == null && newCustomerTrigger.empty)
 			{
 				nextCustomer = getNewCustomer();
-				StartCoroutine(spawnItems(nextCustomer));
 			}
 		}
 	}
@@ -152,8 +151,9 @@ public class TillStateMachine : MonoBehaviour
 						}
 				}
 		
-		
-		StartCoroutine(customerLeaves(currentCustomer));
+
+		if(currentCustomer != null)
+			currentCustomer.leave();
 
 		if (timeTaken > 120.0f && nextCustomer == null) 
 		{
@@ -164,7 +164,6 @@ public class TillStateMachine : MonoBehaviour
 			if(nextCustomer == null && timeTaken < 120.0f)
 			{
 				nextCustomer = getNewCustomer();
-				StartCoroutine(spawnItems(nextCustomer));
 			}
 
 			currentCustomer = nextCustomer;
@@ -205,24 +204,38 @@ public class TillStateMachine : MonoBehaviour
 
 	public void onBeltMoved(float offset)
 	{
-		if (currentCustomer != null && currentCustomer.image.transform.position.x < 3.5f)
-			currentCustomer.image.transform.Translate (offset, 0, 0);
+		if (currentCustomer != null )
+			currentCustomer.onBeltMoved(offset);
 
-		if (nextCustomer != null && nextCustomer.image.transform.position.x < 3.5f)
-			nextCustomer.image.transform.Translate (offset, 0, 0);
+		if (nextCustomer != null)
+			nextCustomer.onBeltMoved(offset);
 	}
 
 	Customer getNewCustomer()
-	{
-		Customer customer = new Customer ();
-		
+	{	
 		CustomerProfile profile = gameObject.GetComponent<CustomerManager>().getRandomProfile();
 		CustomerVariation variation = profile.getRandomVariation();
+		
+		//first choose a prefab for our customer 
+		Object[] customerPrefabs = Resources.LoadAll ("Prefabs/Customers/"+profile.name);
+		
+		GameObject customerPrefab;
+		if (customerPrefabs.Length == 0)
+			customerPrefab = Resources.Load ("Prefabs/Customers/dummy_customer") as GameObject;
+		else
+			customerPrefab = customerPrefabs [Random.Range (0, customerPrefabs.Length)] as GameObject;
+
+		//now spawn a GameObject from the found prefab
+		GameObject customerObj = Instantiate(customerPrefab, customerPrefab.transform.position, customerPrefab.transform.rotation ) as GameObject;
+		customerObj.transform.GetChild (0).gameObject.SetActive (false);		//don't render model just yet
+		Customer customer = customerObj.GetComponent<Customer> ();				//we just need the customer component for later reference
 
 		customer.profile = profile;
+		customer.spawnDelay = spawnDelay;
 
 		Debug.Log ("new customer is of type " + profile.name + "." + variation.type);
-		
+
+		//now make the items this customer is buying
 		string[] wishList = gameObject.GetComponent<CustomerManager>().itemWishList(variation);
 		
 		int itemCount = (int)Random.Range(variation.countRange[0], variation.countRange[1]);
@@ -230,7 +243,7 @@ public class TillStateMachine : MonoBehaviour
 		
 		for (int i = 0; i < itemCount; i++) 
 		{
-			//get a random prefab
+			//get a random prefab from the customers wishlist
 			string prefabName = wishList[Random.Range(0, wishList.Length)];
 			
 			Debug.Log(prefabName);
@@ -239,7 +252,8 @@ public class TillStateMachine : MonoBehaviour
 			
 			if(prefab == null)
 				prefab = Resources.Load ("Prefabs/Items/dummy");
-			
+
+			//position them in a way that they wont all spawn at the same place
 			Vector3 pos = gameObject.transform.position;
 			pos += new Vector3(Random.Range(-spawnRadius, spawnRadius), 2, Random.Range(-spawnRadius, spawnRadius));
 			pos += new Vector3(betweenItemOffset*(i+1), 0, 0);
@@ -247,16 +261,16 @@ public class TillStateMachine : MonoBehaviour
 			
 			GameObject item = Instantiate(prefab, pos, Quaternion.identity ) as GameObject;
 			item.SetActive(false);
+
+			//let the customer know what he/she is buying
 			customer.shoppingItems.Add (item);
 		}
-		
+
+		//keep track of all customers
 		customers.Add (customer);
 
-		return customer;
-	}
-
-	IEnumerator spawnItems(Customer customer)
-	{
+		
+		//spawn next customer sign;
 		if (customers.Count > 1) 
 		{
 			Vector3 signPos = transform.position;
@@ -265,39 +279,9 @@ public class TillStateMachine : MonoBehaviour
 			Instantiate (nextCustomerSign, signPos, Quaternion.identity);
 		}
 
-		//first spawn customer image
-		Object[] customerImages = Resources.LoadAll ("Prefabs/Customers/"+customer.profile.name);
+		customer.spawnItems();
 
-		GameObject customerImage;
-		if (customerImages.Length == 0)
-			customerImage = Resources.Load ("Prefabs/Customers/dummy_customer") as GameObject;
-		else
-			customerImage = customerImages [Random.Range (0, customerImages.Length)] as GameObject;
-
-		customer.image = Instantiate(customerImage, customerImage.transform.position, customerImage.transform.rotation ) as GameObject;
-
-		//then spawn his/her items 
-		isSpawningItems = true;
-		for (int i = 0; i < customer.shoppingItems.Count; i++) 
-		{
-			GameObject temp = (GameObject)customer.shoppingItems[i];
-			temp.SetActive(true);
-
-			yield return new WaitForSeconds(spawnDelay);
-		}
-		isSpawningItems = false;
-	}
-
-	IEnumerator customerLeaves(Customer customer)
-	{
-		while (customer.image.transform.position.x < 11.0f) 
-		{
-			customer.image.transform.Translate (0.05f,0,0.05f, Space.World);
-
-			yield return null;
-		}
-
-		customer.image.SetActive (false);
+		return customer;
 	}
 	
 }
