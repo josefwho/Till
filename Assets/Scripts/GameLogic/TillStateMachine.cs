@@ -111,7 +111,7 @@ public class TillStateMachine : MonoBehaviour
 			if(currentCustomer.shoppingItems.Count == floorTrigger.getObjectsInsideCount() + basketTrigger.getObjectsInsideCount())
 				switchToState(States.NextCustomer);
 
-			if(!isSpawningItems && timeTaken < 120.0f && nextCustomer == null && newCustomerTrigger.empty)
+			if(!isSpawningItems && timeTaken < shiftDuration && nextCustomer == null && newCustomerTrigger.empty)
 			{
 				nextCustomer = getNewCustomer();
 			}
@@ -227,7 +227,6 @@ public class TillStateMachine : MonoBehaviour
 
 		//now spawn a GameObject from the found prefab
 		GameObject customerObj = Instantiate(customerPrefab, customerPrefab.transform.position, customerPrefab.transform.rotation ) as GameObject;
-		customerObj.transform.GetChild (0).gameObject.SetActive (false);		//don't render model just yet
 		Customer customer = customerObj.GetComponent<Customer> ();				//we just need the customer component for later reference
 
 		customer.profile = profile;
@@ -279,7 +278,7 @@ public class TillStateMachine : MonoBehaviour
 			Instantiate (nextCustomerSign, signPos, Quaternion.identity);
 		}
 
-		customer.spawnItems();
+		customer.showItems();
 
 		return customer;
 	}

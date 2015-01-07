@@ -9,7 +9,7 @@ public class Customer : MonoBehaviour {
 
 	private TillStateMachine till;
 
-	
+	private float waitingTime;
 //	public GameObject image;
 
 	// Use this for initialization
@@ -18,21 +18,34 @@ public class Customer : MonoBehaviour {
 
 		till = GameObject.FindGameObjectWithTag ("GameController").GetComponent<TillStateMachine> ();
 
+		waitingTime = 0.0f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
+		waitingTime += Time.deltaTime;
+
+		//TODO: show specific sentences when waitingTime reaches certain times. e.g. when waitingTime is bigger then 10 seconds say first boring sentence
+		//how to get a child gameobject of customer
+//		Transform textT = transform.FindChild ("texts");
+//		GameObject texts = textT.gameObject;
+//		
+//		texts = transform.FindChild ("texts").gameObject;
 	}
 
-	public void spawnItems()
+	public void showItems()
 	{
-		transform.GetChild (0).gameObject.SetActive (true);
+		StartCoroutine (showingItems ());
+	}
 
-		StartCoroutine (spawningItems ());
+	//TODO: find best place to call this callback. maybe from TilLStateMachine or from floorTrigger<ItemTrigger>
+	public void onItemOnFloor()
+	{
+		//TODO: show correct sentence on top of our head
 	}
 	
-	IEnumerator spawningItems()
+	IEnumerator showingItems()
 	{
 		
 		//then spawn his/her items 
