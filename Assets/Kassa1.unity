@@ -2178,7 +2178,7 @@ MonoBehaviour:
   betweenItemOffset: -.150000006
   draggedItemCount: 0
   isSpinning: 0
-  spawnDelay: .300000012
+  spawnDelay: .5
 --- !u!114 &1525401683
 MonoBehaviour:
   m_ObjectHideFlags: 0
