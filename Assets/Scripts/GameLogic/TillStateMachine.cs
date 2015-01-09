@@ -77,9 +77,9 @@ public class TillStateMachine : MonoBehaviour
 		newCustomerTrigger = GameObject.Find ("NewCustomerTrigger").GetComponent<ItemTrigger>();
 		
 		countScannedObjects = 0;
-		countScanned.text = "Items Scanned: "+ countScannedObjects.ToString ();
-		countBasket.text = "Items in Basket: " + basketTrigger.getObjectsInsideCount().ToString ();
-		countFloor.text = "Items on Floor: " + floorTrigger.getObjectsInsideCount ().ToString ();
+//		countScanned.text = "Items Scanned: "+ countScannedObjects.ToString ();
+//		countBasket.text = "Items in Basket: " + basketTrigger.getObjectsInsideCount().ToString ();
+//		countFloor.text = "Items on Floor: " + floorTrigger.getObjectsInsideCount ().ToString ();
 
 		customers = new ArrayList ();
 
@@ -107,11 +107,7 @@ public class TillStateMachine : MonoBehaviour
 	{
 		if (currentState != States.ShiftDone) 
 		{
-			float timeScale = 1.0f;
-			if(timeTaken > shiftDuration)
-				timeScale = 0.3f;
-
-			timeTaken += Time.deltaTime * timeScale;
+			timeTaken += Time.deltaTime;
 
 			updateClock ();
 		}
@@ -209,7 +205,19 @@ public class TillStateMachine : MonoBehaviour
 		float time = startTime + (endTime - startTime) * timeTaken/shiftDuration;
 		int hours = Mathf.FloorToInt(time);
 		int minutes = (int)((time-hours)*60) ;
-		timeTakenText.text = hours.ToString() + ":" + minutes.ToString();
+
+		timeTakenText.text =  addLeadingZeros(hours) + ":" +  addLeadingZeros(minutes);
+	}
+
+	public string addLeadingZeros(int number)
+	{
+		string returnString = "";
+		if (number < 10)
+			returnString = "0" + number.ToString ();
+		else
+			returnString = number.ToString();
+
+		return returnString;
 	}
 
 	public void onBeltMoved(float offset)
