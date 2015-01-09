@@ -32,6 +32,9 @@ public class ScanDetection : MonoBehaviour {
 				ItemStatus status = transform.parent.parent.gameObject.GetComponent<ItemStatus>();
 				status.scanned++;
 
+				if(machine.timeTaken > machine.shiftDuration)
+					status.scannedInOvertime = true;
+
 				if(status.scanned > 1)
 					status.customer.onMultipleScanned(transform.parent.parent.gameObject);
 				if(machine.currentCustomer != status.customer)

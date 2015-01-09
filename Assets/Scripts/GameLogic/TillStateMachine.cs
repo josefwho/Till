@@ -33,14 +33,16 @@ public class TillStateMachine : MonoBehaviour
 	public States currentState;
 
 	public int countScannedObjects;
-	public GUIText countScanned;
-	public GUIText countBasket;
-	public GUIText countFloor;
+	public int countSoldRegular;
+	public int countSoldOvertime;
+//	public GUIText countScanned;
+//	public GUIText countBasket;
+//	public GUIText countFloor;
 //	public Vector2 customerCountRange;
 //	public Vector2 itemCountRange;
 	public float spawnRadius = 2;
 	public float score;
-	public GUIText scoreText;
+//	public GUIText scoreText;
 	public float timeTaken;
 	public float shiftDuration = 120.0f;		//in seconds
 	public Text timeTakenText;
@@ -163,8 +165,26 @@ public class TillStateMachine : MonoBehaviour
 				}
 		
 
-		if(currentCustomer != null)
-			currentCustomer.leave();
+		if (currentCustomer != null) 
+		{
+			//update how many items we sold
+			if(timeTaken < shiftDuration)
+				countSoldRegular += currentCustomer.shoppingItems.Count;
+			//if customers leaves after end of shift distinguish between items scanned before or after end
+			else
+			{
+				foreach(GameObject i in currentCustomer.shoppingItems)
+				{
+					if(i.GetComponent<ItemStatus>().scannedInOvertime)
+						countSoldOvertime++;
+					else
+						countSoldRegular++;
+				}
+			}
+
+			//now let him/her go
+			currentCustomer.leave ();
+		}
 
 		if (timeTaken > shiftDuration && nextCustomer == null) 
 		{
@@ -195,10 +215,10 @@ public class TillStateMachine : MonoBehaviour
 	
 	public void setCountText()
 	{
-		countScanned.text = "Items Scanned: " + countScannedObjects.ToString ();
-		countBasket.text = "Items in Basket: " + basketTrigger.getObjectsInsideCount().ToString ();
-		countFloor.text = "Items on Floor: " + floorTrigger.getObjectsInsideCount().ToString ();
-		scoreText.text = "Total Score: " + score.ToString();
+//		countScanned.text = "Items Scanned: " + countScannedObjects.ToString ();
+//		countBasket.text = "Items in Basket: " + basketTrigger.getObjectsInsideCount().ToString ();
+//		countFloor.text = "Items on Floor: " + floorTrigger.getObjectsInsideCount().ToString ();
+//		scoreText.text = "Total Score: " + score.ToString();
 
 		//mindestlohn 1.159,08 Netto
 	}

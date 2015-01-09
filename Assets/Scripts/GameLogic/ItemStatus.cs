@@ -7,5 +7,5 @@ public class ItemStatus : MonoBehaviour
 	public GameObject inTrigger = null;
 	public Customer customer = null;
 	public string name;
-
+	public bool scannedInOvertime = false;
 }
