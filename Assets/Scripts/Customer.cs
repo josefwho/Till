@@ -42,6 +42,7 @@ public class Customer : MonoBehaviour {
 	//TODO: find best place to call this callback. maybe from TilLStateMachine or from floorTrigger<ItemTrigger>
 	public void onItemOnFloor()
 	{
+		Debug.Log ("hey you dropped my item on the floor");
 		//TODO: show correct sentence on top of our head
 	}
 
