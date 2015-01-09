@@ -63,6 +63,7 @@ public class TillStateMachine : MonoBehaviour
 	public bool isSpawningItems;
 
 	private Object nextCustomerSign;
+	private GameObject endScreen;
 
 	public delegate void OnItemDestroy(GameObject toBeDestroyed);
 	public static event OnItemDestroy itemDestroy ;
@@ -80,6 +81,8 @@ public class TillStateMachine : MonoBehaviour
 //		countScanned.text = "Items Scanned: "+ countScannedObjects.ToString ();
 //		countBasket.text = "Items in Basket: " + basketTrigger.getObjectsInsideCount().ToString ();
 //		countFloor.text = "Items on Floor: " + floorTrigger.getObjectsInsideCount ().ToString ();
+
+		endScreen = GameObject.Find ("End Screen Canvas");
 
 		customers = new ArrayList ();
 
@@ -163,7 +166,7 @@ public class TillStateMachine : MonoBehaviour
 		if(currentCustomer != null)
 			currentCustomer.leave();
 
-		if (timeTaken > 120.0f && nextCustomer == null) 
+		if (timeTaken > shiftDuration && nextCustomer == null) 
 		{
 			switchToState (States.ShiftDone);
 		}
@@ -185,6 +188,9 @@ public class TillStateMachine : MonoBehaviour
 	void onEnterShiftDone(States lastState)
 	{
 		score += (4.0f*60.0f - timeTaken);
+
+		endScreen.GetComponent<Canvas> ().enabled = true;
+		endScreen.GetComponent<EndScreen> ().enabled = true;
 	}
 	
 	public void setCountText()
@@ -206,9 +212,9 @@ public class TillStateMachine : MonoBehaviour
 		//time goes fast till end of shift
 		if (timeTaken < shiftDuration) 
 			time = startTime + (endTime - startTime) * timeTaken / shiftDuration;
-		//only the last customers will run in realtime
+		//only the last customers will run in slower...one second = one minute
 		else
-			time = endTime + (timeTaken - shiftDuration) / 3600;
+			time = endTime + ((timeTaken - shiftDuration)*60) / 3600;
 
 		int hours = Mathf.FloorToInt(time);
 		int minutes = (int)((time-hours)*60) ;
