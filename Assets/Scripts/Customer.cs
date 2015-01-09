@@ -50,18 +50,18 @@ public class Customer : MonoBehaviour {
 	{
 		text.gameObject.transform.parent.gameObject.SetActive (true);
 		text.text = "hey, you dropped my " + item.GetComponent<ItemStatus> ().name + " on the floor";
-		Debug.Log ("hey, you dropped my " + item.GetComponent<ItemStatus>().name + " on the floor");
-		StartCoroutine (timePassedSinceBubble ());
-		//TODO: show correct sentence on top of our head
+//		Debug.Log ("hey, you dropped my " + item.GetComponent<ItemStatus>().name + " on the floor");
+
+		StartCoroutine (hideBubble ());
 	}
 
 	public void onMultipleScanned(GameObject item)
 	{
 		text.gameObject.transform.parent.gameObject.SetActive (true);
 		text.text = "hey, you scanned my " + item.GetComponent<ItemStatus> ().name + " again, you fool!";
-		Debug.Log ("hey, you scanned my " + item.GetComponent<ItemStatus>().name + " again. WTF!");
-		StartCoroutine (timePassedSinceBubble ());
-		//TODO: show sentence that customer is annoyed
+//		Debug.Log ("hey, you scanned my " + item.GetComponent<ItemStatus>().name + " again. WTF!");
+
+		StartCoroutine (hideBubble ());
 
 	}
 
@@ -69,10 +69,10 @@ public class Customer : MonoBehaviour {
 	{
 		text.gameObject.transform.parent.gameObject.SetActive (true);
 		text.text = "hey, this is not my " + item.GetComponent<ItemStatus> ().name;
-		Debug.Log ("hey, this is not my " + item.GetComponent<ItemStatus>().name);
-		StartCoroutine (timePassedSinceBubble ());
+//		Debug.Log ("hey, this is not my " + item.GetComponent<ItemStatus>().name);
 
-		//TODO: show sentence "hey, i don't want to buy this piece of shit"
+		StartCoroutine (hideBubble ());
+
 	}
 
 	IEnumerator showingItems()
@@ -96,7 +96,7 @@ public class Customer : MonoBehaviour {
 	}
 	
 
-	IEnumerator timePassedSinceBubble()
+	IEnumerator hideBubble()
 	{
 		yield return new WaitForSeconds (2.0f);
 
