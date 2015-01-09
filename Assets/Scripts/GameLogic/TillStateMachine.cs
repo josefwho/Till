@@ -206,9 +206,9 @@ public class TillStateMachine : MonoBehaviour
 		//time goes fast till end of shift
 		if (timeTaken < shiftDuration) 
 			time = startTime + (endTime - startTime) * timeTaken / shiftDuration;
-		//only the last customers will run in realtime
+		//only the last customers will run in slower...one second = one minute
 		else
-			time = endTime + (timeTaken - shiftDuration) / 3600;
+			time = endTime + ((timeTaken - shiftDuration)*60) / 3600;
 
 		int hours = Mathf.FloorToInt(time);
 		int minutes = (int)((time-hours)*60) ;
