@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -42,7 +43,7 @@ public class TillStateMachine : MonoBehaviour
 	public GUIText scoreText;
 	public float timeTaken;
 	public float shiftDuration = 120.0f;		//in seconds
-	public GUIText timeTakenText;
+	public Text timeTakenText;
 
 	public float betweenItemOffset = -0.1f;
 
@@ -56,8 +57,8 @@ public class TillStateMachine : MonoBehaviour
 	private ItemTrigger basketTrigger;
 	private ItemTrigger newCustomerTrigger;
 
-	private Customer currentCustomer;
-	private Customer nextCustomer;
+	public Customer currentCustomer;
+	public Customer nextCustomer;
 	private ArrayList customers;
 	public bool isSpawningItems;
 
@@ -76,9 +77,9 @@ public class TillStateMachine : MonoBehaviour
 		newCustomerTrigger = GameObject.Find ("NewCustomerTrigger").GetComponent<ItemTrigger>();
 		
 		countScannedObjects = 0;
-		countScanned.text = "Items Scanned: "+ countScannedObjects.ToString ();
-		countBasket.text = "Items in Basket: " + basketTrigger.getObjectsInsideCount().ToString ();
-		countFloor.text = "Items on Floor: " + floorTrigger.getObjectsInsideCount ().ToString ();
+//		countScanned.text = "Items Scanned: "+ countScannedObjects.ToString ();
+//		countBasket.text = "Items in Basket: " + basketTrigger.getObjectsInsideCount().ToString ();
+//		countFloor.text = "Items on Floor: " + floorTrigger.getObjectsInsideCount ().ToString ();
 
 		customers = new ArrayList ();
 
@@ -104,7 +105,14 @@ public class TillStateMachine : MonoBehaviour
 
 	void Update ()
 	{
-		setCountText ();
+		if (currentState != States.ShiftDone) 
+		{
+			timeTaken += Time.deltaTime;
+
+			updateClock ();
+		}
+
+//		setCountText ();
 
 		if (currentState == States.InProgress) 
 		{
@@ -187,19 +195,29 @@ public class TillStateMachine : MonoBehaviour
 		scoreText.text = "Total Score: " + score.ToString();
 
 		//mindestlohn 1.159,08 Netto
+	}
 
-		if (currentState != States.ShiftDone) 
-		{
-			timeTaken += Time.deltaTime;
+	public void updateClock()
+	{
+		float startTime = 7;	// 07:00 
+		float endTime = 18; // 18:00
+		
+		float time = startTime + (endTime - startTime) * timeTaken/shiftDuration;
+		int hours = Mathf.FloorToInt(time);
+		int minutes = (int)((time-hours)*60) ;
 
-			float startTime = 7;	// 07:00 
-			float endTime = 18; // 18:00
+		timeTakenText.text =  addLeadingZeros(hours) + ":" +  addLeadingZeros(minutes);
+	}
 
-			float time = startTime + (endTime - startTime) * timeTaken/shiftDuration;
-			int hours = Mathf.FloorToInt(time);
-			int minutes = (int)((time-hours)*60) ;
-			timeTakenText.text = "Time: " + hours.ToString() + ":" + minutes.ToString();
-		}
+	public string addLeadingZeros(int number)
+	{
+		string returnString = "";
+		if (number < 10)
+			returnString = "0" + number.ToString ();
+		else
+			returnString = number.ToString();
+
+		return returnString;
 	}
 
 	public void onBeltMoved(float offset)
@@ -259,6 +277,8 @@ public class TillStateMachine : MonoBehaviour
 			pos.x = Mathf.Max(pos.x, -8.5f);
 			
 			GameObject item = Instantiate(prefab, pos, Quaternion.identity ) as GameObject;
+			item.GetComponent<ItemStatus>().customer = customer;
+			item.GetComponent<ItemStatus>().name = prefabName;
 			item.SetActive(false);
 
 			//let the customer know what he/she is buying

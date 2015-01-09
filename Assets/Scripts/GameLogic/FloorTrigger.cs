@@ -3,7 +3,6 @@ using System.Collections;
 
 public class FloorTrigger : ItemTrigger {
 
-	// Use this for initialization
 	public virtual float getScore()
 	{
 		float malus = 0;
@@ -12,5 +11,15 @@ public class FloorTrigger : ItemTrigger {
 			malus -= 1.0f;
 		}
 		return malus;
+	}
+
+	public virtual void OnTriggerEnter(Collider other)
+	{
+		base.OnTriggerEnter (other);
+
+		if (other.gameObject.tag == "ShoppingItem")
+		{
+			other.gameObject.GetComponent<ItemStatus>().customer.onItemOnFloor(other.gameObject);
+		}
 	}
 }

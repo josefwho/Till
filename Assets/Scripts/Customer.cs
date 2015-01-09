@@ -40,11 +40,26 @@ public class Customer : MonoBehaviour {
 	}
 
 	//TODO: find best place to call this callback. maybe from TilLStateMachine or from floorTrigger<ItemTrigger>
-	public void onItemOnFloor()
+	public void onItemOnFloor(GameObject item)
 	{
+		Debug.Log ("hey, you dropped my " + item.GetComponent<ItemStatus>().name + " on the floor");
 		//TODO: show correct sentence on top of our head
 	}
-	
+
+	public void onMultipleScanned(GameObject item)
+	{
+		Debug.Log ("hey, you scanned my " + item.GetComponent<ItemStatus>().name + " again. WTF!");
+		//TODO: show sentence that customer is annoyed
+
+	}
+
+	public void onNotMyItem(GameObject item)
+	{
+		Debug.Log ("hey, this is not my " + item.GetComponent<ItemStatus>().name);
+
+		//TODO: show sentence "hey, i don't want to buy this piece of shit"
+	}
+
 	IEnumerator showingItems()
 	{
 		
