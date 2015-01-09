@@ -57,7 +57,7 @@ public class Customer : MonoBehaviour {
 	public void onMultipleScanned(GameObject item)
 	{
 		text.gameObject.transform.parent.gameObject.SetActive (true);
-		text.text = "hey, you scanned my " + item.GetComponent<ItemStatus> ().name + " again, you fool";
+		text.text = "hey, you scanned my " + item.GetComponent<ItemStatus> ().name + " again, you fool!";
 		Debug.Log ("hey, you scanned my " + item.GetComponent<ItemStatus>().name + " again. WTF!");
 		//TODO: show sentence that customer is annoyed
 
