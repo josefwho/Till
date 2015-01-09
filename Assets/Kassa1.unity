@@ -356,10 +356,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1743963094}
   m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .709243238}
-  m_AnchorMax: {x: .5, y: .709243238}
-  m_AnchoredPosition: {x: 3.81469454e-06, y: 21.0167694}
-  m_SizeDelta: {x: 254, y: 30}
+  m_AnchorMin: {x: 0, y: .5}
+  m_AnchorMax: {x: 1, y: .5}
+  m_AnchoredPosition: {x: 0, y: 60.0167694}
+  m_SizeDelta: {x: -50, y: 30}
   m_Pivot: {x: .5, y: .499999821}
 --- !u!114 &40909784
 MonoBehaviour:
@@ -1108,10 +1108,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1743963094}
   m_RootOrder: 2
-  m_AnchorMin: {x: .5, y: .476351321}
-  m_AnchorMax: {x: .5, y: .476351321}
-  m_AnchoredPosition: {x: 0, y: -25.0013638}
-  m_SizeDelta: {x: 295.200012, y: 30}
+  m_AnchorMin: {x: 0, y: .5}
+  m_AnchorMax: {x: 1, y: .5}
+  m_AnchoredPosition: {x: 0, y: -29.0013638}
+  m_SizeDelta: {x: -8.79998779, y: 30}
   m_Pivot: {x: .5, y: .499999821}
 --- !u!114 &383901318
 MonoBehaviour:
@@ -1349,10 +1349,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1743963094}
   m_RootOrder: 1
-  m_AnchorMin: {x: .5, y: .594378293}
-  m_AnchorMax: {x: .5, y: .594378293}
-  m_AnchoredPosition: {x: 0, y: 8.38162231}
-  m_SizeDelta: {x: 295.200012, y: 30}
+  m_AnchorMin: {x: 0, y: .5}
+  m_AnchorMax: {x: 1, y: .5}
+  m_AnchoredPosition: {x: 0, y: 26.3816223}
+  m_SizeDelta: {x: -8.79998779, y: 30}
   m_Pivot: {x: .5, y: .499999821}
 --- !u!1 &802371389
 GameObject:
@@ -2094,6 +2094,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 310b1d9e57d83496683e6f944e4dc37d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minimumWage: 1159.07996
+  itemsNeededForMinimumWage: 5
+  itemWorth: 2
 --- !u!1 &1150858570
 GameObject:
   m_ObjectHideFlags: 0
@@ -2560,12 +2563,10 @@ MonoBehaviour:
   shiftDone: 0
   currentState: 0
   countScannedObjects: 0
-  countScanned: {fileID: 1495632933}
-  countBasket: {fileID: 802371391}
-  countFloor: {fileID: 1804136336}
+  countSoldRegular: 0
+  countSoldOvertime: 0
   spawnRadius: 1
   score: 0
-  scoreText: {fileID: 2132657504}
   timeTaken: 0
   shiftDuration: 10
   timeTakenText: {fileID: 1858935891}
@@ -3680,10 +3681,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1743963094}
   m_RootOrder: 3
-  m_AnchorMin: {x: .5, y: .35800001}
-  m_AnchorMax: {x: .5, y: .35800001}
-  m_AnchoredPosition: {x: 0, y: -37.5200043}
-  m_SizeDelta: {x: 295.200012, y: 30}
+  m_AnchorMin: {x: 0, y: .5}
+  m_AnchorMax: {x: 1, y: .5}
+  m_AnchoredPosition: {x: 0, y: -63.5200043}
+  m_SizeDelta: {x: -8.79998779, y: 30}
   m_Pivot: {x: .5, y: .499999821}
 --- !u!114 &1871574880
 MonoBehaviour:
