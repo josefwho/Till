@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnDelay: 0
+  text: {fileID: 0}
 --- !u!114 &11492190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -355,7 +356,7 @@ RectTransform:
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 1, y: .400000006}
-  m_SizeDelta: {x: 162.199997, y: 30.7000008}
+  m_SizeDelta: {x: 162.199997, y: 60}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22492198
 RectTransform:
