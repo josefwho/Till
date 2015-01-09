@@ -11,6 +11,7 @@ public class Customer : MonoBehaviour {
 	private TillStateMachine till;
 
 	public Text text;
+	private GameObject buttonObject;
 	private float waitingTime;
 	
 //	public GameObject image;
@@ -24,7 +25,8 @@ public class Customer : MonoBehaviour {
 		waitingTime = 0.0f;
 
 		text = transform.GetComponentInChildren<Text> ();
-		text.transform.parent.gameObject.SetActive (false);
+		buttonObject = text.transform.parent.gameObject;
+		buttonObject.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -48,7 +50,7 @@ public class Customer : MonoBehaviour {
 	//TODO: find best place to call this callback. maybe from TilLStateMachine or from floorTrigger<ItemTrigger>
 	public void onItemOnFloor(GameObject item)
 	{
-		text.gameObject.transform.parent.gameObject.SetActive (true);
+		buttonObject.SetActive (true);
 		text.text = "hey, you dropped my " + item.GetComponent<ItemStatus> ().name + " on the floor";
 //		Debug.Log ("hey, you dropped my " + item.GetComponent<ItemStatus>().name + " on the floor");
 
@@ -57,7 +59,7 @@ public class Customer : MonoBehaviour {
 
 	public void onMultipleScanned(GameObject item)
 	{
-		text.gameObject.transform.parent.gameObject.SetActive (true);
+		buttonObject.SetActive (true);
 		text.text = "hey, you scanned my " + item.GetComponent<ItemStatus> ().name + " again, you fool!";
 //		Debug.Log ("hey, you scanned my " + item.GetComponent<ItemStatus>().name + " again. WTF!");
 
@@ -67,7 +69,7 @@ public class Customer : MonoBehaviour {
 
 	public void onNotMyItem(GameObject item)
 	{
-		text.gameObject.transform.parent.gameObject.SetActive (true);
+		buttonObject.SetActive (true);
 		text.text = "hey, this is not my " + item.GetComponent<ItemStatus> ().name;
 //		Debug.Log ("hey, this is not my " + item.GetComponent<ItemStatus>().name);
 
@@ -100,27 +102,74 @@ public class Customer : MonoBehaviour {
 	{
 		yield return new WaitForSeconds (2.0f);
 
-		//TODO: in an own Coroutine
-//		Color colorText = text.color;
-//		Color colorButton = text.transform.parent.gameObject.GetComponent<Image> ().color;
-//		
-//		float startTime = 0.0f;
-//		float fadeTime = 0.5f;
-//		while (startTime < fadeTime) 
-//		{
-//			startTime = startTime + Time.deltaTime;
-//			float newAlpha = Mathf.Lerp(1, 0, startTime/fadeTime);
-//			colorText.a = newAlpha;
-//			colorButton.a = newAlpha;
-//
-//			
-//			text.renderer.material.color = colorText;
-//			text.transform.parent.gameObject.renderer.material.color = colorButton;
-//
-//			yield return null;
-//		}
+		//fade it out
+		Image imageButton = buttonObject.GetComponent<Image> ();
+		
+		Color colorText = text.color;
+		Color colorButton = imageButton.color;
+		
+		float timePassed = 0.0f;
+		float fadeTime = 0.5f;
+		
+		while (timePassed < fadeTime) 
+		{
+			//calculate time taken
+			timePassed += Time.deltaTime;
 
-		text.gameObject.transform.parent.gameObject.SetActive (false);
+			//calulate new alpha value according to how much time passed
+			float newAlpha = Mathf.Lerp(1, 0, timePassed/fadeTime);
+			colorText.a = newAlpha;
+			colorButton.a = newAlpha;
+
+			//set the new alpha via color
+			text.color = colorText;
+			imageButton.color = colorButton;
+
+			//wait for next frame
+			yield return null;
+		}
+
+		//make sure it's invisible
+		buttonObject.gameObject.SetActive (false);
+		
+		//reset alpha so it's visible when shown next time
+		colorText.a = 1;
+		colorButton.a = 1;
+		text.color = colorText;
+		imageButton.color = colorButton;
+	}
+
+	IEnumerator fadeOutBubble()
+	{	
+		Image imageButton = buttonObject.GetComponent<Image> ();
+
+		Color colorText = text.color;
+		Color colorButton = imageButton.color;
+
+		float startTime = 0.0f;
+		float fadeTime = 0.5f;
+
+		while (startTime < fadeTime) 
+		{
+			startTime += Time.deltaTime;
+
+			float newAlpha = Mathf.Lerp(1, 0, startTime/fadeTime);
+			colorText.a = newAlpha;
+			colorButton.a = newAlpha;
+
+			text.color = colorText;
+			imageButton.color = colorButton;
+
+			yield return null;
+		}
+
+		buttonObject.gameObject.SetActive (false);
+
+		//reset alpha so it's visible when shown next time
+		colorText.a = 1;
+		colorButton.a = 1;
+		text.color = colorText;
+		imageButton.color = colorButton;
 	}
 
 	IEnumerator leaving()
