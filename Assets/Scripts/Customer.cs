@@ -11,8 +11,8 @@ public class Customer : MonoBehaviour {
 	private TillStateMachine till;
 
 	public Text text;
-
 	private float waitingTime;
+	
 //	public GameObject image;
 
 	// Use this for initialization
@@ -51,6 +51,7 @@ public class Customer : MonoBehaviour {
 		text.gameObject.transform.parent.gameObject.SetActive (true);
 		text.text = "hey, you dropped my " + item.GetComponent<ItemStatus> ().name + " on the floor";
 		Debug.Log ("hey, you dropped my " + item.GetComponent<ItemStatus>().name + " on the floor");
+		StartCoroutine (timePassedSinceBubble ());
 		//TODO: show correct sentence on top of our head
 	}
 
@@ -59,6 +60,7 @@ public class Customer : MonoBehaviour {
 		text.gameObject.transform.parent.gameObject.SetActive (true);
 		text.text = "hey, you scanned my " + item.GetComponent<ItemStatus> ().name + " again, you fool!";
 		Debug.Log ("hey, you scanned my " + item.GetComponent<ItemStatus>().name + " again. WTF!");
+		StartCoroutine (timePassedSinceBubble ());
 		//TODO: show sentence that customer is annoyed
 
 	}
@@ -68,6 +70,7 @@ public class Customer : MonoBehaviour {
 		text.gameObject.transform.parent.gameObject.SetActive (true);
 		text.text = "hey, this is not my " + item.GetComponent<ItemStatus> ().name;
 		Debug.Log ("hey, this is not my " + item.GetComponent<ItemStatus>().name);
+		StartCoroutine (timePassedSinceBubble ());
 
 		//TODO: show sentence "hey, i don't want to buy this piece of shit"
 	}
@@ -92,7 +95,34 @@ public class Customer : MonoBehaviour {
 		StartCoroutine (leaving ());
 	}
 	
-	
+
+	IEnumerator timePassedSinceBubble()
+	{
+		yield return new WaitForSeconds (2.0f);
+
+		//TODO: in an own Coroutine
+//		Color colorText = text.color;
+//		Color colorButton = text.transform.parent.gameObject.GetComponent<Image> ().color;
+//		
+//		float startTime = 0.0f;
+//		float fadeTime = 0.5f;
+//		while (startTime < fadeTime) 
+//		{
+//			startTime = startTime + Time.deltaTime;
+//			float newAlpha = Mathf.Lerp(1, 0, startTime/fadeTime);
+//			colorText.a = newAlpha;
+//			colorButton.a = newAlpha;
+//
+//			
+//			text.renderer.material.color = colorText;
+//			text.transform.parent.gameObject.renderer.material.color = colorButton;
+//
+//			yield return null;
+//		}
+
+		text.gameObject.transform.parent.gameObject.SetActive (false);
+	}
+
 	IEnumerator leaving()
 	{
 		while (transform.position.x < 11.0f) 
