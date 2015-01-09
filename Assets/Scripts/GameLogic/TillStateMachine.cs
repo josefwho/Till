@@ -56,8 +56,8 @@ public class TillStateMachine : MonoBehaviour
 	private ItemTrigger basketTrigger;
 	private ItemTrigger newCustomerTrigger;
 
-	private Customer currentCustomer;
-	private Customer nextCustomer;
+	public Customer currentCustomer;
+	public Customer nextCustomer;
 	private ArrayList customers;
 	public bool isSpawningItems;
 
@@ -259,6 +259,7 @@ public class TillStateMachine : MonoBehaviour
 			pos.x = Mathf.Max(pos.x, -8.5f);
 			
 			GameObject item = Instantiate(prefab, pos, Quaternion.identity ) as GameObject;
+			item.GetComponent<ItemStatus>().customer = customer;
 			item.SetActive(false);
 
 			//let the customer know what he/she is buying

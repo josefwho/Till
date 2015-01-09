@@ -44,7 +44,18 @@ public class Customer : MonoBehaviour {
 	{
 		//TODO: show correct sentence on top of our head
 	}
-	
+
+	public void onMultipleScanned()
+	{
+		//TODO: show sentence that customer is annoyed
+
+	}
+
+	public void onNotMyItem()
+	{
+		//TODO: show sentence "hey, i don't want to buy this piece of shit"
+	}
+
 	IEnumerator showingItems()
 	{
 		

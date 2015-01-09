@@ -29,7 +29,14 @@ public class ScanDetection : MonoBehaviour {
 
 			if(currentScanDuration > scanDuration/2)
 			{
-				transform.parent.parent.gameObject.GetComponent<ItemStatus>().scanned++;
+				ItemStatus status = transform.parent.parent.gameObject.GetComponent<ItemStatus>();
+				status.scanned++;
+
+				if(status.scanned > 1)
+					status.customer.onMultipleScanned();
+				if(machine.currentCustomer != status.customer)
+					status.customer.onNotMyItem();
+
 				GameObject.FindGameObjectWithTag("Pin").GetComponent<Pin>().unpinItem();
 
 				playScanSound(other);
