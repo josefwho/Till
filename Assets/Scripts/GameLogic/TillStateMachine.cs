@@ -201,8 +201,15 @@ public class TillStateMachine : MonoBehaviour
 	{
 		float startTime = 7;	// 07:00 
 		float endTime = 18; // 18:00
-		
-		float time = startTime + (endTime - startTime) * timeTaken/shiftDuration;
+
+		float time;
+		//time goes fast till end of shift
+		if (timeTaken < shiftDuration) 
+			time = startTime + (endTime - startTime) * timeTaken / shiftDuration;
+		//only the last customers will run in realtime
+		else
+			time = endTime + (timeTaken - shiftDuration) / 3600;
+
 		int hours = Mathf.FloorToInt(time);
 		int minutes = (int)((time-hours)*60) ;
 
