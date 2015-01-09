@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Customer : MonoBehaviour {
@@ -8,6 +9,8 @@ public class Customer : MonoBehaviour {
 	public float spawnDelay;
 
 	private TillStateMachine till;
+
+	public Text text;
 
 	private float waitingTime;
 //	public GameObject image;
@@ -19,6 +22,9 @@ public class Customer : MonoBehaviour {
 		till = GameObject.FindGameObjectWithTag ("GameController").GetComponent<TillStateMachine> ();
 
 		waitingTime = 0.0f;
+
+		text = transform.GetComponentInChildren<Text> ();
+		text.transform.parent.gameObject.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -42,12 +48,15 @@ public class Customer : MonoBehaviour {
 	//TODO: find best place to call this callback. maybe from TilLStateMachine or from floorTrigger<ItemTrigger>
 	public void onItemOnFloor(GameObject item)
 	{
+		text.gameObject.transform.parent.gameObject.SetActive (true);
+		text.text = "hey, you dropped my " + item.GetComponent<ItemStatus> ().name + " on the floor";
 		Debug.Log ("hey, you dropped my " + item.GetComponent<ItemStatus>().name + " on the floor");
 		//TODO: show correct sentence on top of our head
 	}
 
 	public void onMultipleScanned(GameObject item)
 	{
+
 		Debug.Log ("hey, you scanned my " + item.GetComponent<ItemStatus>().name + " again. WTF!");
 		//TODO: show sentence that customer is annoyed
 
