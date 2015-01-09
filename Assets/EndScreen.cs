@@ -11,16 +11,11 @@ public class EndScreen : MonoBehaviour {
 	void Start () {
 		bool bla = false;
 
-		till = gameObject.FindGameObjectWithTag ("GameController").GetComponent<TillStateMachine> ();
+		till = GameObject.FindGameObjectWithTag ("GameController").GetComponent<TillStateMachine> ();
 		soldItemsRegular = transform.Find("soldItemsRegular").GetComponent<Text> ();
 
-		string defaultText = soldItemsRegular.text;
-		addScoreToText (out defaultText, till.countScannedObjects);
-	}
-
-	void addScoreToText(out string text, int score )
-	{
-//		text.find
+		string replaceWith = string.Format(soldItemsRegular.text, till.countScannedObjects);
+		soldItemsRegular.text = replaceWith;
 	}
 
 	// Update is called once per frame
