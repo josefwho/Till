@@ -95,7 +95,7 @@ public class DragRigidBody : MonoBehaviour
 		{
 			Ray ray = mainCamera.ScreenPointToRay (Input.mousePosition);
 			springJoint.transform.position = ray.GetPoint(distance);
-			print("dragging " +springJoint.connectedBody.name + " to new pos: " + springJoint.transform.position);
+//			print("dragging " +springJoint.connectedBody.name + " to new pos: " + springJoint.transform.position);
 			yield return null;
 		}
 		detach ();

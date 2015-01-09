@@ -33,9 +33,9 @@ public class ScanDetection : MonoBehaviour {
 				status.scanned++;
 
 				if(status.scanned > 1)
-					status.customer.onMultipleScanned();
+					status.customer.onMultipleScanned(transform.parent.parent.gameObject);
 				if(machine.currentCustomer != status.customer)
-					status.customer.onNotMyItem();
+					status.customer.onNotMyItem(transform.parent.parent.gameObject);
 
 				GameObject.FindGameObjectWithTag("Pin").GetComponent<Pin>().unpinItem();
 

@@ -19,7 +19,7 @@ public class FloorTrigger : ItemTrigger {
 
 		if (other.gameObject.tag == "ShoppingItem")
 		{
-			other.gameObject.GetComponent<ItemStatus>().customer.onItemOnFloor();
+			other.gameObject.GetComponent<ItemStatus>().customer.onItemOnFloor(other.gameObject);
 		}
 	}
 }
