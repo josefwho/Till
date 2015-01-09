@@ -43,7 +43,6 @@ public class ScanDetection : MonoBehaviour {
 				OnTriggerExit(other);
 
 				machine.countScannedObjects++;
-				machine.setCountText ();
 			}
 			//else
 			//changeColor(other, Color.grey);

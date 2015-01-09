@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -42,7 +43,7 @@ public class TillStateMachine : MonoBehaviour
 	public GUIText scoreText;
 	public float timeTaken;
 	public float shiftDuration = 120.0f;		//in seconds
-	public GUIText timeTakenText;
+	public Text timeTakenText;
 
 	public float betweenItemOffset = -0.1f;
 
@@ -104,7 +105,18 @@ public class TillStateMachine : MonoBehaviour
 
 	void Update ()
 	{
-		setCountText ();
+		if (currentState != States.ShiftDone) 
+		{
+			float timeScale = 1.0f;
+			if(timeTaken > shiftDuration)
+				timeScale = 0.3f;
+
+			timeTaken += Time.deltaTime * timeScale;
+
+			updateClock ();
+		}
+
+//		setCountText ();
 
 		if (currentState == States.InProgress) 
 		{
@@ -187,19 +199,17 @@ public class TillStateMachine : MonoBehaviour
 		scoreText.text = "Total Score: " + score.ToString();
 
 		//mindestlohn 1.159,08 Netto
+	}
 
-		if (currentState != States.ShiftDone) 
-		{
-			timeTaken += Time.deltaTime;
-
-			float startTime = 7;	// 07:00 
-			float endTime = 18; // 18:00
-
-			float time = startTime + (endTime - startTime) * timeTaken/shiftDuration;
-			int hours = Mathf.FloorToInt(time);
-			int minutes = (int)((time-hours)*60) ;
-			timeTakenText.text = "Time: " + hours.ToString() + ":" + minutes.ToString();
-		}
+	public void updateClock()
+	{
+		float startTime = 7;	// 07:00 
+		float endTime = 18; // 18:00
+		
+		float time = startTime + (endTime - startTime) * timeTaken/shiftDuration;
+		int hours = Mathf.FloorToInt(time);
+		int minutes = (int)((time-hours)*60) ;
+		timeTakenText.text = hours.ToString() + ":" + minutes.ToString();
 	}
 
 	public void onBeltMoved(float offset)
