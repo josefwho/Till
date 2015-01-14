@@ -11,9 +11,9 @@ GameObject:
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 95: {fileID: 9500000}
-  - 114: {fileID: 11400006}
   - 54: {fileID: 5400000}
   - 65: {fileID: 6500002}
+  - 114: {fileID: 11400006}
   m_Layer: 0
   m_Name: dummy
   m_TagString: ShoppingItem
@@ -96,12 +96,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.1872859, y: .5, z: 2.432827}
+  m_LocalPosition: {x: -2.34398556, y: .793522, z: 1.90340042}
   m_LocalScale: {x: .587043941, y: .587043941, z: .587043941}
   m_Children:
   - {fileID: 400002}
-  - {fileID: 400008}
   - {fileID: 400004}
+  - {fileID: 400008}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &400002
@@ -127,7 +127,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!4 &400006
 Transform:
   m_ObjectHideFlags: 1
@@ -147,12 +147,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: .0199999996, y: .200000003, z: .560000002}
-  m_LocalScale: {x: .390045732, y: .257546306, z: .00658724131}
+  m_LocalPosition: {x: .0199992619, y: .200000346, z: .560000062}
+  m_LocalScale: {x: .390045762, y: .257546306, z: .00658724131}
   m_Children:
   - {fileID: 400006}
   m_Father: {fileID: 400000}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!23 &2300000
 Renderer:
   m_ObjectHideFlags: 1
@@ -165,7 +165,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: fad9e8cdad27b49eaa7566fb17f07bd8, type: 2}
+  - {fileID: 2100000, guid: 492f5750f4bd847eb9c8efcbd9c1ee5d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -219,7 +219,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mesh: {fileID: 4300000, guid: 9e35411076db343c49959441ce134523, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 4cf1554fd42214beab02b6b8a6cf48c7, type: 3}
 --- !u!33 &3300002
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -281,7 +281,7 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 9e35411076db343c49959441ce134523, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 4cf1554fd42214beab02b6b8a6cf48c7, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -344,6 +344,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scanned: 0
   inTrigger: {fileID: 0}
+  customer: {fileID: 0}
+  name: 
+  scannedInOvertime: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
