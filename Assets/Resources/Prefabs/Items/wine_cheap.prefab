@@ -79,9 +79,12 @@ GameObject:
   - 33: {fileID: 3390758}
   - 23: {fileID: 2390758}
   - 95: {fileID: 9590754}
+  - 114: {fileID: 11495322}
+  - 54: {fileID: 5417262}
+  - 65: {fileID: 6582478}
   m_Layer: 0
   m_Name: wine_cheap
-  m_TagString: Untagged
+  m_TagString: ShoppingItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -231,6 +234,33 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190762}
   m_Mesh: {fileID: 4300000, guid: dce45db950eaf43b8adf15d2212fa386, type: 3}
+--- !u!54 &5417262
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190762}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &6582478
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190762}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .400000006, y: .900000036, z: .600000024}
+  m_Center: {x: .000943392515, y: .0410377681, z: -.00283019245}
 --- !u!65 &6590754
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -301,6 +331,22 @@ MonoBehaviour:
   angularDrag: 3
   distance: 0
   attachToCenterOfMass: 0
+--- !u!114 &11495322
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ace476988d5f41a48f4782faef0e9d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scanned: 0
+  inTrigger: {fileID: 0}
+  customer: {fileID: 0}
+  name: 
+  scannedInOvertime: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
