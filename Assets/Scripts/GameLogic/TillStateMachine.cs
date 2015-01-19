@@ -69,6 +69,9 @@ public class TillStateMachine : MonoBehaviour
 
 	public delegate void OnItemDestroy(GameObject toBeDestroyed);
 	public static event OnItemDestroy itemDestroy ;
+
+	public float startTime = 15;	// 07:00 
+	public float endTime = 20;
 	
 	void Start()
 	{
@@ -225,8 +228,6 @@ public class TillStateMachine : MonoBehaviour
 
 	public void updateClock()
 	{
-		float startTime = 7;	// 07:00 
-		float endTime = 18; // 18:00
 
 		float time;
 		//time goes fast till end of shift
