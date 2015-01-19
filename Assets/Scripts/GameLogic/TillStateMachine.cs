@@ -79,7 +79,7 @@ public class TillStateMachine : MonoBehaviour
 
 		floorTrigger = GameObject.Find ("Floor/OnFloorTrigger").GetComponent<ItemTrigger>();
 		scannerTrigger = GameObject.Find ("Scanner/Scanner Trigger").GetComponent<ItemTrigger>();
-		basketTrigger = GameObject.Find ("basket/InBasketTrigger").GetComponent<ItemTrigger>();
+		basketTrigger = GameObject.Find ("shopping_cart/InBasketTrigger").GetComponent<ItemTrigger>();
 		newCustomerTrigger = GameObject.Find ("NewCustomerTrigger").GetComponent<ItemTrigger>();
 		
 		countScannedObjects = 0;
