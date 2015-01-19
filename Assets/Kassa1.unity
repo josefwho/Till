@@ -1091,7 +1091,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &357087745
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1118,7 +1118,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1650727865}
   m_GameObject: {fileID: 357087744}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -1638,7 +1638,7 @@ GameObject:
   - 222: {fileID: 790696553}
   - 114: {fileID: 790696552}
   m_Layer: 5
-  m_Name: stamp
+  m_Name: stamp above
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1670,7 +1670,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 2088740852}
   m_GameObject: {fileID: 790696550}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -1874,7 +1874,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "124,45\u20AC"
+  m_Text: 
 --- !u!222 &845575786
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2461,7 +2461,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1117756766}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -2505,8 +2505,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minimumWage: 579.539978
-  itemsNeededForMinimumWage: 5
-  itemWorth: 2
+  itemsNeededForMinimumWage: 30
+  itemWorth: 15
+  fireAtItemDiff: 10
 --- !u!1 &1150858570
 GameObject:
   m_ObjectHideFlags: 0
@@ -2978,7 +2979,7 @@ MonoBehaviour:
   spawnRadius: 1
   score: 0
   timeTaken: 0
-  shiftDuration: 10
+  shiftDuration: 120
   timeTakenText: {fileID: 1858935891}
   betweenItemOffset: -.150000006
   draggedItemCount: 0
@@ -3451,7 +3452,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 186706, guid: 41805e6122c464fa7b1c4ab46dc6ef13, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11486706, guid: 41805e6122c464fa7b1c4ab46dc6ef13, type: 2}
+      propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11486708, guid: 41805e6122c464fa7b1c4ab46dc6ef13, type: 2}
+      propertyPath: m_Text
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 41805e6122c464fa7b1c4ab46dc6ef13, type: 2}
@@ -4021,7 +4030,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "124,45\u20AC"
+  m_Text: 
 --- !u!222 &1843029434
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4687,6 +4696,22 @@ Prefab:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 186706, guid: 41805e6122c464fa7b1c4ab46dc6ef13, type: 2}
+      propertyPath: m_Name
+      value: stamp above
+      objectReference: {fileID: 0}
+    - target: {fileID: 186706, guid: 41805e6122c464fa7b1c4ab46dc6ef13, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11486706, guid: 41805e6122c464fa7b1c4ab46dc6ef13, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11486708, guid: 41805e6122c464fa7b1c4ab46dc6ef13, type: 2}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 41805e6122c464fa7b1c4ab46dc6ef13, type: 2}
   m_RootGameObject: {fileID: 790696550}
@@ -4846,14 +4871,14 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2122845541
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2122845540}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 

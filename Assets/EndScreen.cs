@@ -10,6 +10,7 @@ public class EndScreen : MonoBehaviour {
 	public float minimumWage = 1159.08f; //monthly wage in euros
 	public int itemsNeededForMinimumWage = 5;
 	public float itemWorth = 2;	//in euros/ will be deducted/added to minimumwage per item that is different from itemsNeeded
+	public int fireAtItemDiff = 10;
 
 	// Use this for initialization
 	void Start () {
@@ -25,12 +26,29 @@ public class EndScreen : MonoBehaviour {
 		float wage = minimumWage;
 		float itemDiff = till.countSoldRegular - itemsNeededForMinimumWage;
 		wage += itemWorth * itemDiff;
-
+		
 		text = transform.Find("Background/wageDaily").GetComponent<Text> ();
 		text.text = string.Format(text.text, wage/21.5f);
-
+		
 		text = transform.Find("Background/wageMonthly").GetComponent<Text> ();
 		text.text = string.Format(text.text, wage);
+
+		//find out which stamp to show
+		GameObject stamp;
+		if (itemDiff < 0) 
+		{
+			stamp = transform.Find ("stamp below").gameObject;
+			//show fired stamp
+			if(itemDiff < -1 * fireAtItemDiff)
+				transform.Find("stamp fired").GetComponent<Image> ().enabled = true;
+
+		}
+		else
+			stamp = transform.Find("stamp above").gameObject;
+
+		Text stampText = stamp.transform.Find ("Text").GetComponent<Text> ();
+		stamp.GetComponent<Image> ().enabled = true;
+		stampText.text = (Mathf.Abs(itemWorth * itemDiff)).ToString() + " €";
 
 	}
 
