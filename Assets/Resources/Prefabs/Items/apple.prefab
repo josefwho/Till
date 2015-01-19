@@ -67,7 +67,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100008
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,8 +133,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .100000001, y: -.100000001, z: -778}
-  m_LocalScale: {x: .320966005, y: .663274705, z: 1779.83557}
+  m_LocalPosition: {x: .100000001, y: -.100000001, z: -3856}
+  m_LocalScale: {x: .320966005, y: .663274705, z: 8000}
   m_Children: []
   m_Father: {fileID: 400002}
   m_RootOrder: 0
@@ -145,7 +145,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3046, y: .992470026, z: 1.07079995}
+  m_LocalPosition: {x: -.494655132, y: .685205579, z: 2.28742504}
   m_LocalScale: {x: .385477901, y: .38547802, z: .38547802}
   m_Children:
   - {fileID: 400004}
@@ -301,6 +301,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scanned: 0
   inTrigger: {fileID: 0}
+  customer: {fileID: 0}
+  name: 
+  scannedInOvertime: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
