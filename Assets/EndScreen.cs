@@ -26,12 +26,22 @@ public class EndScreen : MonoBehaviour {
 		float wage = minimumWage;
 		float itemDiff = till.countSoldRegular - itemsNeededForMinimumWage;
 		wage += itemWorth * itemDiff;
+
+		text = transform.Find("Background/wageMonthlyNumber").GetComponent<Text> ();
+		text.text = string.Format(text.text, wage.ToString("N2"));
+
+		text = transform.Find("Background/multipleScans").GetComponent<Text> ();
+		text.text = string.Format(text.text, till.countMultipleScannedItems);
+		
+		text = transform.Find("Background/multipleScansNumber").GetComponent<Text> ();
+		text.text = string.Format(text.text, till.countMultipleScannedItems * itemWorth);
+		
+		text = transform.Find("Background/wageMonthlyFinalNumber").GetComponent<Text> ();
+		text.text = string.Format(text.text, (wage - till.countMultipleScannedItems * itemWorth).ToString("N2"));
 		
 		text = transform.Find("Background/wageDaily").GetComponent<Text> ();
-		text.text = string.Format(text.text, wage/21.5f);
-		
-		text = transform.Find("Background/wageMonthly").GetComponent<Text> ();
-		text.text = string.Format(text.text, wage);
+		text.text = string.Format(text.text, (wage/21.5f).ToString("N2"));
+
 
 		//find out which stamp to show
 		GameObject stamp;
