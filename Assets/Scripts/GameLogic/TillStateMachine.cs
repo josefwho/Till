@@ -35,6 +35,7 @@ public class TillStateMachine : MonoBehaviour
 	public int countScannedObjects;
 	public int countSoldRegular;
 	public int countSoldOvertime;
+	public int countMultipleScannedItems;
 //	public GUIText countScanned;
 //	public GUIText countBasket;
 //	public GUIText countFloor;
@@ -178,10 +179,15 @@ public class TillStateMachine : MonoBehaviour
 			{
 				foreach(GameObject i in currentCustomer.shoppingItems)
 				{
-					if(i.GetComponent<ItemStatus>().scannedInOvertime)
+					ItemStatus s = i.GetComponent<ItemStatus>();
+					if(s.scannedInOvertime)
 						countSoldOvertime++;
 					else
 						countSoldRegular++;
+
+					//count how often the player scanned an item multiple times
+					if(s.scanned > 1)
+						countMultipleScannedItems += s.scanned - 1; 		// deduct 1, because we just want to count the multiple scans. the first scan is legitim
 				}
 			}
 
