@@ -58,7 +58,7 @@ public class ScanDetection : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Scanner") 
 		{
-			changeColor (other.gameObject, Color.green);
+			changeIntensity(other.gameObject, 8.0f, 6.0f);
 			currentScanDuration = 0.0f;
 		}
 	}
@@ -67,7 +67,7 @@ public class ScanDetection : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Scanner") 
 		{
-			changeColor (other.gameObject, Color.grey);
+			changeIntensity(other.gameObject, 0.0f, 4.0f);
 		}
 	}
 
@@ -76,14 +76,14 @@ public class ScanDetection : MonoBehaviour {
 		other.GetComponent<AudioSource>().Play();
 		
 	}
-	
-	void changeColor(GameObject other, Color col)
+
+
+	void changeIntensity(GameObject scanner, float intensity, float range)
 	{
-		other.renderer.material.shader = Shader.Find("Diffuse");
-		other.renderer.material.SetColor("_Color", col);
-		
-		//other.renderer.material.shader = Shader.Find("Specular");
-		//other.renderer.material.SetColor("_SpecColor", Color.red);
+		GameObject scannerLight = scanner.transform.root.FindChild ("scanner_field_voxel/scanner_light").gameObject;
+		Light debugLight = scannerLight.light;
+		debugLight.intensity = intensity;
+		debugLight.range = range;
 	}
 
 }
