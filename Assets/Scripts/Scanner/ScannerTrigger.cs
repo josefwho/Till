@@ -32,14 +32,28 @@ public class ScannerTrigger : ItemTrigger
 
 		if (!pin.GetComponent<Pin>().pinning && currentItem == null && other.gameObject.tag == "ShoppingItem") 
 		{
-			currentItem = other.gameObject;
-
-			currentItem.transform.Find ("Dragger").gameObject.SetActive (false);
-			currentItem.rigidbody.isKinematic = true;
-			lerpStartTime = Time.time;
-			lerpStartPosition = currentItem.transform.position;
-			StartCoroutine ("moveToPin");
+			startPinning(other.gameObject);
 		}
+	}
+	
+//	public void OnTriggerStay (Collider other) 
+//	{
+//		if (!pin.GetComponent<Pin>().pinning && currentItem == null && other.gameObject.tag == "ShoppingItem" && other.gameObject.GetComponent<ItemStatus>().scanned == 0) 
+//		{
+//			startPinning(other.gameObject);
+//		}
+//	}
+
+
+	public void startPinning(GameObject toPin)
+	{
+		currentItem = toPin;
+		
+		currentItem.transform.Find ("Dragger").gameObject.SetActive (false);
+		currentItem.rigidbody.isKinematic = true;
+		lerpStartTime = Time.time;
+		lerpStartPosition = currentItem.transform.position;
+		StartCoroutine ("moveToPin");
 	}
 	
 

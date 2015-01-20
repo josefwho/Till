@@ -9,6 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 403966}
   - 114: {fileID: 11405494}
+  - 65: {fileID: 6571644}
+  - 54: {fileID: 5438902}
   m_Layer: 0
   m_Name: family
   m_TagString: Untagged
@@ -140,6 +142,33 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103968}
   m_Mesh: {fileID: 4300000, guid: 04502d92538964edca5d67f26095b7f6, type: 3}
+--- !u!54 &5438902
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103966}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &6571644
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103966}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.47498417, y: 2.76092815, z: 1.20420396}
+  m_Center: {x: -.106373787, y: .880528212, z: -.102048844}
 --- !u!95 &9503968
 Animator:
   serializedVersion: 3
