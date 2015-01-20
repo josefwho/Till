@@ -68,4 +68,20 @@ public class ItemTrigger : MonoBehaviour {
 
 		return objectsInside.Count;
 	}
+
+	public bool isObjectInside(GameObject item)
+	{
+		if (empty)
+			return false;
+
+		foreach (GameObject o in objectsInside) 
+		{
+			if(o.GetInstanceID() == item.GetInstanceID())
+				return true;
+			if(o.GetInstanceID() == item.transform.root.GetInstanceID())
+				return true;
+		}
+
+		return false;
+	}
 }

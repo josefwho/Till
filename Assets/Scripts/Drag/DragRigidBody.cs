@@ -17,11 +17,14 @@ public class DragRigidBody : MonoBehaviour
 
 	private TillStateMachine machine;
 
+	private ScannerTrigger trigger;
+
 
 	// Use this for initialization
 	void Awake () 
 	{
 		machine = GameObject.FindGameObjectWithTag ("GameController").GetComponent<TillStateMachine> ();
+		trigger = GameObject.Find ("Scanner/Scanner Trigger").GetComponent<ScannerTrigger> ();
 	}
 	
 	// Update is called once per frame
@@ -51,6 +54,13 @@ public class DragRigidBody : MonoBehaviour
 
 		if (!springJoint)
 		{
+			ItemStatus s = transform.parent.gameObject.GetComponent<ItemStatus>();
+			if(s != null && s.inTrigger == trigger.gameObject)
+			{
+				trigger.startPinning(transform.parent.gameObject);
+				return;
+			}
+
 			string name = "Joint Carrier " + gameObject.transform.parent.gameObject.name;
 			GameObject go = new GameObject(name);
 			Rigidbody body  = go.AddComponent ("Rigidbody") as Rigidbody;
