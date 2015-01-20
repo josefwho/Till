@@ -10,7 +10,7 @@ public class EndScreen : MonoBehaviour {
 	public float minimumWage = 1159.08f; //monthly wage in euros
 	public int itemsNeededForMinimumWage = 5;
 	public float itemWorth = 2;	//in euros/ will be deducted/added to minimumwage per item that is different from itemsNeeded
-	public int fireAtItemDiff = 10;
+	public int fireAtDiff = 150;
 
 	// Use this for initialization
 	void Start () {
@@ -32,33 +32,49 @@ public class EndScreen : MonoBehaviour {
 
 		text = transform.Find("Background/multipleScans").GetComponent<Text> ();
 		text.text = string.Format(text.text, till.countMultipleScannedItems);
-		
 		text = transform.Find("Background/multipleScansNumber").GetComponent<Text> ();
 		text.text = string.Format(text.text, till.countMultipleScannedItems * itemWorth);
 		
+		text = transform.Find("Background/notScanned").GetComponent<Text> ();
+		text.text = string.Format(text.text, till.countUnscannedItems);
+		text = transform.Find("Background/notScannedNumber").GetComponent<Text> ();
+		text.text = string.Format(text.text, till.countUnscannedItems * itemWorth);
+
+		wage -= till.countMultipleScannedItems * itemWorth + till.countUnscannedItems * itemWorth;
+
 		text = transform.Find("Background/wageMonthlyFinalNumber").GetComponent<Text> ();
-		text.text = string.Format(text.text, (wage - till.countMultipleScannedItems * itemWorth).ToString("N2"));
+		text.text = string.Format(text.text, wage.ToString("N2"));
 		
-		text = transform.Find("Background/wageDaily").GetComponent<Text> ();
-		text.text = string.Format(text.text, (wage/21.5f).ToString("N2"));
+		text = transform.Find("Background/minimumWageNumber").GetComponent<Text> ();
+		text.text = string.Format(text.text, minimumWage.ToString("N2"));
+
+		float diff = wage - minimumWage;
+
+		text = transform.Find("Background/differenceNumber").GetComponent<Text> ();
+		text.text = string.Format(text.text, diff.ToString("N2"));
+		
+//		text = transform.Find("Background/wageDaily").GetComponent<Text> ();
+//		text.text = string.Format(text.text, (wage/21.5f).ToString("N2"));
 
 
 		//find out which stamp to show
 		GameObject stamp;
-		if (itemDiff < 0) 
-		{
-			stamp = transform.Find ("stamp below").gameObject;
-			//show fired stamp
-			if(itemDiff < -1 * fireAtItemDiff)
-				transform.Find("stamp fired").GetComponent<Image> ().enabled = true;
+		if (diff < 0) {
+						stamp = transform.Find ("stamp below").gameObject;
+						text.color = Color.red;
+						//show fired stamp
+						if (diff < -1 * fireAtDiff)
+								transform.Find ("stamp fired").GetComponent<Image> ().enabled = true;
 
-		}
-		else
-			stamp = transform.Find("stamp above").gameObject;
+				} else {
+						stamp = transform.Find ("stamp above").gameObject;
+						text.color = Color.green;
 
-		Text stampText = stamp.transform.Find ("Text").GetComponent<Text> ();
+				}
+
 		stamp.GetComponent<Image> ().enabled = true;
-		stampText.text = (Mathf.Abs(itemWorth * itemDiff)).ToString() + " €";
+//		Text stampText = stamp.transform.Find ("Text").GetComponent<Text> ();
+//		stampText.text = (Mathf.Abs(itemWorth * itemDiff)).ToString() + " €";
 
 	}
 
