@@ -4710,7 +4710,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1525401680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.35201454, y: 0, z: 1.73000002}
+  m_LocalPosition: {x: -4.82999992, y: 3.03999996, z: 1.73000002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4737,7 +4737,7 @@ MonoBehaviour:
   spawnRadius: 1
   score: 0
   timeTaken: 0
-  shiftDuration: 20
+  shiftDuration: 120
   timeTakenText: {fileID: 1858935891}
   betweenItemOffset: -.150000006
   draggedItemCount: 0

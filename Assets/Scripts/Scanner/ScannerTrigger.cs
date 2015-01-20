@@ -30,7 +30,7 @@ public class ScannerTrigger : ItemTrigger
 	{
 		base.OnTriggerEnter (other);
 
-		if (!pin.GetComponent<Pin>().pinning && currentItem == null && other.gameObject.tag == "ShoppingItem") 
+		if (other.gameObject.tag == "ShoppingItem") 
 		{
 			startPinning(other.gameObject);
 		}
@@ -47,6 +47,9 @@ public class ScannerTrigger : ItemTrigger
 
 	public void startPinning(GameObject toPin)
 	{
+		if (pin.GetComponent<Pin> ().pinning || currentItem != null)
+				return;
+
 		currentItem = toPin;
 		
 		currentItem.transform.Find ("Dragger").gameObject.SetActive (false);
