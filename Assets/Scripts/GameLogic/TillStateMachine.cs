@@ -336,6 +336,11 @@ public class TillStateMachine : MonoBehaviour
 
 		return customer;
 	}
+
+	public void playAgain()
+	{
+		Application.LoadLevel (0);
+	}
 	
 }
 
