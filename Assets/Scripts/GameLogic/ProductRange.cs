@@ -2,11 +2,26 @@
 using System.Collections;
 using System.Collections.Generic;
 
+public class ItemInfo
+{
+	public string name;
+	public string readableName;
+	public string tags;
+
+	public ItemInfo(string newName, string newTags, string newReadableName)
+	{
+		name = newName;
+		readableName = newReadableName;
+		tags = newTags;
+	}
+}
+
+
 public class ProductRange : MonoBehaviour {
 
 	public TextAsset spreadsheet;
 
-	private Dictionary<string, string> allItems = new Dictionary<string, string>();
+	private Dictionary<string, ItemInfo> allItems = new Dictionary<string, ItemInfo>();
 	private Dictionary<string, Dictionary<string, string>> tagsToItems = new Dictionary<string, Dictionary<string, string>>();
 
 //	private Dictionary<string, string> basic = new Dictionary<string, string>();
@@ -28,7 +43,7 @@ public class ProductRange : MonoBehaviour {
 			if(columns[0] == "Namen" || columns[0].Length < 1)
 				continue;
 			
-			allItems.Add (columns [0], columns [2]);
+			allItems.Add (columns [0], new ItemInfo(columns[0], columns[2], columns[3]));
 
 			string[] tags = columns[2].Split (';');
 
@@ -36,7 +51,7 @@ public class ProductRange : MonoBehaviour {
 			{
 				string trimmedT = t.Trim();
 				Dictionary<string, string> itemsWithCurrentTag;
-				//make a new dictionary if we don't have on already
+				//make a new dictionary if we don't have one already
 				if(!tagsToItems.TryGetValue(trimmedT, out itemsWithCurrentTag))
 				{
 					itemsWithCurrentTag = new Dictionary<string, string>();
@@ -96,5 +111,14 @@ public class ProductRange : MonoBehaviour {
 			foreach(var pair in allItems)
 				print (pair.Key + "has tags: " + pair.Value);
 		}
+	}
+
+	public string readeableName(string itemName)
+	{
+		ItemInfo item;
+		if(allItems.TryGetValue(itemName, out item))
+		   return item.readableName;
+		else
+		   return null;
 	}
 }

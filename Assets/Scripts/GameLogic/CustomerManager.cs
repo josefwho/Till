@@ -45,7 +45,6 @@ public class CustomerManager : MonoBehaviour {
 
 	private ProductRange products;
 
-	// Use this for initialization
 	void Awake () {
 		profileNames = new ArrayList ();
 		profiles = new Dictionary<string, CustomerProfile> ();

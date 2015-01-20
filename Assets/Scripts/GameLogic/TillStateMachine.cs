@@ -318,7 +318,7 @@ public class TillStateMachine : MonoBehaviour
 			
 			GameObject item = Instantiate(prefab, pos, Quaternion.identity ) as GameObject;
 			item.GetComponent<ItemStatus>().customer = customer;
-			item.GetComponent<ItemStatus>().name = prefabName;
+			item.GetComponent<ItemStatus>().name = GetComponent<ProductRange>().readeableName(prefabName);
 			item.SetActive(false);
 
 			//let the customer know what he/she is buying
