@@ -83,7 +83,7 @@ GameObject:
   - 54: {fileID: 5400000}
   - 65: {fileID: 6500002}
   m_Layer: 0
-  m_Name: champagne
+  m_Name: champagner
   m_TagString: ShoppingItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
