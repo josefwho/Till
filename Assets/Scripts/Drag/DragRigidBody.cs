@@ -19,6 +19,8 @@ public class DragRigidBody : MonoBehaviour
 
 	private ScannerTrigger trigger;
 
+	private Vector3 dragOffset;
+
 
 	// Use this for initialization
 	void Awake () 
@@ -33,10 +35,6 @@ public class DragRigidBody : MonoBehaviour
 		// Make sure the user pressed the mouse down
 		if (!Input.GetMouseButton(0) || machine.draggedItemCount > 0 || machine.isSpinning || springJoint) //|| (machine.currentState != States.Drag && machine.currentState != States.Idle && machine.currentState != States.Scan)  )
 			return;
-		
-		//	//TODO: make sure only one item can be gradde at the same time
-		//	if(machine.itemDragged)
-		//		return;
 
 
 		var mainCamera = FindCamera();
@@ -52,33 +50,44 @@ public class DragRigidBody : MonoBehaviour
 		if (hit.collider.gameObject != gameObject.transform.parent.gameObject)
 			return;
 
+		startDragging (hit.collider.gameObject, hit.distance, false);
+	}
+
+	public void startDragging(GameObject target, float dis, bool withOffset)
+	{
+		if (withOffset) {
+						Ray ray = FindCamera ().ScreenPointToRay (Input.mousePosition);
+			dragOffset = ray.GetPoint (distance) - target.transform.position;
+				} else
+						dragOffset = Vector3.zero;
+
 		if (!springJoint)
 		{
 			ItemStatus s = transform.parent.gameObject.GetComponent<ItemStatus>();
-			if(s != null && s.inTrigger == trigger.gameObject)
+			if(s != null && s.inTrigger == trigger.gameObject && s.scanned == 0)
 			{
 				trigger.startPinning(transform.parent.gameObject);
 				return;
 			}
-
+			
 			string name = "Joint Carrier " + gameObject.transform.parent.gameObject.name;
 			GameObject go = new GameObject(name);
 			Rigidbody body  = go.AddComponent ("Rigidbody") as Rigidbody;
 			springJoint = go.AddComponent ("SpringJoint") as SpringJoint;
 			body.isKinematic = true;
-
+			
 			print ("DragRigidBody new springJoint: oldDrag is" + oldDrag + " new drag is:" + drag);
-
-			oldDrag = hit.rigidbody.drag;
-			oldAngularDrag = hit.rigidbody.angularDrag;
-
+			
+			oldDrag = target.rigidbody.drag;
+			oldAngularDrag = target.rigidbody.angularDrag;
+			
 			machine.draggedItemCount++;
 		}
 		
-		springJoint.transform.position = hit.point;
+		springJoint.transform.position = target.transform.position + dragOffset;
 		if (attachToCenterOfMass)
 		{
-			Vector3 anchor = transform.TransformDirection(hit.rigidbody.centerOfMass) + hit.rigidbody.transform.position;
+			Vector3 anchor = transform.TransformDirection(target.rigidbody.centerOfMass) + target.rigidbody.transform.position;
 			anchor = springJoint.transform.InverseTransformPoint(anchor);
 			springJoint.anchor = anchor;
 		}
@@ -90,22 +99,22 @@ public class DragRigidBody : MonoBehaviour
 		springJoint.spring = spring;
 		springJoint.damper = damper;
 		springJoint.maxDistance = distance;
-		springJoint.connectedBody = hit.rigidbody;
+		springJoint.connectedBody = target.rigidbody;
 		
 		springJoint.connectedBody.drag = drag;
 		springJoint.connectedBody.angularDrag = angularDrag;
-
-		StartCoroutine ("DragObject", hit.distance);
+		
+		StartCoroutine ("DragObject", dis);
 	}
-	
+
 	IEnumerator DragObject (float distance)
 	{
 		Camera mainCamera = FindCamera();
 		while (Input.GetMouseButton (0) && springJoint)
 		{
 			Ray ray = mainCamera.ScreenPointToRay (Input.mousePosition);
-			springJoint.transform.position = ray.GetPoint(distance);
-//			print("dragging " +springJoint.connectedBody.name + " to new pos: " + springJoint.transform.position);
+			springJoint.transform.position = ray.GetPoint(distance) + dragOffset;
+			print("dragging " +springJoint.connectedBody.name + " to new pos: " + springJoint.transform.position);
 			yield return null;
 		}
 		detach ();
