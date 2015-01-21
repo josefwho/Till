@@ -53,7 +53,7 @@ public class Customer : MonoBehaviour {
 		buttonObject.SetActive (true);
 		text.text = "hey, you dropped my " + item.GetComponent<ItemStatus> ().name + " on the floor";
 //		Debug.Log ("hey, you dropped my " + item.GetComponent<ItemStatus>().name + " on the floor");
-
+		//playComplainSound();
 		StartCoroutine (hideBubble ());
 	}
 
@@ -62,7 +62,7 @@ public class Customer : MonoBehaviour {
 		buttonObject.SetActive (true);
 		text.text = "hey, you scanned my " + item.GetComponent<ItemStatus> ().name + " again, you fool!";
 //		Debug.Log ("hey, you scanned my " + item.GetComponent<ItemStatus>().name + " again. WTF!");
-
+		//playComplainSound();
 		StartCoroutine (hideBubble ());
 
 	}
@@ -72,7 +72,7 @@ public class Customer : MonoBehaviour {
 		buttonObject.SetActive (true);
 		text.text = "hey, this is not my " + item.GetComponent<ItemStatus> ().name;
 //		Debug.Log ("hey, this is not my " + item.GetComponent<ItemStatus>().name);
-
+		//playComplainSound();
 		StartCoroutine (hideBubble ());
 
 	}
@@ -191,4 +191,14 @@ public class Customer : MonoBehaviour {
 		if (transform.position.x < 3.5f)
 			transform.Translate (offset, 0, 0);
 	}
+
+//	void playComplainSound()
+//	{
+//		AudioSource complaint = transform.gameObject.GetComponent<AudioSource> ();
+//		complaint.Play();
+//		
+//	}
+
 }
+
+
