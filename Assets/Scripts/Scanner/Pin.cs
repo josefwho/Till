@@ -81,7 +81,9 @@ public class Pin : MonoBehaviour {
 	void makeThrowable()
 	{
 		itemToPin.transform.Find("Spinner").gameObject.SetActive(false);
-		itemToPin.transform.Find("Dragger").gameObject.SetActive(true);
+		GameObject dragger = itemToPin.transform.Find ("Dragger").gameObject;
+		dragger.SetActive(true);
+		dragger.GetComponent<DragRigidBody> ().startDragging (itemToPin, 9, false);
 		itemToPin.transform.Find ("Barcode").GetChild(0).gameObject.SetActive (false);
 	}
 }
