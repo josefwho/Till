@@ -1746,7 +1746,7 @@ RectTransform:
   m_Children:
   - {fileID: 845575784}
   m_Father: {fileID: 1117756770}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 191, y: -153}
@@ -2651,7 +2651,7 @@ RectTransform:
   m_Children:
   - {fileID: 1843029432}
   m_Father: {fileID: 1117756770}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 190, y: -153}
@@ -3474,6 +3474,7 @@ GameObject:
   - 222: {fileID: 994461576}
   - 114: {fileID: 994461575}
   - 114: {fileID: 994461574}
+  - 114: {fileID: 994461577}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -3493,7 +3494,7 @@ RectTransform:
   m_Children:
   - {fileID: 1272805559}
   m_Father: {fileID: 1117756770}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: 0, y: -239}
@@ -3538,8 +3539,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1525401682}
-        m_MethodName: playAgain
+      - m_Target: {fileID: 994461577}
+        m_MethodName: load
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3579,6 +3580,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 994461572}
+--- !u!114 &994461577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 994461572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22f382f05e1f946f3a350abb69b30c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneIndex: 0
 --- !u!1 &1024739258
 GameObject:
   m_ObjectHideFlags: 0
@@ -3942,7 +3955,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1117756766}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -3964,10 +3977,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1743963094}
-  - {fileID: 994461573}
   - {fileID: 790696551}
   - {fileID: 357087745}
   - {fileID: 2122845543}
+  - {fileID: 994461573}
   - {fileID: 1670097265}
   m_Father: {fileID: 0}
   m_RootOrder: 15
@@ -5098,7 +5111,7 @@ MonoBehaviour:
   spawnRadius: 1
   score: 0
   timeTaken: 0
-  shiftDuration: 120
+  shiftDuration: 10
   timeTakenText: {fileID: 1858935891}
   betweenItemOffset: -.150000006
   draggedItemCount: 0
@@ -5458,7 +5471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  length: 14
+  length: 17
   partPrefab: {fileID: 100000, guid: 2aeb48e9c34774645b5755eef434f78f, type: 2}
 --- !u!4 &1608025887
 Transform:
@@ -5579,7 +5592,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22486706, guid: 41805e6122c464fa7b1c4ab46dc6ef13, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 22486706, guid: 41805e6122c464fa7b1c4ab46dc6ef13, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -7293,7 +7306,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22486706, guid: 41805e6122c464fa7b1c4ab46dc6ef13, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22486706, guid: 41805e6122c464fa7b1c4ab46dc6ef13, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -7558,7 +7571,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2122845540}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -7590,11 +7603,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1117756770}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -110, y: -187}
-  m_SizeDelta: {x: 296, y: 296}
+  m_AnchoredPosition: {x: -110, y: -186}
+  m_SizeDelta: {x: 296, y: 135}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &2132657503
 GameObject:
