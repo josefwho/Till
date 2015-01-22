@@ -9,6 +9,8 @@ public class Pin : MonoBehaviour {
 	public float drag = 10;
 	public float angularDrag = 5;
 
+	private Vector3 originalItemSize;
+
 	public bool pinning;
 
 	public GameObject scannerTriggerPublic;
@@ -36,6 +38,10 @@ public class Pin : MonoBehaviour {
 		
 		itemToPin.rigidbody.isKinematic = false;
 		itemToPin.rigidbody.useGravity = false;
+
+		//scale items at pin
+		originalItemSize = itemToPin.transform.localScale;
+		itemToPin.transform.localScale = new Vector3 (1.7f, 1.7f, 1.7f);
 
 		oldMaxAngularVelocity = itemToPin.rigidbody.maxAngularVelocity;
 		itemToPin.rigidbody.maxAngularVelocity = maxAngularVelocity;
@@ -70,6 +76,10 @@ public class Pin : MonoBehaviour {
 		itemToPin.rigidbody.angularVelocity = Vector3.zero;
 
 		itemToPin.rigidbody.useGravity = true;
+
+		//rescale again
+		itemToPin.transform.localScale = originalItemSize;
+
 		makeThrowable ();
 
 		lastUnpinnedObject = itemToPin;
