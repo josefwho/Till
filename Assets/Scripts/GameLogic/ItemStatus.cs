@@ -8,4 +8,5 @@ public class ItemStatus : MonoBehaviour
 	public Customer customer = null;
 	public string name;
 	public bool scannedInOvertime = false;
+	public bool autoDragged = false;
 }

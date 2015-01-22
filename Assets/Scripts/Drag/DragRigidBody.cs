@@ -139,6 +139,9 @@ public class DragRigidBody : MonoBehaviour
 //			springJoint.gameObject.SetActive (false);
 			springJoint = null;
 
+			ItemStatus s = transform.parent.gameObject.GetComponent<ItemStatus>();
+			if(s != null)
+    			s.autoDragged = false;
 			
 			machine.draggedItemCount--;
 		}
