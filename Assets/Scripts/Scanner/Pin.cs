@@ -85,7 +85,7 @@ public class Pin : MonoBehaviour {
 		dragger.SetActive(true);
 		if (Input.GetMouseButton (0)) 
 		{
-			dragger.GetComponent<DragRigidBody> ().startDragging (itemToPin, 9, false);
+			dragger.GetComponent<DragRigidBody> ().startDragging (itemToPin, 13, false);
 			itemToPin.GetComponent<ItemStatus> ().autoDragged = true;
 		}
 		itemToPin.transform.Find ("Barcode").GetChild(0).gameObject.SetActive (false);
