@@ -3114,8 +3114,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 905761091}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.70000005, y: 7, z: -.300000012}
-  m_LocalScale: {x: .225439996, y: 63.6473732, z: 5.02828121}
+  m_LocalPosition: {x: 2.4000001, y: 7, z: -2.16000009}
+  m_LocalScale: {x: 1.63471472, y: 63.6473732, z: 8.74289894}
   m_Children: []
   m_Father: {fileID: 1298600284}
   m_RootOrder: 1
@@ -3955,7 +3955,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1117756766}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -4003,7 +4003,7 @@ MonoBehaviour:
   minimumWage: 579.539978
   itemsNeededForMinimumWage: 30
   itemWorth: 15
-  fireAtDiff: 150
+  fireAtDiff: 100
 --- !u!1 &1138908106
 GameObject:
   m_ObjectHideFlags: 0
@@ -5111,7 +5111,7 @@ MonoBehaviour:
   spawnRadius: 1
   score: 0
   timeTaken: 0
-  shiftDuration: 10
+  shiftDuration: 120
   timeTakenText: {fileID: 1858935891}
   betweenItemOffset: -.150000006
   draggedItemCount: 0
@@ -5980,7 +5980,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 7be956bd799b7406eb9c8157252e0ece, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: .200000003
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -7571,7 +7571,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2122845540}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
