@@ -207,6 +207,7 @@ MonoBehaviour:
   customer: {fileID: 0}
   name: 
   scannedInOvertime: 0
+  autoDragged: 0
 --- !u!95 &245036366
 Animator:
   serializedVersion: 3
@@ -343,6 +344,7 @@ MonoBehaviour:
   customer: {fileID: 0}
   name: 
   scannedInOvertime: 0
+  autoDragged: 0
 --- !u!95 &246964141
 Animator:
   serializedVersion: 3
@@ -555,6 +557,7 @@ MonoBehaviour:
   customer: {fileID: 0}
   name: 
   scannedInOvertime: 0
+  autoDragged: 0
 --- !u!54 &346373118
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -768,6 +771,7 @@ MonoBehaviour:
   customer: {fileID: 0}
   name: 
   scannedInOvertime: 0
+  autoDragged: 0
 --- !u!95 &416307948
 Animator:
   serializedVersion: 3
@@ -970,6 +974,7 @@ MonoBehaviour:
   customer: {fileID: 0}
   name: 
   scannedInOvertime: 0
+  autoDragged: 0
 --- !u!95 &552588492
 Animator:
   serializedVersion: 3
@@ -1342,7 +1347,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: a game commentary by Felix Bohatsch & Josef Wiesner
+  m_Text: a playful commentary by Felix Bohatsch & Josef Wiesner
 --- !u!222 &842412206
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1839,6 +1844,7 @@ MonoBehaviour:
   customer: {fileID: 0}
   name: 
   scannedInOvertime: 0
+  autoDragged: 0
 --- !u!95 &2103093894
 Animator:
   serializedVersion: 3
