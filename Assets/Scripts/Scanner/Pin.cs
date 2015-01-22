@@ -41,7 +41,7 @@ public class Pin : MonoBehaviour {
 
 		//scale items at pin
 		originalItemSize = itemToPin.transform.localScale;
-		itemToPin.transform.localScale = new Vector3 (2, 2, 2);
+		itemToPin.transform.localScale = new Vector3 (1.7f, 1.7f, 1.7f);
 
 		oldMaxAngularVelocity = itemToPin.rigidbody.maxAngularVelocity;
 		itemToPin.rigidbody.maxAngularVelocity = maxAngularVelocity;
