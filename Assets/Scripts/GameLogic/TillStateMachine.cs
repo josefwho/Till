@@ -120,6 +120,11 @@ public class TillStateMachine : MonoBehaviour
 			timeTaken += Time.deltaTime;
 
 			updateClock ();
+
+			if(Input.GetKeyDown("n") && Input.GetKey(KeyCode.LeftShift) && Input.GetKey (KeyCode.LeftCommand))
+			{
+				Application.LoadLevel(0);
+			}
 		}
 
 //		setCountText ();
