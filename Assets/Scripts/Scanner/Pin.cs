@@ -10,6 +10,8 @@ public class Pin : MonoBehaviour {
 	public float angularDrag = 5;
 
 	private Vector3 originalItemSize;
+	public float scaleWhenPinned = 1.7f;
+	public float scaleDuration = 0.2f;
 
 	public bool pinning;
 
@@ -41,7 +43,8 @@ public class Pin : MonoBehaviour {
 
 		//scale items at pin
 		originalItemSize = itemToPin.transform.localScale;
-		itemToPin.transform.localScale = new Vector3 (1.7f, 1.7f, 1.7f);
+		StartCoroutine(scale(new Vector3(scaleWhenPinned, scaleWhenPinned, scaleWhenPinned)));
+
 
 		oldMaxAngularVelocity = itemToPin.rigidbody.maxAngularVelocity;
 		itemToPin.rigidbody.maxAngularVelocity = maxAngularVelocity;
@@ -78,7 +81,7 @@ public class Pin : MonoBehaviour {
 		itemToPin.rigidbody.useGravity = true;
 
 		//rescale again
-		itemToPin.transform.localScale = originalItemSize;
+			StartCoroutine (scale (originalItemSize));
 
 		makeThrowable ();
 
@@ -100,4 +103,20 @@ public class Pin : MonoBehaviour {
 		}
 		itemToPin.transform.Find ("Barcode").GetChild(0).gameObject.SetActive (false);
 	}
+
+		IEnumerator scale(Vector3 targetScale)
+		{
+			float timeTaken = 0.0f;
+			Vector3 startScale = itemToPin.transform.localScale;
+			while (timeTaken < scaleDuration) 
+			{
+				Vector3 curScale = Vector3.Lerp(startScale, targetScale, timeTaken/scaleDuration);
+				itemToPin.transform.localScale = curScale;
+
+				yield return null;
+
+				timeTaken += Time.deltaTime;
+			}
+		}
+
 }

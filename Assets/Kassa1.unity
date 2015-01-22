@@ -1072,6 +1072,8 @@ MonoBehaviour:
   maxAngularVelocity: 20
   drag: 0
   angularDrag: 20
+  scaleWhenPinned: 1.70000005
+  scaleDuration: .200000003
   pinning: 0
   scannerTriggerPublic: {fileID: 1816475705}
   lastUnpinnedObject: {fileID: 0}
