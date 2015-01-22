@@ -7,7 +7,7 @@ public class ScannerTrigger : ItemTrigger
 	private TillStateMachine machine;
 
 	private GameObject currentItem;
-	private GameObject pin;
+	private Pin pin;
 
 	private float lerpStartTime;
 	private Vector3 lerpStartPosition;
@@ -23,7 +23,7 @@ public class ScannerTrigger : ItemTrigger
 	{
 		machine = GameObject.FindGameObjectWithTag ("GameController").GetComponent<TillStateMachine> ();
 		
-		pin = GameObject.FindGameObjectWithTag ("Pin");
+		pin = GameObject.FindGameObjectWithTag ("Pin").GetComponent<Pin>();
 	}
 	
 	public override void OnTriggerEnter (Collider other) 
@@ -48,7 +48,7 @@ public class ScannerTrigger : ItemTrigger
 	public void startPinning(GameObject toPin)
 	{
 		ItemStatus status = toPin.GetComponent<ItemStatus> ();
-		if (pin.GetComponent<Pin> ().pinning || currentItem != null || (status !=null && status.autoDragged))
+		if (pin.pinning || currentItem != null || (status !=null && status.autoDragged))
 				return;
 
 		currentItem = toPin;
@@ -71,7 +71,7 @@ public class ScannerTrigger : ItemTrigger
 		}
 		
 		currentItem.transform.position = pin.transform.position;
-		pin.GetComponent<Pin>().pinItem(currentItem);
+		pin.pinItem(currentItem);
 
 		currentItem = null;
 		
