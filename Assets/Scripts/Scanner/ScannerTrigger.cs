@@ -47,7 +47,8 @@ public class ScannerTrigger : ItemTrigger
 
 	public void startPinning(GameObject toPin)
 	{
-		if (pin.GetComponent<Pin> ().pinning || currentItem != null)
+		ItemStatus status = toPin.GetComponent<ItemStatus> ();
+		if (pin.GetComponent<Pin> ().pinning || currentItem != null || (status !=null && status.autoDragged))
 				return;
 
 		currentItem = toPin;

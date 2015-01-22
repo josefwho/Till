@@ -55,6 +55,8 @@ public class Pin : MonoBehaviour {
 	
 	public void unpinItem()
 	{
+		pinning = false;
+
 		itemToPin.rigidbody.maxAngularVelocity = oldMaxAngularVelocity;
 		
 		print ("unpinItem resetting to oldDrag: " + oldDrag);
@@ -71,8 +73,6 @@ public class Pin : MonoBehaviour {
 		makeThrowable ();
 
 		lastUnpinnedObject = itemToPin;
-
-		pinning = false;
 //		scannerTriggerPublic.SetActive (true);
 	}
 	
@@ -83,7 +83,11 @@ public class Pin : MonoBehaviour {
 		itemToPin.transform.Find("Spinner").gameObject.SetActive(false);
 		GameObject dragger = itemToPin.transform.Find ("Dragger").gameObject;
 		dragger.SetActive(true);
-		dragger.GetComponent<DragRigidBody> ().startDragging (itemToPin, 9, false);
+		if (Input.GetMouseButton (0)) 
+		{
+			dragger.GetComponent<DragRigidBody> ().startDragging (itemToPin, 9, false);
+			itemToPin.GetComponent<ItemStatus> ().autoDragged = true;
+		}
 		itemToPin.transform.Find ("Barcode").GetChild(0).gameObject.SetActive (false);
 	}
 }
