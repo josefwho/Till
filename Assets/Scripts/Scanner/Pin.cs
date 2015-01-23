@@ -22,6 +22,11 @@ public class Pin : MonoBehaviour {
 	
 	private float oldDrag;
 	private float oldAngularDrag;
+	
+	void Start()
+	{
+		TillStateMachine.itemDestroy += removeObject;
+	}
 
 	public void pinItem(GameObject newItem)
 	{
@@ -118,5 +123,12 @@ public class Pin : MonoBehaviour {
 				timeTaken += Time.deltaTime;
 			}
 		}
+
+	void removeObject(GameObject toBeRemoved)
+	{
+		pinning = false;
+		
+		lastUnpinnedObject = itemToPin;
+	}
 
 }
