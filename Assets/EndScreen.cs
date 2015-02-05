@@ -11,6 +11,9 @@ public class EndScreen : MonoBehaviour {
 	public int itemsNeededForMinimumWage = 5;
 	public float itemWorth = 2;	//in euros/ will be deducted/added to minimumwage per item that is different from itemsNeeded
 	public int fireAtDiff = 150;
+	
+	
+	string databaseUrl = "http://brokenrul.es/games/Chesto/submit.php";
 
 	// Use this for initialization
 	void Start () {
@@ -81,5 +84,29 @@ public class EndScreen : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public void submit()
+	{
+		// Create a Web Form
+		WWWForm form = new WWWForm();
+		form.AddField("itemsRegular", till.countSoldRegular);
+		form.AddField("itemsOvertime", till.countSoldOvertime);
+
+//		WWW w = new WWW(databaseUrl, form);
+		StartCoroutine(sendData (form));
+	}
+
+	IEnumerator sendData(WWWForm form)
+	{
+		// Upload
+		WWW w = new WWW(databaseUrl, form);
+		
+		yield return w;
+		
+		if (!string.IsNullOrEmpty(w.error))
+			Debug.LogError(w.error);
+		else
+			Debug.Log("Finished Uploading score");
 	}
 }
