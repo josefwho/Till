@@ -1,5 +1,5 @@
 void printTicket() {
-  printer.feed(whitespace);
+  printer.feed(1);
   printer.printBitmap(chesto_width, chesto_height, chesto_logo);
   
   printer.doubleWidthOn();    
@@ -55,7 +55,7 @@ void printTicket() {
   printer.feed(2);
   printer.println("--------------------------------"); 
   printer.println("ticket serviced by");
-  printer.println("hotelbanana.com");
+  printer.println("jonasbohatsch.net");
   printer.feed(whitespace*2);
   
 }
