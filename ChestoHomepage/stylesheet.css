@@ -1,0 +1,110 @@
+body{
+	background-color: white;
+}
+
+div{
+	padding: 0px;
+	border-style: 0px;
+	border: 0px;
+}
+
+
+h1{
+	padding-top: 20px;
+	padding-left: 20px;
+
+	font-family: Verdana;
+	font-size: 1.3em;
+	color: rgb(87,0,142);
+}
+
+p{
+	padding-left: 0px;
+	padding-top: 0px;
+	font-family: Verdana;
+	font-size: 16px;
+}
+
+span{
+	font-weight: bold;
+}
+
+#right{
+	float: right;
+	padding-right: 20px;
+}
+
+#left{
+	float: left;
+	padding-left: 20px;
+}
+
+.chartCircleWhite{
+	margin: auto;
+	border-style: solid;
+	border-width: 2px;
+	border-color: white;
+	background-color: red;
+	width:150px;
+	height:150px;
+	border-radius:75px;
+	font-size:20px;
+	color: white;
+}
+
+#textWithinCircle{
+	padding-top: 40px;
+	text-align: center;
+}
+
+.chartCirclePurple{
+	margin: auto;
+	border-style: solid;
+	border-width: 2px;
+	border-color: red;
+	background-color: white;
+	width:150px;
+	height:150px;
+	border-radius:75px;
+	font-size:20px;
+	color: black;
+	text-align: center;
+}
+
+.chestoLogo{
+	float: left;
+	padding: 10px 0 0;
+}
+
+img.resize{
+    width:540px; /* you can use % */
+    height: auto;
+}
+
+
+/*#header{
+	background-color: red;
+}*/
+
+#floatingTextWhite{
+	padding-top: 0px;
+	padding-bottom: 0px;
+	color:white;
+}
+
+#floatingTextBlack{
+	padding-top: 0px;
+	padding-bottom: 0px;
+	color:black;
+}
+
+
+#divider{
+	width: auto;
+	height: 2px;
+	background-color: rgb(87,0,142);
+}
+
+a{
+	text-decoration: none;
+}
