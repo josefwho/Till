@@ -191,7 +191,10 @@ public class TillStateMachine : MonoBehaviour
 					{
 						//count how often the player scanned an item multiple times
 						if(s.scanned > 1)
+						{
 							countMultipleScannedItems += s.scanned - 1; 		// deduct 1, because we just want to count the multiple scans. the first scan is legitim
+							continue;
+						}
 						
 						if(s.scannedInOvertime)
 							countSoldOvertime++;
