@@ -6,11 +6,13 @@ public class EndScreen : MonoBehaviour {
 
 	private Text soldItemsRegular;
 	private TillStateMachine till;
+	private float wage = 0;
 	
 	public float minimumWage = 1159.08f; //monthly wage in euros
 	public int itemsNeededForMinimumWage = 5;
 	public float itemWorth = 2;	//in euros/ will be deducted/added to minimumwage per item that is different from itemsNeeded
 	public int fireAtDiff = 150;
+	public float marginPerItem = 3;
 	
 	
 	string databaseUrl = "http://brokenrul.es/games/Chesto/submit.php";
@@ -26,7 +28,7 @@ public class EndScreen : MonoBehaviour {
 		text = transform.Find("Background/soldItemsOvertime").GetComponent<Text> ();
 		text.text = string.Format(text.text, till.countSoldOvertime);
 
-		float wage = minimumWage;
+		wage = minimumWage;
 		float itemDiff = till.countSoldRegular - itemsNeededForMinimumWage;
 		wage += itemWorth * itemDiff;
 
@@ -92,6 +94,7 @@ public class EndScreen : MonoBehaviour {
 		WWWForm form = new WWWForm();
 		form.AddField("itemsRegular", till.countSoldRegular);
 		form.AddField("itemsOvertime", till.countSoldOvertime);
+		form.AddField("profit", ((till.countSoldRegular + till.countSoldOvertime) * marginPerItem - wage/21.65).ToString());
 
 //		WWW w = new WWW(databaseUrl, form);
 		StartCoroutine(sendData (form));
