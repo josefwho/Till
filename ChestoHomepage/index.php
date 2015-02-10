@@ -101,6 +101,24 @@
 			else
 				echo "0 results";
 
+			$sql = "SELECT * FROM `Sales` ORDER BY Date DESC, Time DESC LIMIT 1";
+			$result = $conn->query($sql);	
+			
+			$lastProfit = 0;
+			$lastItemsSold = 0;
+			if ($result->num_rows > 0) 
+			{
+				// output data of each row
+				$i = 0;
+				while($row = $result->fetch_assoc()) 
+				{
+					$lastProfit = $row["Profit"];
+					$lastItemsSold = $row["ItemsRegular"] + $row["ItemsOverpaid"];
+				}
+			}  
+			else
+				echo "0 results";
+			
 			$conn->close();
 			?>
 		</div>
@@ -124,16 +142,16 @@
 					<div id ="right">
 						<p id= "floatingTextWhite" style="text-align:center; color:red"><span>PBIT</span></p>
 						<div class= "chartCircleWhite";>
-							<div><p style="color:white" id="textWithinCircle"><span><?php echo number_format($profitToDraw[count($profitToDraw)-1],2) ?></span> <br> $</p></div>
+							<div><p style="color:white" id="textWithinCircle"><span><?php echo number_format($profitToDraw[count($profitToDraw)-1],2); ?></span> <br> $</p></div>
 						</div>
-						<p id= "floatingTextWhite" style="text-align:center; color:red"><span>+ 12 <br>JUST NOW</span></p>
+						<p id= "floatingTextWhite" style="text-align:center; color:red"><span>+ <?php echo number_format($lastProfit,2); ?>$<br>JUST NOW</span></p>
 					</div>
 					<div id ="right">
 						<p id= "floatingTextWhite" style="text-align:center; color:red"> <span>ITEMS SOLD</span></p>
 						<div class= "chartCircleWhite";>
 							<p id="textWithinCircle"><span><?php echo $lastDayItems ?></span>  <br>today</p>
 						</div>
-						<p id= "floatingTextWhite" style="text-align:center; color:red"><span>+ 12 <br>JUST NOW</span></p>
+						<p id= "floatingTextWhite" style="text-align:center; color:red"><span>+ <?php echo $lastItemsSold; ?><br>JUST NOW</span></p>
 					</div>
 				
 			</div>
