@@ -83,7 +83,7 @@
 		
 			//calculate day where graph is starting
 			$tempDate = strtotime("-1 month"); //in highchart january is month 0 :)
-			$startDate = date("Y,m,d", strtotime("-". count($profitToDraw) . " days", $tempDate));
+			$startDate = date("Y,m,d", strtotime("-". count($profitToDraw)+1 . " days", $tempDate));
 
 			$sql = "SELECT COUNT(*) AS Employees FROM `Sales` WHERE Date > DATE_SUB(CURDATE(),INTERVAL 1 MONTH) ";
 			$result = $conn->query($sql);	
@@ -113,7 +113,7 @@
 				while($row = $result->fetch_assoc()) 
 				{
 					$lastProfit = $row["Profit"];
-					$lastItemsSold = $row["ItemsRegular"] + $row["ItemsOverpaid"];
+					$lastItemsSold = (int)$row["ItemsRegular"] + (int)$row["ItemsOvertime"];
 				}
 			}  
 			else
