@@ -158,9 +158,11 @@
 							            }
 							        },
 									  plotOptions: {
-							           point: {
-							               radius: 1
-							           }
+										  series: {
+											  marker: {
+												  enabled: false
+											  }
+										  }
 									  },
 							        series: [{
 							            name: 'Chesto',
