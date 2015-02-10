@@ -34,11 +34,17 @@ span{
 	padding-right: 20px;
 }
 
+#graphContainer{
+	float: right;
+	padding-right: 20px;
+	width:50%; 
+	height:300px;
+}
+
 #left{
 	float: left;
 	padding-left: 20px;
 }
-
 .chartCircleWhite{
 	margin: auto;
 	border-style: solid;
@@ -54,6 +60,7 @@ span{
 
 #textWithinCircle{
 	padding-top: 40px;
+	font-size: 20px;
 	text-align: center;
 }
 

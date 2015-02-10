@@ -29,7 +29,8 @@
 			$result = $conn->query($sql);
 		
 			$totalProfit = array();
-			$totalItems = array();
+			$totalItems = 0;
+			$lastDayItems = 0;
 		
 			if ($result->num_rows > 0) 
 			{
@@ -39,7 +40,9 @@
 				{
 		
 					$totalProfit[$row["Date"]] = $row["SummedProfit"];
-					$totalItems[$row["Date"]] = $row["SummedRegular"] + $row["SummedOvertime"];
+					$totalItems += $row["SummedRegular"] + $row["SummedOvertime"];
+					
+					$lastDayItems = $row["SummedRegular"] + $row["SummedOvertime"];
 		
 					$i++;
 				}
@@ -60,7 +63,7 @@
 				if($lastDate != null)
 				{
 					$daysSinceLastProfit = ceil((strtotime($key) - strtotime($lastDate))/60/60/24);
-					$currentProfit -= $daysSinceLastProfit * (100.0 + mt_rand(-1000,1000)/1000 * 5);
+					$currentProfit -= $daysSinceLastProfit * ( 100.0 + mt_rand(-1000,1000)/1000 * 5);
 				}
 
 				$lastDate = $key;
@@ -119,26 +122,27 @@
 					</div>
 				</div>
 			</div>
+		
 
 
 			<div style="background-color: white; height:350px">
 				<h1> INVESTORS</h1>
-				<div id="left">
+				<div id="left" style="align:center">
 					<div id ="left">
 						<p id= "floatingTextBlack" style="text-align:center; color:red"><span>PBIT</span></p>
 						<div class= "chartCirclePurple";>
-							<div><p style="color:black" id="textWithinCircle"><span>400</span> million $</p></div>
+							<div><p style="color:black" id="textWithinCircle"><span><?php echo number_format($profitToDraw[count($profitToDraw)-1],2) ?></span> <br> $</p></div>
 						</div>
 					</div>
-						<div id ="left">
+					<div id ="left">
 						<p id= "floatingTextBlack" style="text-align:center; color:red"> <span>ITEMS SOLD</span></p>
-								<div class= "chartCirclePurple";>
-									<p id="textWithinCircle"><span>230056</span> today</p>
-								</div>
+						<div class= "chartCirclePurple";>
+							<p id="textWithinCircle"><span><?php echo $lastDayItems ?></span>  <br>today</p>
 						</div>
+					</div>
 				</div>
 
-					<div id="graphContainer" style="width:50%; height:300px">
+					<div id="graphContainer" >
 						<div>
 							<script>
 								$(function () {
@@ -147,30 +151,40 @@
 							            // type: 'bar'
 							        },
 							        title: {
-							            text: 'Company Value'
+							            text: 'PBIT'
 							        },
 							        xAxis: {
 										  type: 'datetime',
 							        },
 							        yAxis: {
 							            title: {
-							                text: 'Company Fortune in $'
+							                text: 'PBIT in $',
 							            }
 							        },
+									  tooltip: {
+										  pointFormat: '{point.y} $',
+										  valueDecimals: 2
+									  },
 									  plotOptions: {
 										  series: {
 											  marker: {
-												  enabled: false
+												  enabled: false,
+												  states: {
+													  hover: {
+														  fillColor:'#57008e',
+													  }
+												  }
 											  },
 											  lineColor: '#57008e'
 										  }
 									  },
-							        series: [{
-							            name: 'Chesto',
-										  	pointInterval: 24 * 3600 * 1000,
-							            pointStart: Date.UTC(<?php echo $startDate; ?>),
-							            data: [<?php echo join($profitToDraw, ','); ?>]
-							        }]
+									  series: [{
+										  name: 'Chesto',
+										  color: '#57008e',
+										  pointInterval: 24 * 3600 * 1000,
+										  pointStart: Date.UTC(<?php echo $startDate; ?>),
+										  data: [<?php echo join($profitToDraw, ','); ?>]
+									  }]
 									};
 								    $('#graphContainer').highcharts(
 										 options
