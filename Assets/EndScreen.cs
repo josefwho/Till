@@ -78,6 +78,8 @@ public class EndScreen : MonoBehaviour {
 				}
 
 		stamp.GetComponent<Image> ().enabled = true;
+
+		submit ();
 //		Text stampText = stamp.transform.Find ("Text").GetComponent<Text> ();
 //		stampText.text = (Mathf.Abs(itemWorth * itemDiff)).ToString() + " €";
 
@@ -86,6 +88,11 @@ public class EndScreen : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public void goToWebsite()
+	{
+		Application.OpenURL("http://brokenrul.es/games/Chesto/");
 	}
 
 	public void submit()
