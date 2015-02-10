@@ -120,22 +120,22 @@
 							<p id= "floatingTextWhite"> <span>CHESTO</span> was etablished 1983 by Guenther Eisner and taken over by his son in 2013.</p>
 							<p id= "floatingTextWhite"> <span>CHESTO</span> is one of the leading food retail companies in the world.</p>
 					</div>
-				<div id ="right">
-					<div id ="right">
-						<p id= "floatingTextWhite" style="text-align:center"> <span>OUR OPERATIONS</span></p>
-						<div class= "chartCircleWhite">
-							<div><p id="textWithinCircle"><span>69</span> countries</p></div>
-						</div>
-					</div>
 
+					<div id ="right">
+						<p id= "floatingTextWhite" style="text-align:center; color:red"><span>PBIT</span></p>
+						<div class= "chartCircleWhite";>
+							<div><p style="color:white" id="textWithinCircle"><span><?php echo number_format($profitToDraw[count($profitToDraw)-1],2) ?></span> <br> $</p></div>
+						</div>
+						<p id= "floatingTextWhite" style="text-align:center; color:red"><span>+ 12 <br>JUST NOW</span></p>
 					</div>
-						<div id ="right">
-						<p id= "floatingTextWhite" style="text-align:center"> <span>OUR EMPLOYEES </span></p>
-								<div class= "chartCircleWhite";>
-									<p id="textWithinCircle"><span><?php echo $numberOfEmployees ?></span> <br> Employees</p>
-								</div>
+					<div id ="right">
+						<p id= "floatingTextWhite" style="text-align:center; color:red"> <span>ITEMS SOLD</span></p>
+						<div class= "chartCircleWhite";>
+							<p id="textWithinCircle"><span><?php echo $lastDayItems ?></span>  <br>today</p>
+						</div>
+						<p id= "floatingTextWhite" style="text-align:center; color:red"><span>+ 12 <br>JUST NOW</span></p>
 					</div>
-				</div>
+				
 			</div>
 		
 
@@ -143,18 +143,23 @@
 			<div style="background-color: white; height:350px">
 				<h1> INVESTORS</h1>
 				<div id="left" style="align:center">
+					
 					<div id ="left">
-						<p id= "floatingTextBlack" style="text-align:center; color:red"><span>PBIT</span></p>
-						<div class= "chartCirclePurple";>
-							<div><p style="color:black" id="textWithinCircle"><span><?php echo number_format($profitToDraw[count($profitToDraw)-1],2) ?></span> <br> $</p></div>
+						<p id= "floatingTextPurple" style="text-align:center"> <span>OUR OPERATIONS</span></p>
+						<div class= "chartCirclePurple">
+							<div><p id="textWithinCircle"><span>23</span> Countries</p></div>
 						</div>
 					</div>
-					<div id ="left">
-						<p id= "floatingTextBlack" style="text-align:center; color:red"> <span>ITEMS SOLD</span></p>
-						<div class= "chartCirclePurple";>
-							<p id="textWithinCircle"><span><?php echo $lastDayItems ?></span>  <br>today</p>
-						</div>
+
 					</div>
+						<div id ="left">
+						<p id= "floatingTextPurple" style="text-align:center"> <span>OUR EMPLOYEES </span></p>
+								<div class= "chartCirclePurple";>
+									<p id="textWithinCircle"><span><?php echo $numberOfEmployees ?></span> <br> Employees</p>
+								</div>
+					</div>
+				</div>
+
 				</div>
 
 					<div id="graphContainer" >
