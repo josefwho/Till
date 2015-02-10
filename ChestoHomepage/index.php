@@ -161,7 +161,8 @@
 										  series: {
 											  marker: {
 												  enabled: false
-											  }
+											  },
+											  lineColor: '#57008e'
 										  }
 									  },
 							        series: [{
