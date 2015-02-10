@@ -150,88 +150,86 @@
 							<div><p id="textWithinCircle"><span>23</span> Countries</p></div>
 						</div>
 					</div>
-
-					</div>
-						<div id ="left">
+					<div id ="left">
 						<p id= "floatingTextPurple" style="text-align:center"> <span>OUR EMPLOYEES </span></p>
-								<div class= "chartCirclePurple";>
-									<p id="textWithinCircle"><span><?php echo $numberOfEmployees ?></span> <br> Employees</p>
-								</div>
+						<div class= "chartCirclePurple";>
+							<div><p id="textWithinCircle"><span><?php echo $numberOfEmployees ?></span> <br> Employees</p></div>
+						</div>
 					</div>
+
 				</div>
 
+
+				<div id="graphContainer" >
+					<p id="left" style="color:red"><span>SHARE</span></p>
+					<div>
+						<script>
+						$(function () {
+							var options = {
+								chart: {
+									// type: 'bar'
+								},
+								title: {
+									text: 'PBIT'
+								},
+								xAxis: {
+									type: 'datetime',
+								},
+								yAxis: {
+									title: {
+										text: 'PBIT in $',
+									}
+								},
+								tooltip: {
+									pointFormat: '{point.y} $',
+									valueDecimals: 2
+								},
+								plotOptions: {
+									series: {
+										marker: {
+											enabled: false,
+											states: {
+												hover: {
+													fillColor:'#57008e',
+												}
+											}
+										},
+										lineColor: '#57008e'
+									}
+								},
+								series: [{
+									name: 'Chesto',
+									color: '#57008e',
+									pointInterval: 24 * 3600 * 1000,
+									pointStart: Date.UTC(<?php echo $startDate; ?>),
+									data: [<?php echo join($profitToDraw, ','); ?>]
+								}]
+							};
+							$('#graphContainer').highcharts(
+								options
+							);
+						});
+						</script>
+					</div>
 				</div>
+			</div>
 
-					<div id="graphContainer" >
-						<div>
-							<script>
-								$(function () {
-									var options = {
-							        chart: {
-							            // type: 'bar'
-							        },
-							        title: {
-							            text: 'PBIT'
-							        },
-							        xAxis: {
-										  type: 'datetime',
-							        },
-							        yAxis: {
-							            title: {
-							                text: 'PBIT in $',
-							            }
-							        },
-									  tooltip: {
-										  pointFormat: '{point.y} $',
-										  valueDecimals: 2
-									  },
-									  plotOptions: {
-										  series: {
-											  marker: {
-												  enabled: false,
-												  states: {
-													  hover: {
-														  fillColor:'#57008e',
-													  }
-												  }
-											  },
-											  lineColor: '#57008e'
-										  }
-									  },
-									  series: [{
-										  name: 'Chesto',
-										  color: '#57008e',
-										  pointInterval: 24 * 3600 * 1000,
-										  pointStart: Date.UTC(<?php echo $startDate; ?>),
-										  data: [<?php echo join($profitToDraw, ','); ?>]
-									  }]
-									};
-								    $('#graphContainer').highcharts(
-										 options
-								    );
-								});
-							</script>
-						</div>
-						<p id="left" style="color:red"><span>SHARE</span></p>
+		<div style="background-color:rgb(87,0,142); height:350px">
+			<h1 style="color:white"> NEWS</h1>
+			<p id="left" style="color: white"> MEET OUR CEO <span>TONI EISNER</span> ON HIS PERSONAL BLOG</p>
+			<img id="right" style="height:auto; width:auto; max-width:248px; max-height:248px;"src="Toni.png">
+		</div>
+
+		<div style="background-color:white";>
+			<h1> SHAREHOLDERS</h1>
+				<div id="left" style="width:40%">
+						<p id= "floatingTextBlack" style="color:rgb(87,0,142)"> <span>CHESTO</span> wants to thank its main shareholders <span>BROKEN RULES</span> & <span>JOSEF WHO</span></p>
+				</div>
+				<div id="right">
+					<a id="left" href="http://www.brokenrul.es"><img style="height:auto; width:auto; max-width:80px; max-height:80px;"src="BRLogo.png"></a> 
+					<a id="left" href="https://twitter.com/peregrinustyss"><img style="height:auto; width:auto; max-height:80px;"src="Josef.jpg"> </a>
 					</div>
-			</div>
-
-			<div style="background-color:rgb(87,0,142); height:350px">
-				<h1 style="color:white"> NEWS</h1>
-				<p id="left" style="color: white"> MEET OUR CEO <span>TONI EISNER</span> ON HIS PERSONAL BLOG</p>
-				<img id="right" style="height:auto; width:auto; max-width:248px; max-height:248px;"src="Toni.png">
-			</div>
-
-			<div style="background-color:white";>
-				<h1> SHAREHOLDERS</h1>
-					<div id="left" style="width:40%">
-							<p id= "floatingTextBlack" style="color:rgb(87,0,142)"> <span>CHESTO</span> wants to thank its main shareholders <span>BROKEN RULES</span> & <span>JOSEF WHO</span></p>
-					</div>
-					<div id="right">
-						<a id="left" href="http://www.brokenrul.es"><img style="height:auto; width:auto; max-width:80px; max-height:80px;"src="BRLogo.png"></a> 
-						<a id="left" href="https://twitter.com/peregrinustyss"><img style="height:auto; width:auto; max-height:80px;"src="Josef.jpg"> </a>
-						</div>
-			</div>
+		</div>
 
 	</body>
 </html>
