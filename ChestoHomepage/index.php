@@ -49,8 +49,6 @@
 			} 
 			else
 				echo "0 results";
-
-			$conn->close();
 		
 			//calculate profit
 			$currentProfit = 0;
@@ -87,6 +85,23 @@
 			$tempDate = strtotime("-1 month"); //in highchart january is month 0 :)
 			$startDate = date("Y,m,d", strtotime("-". count($profitToDraw) . " days", $tempDate));
 
+			$sql = "SELECT COUNT(*) AS Employees FROM `Sales` WHERE Date > DATE_SUB(CURDATE(),INTERVAL 1 MONTH) ";
+			$result = $conn->query($sql);	
+			
+			$numberOfEmployees = 0;
+			if ($result->num_rows > 0) 
+			{
+				// output data of each row
+				$i = 0;
+				while($row = $result->fetch_assoc()) 
+				{
+					$numberOfEmployees = $row["Employees"];
+				}
+			}  
+			else
+				echo "0 results";
+
+			$conn->close();
 			?>
 		</div>
 		
@@ -117,7 +132,7 @@
 						<div id ="right">
 						<p id= "floatingTextWhite" style="text-align:center"> <span>OUR EMPLOYEES </span></p>
 								<div class= "chartCircleWhite";>
-									<p id="textWithinCircle"><span>23k</span> employees</p>
+									<p id="textWithinCircle"><span><?php echo $numberOfEmployees ?></span> <br> Employees</p>
 								</div>
 					</div>
 				</div>
