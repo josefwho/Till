@@ -20,20 +20,17 @@ public class EndScreen : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		till = GameObject.FindGameObjectWithTag ("GameController").GetComponent<TillStateMachine> ();
-		Text text = transform.Find("Background/soldItemsRegular").GetComponent<Text> ();
+		Text text = transform.Find("Background/soldItemsRegular/Number").GetComponent<Text> ();
 
 		//		string replaceWith = string.Format(text.text, till.countScannedObjects);
 		text.text = string.Format(text.text, till.countSoldRegular);
 
-		text = transform.Find("Background/soldItemsOvertime").GetComponent<Text> ();
+		text = transform.Find("Background/soldItemsOvertime/Number").GetComponent<Text> ();
 		text.text = string.Format(text.text, till.countSoldOvertime);
 
 		wage = minimumWage;
 		float itemDiff = till.countSoldRegular - itemsNeededForMinimumWage;
 		wage += itemWorth * itemDiff;
-
-		text = transform.Find("Background/wageMonthlyNumber").GetComponent<Text> ();
-		text.text = string.Format(text.text, wage.ToString("N2"));
 
 		text = transform.Find("Background/multipleScans").GetComponent<Text> ();
 		text.text = string.Format(text.text, till.countMultipleScannedItems);
@@ -49,17 +46,8 @@ public class EndScreen : MonoBehaviour {
 
 		text = transform.Find("Background/wageMonthlyFinalNumber").GetComponent<Text> ();
 		text.text = string.Format(text.text, wage.ToString("N2"));
-		
-		text = transform.Find("Background/minimumWageNumber").GetComponent<Text> ();
-		text.text = string.Format(text.text, minimumWage.ToString("N2"));
 
 		float diff = wage - minimumWage;
-
-		text = transform.Find("Background/differenceNumber").GetComponent<Text> ();
-		text.text = string.Format(text.text, diff.ToString("N2"));
-		
-//		text = transform.Find("Background/wageDaily").GetComponent<Text> ();
-//		text.text = string.Format(text.text, (wage/21.5f).ToString("N2"));
 
 
 		//find out which stamp to show
