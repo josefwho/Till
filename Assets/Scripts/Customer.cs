@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -209,7 +209,7 @@ public class Customer : MonoBehaviour {
 			{
 				result = false;
 				break;
-			}
+}
 		}
 
 		return result;

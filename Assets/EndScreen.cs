@@ -13,7 +13,12 @@ public class EndScreen : MonoBehaviour {
 	public float itemWorth = 2;	//in euros/ will be deducted/added to minimumwage per item that is different from itemsNeeded
 	public int fireAtDiff = 150;
 	public float marginPerItem = 3;
-	
+
+	private bool fired = false;
+	private bool belowWage = false;
+	private bool aboveWage = false;
+
+	public float waitingSeconds = 5.0f;
 	
 	string databaseUrl = "http://brokenrul.es/games/Chesto/submit.php";
 
@@ -49,23 +54,7 @@ public class EndScreen : MonoBehaviour {
 
 		float diff = wage - minimumWage;
 
-
-		//find out which stamp to show
-		GameObject stamp;
-		if (diff < 0) {
-						stamp = transform.Find ("stamp below").gameObject;
-						text.color = Color.red;
-						//show fired stamp
-						if (diff < -1 * fireAtDiff)
-								transform.Find ("stamp fired").GetComponent<Image> ().enabled = true;
-
-				} else {
-						stamp = transform.Find ("stamp above").gameObject;
-						text.color = Color.green;
-
-				}
-
-		stamp.GetComponent<Image> ().enabled = true;
+		StartCoroutine (stagingStamps (diff, text));
 
 		submit ();
 //		Text stampText = stamp.transform.Find ("Text").GetComponent<Text> ();
@@ -107,4 +96,79 @@ public class EndScreen : MonoBehaviour {
 		else
 			Debug.Log("Finished Uploading score");
 	}
+
+	IEnumerator fadeInManager()
+	{	
+		Color colorManager = transform.Find("kessler").GetComponent<Image> ().color;
+		Color colorBubble = transform.Find("kessler/bubble").GetComponent<Image> ().color;
+		Color colorTextFired = transform.Find("kessler/fired").GetComponent<Text> ().color;
+		Color colorTextWorkHarder = transform.Find("kessler/workHarder").GetComponent<Text> ().color;
+		Color colorTextCostingALot = transform.Find("kessler/costingALot").GetComponent<Text> ().color;
+		
+		float startTime = 0.0f;
+		float fadeTime = 0.5f;
+		
+		while (startTime < fadeTime) 
+		{
+			startTime += Time.deltaTime;
+			
+			float newAlpha = Mathf.Lerp(0, 1, startTime/fadeTime);
+			colorManager.a = newAlpha;
+			colorBubble.a = newAlpha;
+
+			if(aboveWage){
+				colorTextCostingALot.a = newAlpha;
+			}else if(belowWage && fired){
+				colorTextFired.a = newAlpha;
+			}else{
+				colorTextWorkHarder.a = newAlpha;
+			}
+
+
+			transform.Find("kessler").GetComponent<Image> ().color = colorManager;
+			transform.Find("kessler/bubble").GetComponent<Image> ().color = colorBubble;
+			transform.Find("kessler/fired").GetComponent<Text> ().color = colorTextFired;
+			transform.Find("kessler/workHarder").GetComponent<Text> ().color = colorTextWorkHarder;
+			transform.Find("kessler/costingALot").GetComponent<Text> ().color = colorTextCostingALot;
+			
+			yield return null;
+		}
+
+		
+		//reset alpha so it's visible when shown next time
+//		colorManager.a = 1;
+//		colorBubble.a = 1;
+//		colorText.a = 1;
+	}
+
+	IEnumerator stagingStamps(float diff, Text text)
+	{
+		//find out which stamp to show
+		GameObject stamp;
+		if (diff < 0) {
+			stamp = transform.Find ("stamp below").gameObject;
+			text.color = Color.red;
+			belowWage = true;
+			} else {
+			stamp = transform.Find ("stamp above").gameObject;
+			text.color = Color.green;
+			aboveWage = true;
+
+			
+		}
+		yield return new WaitForSeconds(waitingSeconds);
+		stamp.GetComponent<Image> ().enabled = true;
+		StartCoroutine(fadeInManager());
+
+		//show fired stamp
+		yield return new WaitForSeconds(waitingSeconds);
+		if (diff < -1 * fireAtDiff) {
+				transform.Find ("stamp fired").GetComponent<Image> ().enabled = true;
+			fired = true;	
+		}
+			
+	}
+
+
+
 }

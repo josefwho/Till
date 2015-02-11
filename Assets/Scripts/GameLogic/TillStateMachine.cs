@@ -244,6 +244,7 @@ public class TillStateMachine : MonoBehaviour
 
 		endScreen.GetComponent<Canvas> ().enabled = true;
 		endScreen.GetComponent<EndScreen> ().enabled = true;
+
 	}
 	
 	public void setCountText()
@@ -375,6 +376,9 @@ public class TillStateMachine : MonoBehaviour
 	{
 		Application.LoadLevel (0);
 	}
+
+
+
 	
 }
 
