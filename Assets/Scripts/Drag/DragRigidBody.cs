@@ -3,8 +3,8 @@ using System.Collections;
 
 public class DragRigidBody : MonoBehaviour 
 {
-	public float spring = 50.0f;
-	public float  damper = 5.0f;
+//	public float spring = 50.0f;
+//	public float  damper = 5.0f;
 	public float  drag = 10.0f;
 	public float  angularDrag = 5.0f;
 	public float  distance = 0.2f;
@@ -96,8 +96,8 @@ public class DragRigidBody : MonoBehaviour
 			springJoint.anchor = Vector3.zero;
 		}
 		
-		springJoint.spring = spring;
-		springJoint.damper = damper;
+		springJoint.spring = 70;
+		springJoint.damper = 10;
 		springJoint.maxDistance = distance;
 		springJoint.connectedBody = target.rigidbody;
 		
