@@ -3309,7 +3309,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 07348f2d5c0b64e33930f292b1ae055f, type: 2}
+  - {fileID: 2100000, guid: 57f43d2589d3047079b987c458b4e44e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -3843,7 +3843,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 57f43d2589d3047079b987c458b4e44e, type: 2}
+  - {fileID: 2100000, guid: 07348f2d5c0b64e33930f292b1ae055f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -5547,6 +5547,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2392406, guid: 2a7d7b6b05a3a477fac3e329828f76e7, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 57f43d2589d3047079b987c458b4e44e, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a7d7b6b05a3a477fac3e329828f76e7, type: 2}
   m_RootGameObject: {fileID: 1823718957}
@@ -6905,7 +6909,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 07348f2d5c0b64e33930f292b1ae055f, type: 2}
+  - {fileID: 2100000, guid: 57f43d2589d3047079b987c458b4e44e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -7610,6 +7614,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2392406, guid: 2a7d7b6b05a3a477fac3e329828f76e7, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 57f43d2589d3047079b987c458b4e44e, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a7d7b6b05a3a477fac3e329828f76e7, type: 2}
   m_RootGameObject: {fileID: 919283733}
