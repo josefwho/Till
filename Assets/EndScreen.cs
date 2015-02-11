@@ -14,6 +14,10 @@ public class EndScreen : MonoBehaviour {
 	public int fireAtDiff = 150;
 	public float marginPerItem = 3;
 
+	private bool fired = false;
+	private bool belowWage = false;
+	private bool aboveWage = false;
+
 	public float waitingSeconds = 5.0f;
 	
 	string databaseUrl = "http://brokenrul.es/games/Chesto/submit.php";
@@ -97,7 +101,9 @@ public class EndScreen : MonoBehaviour {
 	{	
 		Color colorManager = transform.Find("kessler").GetComponent<Image> ().color;
 		Color colorBubble = transform.Find("kessler/bubble").GetComponent<Image> ().color;
-		Color colorText = transform.Find("kessler/costingALot").GetComponent<Text> ().color;
+		Color colorTextFired = transform.Find("kessler/fired").GetComponent<Text> ().color;
+		Color colorTextWorkHarder = transform.Find("kessler/workHarder").GetComponent<Text> ().color;
+		Color colorTextCostingALot = transform.Find("kessler/costingALot").GetComponent<Text> ().color;
 		
 		float startTime = 0.0f;
 		float fadeTime = 0.5f;
@@ -109,11 +115,21 @@ public class EndScreen : MonoBehaviour {
 			float newAlpha = Mathf.Lerp(0, 1, startTime/fadeTime);
 			colorManager.a = newAlpha;
 			colorBubble.a = newAlpha;
-			colorText.a = newAlpha;
+
+			if(aboveWage){
+				colorTextCostingALot.a = newAlpha;
+			}else if(belowWage && fired){
+				colorTextFired.a = newAlpha;
+			}else{
+				colorTextWorkHarder.a = newAlpha;
+			}
+
 
 			transform.Find("kessler").GetComponent<Image> ().color = colorManager;
 			transform.Find("kessler/bubble").GetComponent<Image> ().color = colorBubble;
-			transform.Find("kessler/costingALot").GetComponent<Text> ().color = colorText;
+			transform.Find("kessler/fired").GetComponent<Text> ().color = colorTextFired;
+			transform.Find("kessler/workHarder").GetComponent<Text> ().color = colorTextWorkHarder;
+			transform.Find("kessler/costingALot").GetComponent<Text> ().color = colorTextCostingALot;
 			
 			yield return null;
 		}
@@ -132,9 +148,12 @@ public class EndScreen : MonoBehaviour {
 		if (diff < 0) {
 			stamp = transform.Find ("stamp below").gameObject;
 			text.color = Color.red;
+			belowWage = true;
 			} else {
 			stamp = transform.Find ("stamp above").gameObject;
 			text.color = Color.green;
+			aboveWage = true;
+
 			
 		}
 		yield return new WaitForSeconds(waitingSeconds);
@@ -143,8 +162,11 @@ public class EndScreen : MonoBehaviour {
 
 		//show fired stamp
 		yield return new WaitForSeconds(waitingSeconds);
-		if (diff < -1 * fireAtDiff)
-			transform.Find ("stamp fired").GetComponent<Image> ().enabled = true;
+		if (diff < -1 * fireAtDiff) {
+				transform.Find ("stamp fired").GetComponent<Image> ().enabled = true;
+			fired = true;	
+		}
+			
 	}
 
 
