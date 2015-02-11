@@ -96,8 +96,8 @@ public class EndScreen : MonoBehaviour {
 	IEnumerator fadeInManager()
 	{	
 		Color colorManager = transform.Find("kessler").GetComponent<Image> ().color;
-//		Color colorBubble = transform.Find("kessler/bubble").GetComponent<Image> ().color;
-//		Color colorText = transform.Find("kessler/Text").GetComponent<Image> ().color;
+		Color colorBubble = transform.Find("kessler/bubble").GetComponent<Image> ().color;
+//		Color colorText = transform.Find("kessler/fired").GetComponent<Image> ().color;
 		
 		float startTime = 0.0f;
 		float fadeTime = 0.5f;
@@ -108,21 +108,21 @@ public class EndScreen : MonoBehaviour {
 			
 			float newAlpha = Mathf.Lerp(0, 1, startTime/fadeTime);
 			colorManager.a = newAlpha;
-//			colorBubble.a = newAlpha;
+			colorBubble.a = newAlpha;
 //			colorText.a = newAlpha;
 
 			transform.Find("kessler").GetComponent<Image> ().color = colorManager;
-//			transform.Find("kessler/bubble").GetComponent<Image> ().color = colorBubble;
-//			transform.Find("kessler/Text").GetComponent<Image> ().color = colorText;
+			transform.Find("kessler/bubble").GetComponent<Image> ().color = colorBubble;
+//			transform.Find("kessler/fired").GetComponent<Image> ().color = colorText;
 			
 			yield return null;
 		}
 
 		
 		//reset alpha so it's visible when shown next time
-		colorManager.a = 1;
-//		colorBubble.a = 0;
-//		colorText.a = 0;
+//		colorManager.a = 1;
+//		colorBubble.a = 1;
+//		colorText.a = 1;
 	}
 
 	IEnumerator stagingStamps(float diff, Text text)
