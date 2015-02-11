@@ -4098,6 +4098,7 @@ MonoBehaviour:
   itemWorth: 15
   fireAtDiff: 100
   marginPerItem: 3
+  waitingSeconds: 2
 --- !u!1 &1138908106
 GameObject:
   m_ObjectHideFlags: 0
@@ -5264,7 +5265,7 @@ MonoBehaviour:
   spawnRadius: 1
   score: 0
   timeTaken: 0
-  shiftDuration: 120
+  shiftDuration: 5
   timeTakenText: {fileID: 1858935891}
   betweenItemOffset: -.150000006
   draggedItemCount: 0

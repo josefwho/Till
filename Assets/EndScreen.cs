@@ -13,7 +13,8 @@ public class EndScreen : MonoBehaviour {
 	public float itemWorth = 2;	//in euros/ will be deducted/added to minimumwage per item that is different from itemsNeeded
 	public int fireAtDiff = 150;
 	public float marginPerItem = 3;
-	
+
+	public float waitingSeconds = 5.0f;
 	
 	string databaseUrl = "http://brokenrul.es/games/Chesto/submit.php";
 
@@ -49,25 +50,7 @@ public class EndScreen : MonoBehaviour {
 
 		float diff = wage - minimumWage;
 
-
-		//find out which stamp to show
-		GameObject stamp;
-		if (diff < 0) {
-						stamp = transform.Find ("stamp below").gameObject;
-						text.color = Color.red;
-						StartCoroutine(fadeInManager());
-						
-						//show fired stamp
-						if (diff < -1 * fireAtDiff)
-								transform.Find ("stamp fired").GetComponent<Image> ().enabled = true;
-
-				} else {
-						stamp = transform.Find ("stamp above").gameObject;
-						text.color = Color.green;
-
-				}
-
-		stamp.GetComponent<Image> ().enabled = true;
+		StartCoroutine (stagingStamps (diff, text));
 
 		submit ();
 //		Text stampText = stamp.transform.Find ("Text").GetComponent<Text> ();
@@ -113,8 +96,8 @@ public class EndScreen : MonoBehaviour {
 	IEnumerator fadeInManager()
 	{	
 		Color colorManager = transform.Find("kessler").GetComponent<Image> ().color;
-//		Color colorBubble = transform.Find("kessler/bubble").GetComponent<Color> ();
-//		Color colorText = transform.Find("kessler/Text").GetComponent<Color> ();
+//		Color colorBubble = transform.Find("kessler/bubble").GetComponent<Image> ().color;
+//		Color colorText = transform.Find("kessler/Text").GetComponent<Image> ().color;
 		
 		float startTime = 0.0f;
 		float fadeTime = 0.5f;
@@ -129,6 +112,8 @@ public class EndScreen : MonoBehaviour {
 //			colorText.a = newAlpha;
 
 			transform.Find("kessler").GetComponent<Image> ().color = colorManager;
+//			transform.Find("kessler/bubble").GetComponent<Image> ().color = colorBubble;
+//			transform.Find("kessler/Text").GetComponent<Image> ().color = colorText;
 			
 			yield return null;
 		}
@@ -138,6 +123,28 @@ public class EndScreen : MonoBehaviour {
 		colorManager.a = 1;
 //		colorBubble.a = 0;
 //		colorText.a = 0;
+	}
+
+	IEnumerator stagingStamps(float diff, Text text)
+	{
+		//find out which stamp to show
+		GameObject stamp;
+		if (diff < 0) {
+			stamp = transform.Find ("stamp below").gameObject;
+			text.color = Color.red;
+			} else {
+			stamp = transform.Find ("stamp above").gameObject;
+			text.color = Color.green;
+			
+		}
+		yield return new WaitForSeconds(waitingSeconds);
+		stamp.GetComponent<Image> ().enabled = true;
+		StartCoroutine(fadeInManager());
+
+		//show fired stamp
+		yield return new WaitForSeconds(waitingSeconds);
+		if (diff < -1 * fireAtDiff)
+			transform.Find ("stamp fired").GetComponent<Image> ().enabled = true;
 	}
 
 
