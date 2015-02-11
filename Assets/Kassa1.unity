@@ -4166,7 +4166,7 @@ MonoBehaviour:
   itemWorth: 15
   fireAtDiff: 100
   marginPerItem: 3
-  waitingSeconds: 2
+  waitingSeconds: 1
 --- !u!1 &1138908106
 GameObject:
   m_ObjectHideFlags: 0

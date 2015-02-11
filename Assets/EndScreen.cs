@@ -97,7 +97,7 @@ public class EndScreen : MonoBehaviour {
 	{	
 		Color colorManager = transform.Find("kessler").GetComponent<Image> ().color;
 		Color colorBubble = transform.Find("kessler/bubble").GetComponent<Image> ().color;
-//		Color colorText = transform.Find("kessler/fired").GetComponent<Image> ().color;
+		Color colorText = transform.Find("kessler/costingALot").GetComponent<Text> ().color;
 		
 		float startTime = 0.0f;
 		float fadeTime = 0.5f;
@@ -109,11 +109,11 @@ public class EndScreen : MonoBehaviour {
 			float newAlpha = Mathf.Lerp(0, 1, startTime/fadeTime);
 			colorManager.a = newAlpha;
 			colorBubble.a = newAlpha;
-//			colorText.a = newAlpha;
+			colorText.a = newAlpha;
 
 			transform.Find("kessler").GetComponent<Image> ().color = colorManager;
 			transform.Find("kessler/bubble").GetComponent<Image> ().color = colorBubble;
-//			transform.Find("kessler/fired").GetComponent<Image> ().color = colorText;
+			transform.Find("kessler/costingALot").GetComponent<Text> ().color = colorText;
 			
 			yield return null;
 		}
