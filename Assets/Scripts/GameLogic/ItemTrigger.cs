@@ -29,7 +29,7 @@ public class ItemTrigger : MonoBehaviour {
 		{
 			other.gameObject.GetComponent<ItemStatus>().inTrigger = gameObject;
 
-			print (other.gameObject.name + " entered trigger " + name);
+//			print (other.gameObject.name + " entered trigger " + name);
 			objectsInside.Add(other.gameObject);
 			empty = false;
 		}
@@ -37,7 +37,7 @@ public class ItemTrigger : MonoBehaviour {
 
 	public virtual void OnTriggerExit (Collider other)
 	{
-		print (other.gameObject.name + " LEFT trigger " + name);
+//		print (other.gameObject.name + " LEFT trigger " + name);
 		removeObject (other.gameObject);
 	}
 
@@ -46,7 +46,7 @@ public class ItemTrigger : MonoBehaviour {
 		if (toBeRemoved.tag == "ShoppingItem") 
 		{
 			toBeRemoved.GetComponent<ItemStatus>().inTrigger = null;
-			print (toBeRemoved.name + " was removed from trigger " + name);
+//			print (toBeRemoved.name + " was removed from trigger " + name);
 			objectsInside.Remove(toBeRemoved);
 			if(objectsInside.Count == 0)
 			{

@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 403966}
   - 114: {fileID: 11405494}
+  - 65: {fileID: 6502898}
   m_Layer: 0
   m_Name: hippie
   m_TagString: Untagged
@@ -140,6 +141,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103968}
   m_Mesh: {fileID: 4300000, guid: b70108583809b40bcb3f66ad8aaddb26, type: 3}
+--- !u!65 &6502898
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103966}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.06268883, y: 3.09917164, z: 1.04857337}
+  m_Center: {x: -.069732666, y: -.313303471, z: -.0242520422}
 --- !u!95 &9503968
 Animator:
   serializedVersion: 3

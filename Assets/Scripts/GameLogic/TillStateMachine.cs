@@ -125,6 +125,11 @@ public class TillStateMachine : MonoBehaviour
 			{
 				Application.LoadLevel(0);
 			}
+			
+			if(Input.GetKeyDown("d") && Input.GetKey(KeyCode.LeftShift) && Input.GetKey (KeyCode.LeftCommand))
+			{
+				switchToState (States.ShiftDone);
+			}
 		}
 
 //		setCountText ();
@@ -283,8 +288,12 @@ public class TillStateMachine : MonoBehaviour
 		if (currentCustomer != null )
 			currentCustomer.onBeltMoved(offset);
 
-		if (nextCustomer != null)
-			nextCustomer.onBeltMoved(offset);
+		if (nextCustomer != null) 
+		{
+			//HACK to avoid customers that are inside each other
+			if(nextCustomer.transform.position.x < (currentCustomer.transform.position.x - (currentCustomer.GetComponent<BoxCollider>().size.x/2 + nextCustomer.GetComponent<BoxCollider>().size.x/2)))
+				nextCustomer.onBeltMoved (offset);
+		}
 	}
 
 	Customer getNewCustomer()
