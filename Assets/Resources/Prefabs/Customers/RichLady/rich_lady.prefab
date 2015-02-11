@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 403966}
   - 114: {fileID: 11448694}
+  - 65: {fileID: 6519680}
   m_Layer: 0
   m_Name: rich_lady
   m_TagString: Untagged
@@ -140,6 +141,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103968}
   m_Mesh: {fileID: 4300000, guid: 501f6c2d7ffb7469285e29f883eca06c, type: 3}
+--- !u!65 &6519680
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103966}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.47600722, y: 3.41291285, z: 1}
+  m_Center: {x: -.0250449181, y: -.437853217, z: 1.46627426e-05}
 --- !u!95 &9503968
 Animator:
   serializedVersion: 3
