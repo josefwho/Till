@@ -55,6 +55,8 @@ public class EndScreen : MonoBehaviour {
 		if (diff < 0) {
 						stamp = transform.Find ("stamp below").gameObject;
 						text.color = Color.red;
+						StartCoroutine(fadeInManager());
+						
 						//show fired stamp
 						if (diff < -1 * fireAtDiff)
 								transform.Find ("stamp fired").GetComponent<Image> ().enabled = true;
@@ -107,4 +109,37 @@ public class EndScreen : MonoBehaviour {
 		else
 			Debug.Log("Finished Uploading score");
 	}
+
+	IEnumerator fadeInManager()
+	{	
+		Color colorManager = transform.Find("kessler").GetComponent<Image> ().color;
+//		Color colorBubble = transform.Find("kessler/bubble").GetComponent<Color> ();
+//		Color colorText = transform.Find("kessler/Text").GetComponent<Color> ();
+		
+		float startTime = 0.0f;
+		float fadeTime = 0.5f;
+		
+		while (startTime < fadeTime) 
+		{
+			startTime += Time.deltaTime;
+			
+			float newAlpha = Mathf.Lerp(0, 1, startTime/fadeTime);
+			colorManager.a = newAlpha;
+//			colorBubble.a = newAlpha;
+//			colorText.a = newAlpha;
+
+			transform.Find("kessler").GetComponent<Image> ().color = colorManager;
+			
+			yield return null;
+		}
+
+		
+		//reset alpha so it's visible when shown next time
+		colorManager.a = 1;
+//		colorBubble.a = 0;
+//		colorText.a = 0;
+	}
+
+
+
 }
