@@ -125,6 +125,11 @@ public class TillStateMachine : MonoBehaviour
 			{
 				Application.LoadLevel(0);
 			}
+			
+			if(Input.GetKeyDown("d") && Input.GetKey(KeyCode.LeftShift) && Input.GetKey (KeyCode.LeftCommand))
+			{
+				switchToState (States.ShiftDone);
+			}
 		}
 
 //		setCountText ();
