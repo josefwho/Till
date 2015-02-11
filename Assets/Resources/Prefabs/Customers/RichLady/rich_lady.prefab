@@ -8,8 +8,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 403966}
-  - 114: {fileID: 11448694}
   - 65: {fileID: 6519680}
+  - 114: {fileID: 11448694}
   m_Layer: 0
   m_Name: rich_lady
   m_TagString: Untagged
@@ -94,8 +94,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 103966}
-  m_LocalRotation: {x: .37506628, y: 0, z: 0, w: .926998019}
-  m_LocalPosition: {x: -5.90999985, y: .810000002, z: 5.78999996}
+  m_LocalRotation: {x: .185699373, y: 0, z: 0, w: .98260659}
+  m_LocalPosition: {x: -5.01999998, y: 1.29999995, z: 6.57999992}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 403968}
