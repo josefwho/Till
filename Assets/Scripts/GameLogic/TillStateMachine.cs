@@ -136,8 +136,12 @@ public class TillStateMachine : MonoBehaviour
 
 		if (currentState == States.InProgress) 
 		{
-			if(currentCustomer.shoppingItems.Count == floorTrigger.getObjectsInsideCount() + basketTrigger.getObjectsInsideCount())
-				switchToState(States.NextCustomer);
+			if(currentCustomer.shoppingItems.Count <= basketTrigger.getObjectsInsideCount())
+			{
+				//make sure these items all belong to the currentCusomter
+				if(currentCustomer.allItemsInTrigger(basketTrigger))
+					switchToState(States.NextCustomer);
+			}
 
 			if(!isSpawningItems && timeTaken < shiftDuration && nextCustomer == null && newCustomerTrigger.empty)
 			{
@@ -167,17 +171,15 @@ public class TillStateMachine : MonoBehaviour
 	
 	void onEnterNextCustomer(States lastState)
 	{
-		if (currentCustomer != null) {
-
-			score += ((BasketTrigger)basketTrigger).getScore()*2;
-			score += ((FloorTrigger)floorTrigger).getScore();
-
-						for (int i = 0; i < currentCustomer.shoppingItems.Count; i++) {
-								GameObject toBeDestroyed = (GameObject)currentCustomer.shoppingItems [i];
+		if (currentCustomer != null) 
+		{
+			for (int i = 0; i < currentCustomer.shoppingItems.Count; i++) 
+			{
+				GameObject toBeDestroyed = (GameObject)currentCustomer.shoppingItems [i];
 				itemDestroy(toBeDestroyed);
 				Destroy (toBeDestroyed);
-						}
-				}
+			}
+		}
 		
 
 		if (currentCustomer != null) 

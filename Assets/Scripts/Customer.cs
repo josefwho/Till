@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -199,7 +199,21 @@ public class Customer : MonoBehaviour {
 //		
 //	}
 
+	public bool allItemsInTrigger(ItemTrigger trigger)
+	{
+		bool result = true;
+		foreach (GameObject i in shoppingItems) 
+		{
+			ItemStatus s = i.GetComponent<ItemStatus>();
+			if(s.inTrigger == null || s.inTrigger.GetInstanceID() != trigger.gameObject.GetInstanceID())
+			{
+				result = false;
+				break;
+}
+		}
 
+		return result;
+	}
 
 }
 
