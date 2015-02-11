@@ -54,6 +54,7 @@
 			$currentProfit = 0;
 			$profitToDraw = array();
 			$lastDate = null;
+			$yesterdaysProfit = 200;
 			foreach ($totalProfit as $key => $value) 
 			{
 				$currentProfit += $value;
@@ -61,7 +62,8 @@
 				if($lastDate != null)
 				{
 					$daysSinceLastProfit = ceil((strtotime($key) - strtotime($lastDate))/60/60/24);
-					$currentProfit -= $daysSinceLastProfit * ( 100.0 + mt_rand(-1000,1000)/1000 * 5);
+					//reduce some money, so graph can also go down a bit
+					$currentProfit -= $daysSinceLastProfit * ( $yesterdaysProfit * 0.6 + mt_rand(-1000,1000)/1000 * 5);
 				}
 
 				$lastDate = $key;
@@ -70,6 +72,8 @@
 				{
 					array_push($profitToDraw, $currentProfit);
 				}
+				
+				$yesterdaysProfit = $value;
 			}		
 
 			//insert 0 profit if we don't have enough data yet
