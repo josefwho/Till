@@ -1,6 +1,6 @@
 ,Global,Stereotype,Standard,Anti-Stereotype
 Name,RichLady,,,
-Propability to be picked,0.1,0.20,0.60,0.20
+Propability to be picked,1,1.00,0.30,0.00
 Item Count Range,,3 - 5,4 - 8,5 - 8
 Tags,,luxury; premium,premium,cheap; deals
 Specific Items,,,,

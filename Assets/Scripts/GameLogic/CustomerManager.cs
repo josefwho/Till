@@ -26,7 +26,7 @@ public class CustomerProfile
 		//pick the variation if its probability is high enough
 		while (safetyCounter < 100) 
 		{
-			if (variations[index].probability > Random.value)
+			if (variations[index].probability >= Random.value)
 				return variations[index];
 			
 			index = Random.Range (0, variations.Length);
@@ -129,7 +129,7 @@ public class CustomerManager : MonoBehaviour {
 		//pick the random customer if it exists and if it's probability is high enough
 		while (safetyCounter < 100) 
 		{
-			if (profiles.TryGetValue (profileNames [index] as string, out profile) && profile.probability > Random.value)
+			if (profiles.TryGetValue (profileNames [index] as string, out profile) && profile.probability >= Random.value)
 				return profile;
 
 			index = Random.Range (0, profileNames.Count);
