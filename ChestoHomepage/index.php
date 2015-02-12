@@ -131,16 +131,22 @@
 				<img class="chestoLogo"; align = "left"; style="height:auto; width:auto; max-width:300px; max-height:300px;" src="ChestoLogo.png">
 			</div>
 
+
 <!-- 			<div style="width:100%" align="center">
 				<img style="height:auto; width:auto; max-width:800px; max-height:800px" src="landingPicture.png">
 			</div> -->
 
-			<div style="background-color:rgb(87,0,142); height:350px">
+			<div style="background-color:rgb(87,0,142); height:400px">
 				<h1 style="color:white"> WHO WE ARE</h1>
 
-					<div id="left" style="width:40%">
-							<p id= "floatingTextWhite"> <span>CHESTO</span> was etablished 1983 by Guenther Eisner and taken over by his son in 2013.</p>
-							<p id= "floatingTextWhite"> <span>CHESTO</span> is one of the leading food retail companies in the world.</p>
+					<div id="left" style="width:50%">
+							<p id= "floatingTextWhite"> <span>HISTORY: <br></span>CHESTO was etablished 1993 by Guenther Eisner and taken over by his son Toni Eisner in 2013.</p>
+							<p id= "floatingTextWhite"> <span>OPERATIONS: <br></span>CHESTO is the world leading name in food retail solutions.</p>
+							<p id= "floatingTextWhite"> <span>CAREER: <br></span>CHESTO employs the best people, develops their competence, provides opportunity and inspires them to live 
+our values.</p>
+							<p id= "floatingTextWhite"> <span>INTEGRETY: <br></span>CHESTO can always be trusted to do the right thing.</p>
+
+
 					</div>
 
 					<div id ="right">
@@ -238,14 +244,25 @@
 
 		<div style="background-color:rgb(87,0,142); height:350px">
 			<h1 style="color:white"> NEWS</h1>
-			<p id="left" style="color: white"> MEET OUR CEO <span>TONI EISNER</span> ON HIS PERSONAL BLOG</p>
-			<img id="right" style="height:auto; width:auto; max-width:248px; max-height:248px;"src="Toni.png">
+			<div id="left" style="width:40%">
+				<a href=""><p id="left" style="color: white"> Meet our CEO <span>TONI EISNER</span> on his personal blog.</p></a>
+				<a href=""><p id="left" style="color: white"> How does the life of one of the most <span>influential</span> men look like?</p></a>
+				<a href=""><p id="left" style="color: white"> Do you want to have a peek inside the life of CHESTO's <span>main man</span>?</p></a>
+				<a href=""><p id="left" style="color: white"> Visit: <span>www.TONI:url?</span></p>
+   			</div>
+<!-- 				<img id="left" style="height:auto; width:auto; max-width:180px; max-height:180px; padding-top:25px"src="ShoppingItems/soda.png">
+				<img id="left" style="height:auto; width:auto; max-width:180px; max-height:180px; padding-top:25px"src="ShoppingItems/champagne.png">
+ -->
+			<div id= "right" style="width:40%">
+				<a href=""><img id="right" style="height:auto; width:auto; max-width:280px; max-height:280px;"src="Toni.png"></a>
+			</div>
+
 		</div>
 
-		<div style="background-color:white";>
+		<div style="background-color:white; height:130px">
 			<h1> SHAREHOLDERS</h1>
-				<div id="left" style="width:40%">
-						<p id= "floatingTextBlack" style="color:rgb(87,0,142)"> <span>CHESTO</span> wants to thank its main shareholders <span>BROKEN RULES</span> & <span>JOSEF WHO</span></p>
+				<div id="left" style="width:50%">
+					<p id= "floatingTextBlack" style="color:rgb(87,0,142)"> <span>CHESTO</span> wants to thank its main shareholders <a href="http://www.brokenrul.es"><span>BROKEN RULES</span></a> & <a href="https://twitter.com/peregrinustyss"><span>JOSEF WHO</span></a></p>
 				</div>
 				<div id="right">
 					<a id="left" href="http://www.brokenrul.es"><img style="height:auto; width:auto; max-width:80px; max-height:80px;"src="BRLogo.png"></a> 
@@ -253,5 +270,14 @@
 					</div>
 		</div>
 
+<!-- 			<div style="background-color:white; height:150px; width=100%">
+				<img id="left" style="height:auto; width:auto; max-height:130px; padding-top:10px; padding-left:3px"src="ShoppingItems/carrot.png">
+				<img id="left" style="height:auto; width:auto; max-height:130px; padding-top:10px; padding-left:3px"src="ShoppingItems/carrot.png">
+				<img id="left" style="height:auto; width:auto; max-height:130px; padding-top:10px; padding-left:3px"src="ShoppingItems/carrot.png">
+				<img id="left" style="height:auto; width:auto; max-height:130px; padding-top:10px; padding-left:3px"src="ShoppingItems/carrot.png">
+				<img id="left" style="height:auto; width:auto; max-height:130px; padding-top:10px; padding-left:3px"src="ShoppingItems/carrot.png">
+
+		</div>
+ -->
 	</body>
 </html>
