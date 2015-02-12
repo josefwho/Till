@@ -13,6 +13,8 @@ public class Customer : MonoBehaviour {
 	public Text text;
 	private GameObject buttonObject;
 	private float waitingTime;
+	private float maxWaitingTimePerItem;
+	private bool showedWaitingText;
 	
 //	public GameObject image;
 
@@ -23,6 +25,7 @@ public class Customer : MonoBehaviour {
 		till = GameObject.FindGameObjectWithTag ("GameController").GetComponent<TillStateMachine> ();
 
 		waitingTime = 0.0f;
+		maxWaitingTimePerItem = Random.Range (4, 8);
 
 		text = transform.GetComponentInChildren<Text> ();
 		buttonObject = text.transform.parent.gameObject;
@@ -35,11 +38,12 @@ public class Customer : MonoBehaviour {
 		waitingTime += Time.deltaTime;
 
 		//TODO: show specific sentences when waitingTime reaches certain times. e.g. when waitingTime is bigger then 10 seconds say first boring sentence
-		//how to get a child gameobject of customer
-//		Transform textT = transform.FindChild ("texts");
-//		GameObject texts = textT.gameObject;
-//		
-//		texts = transform.FindChild ("texts").gameObject;
+
+		if (!showedWaitingText && waitingTime > shoppingItems.Count * maxWaitingTimePerItem) 
+		{
+			showedWaitingText = true;
+			onWaitTooLong();
+		}
 	}
 
 	public void showItems()
@@ -75,6 +79,15 @@ public class Customer : MonoBehaviour {
 		//playComplainSound();
 		StartCoroutine (hideBubble ());
 
+	}
+
+	public void onWaitTooLong()
+	{
+		buttonObject.SetActive (true);
+		text.text = "Hey, I don't have all day. Work Faster!";
+		//		Debug.Log ("hey, this is not my " + item.GetComponent<ItemStatus>().name);
+		//playComplainSound();
+		StartCoroutine (hideBubble ());
 	}
 
 	IEnumerator showingItems()
