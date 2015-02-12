@@ -120,7 +120,7 @@ public class DragRigidBody : MonoBehaviour
 			//adjust spring joint to magnitude of mouse movement
 			float m = (oldPosition - springJoint.transform.position).magnitude;
 			springJoint.spring = Mathf.Lerp(50, 100, m/1);
-			Debug.Log("magnitude is: " + m +  " springiness is: " + springJoint.spring);
+//			Debug.Log("magnitude is: " + m +  " springiness is: " + springJoint.spring);
 
 			yield return null;
 		}
