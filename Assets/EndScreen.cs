@@ -158,13 +158,16 @@ public class EndScreen : MonoBehaviour {
 		}
 		yield return new WaitForSeconds(waitingSeconds);
 		stamp.GetComponent<Image> ().enabled = true;
-		StartCoroutine(fadeInManager());
 
+		if (diff < -1 * fireAtDiff) {
+			fired =true;
+		}
+
+		StartCoroutine(fadeInManager());
 		//show fired stamp
 		yield return new WaitForSeconds(waitingSeconds);
-		if (diff < -1 * fireAtDiff) {
+		if (fired) {
 				transform.Find ("stamp fired").GetComponent<Image> ().enabled = true;
-			fired = true;	
 		}
 			
 	}
