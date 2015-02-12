@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class DragRigidBody : MonoBehaviour 
@@ -118,8 +118,13 @@ public class DragRigidBody : MonoBehaviour
 //			print("dragging " +springJoint.connectedBody.name + " to new pos: " + springJoint.transform.position);
 
 			//adjust spring joint to magnitude of mouse movement
+<<<<<<< HEAD
+			float m = (oldPosition - springJoint.transform.position).magnitude;
+			springJoint.spring = Mathf.Lerp(50, 100, m/1);
+=======
 			float m = (springJoint.connectedBody.transform.position - springJoint.transform.position).magnitude;
 			springJoint.spring = Mathf.Lerp(30, 100, m/4);
+>>>>>>> FETCH_HEAD
 //			Debug.Log("magnitude is: " + m +  " springiness is: " + springJoint.spring);
 
 			yield return null;
