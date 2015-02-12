@@ -67,13 +67,17 @@ public class TillStateMachine : MonoBehaviour
 	public bool isSpawningItems;
 
 	private Object nextCustomerSign;
-	private GameObject endScreen;
+	private GameObject endScreenObject;
+	private EndScreen endScreen;
 
 	public delegate void OnItemDestroy(GameObject toBeDestroyed);
 	public static event OnItemDestroy itemDestroy ;
 
 	public float startTime = 15;	// 07:00 
 	public float endTime = 20;
+
+	private Manager manager;
+	private bool commentedOnOvertime = false;
 	
 	void Start()
 	{
@@ -89,9 +93,11 @@ public class TillStateMachine : MonoBehaviour
 //		countBasket.text = "Items in Basket: " + basketTrigger.getObjectsInsideCount().ToString ();
 //		countFloor.text = "Items on Floor: " + floorTrigger.getObjectsInsideCount ().ToString ();
 
-		endScreen = GameObject.Find ("End Screen Canvas");
-
+		endScreenObject = GameObject.Find ("End Screen Canvas");
+		endScreen = endScreenObject.GetComponent<EndScreen> ();
 		customers = new ArrayList ();
+
+		manager = GameObject.Find ("manager").GetComponent<Manager>();
 
 		onEnterSetup ();
 	}
@@ -147,6 +153,12 @@ public class TillStateMachine : MonoBehaviour
 			{
 				nextCustomer = getNewCustomer();
 			}
+
+			if(timeTaken > shiftDuration && !commentedOnOvertime)
+			{
+				commentedOnOvertime = true;
+				manager.commentOnOvertime();
+			}
 		}
 	}
 		
@@ -184,35 +196,27 @@ public class TillStateMachine : MonoBehaviour
 
 		if (currentCustomer != null) 
 		{
-			//update how many items we sold
-			if(timeTaken < shiftDuration)
-				countSoldRegular += currentCustomer.shoppingItems.Count;
-			//if customers leaves after end of shift distinguish between items scanned before or after end
-			else
+			foreach(GameObject i in currentCustomer.shoppingItems)
 			{
-				foreach(GameObject i in currentCustomer.shoppingItems)
+				ItemStatus s = i.GetComponent<ItemStatus>();
+
+				if (s.scanned > 0)
 				{
-					ItemStatus s = i.GetComponent<ItemStatus>();
-
-					if (s.scanned > 0)
+					//count how often the player scanned an item multiple times
+					if(s.scanned > 1)
 					{
-						//count how often the player scanned an item multiple times
-						if(s.scanned > 1)
-						{
-							countMultipleScannedItems++; 		// deduct 1, because we just want to count the multiple scans. the first scan is legitim
-						}
-						else
-						{
-							if(s.scannedInOvertime)
-								countSoldOvertime++;
-							else
-								countSoldRegular++;
-
-						}
+						countMultipleScannedItems++; 		// deduct 1, because we just want to count the multiple scans. the first scan is legitim
 					}
 					else
-						countUnscannedItems++;
+					{
+						if(s.scannedInOvertime)
+							countSoldOvertime++;
+						else
+							countSoldRegular++;
+					}
 				}
+				else
+					countUnscannedItems++;
 			}
 
 			//now let him/her go
@@ -242,8 +246,8 @@ public class TillStateMachine : MonoBehaviour
 	{
 		score += (4.0f*60.0f - timeTaken);
 
-		endScreen.GetComponent<Canvas> ().enabled = true;
-		endScreen.GetComponent<EndScreen> ().enabled = true;
+		endScreenObject.GetComponent<Canvas> ().enabled = true;
+		endScreen.enabled = true;
 
 	}
 	
@@ -378,7 +382,27 @@ public class TillStateMachine : MonoBehaviour
 	}
 
 
+	public void onItemScanned(ItemStatus status)
+	{
+		status.scanned++;
 
+		if(status.scanned == 1)
+			countScannedObjects++;
+		else
+			status.customer.onMultipleScanned(status.gameObject);
+
+		if(currentCustomer != status.customer)
+ 			currentCustomer.onNotMyItem(status.gameObject);
+
+		if (timeTaken > shiftDuration)
+			status.scannedInOvertime = true;
+		else if(countScannedObjects == endScreen.itemsNeededForMinimumWage)
+		{
+			manager.commentOnMinimumWage();
+		}
+	}
+	
+	
 	
 }
 

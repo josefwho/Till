@@ -29,23 +29,12 @@ public class ScanDetection : MonoBehaviour {
 
 			if(currentScanDuration > scanDuration/2)
 			{
-				ItemStatus status = transform.parent.parent.gameObject.GetComponent<ItemStatus>();
-				status.scanned++;
-
-				if(machine.timeTaken > machine.shiftDuration)
-					status.scannedInOvertime = true;
-
-				if(status.scanned > 1)
-					status.customer.onMultipleScanned(transform.parent.parent.gameObject);
-				if(machine.currentCustomer != status.customer)
-					machine.currentCustomer.onNotMyItem(transform.parent.parent.gameObject);
+				machine.onItemScanned(transform.parent.parent.gameObject.GetComponent<ItemStatus>());
 
 				GameObject.FindGameObjectWithTag("Pin").GetComponent<Pin>().unpinItem();
 
 				playScanSound(other);
 				OnTriggerExit(other);
-
-				machine.countScannedObjects++;
 			}
 			//else
 			//changeColor(other, Color.grey);
