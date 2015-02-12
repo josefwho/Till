@@ -144,7 +144,7 @@
 							<p id= "floatingTextWhite"> <span>OPERATIONS: <br></span>CHESTO is the world leading name in food retail solutions.</p>
 							<p id= "floatingTextWhite"> <span>CAREER: <br></span>CHESTO employs the best people, develops their competence, provides opportunity and inspires them to live 
 our values.</p>
-							<p id= "floatingTextWhite"> <span>INTEGRETY: <br></span>CHESTO can always be trusted to do the right thing.</p>
+							<p id= "floatingTextWhite"> <span>INTEGRITY: <br></span>CHESTO can always be trusted to do the right thing.</p>
 
 
 					</div>
