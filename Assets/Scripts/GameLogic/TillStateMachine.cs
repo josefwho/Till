@@ -192,7 +192,6 @@ public class TillStateMachine : MonoBehaviour
 				Destroy (toBeDestroyed);
 			}
 		}
-		
 
 		if (currentCustomer != null) 
 		{
@@ -205,7 +204,7 @@ public class TillStateMachine : MonoBehaviour
 					//count how often the player scanned an item multiple times
 					if(s.scanned > 1)
 					{
-						countMultipleScannedItems++; 		// deduct 1, because we just want to count the multiple scans. the first scan is legitim
+						countMultipleScannedItems += s.scanned - 1; 		// deduct 1, because we just want to count the multiple scans. the first scan is legitim
 					}
 					else
 					{
