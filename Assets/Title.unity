@@ -1811,7 +1811,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 163, y: -280}
+  m_AnchoredPosition: {x: 189, y: -280}
   m_SizeDelta: {x: 1060, y: 47}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1927857421
@@ -1839,7 +1839,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: music by Andreas Leitner & Jonas De Kort
+  m_Text: music by sammy colon & Jonas De Kort
 --- !u!222 &1927857422
 CanvasRenderer:
   m_ObjectHideFlags: 0
