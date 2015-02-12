@@ -4827,7 +4827,7 @@ Prefab:
     - target: {fileID: 2300000, guid: d77be9766b10542529698a2bd7d02bb6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7c5529fd638a6431eab4b7a7b45ebb22, type: 2}
+      objectReference: {fileID: 2100000, guid: d2872adb05c0540fab119d1e6c4a456b, type: 2}
     - target: {fileID: 100000, guid: d77be9766b10542529698a2bd7d02bb6, type: 3}
       propertyPath: m_Layer
       value: 2
@@ -6160,7 +6160,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 7c5529fd638a6431eab4b7a7b45ebb22, type: 2}
+  - {fileID: 2100000, guid: d2872adb05c0540fab119d1e6c4a456b, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -6643,6 +6643,7 @@ GameObject:
   - 114: {fileID: 1525401682}
   - 114: {fileID: 1525401684}
   - 114: {fileID: 1525401683}
+  - 114: {fileID: 1525401685}
   m_Layer: 2
   m_Name: GameController
   m_TagString: GameController
@@ -6718,6 +6719,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d301212f70f349e5b357bb2ccf5e212, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1525401685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1525401680}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04c5dacbda7114f7a8b3890a720e40c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorImage: {fileID: 2800000, guid: 42cc49cbbbbc24b4199a2edd17d363bd, type: 3}
+  grabbed: {fileID: 2800000, guid: 50afad295d60d442ea05797b9c83c415, type: 3}
 --- !u!1001 &1540418913
 Prefab:
   m_ObjectHideFlags: 0
