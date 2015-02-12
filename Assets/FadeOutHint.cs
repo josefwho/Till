@@ -17,10 +17,15 @@ public class FadeOutHint : MonoBehaviour {
 	void Update () {
 		currentDuration += Time.deltaTime;
 
-		if (Input.GetKeyDown(key) || currentDuration > duration)
+		if (Input.GetKeyDown(key) || (duration > 0 && currentDuration > duration))
 		{
-			StartCoroutine(fadeOut());
+			startFadeOut ();
 		}
+	}
+
+	public void startFadeOut()
+	{
+		StartCoroutine(fadeOut());
 	}
 
 	IEnumerator fadeOut()
@@ -46,5 +51,12 @@ public class FadeOutHint : MonoBehaviour {
 		}
 
 		gameObject.SetActive (false);
+
+		//reset so we're ready to fade out again next time
+		backgroundColor.a = backgroundA;
+		background.color = backgroundColor;
+		textColor.a = 1;
+		text.color = textColor;
+
 	}
 }
