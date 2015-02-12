@@ -96,8 +96,8 @@ public class DragRigidBody : MonoBehaviour
 			springJoint.anchor = Vector3.zero;
 		}
 		
-		springJoint.spring = 70;
-		springJoint.damper = 10;
+		springJoint.spring = 50;
+		springJoint.damper = 5;
 		springJoint.maxDistance = distance;
 		springJoint.connectedBody = target.rigidbody;
 		
@@ -113,8 +113,15 @@ public class DragRigidBody : MonoBehaviour
 		while (Input.GetMouseButton (0) && springJoint)
 		{
 			Ray ray = mainCamera.ScreenPointToRay (Input.mousePosition);
+			Vector3 oldPosition = springJoint.transform.position;
 			springJoint.transform.position = ray.GetPoint(distance) + dragOffset;
-			print("dragging " +springJoint.connectedBody.name + " to new pos: " + springJoint.transform.position);
+//			print("dragging " +springJoint.connectedBody.name + " to new pos: " + springJoint.transform.position);
+
+			//adjust spring joint to magnitude of mouse movement
+			float m = (oldPosition - springJoint.transform.position).magnitude;
+			springJoint.spring = Mathf.Lerp(50, 100, m/1);
+			Debug.Log("magnitude is: " + m +  " springiness is: " + springJoint.spring);
+
 			yield return null;
 		}
 		detach ();
