@@ -191,7 +191,53 @@ our values.</p>
 				<div id="graphContainer" >
 					<p id="left" style="color:red"><span>SHARE</span></p>
 					<div>
-
+						<script>
+						$(function () {
+							var options = {
+								chart: {
+									// type: 'bar'
+								},
+								title: {
+									text: 'PBIT'
+								},
+								xAxis: {
+									type: 'datetime',
+								},
+								yAxis: {
+									title: {
+										text: 'PBIT in $',
+									}
+								},
+								tooltip: {
+									pointFormat: '{point.y} $',
+									valueDecimals: 2
+								},
+								plotOptions: {
+									series: {
+										marker: {
+											enabled: false,
+											states: {
+												hover: {
+													fillColor:'#57008e',
+												}
+											}
+										},
+										lineColor: '#57008e'
+									}
+								},
+								series: [{
+									name: 'Chesto',
+									color: '#57008e',
+									pointInterval: 24 * 3600 * 1000,
+									pointStart: Date.UTC(<?php echo $startDate; ?>),
+									data: [<?php echo join($profitToDraw, ','); ?>]
+								}]
+							};
+							$('#graphContainer').highcharts(
+								options
+							);
+						});
+						</script>
 					</div>
 				</div>
 			</div>
