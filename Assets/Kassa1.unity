@@ -5269,8 +5269,8 @@ MonoBehaviour:
   stampBelow: {fileID: 357087745}
   stampAbove: {fileID: 790696551}
   stampFired: {fileID: 2122845543}
-  scaleFactor: {x: 1.70000005, y: 1.70000005, z: 1.70000005}
-  scaleDuration: 1
+  scaleFactor: {x: 10, y: 10, z: 10}
+  scaleDuration: .200000003
   waitingSeconds: 1
 --- !u!1 &1128891429
 GameObject:
@@ -7728,7 +7728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: .45588237, g: .45588237, b: .45588237, a: .294117659}
+  m_Color: {r: 1, g: 1, b: 1, a: .627451003}
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0

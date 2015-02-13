@@ -50,6 +50,10 @@ public class DragRigidBody : MonoBehaviour
 		if (hit.collider.gameObject != gameObject.transform.parent.gameObject)
 			return;
 
+		if(Application.loadedLevel == 0)
+		   {
+			startDragging (hit.collider.gameObject, 7, false);
+		}else
 		startDragging (hit.collider.gameObject, 13, false);
 	}
 
