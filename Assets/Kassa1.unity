@@ -5264,6 +5264,10 @@ MonoBehaviour:
   itemWorth: 15
   fireAtDiff: 100
   marginPerItem: 3
+  stampBelow: {fileID: 357087745}
+  stampAbove: {fileID: 790696551}
+  stampFired: {fileID: 2122845543}
+  scaleDuration: 1
   waitingSeconds: 1
 --- !u!1 &1128891429
 GameObject:

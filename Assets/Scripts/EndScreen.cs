@@ -14,6 +14,12 @@ public class EndScreen : MonoBehaviour {
 	public int fireAtDiff = 150;
 	public float marginPerItem = 3;
 
+	public RectTransform stampBelow;
+	public RectTransform stampAbove;
+	public RectTransform stampFired;
+	public Vector3 scaleFactor = new Vector3(5.0f, 5.0f, 5.0f);
+	public float scaleDuration = 1.0f;
+
 	private bool fired = false;
 	private bool belowWage = false;
 	private bool aboveWage = false;
@@ -118,10 +124,13 @@ public class EndScreen : MonoBehaviour {
 
 			if(aboveWage){
 				colorTextCostingALot.a = newAlpha;
+				StartCoroutine(scale(new Vector3(0.75f, 0.75f, 0.75f), stampAbove));
 			}else if(belowWage && fired){
 				colorTextFired.a = newAlpha;
+				StartCoroutine(scale(new Vector3(1.0f, 1.0f, 1.0f), stampFired));
 			}else{
 				colorTextWorkHarder.a = newAlpha;
+				StartCoroutine(scale(new Vector3(0.75f, 0.75f, 0.75f), stampBelow));
 			}
 
 
@@ -172,6 +181,19 @@ public class EndScreen : MonoBehaviour {
 			
 	}
 
-
+	IEnumerator scale(Vector3 targetScale, RectTransform stamp)
+	{
+		float timeTaken = 0.0f;
+		Vector3 startScale = scaleFactor;
+		while (timeTaken < scaleDuration) 
+		{
+			Vector3 curScale = Vector3.Lerp(startScale, targetScale, timeTaken/scaleDuration);
+			stamp.localScale = curScale;
+			
+			yield return null;
+			
+			timeTaken += Time.deltaTime;
+		}
+	}
 
 }
