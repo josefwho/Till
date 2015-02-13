@@ -191,60 +191,14 @@ our values.</p>
 				<div id="graphContainer" >
 					<p id="left" style="color:red"><span>SHARE</span></p>
 					<div>
-						<script>
-						$(function () {
-							var options = {
-								chart: {
-									// type: 'bar'
-								},
-								title: {
-									text: 'PBIT'
-								},
-								xAxis: {
-									type: 'datetime',
-								},
-								yAxis: {
-									title: {
-										text: 'PBIT in $',
-									}
-								},
-								tooltip: {
-									pointFormat: '{point.y} $',
-									valueDecimals: 2
-								},
-								plotOptions: {
-									series: {
-										marker: {
-											enabled: false,
-											states: {
-												hover: {
-													fillColor:'#57008e',
-												}
-											}
-										},
-										lineColor: '#57008e'
-									}
-								},
-								series: [{
-									name: 'Chesto',
-									color: '#57008e',
-									pointInterval: 24 * 3600 * 1000,
-									pointStart: Date.UTC(<?php echo $startDate; ?>),
-									data: [<?php echo join($profitToDraw, ','); ?>]
-								}]
-							};
-							$('#graphContainer').highcharts(
-								options
-							);
-						});
-						</script>
+
 					</div>
 				</div>
 			</div>
 
 		<div style="background-color:rgb(87,0,142); height:350px">
 			<h1 style="color:white"> NEWS</h1>
-			<div id="left" style="width:40%; padding-left:0px">
+			<div id="left" style="width:600px; padding-left:0px">
 				<a href="http://toniguenthereisner.tumblr.com"><p id="left" style="color: white"> Meet our CEO <span>TONI EISNER</span> on his personal blog.</p></a>
 				<a href="http://toniguenthereisner.tumblr.com"><p id="left" style="color: white"> How does the life of one of the most <span>influential</span> men look like?</p></a>
 				<a href="http://toniguenthereisner.tumblr.com"><p id="left" style="color: white"> Do you want to have a peek inside the life of CHESTO's <span>main man</span>?</p></a>
@@ -253,7 +207,7 @@ our values.</p>
 <!-- 				<img id="left" style="height:auto; width:auto; max-width:180px; max-height:180px; padding-top:25px"src="ShoppingItems/soda.png">
 				<img id="left" style="height:auto; width:auto; max-width:180px; max-height:180px; padding-top:25px"src="ShoppingItems/champagne.png">
  -->
-			<div id= "right" style="width:40%">
+			<div id= "right" style="width:10%">
 				<a href="http://toniguenthereisner.tumblr.com"><img id="right" style="height:auto; width:auto; max-width:280px; max-height:280px;"src="Toni.png"></a>
 			</div>
 
@@ -261,8 +215,8 @@ our values.</p>
 
 		<div style="background-color:white; height:130px">
 			<h1> SHAREHOLDERS</h1>
-				<div id="left" style="width:50%">
-					<p id= "floatingTextBlack" style="color:rgb(87,0,142)"> <span>CHESTO</span> wants to thank its main shareholders <a href="http://www.brokenrul.es"><span>BROKEN RULES</span></a> & <a href="https://twitter.com/peregrinustyss"><span>JOSEF WHO</span></a></p>
+				<div id="left" style="width:70%">
+					<p id= "floatingTextBlack" style="color:rgb(87,0,142)"> <span>CHESTO</span> wants to thank its main shareholders <br><a href="http://www.brokenrul.es"><span>BROKEN RULES</span></a> & <a href="https://twitter.com/peregrinustyss"><span>JOSEF WHO</span></a></p>
 				</div>
 				<div id="right">
 					<a id="left" href="http://www.brokenrul.es"><img style="height:auto; width:auto; max-width:80px; max-height:80px;"src="BRLogo.png"></a> 
