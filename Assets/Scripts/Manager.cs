@@ -7,6 +7,7 @@ public class Manager : MonoBehaviour {
 	public float walkSpeed = 2;
 
 	private Text speechBubbleText;
+	private Button speechBubble;
 	private Vector3 originalPosition;
 	private Vector3 direction;
 
@@ -17,6 +18,8 @@ public class Manager : MonoBehaviour {
 		direction = (targetPosition - originalPosition).normalized;
 
 		speechBubbleText = transform.Find ("Canvas/Button/Text").GetComponent<Text>();
+		speechBubble = transform.Find ("Canvas/Button").GetComponent<Button>();
+		speechBubble.gameObject.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -46,13 +49,15 @@ public class Manager : MonoBehaviour {
 
 	IEnumerator enterManager()
 	{
-				while ((transform.position - targetPosition).magnitude > 0.1f) {
-						transform.Translate (direction * walkSpeed * Time.deltaTime, Space.World);
+		while ((transform.position - targetPosition).magnitude > 0.1f) {
+				transform.Translate (direction * walkSpeed * Time.deltaTime, Space.World);
 
-						yield return null;
-				}
+				yield return null;
+		}
 
-				yield return new WaitForSeconds (7.0f);
+		speechBubble.gameObject.SetActive(true);
+
+		yield return new WaitForSeconds (5.0f);
 
 		
 		while ((transform.position - originalPosition).magnitude > 0.1f)
@@ -61,5 +66,7 @@ public class Manager : MonoBehaviour {
 			
 			yield return null;
 		}
+		
+		speechBubble.gameObject.SetActive(false);
 	}
 }
