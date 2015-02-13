@@ -248,7 +248,7 @@ our values.</p>
 				<a href="http://toniguenthereisner.tumblr.com"><p id="left" style="color: white"> Meet our CEO <span>TONI EISNER</span> on his personal blog.</p></a>
 				<a href="http://toniguenthereisner.tumblr.com"><p id="left" style="color: white"> How does the life of one of the most <span>influential</span> men look like?</p></a>
 				<a href="http://toniguenthereisner.tumblr.com"><p id="left" style="color: white"> Do you want to have a peek inside the life of CHESTO's <span>main man</span>?</p></a>
-				<a href="http://toniguenthereisner.tumblr.com"><p id="left" style="color: white"> Visit: <span>www.TONI:url?</span></p>
+				<a href="http://toniguenthereisner.tumblr.com"><p id="left" style="color: white"> Visit: <span>toniguenthereisner.tumblr.com</span></p>
    			</div>
 <!-- 				<img id="left" style="height:auto; width:auto; max-width:180px; max-height:180px; padding-top:25px"src="ShoppingItems/soda.png">
 				<img id="left" style="height:auto; width:auto; max-width:180px; max-height:180px; padding-top:25px"src="ShoppingItems/champagne.png">
