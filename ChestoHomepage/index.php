@@ -170,7 +170,7 @@ our values.</p>
 
 			<div style="background-color: white; height:350px">
 				<h1> INVESTORS</h1>
-				<div id="left" style="align:center">
+				<div id="left" style="align:center; padding-left:0px">
 					
 					<div id ="left">
 						<p id= "floatingTextPurple" style="text-align:center"> <span>OUR OPERATIONS</span></p>
@@ -244,7 +244,7 @@ our values.</p>
 
 		<div style="background-color:rgb(87,0,142); height:350px">
 			<h1 style="color:white"> NEWS</h1>
-			<div id="left" style="width:40%">
+			<div id="left" style="width:40%; padding-left:0px">
 				<a href="http://toniguenthereisner.tumblr.com"><p id="left" style="color: white"> Meet our CEO <span>TONI EISNER</span> on his personal blog.</p></a>
 				<a href="http://toniguenthereisner.tumblr.com"><p id="left" style="color: white"> How does the life of one of the most <span>influential</span> men look like?</p></a>
 				<a href="http://toniguenthereisner.tumblr.com"><p id="left" style="color: white"> Do you want to have a peek inside the life of CHESTO's <span>main man</span>?</p></a>
