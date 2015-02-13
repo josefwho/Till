@@ -17,8 +17,8 @@ public class EndScreen : MonoBehaviour {
 	public RectTransform stampBelow;
 	public RectTransform stampAbove;
 	public RectTransform stampFired;
-	public Vector3 scaleFactor = new Vector3(5.0f, 5.0f, 5.0f);
-	public float scaleDuration = 1.0f;
+	public Vector3 scaleFactor = new Vector3(10.0f, 10.0f, 10.0f);
+	public float scaleDuration = 0.3f;
 
 	private bool fired = false;
 	private bool belowWage = false;
@@ -124,13 +124,10 @@ public class EndScreen : MonoBehaviour {
 
 			if(aboveWage){
 				colorTextCostingALot.a = newAlpha;
-				StartCoroutine(scale(new Vector3(0.75f, 0.75f, 0.75f), stampAbove));
 			}else if(belowWage && fired){
 				colorTextFired.a = newAlpha;
-				StartCoroutine(scale(new Vector3(1.0f, 1.0f, 1.0f), stampFired));
 			}else{
 				colorTextWorkHarder.a = newAlpha;
-				StartCoroutine(scale(new Vector3(0.75f, 0.75f, 0.75f), stampBelow));
 			}
 
 
@@ -167,6 +164,7 @@ public class EndScreen : MonoBehaviour {
 		}
 		yield return new WaitForSeconds(waitingSeconds);
 		stamp.GetComponent<Image> ().enabled = true;
+		StartCoroutine(scale(new Vector3(0.75f, 0.75f, 0.75f), (RectTransform)stamp.transform));
 
 		if (diff < -1 * fireAtDiff) {
 			fired =true;
@@ -177,6 +175,7 @@ public class EndScreen : MonoBehaviour {
 		yield return new WaitForSeconds(waitingSeconds);
 		if (fired) {
 				transform.Find ("stamp fired").GetComponent<Image> ().enabled = true;
+				StartCoroutine(scale(new Vector3(1.0f, 1.0f, 1.0f), stampFired));
 		}
 			
 	}
@@ -185,7 +184,8 @@ public class EndScreen : MonoBehaviour {
 	{
 		float timeTaken = 0.0f;
 		Vector3 startScale = scaleFactor;
-		while (timeTaken < scaleDuration) 
+		stamp.localScale = startScale;
+		while (stamp.localScale.x > targetScale.x) 
 		{
 			Vector3 curScale = Vector3.Lerp(startScale, targetScale, timeTaken/scaleDuration);
 			stamp.localScale = curScale;
