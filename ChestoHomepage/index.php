@@ -63,7 +63,7 @@
 				{
 					$daysSinceLastProfit = ceil((strtotime($key) - strtotime($lastDate))/60/60/24);
 					//reduce some money, so graph can also go down a bit
-					$currentProfit -= $daysSinceLastProfit * ( $yesterdaysProfit * 0.6 + mt_rand(-1000,1000)/1000 * 5);
+					$currentProfit -= $daysSinceLastProfit * ( $yesterdaysProfit * 0.6);
 				}
 
 				$lastDate = $key;

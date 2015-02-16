@@ -7,7 +7,7 @@ public class ItemTrigger : MonoBehaviour {
 	
 	public bool empty = true;
 
-	void Start()
+	public void Start()
 	{
 		objectsInside = new ArrayList ();
 	}

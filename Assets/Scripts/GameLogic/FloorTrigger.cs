@@ -2,6 +2,16 @@
 using System.Collections;
 
 public class FloorTrigger : ItemTrigger {
+	
+	private TillStateMachine till;
+
+	void Start()
+	{
+		base.Start ();
+
+		till = GameObject.FindGameObjectWithTag ("GameController").GetComponent<TillStateMachine> ();
+
+		}
 
 	public virtual float getScore()
 	{
@@ -20,6 +30,7 @@ public class FloorTrigger : ItemTrigger {
 		if (other.gameObject.tag == "ShoppingItem")
 		{
 			other.gameObject.GetComponent<ItemStatus>().customer.onItemOnFloor(other.gameObject);
+			till.onItemOnFloor(other.gameObject);
 		}
 	}
 }

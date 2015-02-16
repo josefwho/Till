@@ -76,6 +76,9 @@ public class TillStateMachine : MonoBehaviour
 	public float startTime = 15;	// 07:00 
 	public float endTime = 20;
 
+	public float bonus = 0;
+	private BonusManager bonusManager = null;
+
 	private Manager manager;
 	private bool commentedOnOvertime = false;
 
@@ -103,6 +106,8 @@ public class TillStateMachine : MonoBehaviour
 		pickupItemsHint.SetActive (false);
 
 		manager = GameObject.Find ("manager").GetComponent<Manager>();
+
+		bonusManager = gameObject.GetComponentInChildren<BonusManager> ();
 
 		onEnterSetup ();
 	}
@@ -398,10 +403,17 @@ public class TillStateMachine : MonoBehaviour
 	{
 		status.scanned++;
 
-		if(status.scanned == 1)
+		if (status.scanned == 1)
 			countScannedObjects++;
 		else
-			status.customer.onMultipleScanned(status.gameObject);
+		{
+			status.customer.onMultipleScanned (status.gameObject);
+
+			if (bonusManager != null) 
+			{
+				bonusManager.resetBonus();
+			}
+		}
 
 		if(currentCustomer != status.customer)
  			currentCustomer.onNotMyItem(status.gameObject);
@@ -412,7 +424,20 @@ public class TillStateMachine : MonoBehaviour
 		{
 			manager.commentOnMinimumWage();
 		}
+
+		if (bonusManager != null) 
+		{
+			bonus += bonusManager.currentBonus;
+			bonusManager.onItemScanned (status);
+		}
 	}
+
+	public void onItemOnFloor(GameObject item)
+	{
+				if (bonusManager != null) {
+						bonusManager.resetBonus ();
+				}
+		}
 	
 	
 	
