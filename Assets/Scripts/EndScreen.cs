@@ -53,7 +53,11 @@ public class EndScreen : MonoBehaviour {
 		text = transform.Find("Background/notScannedNumber").GetComponent<Text> ();
 		text.text = string.Format(text.text, till.countUnscannedItems * itemWorth);
 
+		text = transform.Find("Background/bonusNumber").GetComponent<Text> ();
+		text.text = string.Format(text.text, till.bonus);
+
 		wage -= till.countMultipleScannedItems * itemWorth + till.countUnscannedItems * itemWorth;
+		wage += till.bonus;
 
 		text = transform.Find("Background/wageMonthlyFinalNumber").GetComponent<Text> ();
 		text.text = string.Format(text.text, wage.ToString("N2"));

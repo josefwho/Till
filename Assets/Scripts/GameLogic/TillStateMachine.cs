@@ -76,7 +76,7 @@ public class TillStateMachine : MonoBehaviour
 	public float startTime = 15;	// 07:00 
 	public float endTime = 20;
 
-	public float bonus = 0;
+	public int bonus = 0;
 	private BonusManager bonusManager = null;
 
 	private Manager manager;
@@ -404,32 +404,35 @@ public class TillStateMachine : MonoBehaviour
 		status.scanned++;
 
 		if (status.scanned == 1)
-			countScannedObjects++;
-		else
-		{
-			status.customer.onMultipleScanned (status.gameObject);
+				countScannedObjects++;
+		else {
+				status.customer.onMultipleScanned (status.gameObject);
 
-			if (bonusManager != null) 
-			{
-				bonusManager.resetBonus();
-			}
+				if (bonusManager != null) {
+						bonusManager.resetBonus ();
+				}
 		}
 
-		if(currentCustomer != status.customer)
- 			currentCustomer.onNotMyItem(status.gameObject);
+		if (currentCustomer != status.customer) {
+				currentCustomer.onNotMyItem (status.gameObject);
+				if (bonusManager != null) 
+						bonusManager.resetBonus ();
+		}
 
 		if (timeTaken > shiftDuration)
-			status.scannedInOvertime = true;
-		else if(countScannedObjects == endScreen.itemsNeededForMinimumWage)
+				status.scannedInOvertime = true;
+		else 
 		{
-			manager.commentOnMinimumWage();
+				//only update/increase bonus during regular hours
+				if (bonusManager != null) 
+						bonusManager.onItemScanned (status);
+
+				if (countScannedObjects == endScreen.itemsNeededForMinimumWage)
+						manager.commentOnMinimumWage ();
 		}
 
 		if (bonusManager != null) 
-		{
-			bonus += bonusManager.currentBonus;
-			bonusManager.onItemScanned (status);
-		}
+				bonus += bonusManager.calculateBonus ();
 	}
 
 	public void onItemOnFloor(GameObject item)

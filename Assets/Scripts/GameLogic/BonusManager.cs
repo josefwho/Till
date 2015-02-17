@@ -5,12 +5,14 @@ using System.Collections;
 public class BonusManager : MonoBehaviour
 {
 	
-	public float currentBonus = 0;
+	public float currentBonus = 1;
 	public int bonusIncrement = 1;
 	public float bonusDecreaseSpeed = 0.3f;
 
 	public Text currentBonusText = null;
 	public GameObject bonusAddedNotifier = null;
+
+	private string initialBonusText;
 
 	// Use this for initialization
 	void Start ()
@@ -19,7 +21,16 @@ public class BonusManager : MonoBehaviour
 		{
 //						bonusAddedNotifier.SetActive (false);
 			bonusAddedNotifier.GetComponent<BonusNotifier>().enabled = false;
-				}
+		}
+
+		Color temp = currentBonusText.color;
+		temp.a = 1;
+		currentBonusText.color = temp;
+
+		initialBonusText = currentBonusText.text;
+
+		currentBonusText.text = string.Format (initialBonusText, "0");
+
 	}
 	
 	// Update is called once per frame
@@ -28,9 +39,26 @@ public class BonusManager : MonoBehaviour
 		if (currentBonus > 0) 
 		{
 			currentBonus = Mathf.Max(currentBonus - bonusDecreaseSpeed * Time.deltaTime, 0);
-		}
+			
+			
+			int flooredBonus = Mathf.FloorToInt (currentBonus);
+			
+			Color temp = currentBonusText.color;
 
-		currentBonusText.text = currentBonus.ToString ("N3");
+			if(currentBonus > 1)
+			{
+				temp.a = Mathf.Lerp (0.3f, 1, currentBonus - flooredBonus);
+			}
+			else
+			{
+				temp.a = 1;
+			}
+				
+			currentBonusText.color = temp;
+
+//			Debug.Log("cB: " + currentBonus.ToString("N2") + " fB: " + flooredBonus + " a: " + temp.a);
+		}
+		currentBonusText.text = string.Format(initialBonusText, calculateBonus ().ToString());
 	}
 
 	public void onItemScanned(ItemStatus status)
@@ -47,6 +75,11 @@ public class BonusManager : MonoBehaviour
 	public void resetBonus()
 	{
 		currentBonus = 0.0f;
+	}
+
+	public int calculateBonus()
+	{
+		return Mathf.FloorToInt(currentBonus) * 2;
 	}
 }
 
