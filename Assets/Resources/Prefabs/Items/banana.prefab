@@ -108,7 +108,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0419999994, y: -.130999997, z: -.159999996}
+  m_LocalPosition: {x: -.0425999984, y: -.130999997, z: -.153200001}
   m_LocalScale: {x: .228974, y: .151190996, z: .00386700011}
   m_Children:
   - {fileID: 400006}
@@ -304,6 +304,7 @@ MonoBehaviour:
   customer: {fileID: 0}
   name: 
   scannedInOvertime: 0
+  autoDragged: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -315,8 +316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b05324ff36045129fc89e90a3247b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spring: 100
-  damper: 5
   drag: 5
   angularDrag: 3
   distance: .200000003
