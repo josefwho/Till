@@ -152,17 +152,19 @@ our values.</p>
 					<div id ="right">
 						<p id= "floatingTextWhite" style="text-align:center; color:red"><span>PBIT</span></p>
 						<div class= "chartCircleWhite";>
-							<div><p style="color:white" id="textWithinCircle"><span><?php echo number_format($profitToDraw[count($profitToDraw)-1],2); ?></span> <br> $</p></div>
+
+							<div><p id= "textWithinCircle" style="text-align:center; color:white"><span>+ <?php echo number_format($lastProfit,2); ?>$<br>just now</span></p></div>
 						</div>
-						<p id= "floatingTextWhite" style="text-align:center; color:red"><span>+ <?php echo number_format($lastProfit,2); ?>$<br>JUST NOW</span></p>
+						<p style="color:red; text-align:center;" id="floatingTextWhite"><span><?php echo number_format($profitToDraw[count($profitToDraw)-1],2); ?>$<br> IN TOTAL</span> </p>
+						
 					</div>
 					<div id ="right">
 						<p id= "floatingTextWhite" style="text-align:center; color:red"> <span>ITEMS SOLD</span></p>
 						<div class= "chartCircleWhite";>
-							<p id="textWithinCircle"><span><?php echo $lastDayItems ?></span>  <br>today</p>
+							<p id= "textWithinCircle" style="text-align:center; color:white"><span>+ <?php echo $lastItemsSold; ?><br>just now</span></p>
 						</div>
-						<p id= "floatingTextWhite" style="text-align:center; color:red"><span>+ <?php echo $lastItemsSold; ?><br>JUST NOW</span></p>
-					</div>
+						<p id="floatingTextWhite" style="text-align:center; color:red"><span><?php echo $lastDayItems ?><br>TODAY</span></p>
+ 					</div>
 				
 			</div>
 		
