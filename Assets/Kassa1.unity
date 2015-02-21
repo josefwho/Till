@@ -5373,7 +5373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimumWage: 579.539978
   itemsNeededForMinimumWage: 30
-  itemWorth: 15
+  itemWorth: 10
   fireAtDiff: 100
   marginPerItem: 2
   stampBelow: {fileID: 357087745}
