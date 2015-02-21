@@ -5321,7 +5321,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1117756766}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -7058,11 +7058,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 866415955}
   m_RootOrder: 3
-  m_AnchorMin: {x: .5, y: .132300884}
-  m_AnchorMax: {x: .5, y: .132300884}
-  m_AnchoredPosition: {x: 5, y: 112}
-  m_SizeDelta: {x: 23.1000061, y: 21.4000015}
-  m_Pivot: {x: .5, y: 0}
+  m_AnchorMin: {x: .485000014, y: .432000011}
+  m_AnchorMax: {x: .574000001, y: .520000041}
+  m_AnchoredPosition: {x: .500032544, y: -1}
+  m_SizeDelta: {x: 1, y: 4}
+  m_Pivot: {x: .499999911, y: .5}
 --- !u!114 &1534314601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7094,13 +7094,13 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 134fde72ed2544b2e92ab4223c10d356, type: 3}
     m_FontSize: 72
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 70
     m_Alignment: 7
     m_RichText: 1
     m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
+    m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: +{0}
 --- !u!222 &1534314603
