@@ -207,12 +207,12 @@ our values.</p>
 								},
 								yAxis: {
 									title: {
-										text: 'PBIT in €',
+										text: 'PBIT in EUR',
 									}
 								},
 								tooltip: {
 				                valueDecimals: 2,
-				                valueSuffix: ' €',
+				                valueSuffix: ' EUR',
 								},
 								plotOptions: {
 									series: {
