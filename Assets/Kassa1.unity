@@ -5375,7 +5375,7 @@ MonoBehaviour:
   itemsNeededForMinimumWage: 30
   itemWorth: 10
   fireAtDiff: 100
-  marginPerItem: 2
+  marginPerItem: 3
   stampBelow: {fileID: 357087745}
   stampAbove: {fileID: 790696551}
   stampFired: {fileID: 2122845543}
