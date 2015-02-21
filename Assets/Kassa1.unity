@@ -556,7 +556,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: .800000012
-  m_Text: 'How much did CHESTO make with your 44 items?
+  m_Text: 'How much did CHESTO make with your {0} items?
 
 
     VISIT CHESTO.COM'
@@ -4333,7 +4333,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Bonus for working extra fast
+  m_Text: BONUS FOR WORKING EXTRA FAST
 --- !u!222 &927755495
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6964,7 +6964,7 @@ MonoBehaviour:
   spawnRadius: 1
   score: 0
   timeTaken: 0
-  shiftDuration: 120
+  shiftDuration: 15
   timeTakenText: {fileID: 951495405}
   betweenItemOffset: -.150000006
   draggedItemCount: 0
@@ -8250,7 +8250,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '+ {0} Euros
+  m_Text: '+ {0} EUROS
 
 '
 --- !u!222 &1739405768

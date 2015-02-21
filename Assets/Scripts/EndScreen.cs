@@ -31,8 +31,11 @@ public class EndScreen : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		till = GameObject.FindGameObjectWithTag ("GameController").GetComponent<TillStateMachine> ();
-		Text text = transform.Find("Background/soldItemsRegular/Number").GetComponent<Text> ();
 
+		Text text = transform.Find("Submit Score Button/Text").GetComponent<Text> ();
+		text.text = string.Format (text.text, till.countSoldRegular + till.countSoldOvertime);
+
+		text = transform.Find("Background/soldItemsRegular/Number").GetComponent<Text> ();
 		//		string replaceWith = string.Format(text.text, till.countScannedObjects);
 		text.text = string.Format(text.text, till.countSoldRegular);
 
@@ -58,11 +61,14 @@ public class EndScreen : MonoBehaviour {
 
 		wage -= till.countMultipleScannedItems * itemWorth + till.countUnscannedItems * itemWorth;
 		wage += till.bonus;
+		
+		float diff = wage - minimumWage;
+
+		if (diff < -1 * fireAtDiff)
+				wage = 0;
 
 		text = transform.Find("Background/wageMonthlyFinalNumber").GetComponent<Text> ();
 		text.text = string.Format(text.text, wage.ToString("N2"));
-
-		float diff = wage - minimumWage;
 
 		StartCoroutine (stagingStamps (diff, text));
 
