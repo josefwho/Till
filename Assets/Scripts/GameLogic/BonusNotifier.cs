@@ -31,6 +31,8 @@ public class BonusNotifier : MonoBehaviour
 		text.color = temp;
 
 		totalDuration = fadeDuration * 2 + showDuration;
+
+		enabled = false;
 		}
 
 		void OnEnable ()
@@ -50,9 +52,23 @@ public class BonusNotifier : MonoBehaviour
 				}
 
 			
-		}
+	}
 	
-		// Update is called once per frame
+	void OnDisable ()
+	{
+		if (text != null) {
+			
+			transform.position = initialPosition;
+			
+			Color temp = initialTextColor;
+			temp.a = 0;
+			text.color = temp;
+		}
+		
+		
+	}
+	
+	// Update is called once per frame
 		void Update ()
 		{
 		timeShown += Time.deltaTime;

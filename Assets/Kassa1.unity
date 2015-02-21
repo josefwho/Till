@@ -555,8 +555,11 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: VISIT CHESTO.com
+    m_LineSpacing: .800000012
+  m_Text: 'How much did CHESTO make with your 44 items?
+
+
+    VISIT CHESTO.COM'
 --- !u!222 &72494241
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2301,7 +2304,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: 0}
   m_AnchorMax: {x: .5, y: 0}
-  m_AnchoredPosition: {x: 26.2000008, y: 114}
+  m_AnchoredPosition: {x: -17, y: 123}
   m_SizeDelta: {x: 91.4000015, y: 65}
   m_Pivot: {x: .5, y: .49999997}
 --- !u!114 &401109249
@@ -2310,7 +2313,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 401109247}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -3164,8 +3167,8 @@ RectTransform:
   m_RootOrder: 6
   m_AnchorMin: {x: 0, y: .5}
   m_AnchorMax: {x: 1, y: .5}
-  m_AnchoredPosition: {x: -193, y: -223}
-  m_SizeDelta: {x: 247, y: 30}
+  m_AnchoredPosition: {x: -195, y: -203.210007}
+  m_SizeDelta: {x: 247, y: 65.5749969}
   m_Pivot: {x: .5, y: .499999821}
 --- !u!114 &648778995
 MonoBehaviour:
@@ -3173,7 +3176,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 648778993}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -3192,7 +3195,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: WANNA SEE WHAT CHESTO JUST MADE?
+  m_Text: "WANNA SEE WHAT CHESTO JUST MADE \nwith your 44 items?"
 --- !u!222 &648778996
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5318,7 +5321,7 @@ Canvas:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1117756766}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -7022,8 +7025,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentBonus: 0
   bonusIncrement: 1
-  bonusDecreaseSpeed: .25
-  currentBonusText: {fileID: 401109249}
+  bonusDecreaseSpeed: .300000012
+  currentBonusText: {fileID: 1534314602}
   bonusAddedNotifier: {fileID: 1534314599}
 --- !u!1 &1534314599
 GameObject:
@@ -7057,7 +7060,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .132300884}
   m_AnchorMax: {x: .5, y: .132300884}
-  m_AnchoredPosition: {x: 5.19999981, y: 82}
+  m_AnchoredPosition: {x: 5, y: 112}
   m_SizeDelta: {x: 23.1000061, y: 21.4000015}
   m_Pivot: {x: .5, y: 0}
 --- !u!114 &1534314601
@@ -7071,8 +7074,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f774cbb78d29447239e21f57be6ea299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showDuration: .600000024
-  translateBy: {x: 0, y: -50, z: 0}
+  showDuration: .300000012
+  translateBy: {x: 0, y: 150, z: 0}
   fadeDuration: .200000003
 --- !u!114 &1534314602
 MonoBehaviour:
@@ -7080,7 +7083,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1534314599}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -7099,7 +7102,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: +1
+  m_Text: +{0}
 --- !u!222 &1534314603
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7767,7 +7770,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: 0}
   m_AnchorMax: {x: .5, y: 0}
-  m_AnchoredPosition: {x: 4.19999981, y: 117}
+  m_AnchoredPosition: {x: 9, y: 123}
   m_SizeDelta: {x: 603, y: 256}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1649069359
@@ -9939,8 +9942,8 @@ RectTransform:
   m_RootOrder: 7
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -196, y: -264}
-  m_SizeDelta: {x: 247, y: 44.8499985}
+  m_AnchoredPosition: {x: -196, y: -231}
+  m_SizeDelta: {x: 521.840027, y: 110}
   m_Pivot: {x: .50000006, y: .49999994}
 --- !u!114 &2079932906
 MonoBehaviour:
@@ -10260,7 +10263,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2113942769}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -10300,7 +10303,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: 0}
   m_AnchorMax: {x: .5, y: 0}
-  m_AnchoredPosition: {x: 156.399994, y: 114}
+  m_AnchoredPosition: {x: 113, y: 123}
   m_SizeDelta: {x: 171, y: 65}
   m_Pivot: {x: .5, y: .49999997}
 --- !u!1 &2119277335

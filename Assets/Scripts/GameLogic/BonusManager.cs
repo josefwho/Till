@@ -20,7 +20,7 @@ public class BonusManager : MonoBehaviour
 		if (bonusAddedNotifier != null) 
 		{
 //						bonusAddedNotifier.SetActive (false);
-			bonusAddedNotifier.GetComponent<BonusNotifier>().enabled = false;
+//			bonusAddedNotifier.GetComponent<BonusNotifier>().enabled = false;
 		}
 
 		Color temp = currentBonusText.color;
@@ -41,40 +41,49 @@ public class BonusManager : MonoBehaviour
 			currentBonus = Mathf.Max(currentBonus - bonusDecreaseSpeed * Time.deltaTime, 0);
 			
 			
-			int flooredBonus = Mathf.FloorToInt (currentBonus);
-			
-			Color temp = currentBonusText.color;
-
-			if(currentBonus > 1)
-			{
-				temp.a = Mathf.Lerp (0.3f, 1, currentBonus - flooredBonus);
-			}
-			else
-			{
-				temp.a = 1;
-			}
-				
-			currentBonusText.color = temp;
-
-//			Debug.Log("cB: " + currentBonus.ToString("N2") + " fB: " + flooredBonus + " a: " + temp.a);
+//			int flooredBonus = Mathf.FloorToInt (currentBonus);
+//			
+//			Color temp = currentBonusText.color;
+//
+//			if(currentBonus > 1)
+//			{
+////				temp.a = Mathf.Lerp (0.3f, 1, currentBonus - flooredBonus);
+//			}
+//			else
+//			{
+//				temp.a = 0;
+//			}
+//				
+//			currentBonusText.color = temp;
+//
+////			Debug.Log("cB: " + currentBonus.ToString("N2") + " fB: " + flooredBonus + " a: " + temp.a);
 		}
-		currentBonusText.text = string.Format(initialBonusText, calculateBonus ().ToString());
+////		currentBonusText.text = string.Format(initialBonusText, calculateBonus ().ToString());
 	}
 
 	public void onItemScanned(ItemStatus status)
 	{
-		currentBonus += bonusIncrement;
 		
-		if (bonusAddedNotifier != null) 
+		if (bonusAddedNotifier != null && currentBonus > 1) 
 		{
-//			bonusAddedNotifier.SetActive (true);
+			currentBonusText.text = string.Format(initialBonusText, calculateBonus ().ToString());
+			//			bonusAddedNotifier.SetActive (true);
 			bonusAddedNotifier.GetComponent<BonusNotifier>().enabled = true;
-				}
+		}
+
+		currentBonus += bonusIncrement;
 	}
 
 	public void resetBonus()
 	{
+		if (currentBonus > 1) {
+						currentBonusText.text = string.Format (initialBonusText, "Bonus Lost").Substring(1);
+						bonusAddedNotifier.GetComponent<BonusNotifier> ().enabled = true;
+				}
+
 		currentBonus = 0.0f;
+
+
 	}
 
 	public int calculateBonus()
