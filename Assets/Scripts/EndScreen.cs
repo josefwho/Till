@@ -49,17 +49,17 @@ public class EndScreen : MonoBehaviour {
 		text = transform.Find("Background/multipleScans").GetComponent<Text> ();
 		text.text = string.Format(text.text, till.countMultipleScannedItems);
 		text = transform.Find("Background/multipleScansNumber").GetComponent<Text> ();
-		text.text = string.Format(text.text, till.countMultipleScannedItems * itemWorth);
+		text.text = string.Format(text.text, till.countMultipleScannedItems * itemWorth * 2);
 		
 		text = transform.Find("Background/notScanned").GetComponent<Text> ();
 		text.text = string.Format(text.text, till.countUnscannedItems);
 		text = transform.Find("Background/notScannedNumber").GetComponent<Text> ();
-		text.text = string.Format(text.text, till.countUnscannedItems * itemWorth);
+		text.text = string.Format(text.text, till.countUnscannedItems * itemWorth * 2);
 
 		text = transform.Find("Background/bonusNumber").GetComponent<Text> ();
 		text.text = string.Format(text.text, till.bonus);
 
-		wage -= till.countMultipleScannedItems * itemWorth + till.countUnscannedItems * itemWorth;
+		wage -= (till.countMultipleScannedItems + till.countUnscannedItems) * itemWorth * 2;
 		wage += till.bonus;
 		
 		float diff = wage - minimumWage;
