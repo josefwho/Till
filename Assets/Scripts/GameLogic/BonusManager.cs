@@ -13,6 +13,7 @@ public class BonusManager : MonoBehaviour
 	public GameObject bonusAddedNotifier = null;
 
 	private string initialBonusText;
+	float sinceLastScan;
 
 	// Use this for initialization
 	void Start ()
@@ -31,6 +32,7 @@ public class BonusManager : MonoBehaviour
 
 		currentBonusText.text = string.Format (initialBonusText, "0");
 
+		sinceLastScan = 0;
 	}
 	
 	// Update is called once per frame
@@ -38,8 +40,9 @@ public class BonusManager : MonoBehaviour
 	{
 		if (currentBonus > 0) 
 		{
-			currentBonus = Mathf.Max(currentBonus - bonusDecreaseSpeed * Time.deltaTime, 0);
+			currentBonus = Mathf.Max(currentBonus - bonusDecreaseSpeed * Mathf.Lerp(1,3, sinceLastScan/2) * Time.deltaTime, 0);
 			
+			sinceLastScan += Time.deltaTime;
 			
 //			int flooredBonus = Mathf.FloorToInt (currentBonus);
 //			
@@ -58,7 +61,7 @@ public class BonusManager : MonoBehaviour
 //
 ////			Debug.Log("cB: " + currentBonus.ToString("N2") + " fB: " + flooredBonus + " a: " + temp.a);
 		}
-////		currentBonusText.text = string.Format(initialBonusText, calculateBonus ().ToString());
+		////		currentBonusText.text = string.Format(initialBonusText, calculateBonus ().ToString());
 	}
 
 	public void onItemScanned(ItemStatus status)
@@ -76,10 +79,11 @@ public class BonusManager : MonoBehaviour
 
 	public void resetBonus()
 	{
-		if (currentBonus > 1) {
-						currentBonusText.text = string.Format (initialBonusText, "Bonus Lost").Substring(1);
-						bonusAddedNotifier.GetComponent<BonusNotifier> ().enabled = true;
-				}
+		if (currentBonus > 1) 
+		{
+			currentBonusText.text = string.Format (initialBonusText, "Bonus Lost").Substring(1);
+			bonusAddedNotifier.GetComponent<BonusNotifier> ().enabled = true;
+		}
 
 		currentBonus = 0.0f;
 
