@@ -134,6 +134,10 @@
 				while($row = $result->fetch_assoc()) 
 				{
 					$lastProfit = $row["Profit"];
+					if($lastProfit < 0)
+						$lastProfit = "- " . number_format(abs($lastProfit),2);
+					else
+						$lastProfit = "+ " . number_format($lastProfit,2);
 					$lastItemsSold = (int)$row["ItemsRegular"] + (int)$row["ItemsOvertime"];
 				}
 			}  
@@ -170,7 +174,7 @@ our values.</p>
 						<p id= "floatingTextWhite" style="text-align:center; color:red"><span>PBIT</span></p>
 						<div class= "chartCircleWhite";>
 
-							<div><p id= "textWithinCircle" style="text-align:center; color:white"><span>+ <?php echo number_format($lastProfit,2); ?>&euro;<br>just now</span></p></div>
+							<div><p id= "textWithinCircle" style="text-align:center; color:white"><span><?php echo $lastProfit; ?>&euro;<br>just now</span></p></div>
 						</div>
 						<p style="color:red; text-align:center;" id="floatingTextWhite"><span><?php echo number_format($profitToDraw[count($profitToDraw)-1],2); ?>&euro;<br> IN TOTAL</span> </p>
 						
