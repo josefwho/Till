@@ -94,8 +94,14 @@ public class EndScreen : MonoBehaviour {
 		WWWForm form = new WWWForm();
 		form.AddField("itemsRegular", till.countSoldRegular);
 		form.AddField("itemsOvertime", till.countSoldOvertime);
-		float dailyWageWithoutBonus = (wage - till.bonus) / 21.65f;
-		form.AddField("profit", ((till.countSoldRegular + till.countSoldOvertime) * marginPerItem - (dailyWageWithoutBonus+till.bonus/4)).ToString());
+		float profit = (till.countSoldRegular + till.countSoldOvertime) * marginPerItem;
+
+		if (wage > 0) {
+						float dailyWageWithoutBonus = (wage - till.bonus) / 21.65f;
+						profit = (profit - (dailyWageWithoutBonus + till.bonus / 4));
+				}
+
+		form.AddField("profit", profit.ToString());
 
 //		WWW w = new WWW(databaseUrl, form);
 		StartCoroutine(sendData (form));
