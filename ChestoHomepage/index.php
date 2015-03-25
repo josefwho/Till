@@ -59,20 +59,34 @@
 			{
 				$currentProfit += $value;
 
-				if($lastDate != null)
-				{
-					$daysSinceLastProfit = ceil((strtotime($key) - strtotime($lastDate))/60/60/24);
-					//reduce some money, so graph can also go down a bit
-					$currentProfit -= $daysSinceLastProfit * ( $yesterdaysProfit * 0.6);
-				}
-
-				$lastDate = $key;
 	
 				if(strtotime($key) > strtotime("-30 days"))
 				{
-					array_push($profitToDraw, $currentProfit);
+					if($lastDate != null)
+					{
+						$daysSinceLastProfit = ceil((strtotime($key) - strtotime($lastDate))/60/60/24);
+						//reduce some money, so graph can also go down a bit
+						for ($i=0; $i < $daysSinceLastProfit; $i++) 
+						{ 
+							$currentProfit -= $yesterdaysProfit * 0.6;
+							array_push($profitToDraw, $currentProfit);
+						}
+					}
+					else
+						array_push($profitToDraw, $currentProfit);
 				}
-				
+				else
+				{
+					if($lastDate != null)
+					{
+						$daysSinceLastProfit = ceil((strtotime($key) - strtotime($lastDate))/60/60/24);
+						//reduce some money, so graph can also go down a bit
+						$currentProfit -= $daysSinceLastProfit * ( $yesterdaysProfit * 0.6);
+					}
+					echo $key . ": " . $value . " -> " . $currentProfit . "<br>";
+				}
+
+				$lastDate = $key;
 				$yesterdaysProfit = $value;
 			}		
 
@@ -82,12 +96,14 @@
 			{
 				echo "padding array. was: " . $arrayLength . "<br>";
 				$profitToDraw = array_pad($profitToDraw, -30, 0);
-				echo "is: " . count($profitToDraw);
+				echo "is: " . count($profitToDraw). "<br>";
 			}
 		
 			//calculate day where graph is starting
-			$tempDate = strtotime("-1 month"); //in highchart january is month 0 :)
-			$startDate = date("Y,m,d", strtotime("-". count($profitToDraw)+1 . " days", $tempDate));
+			$tempDate = strtotime("-". count($profitToDraw)+1 . " days"); 
+			$tempDate = strtotime("-1 month", $tempDate); //in highchart january is month 0 :)
+			$startDate = date("Y,m,d", $tempDate);
+			echo "tD: " . $tempDate . " sD: " . $startDate;
 
 			$sql = "SELECT COUNT(*) AS Employees FROM `Sales` WHERE Date > DATE_SUB(CURDATE(),INTERVAL 1 MONTH) ";
 			$result = $conn->query($sql);	
