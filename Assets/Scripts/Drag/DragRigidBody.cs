@@ -80,7 +80,7 @@ public class DragRigidBody : MonoBehaviour
 			springJoint = go.AddComponent ("SpringJoint") as SpringJoint;
 			body.isKinematic = true;
 			
-			print ("DragRigidBody new springJoint: oldDrag is" + oldDrag + " new drag is:" + drag);
+//			print ("DragRigidBody new springJoint: oldDrag is" + oldDrag + " new drag is:" + drag);
 			
 			oldDrag = target.rigidbody.drag;
 			oldAngularDrag = target.rigidbody.angularDrag;
@@ -141,7 +141,7 @@ public class DragRigidBody : MonoBehaviour
 	{
 		if (springJoint) 
 		{	
-			print ("DragRigidBody detaching and resetting drag to" + oldDrag);
+//			print ("DragRigidBody detaching and resetting drag to" + oldDrag);
 
 			springJoint.connectedBody.drag = oldDrag;
 			springJoint.connectedBody.angularDrag = oldAngularDrag;

@@ -8,6 +8,7 @@ public class BonusManager : MonoBehaviour
 	public float currentBonus = 1;
 	public int bonusIncrement = 1;
 	public float bonusDecreaseSpeed = 0.3f;
+	public float increaseDecreaseSpeedThreshold = 3;
 
 	public Text currentBonusText = null;
 	public GameObject bonusAddedNotifier = null;
@@ -40,7 +41,15 @@ public class BonusManager : MonoBehaviour
 	{
 		if (currentBonus > 0) 
 		{
-			currentBonus = Mathf.Max(currentBonus - bonusDecreaseSpeed * Mathf.Lerp(1,3, sinceLastScan/2) * Time.deltaTime, 0);
+			float decrease = bonusDecreaseSpeed;
+			if(sinceLastScan > increaseDecreaseSpeedThreshold)
+			{
+				decrease = bonusDecreaseSpeed * Mathf.Lerp(1,2,(sinceLastScan-increaseDecreaseSpeedThreshold)/3.0f);
+
+				Debug.Log("faster decrease speed: " + decrease);
+			}
+
+ 			currentBonus = Mathf.Max(currentBonus - decrease * Time.deltaTime, 0);
 			
 			sinceLastScan += Time.deltaTime;
 			
@@ -75,6 +84,8 @@ public class BonusManager : MonoBehaviour
 		}
 
 		currentBonus += bonusIncrement;
+
+		sinceLastScan = 0.0f;
 	}
 
 	public void resetBonus()
