@@ -68,8 +68,9 @@
 						//reduce some money, so graph can also go down a bit
 						for ($i=0; $i < $daysSinceLastProfit; $i++) 
 						{ 
-							$currentProfit -= $yesterdaysProfit * 0.6;
+							$currentProfit -= $yesterdaysProfit * (0.6 - min($i*0.1, 0.4));
 							array_push($profitToDraw, $currentProfit);
+							// $yesterdaysProfit = $currentProfit;
 						}
 					}
 					else
@@ -83,7 +84,7 @@
 						//reduce some money, so graph can also go down a bit
 						$currentProfit -= $daysSinceLastProfit * ( $yesterdaysProfit * 0.6);
 					}
-					echo $key . ": " . $value . " -> " . $currentProfit . "<br>";
+					// echo $key . ": " . $value . " -> " . $currentProfit . "<br>";
 				}
 
 				$lastDate = $key;
