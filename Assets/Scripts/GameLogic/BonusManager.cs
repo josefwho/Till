@@ -42,12 +42,13 @@ public class BonusManager : MonoBehaviour
 		if (currentBonus > 0) 
 		{
 			float decrease = bonusDecreaseSpeed;
-			if(sinceLastScan > increaseDecreaseSpeedThreshold)
-			{
-				decrease = bonusDecreaseSpeed * Mathf.Lerp(1,2,(sinceLastScan-increaseDecreaseSpeedThreshold)/3.0f);
 
-				Debug.Log("faster decrease speed: " + decrease);
-			}
+//			if(sinceLastScan > increaseDecreaseSpeedThreshold)
+//			{
+//				decrease = bonusDecreaseSpeed * Mathf.Lerp(1,2,(sinceLastScan-increaseDecreaseSpeedThreshold)/3.0f);
+//
+//				Debug.Log("faster decrease speed: " + decrease);
+//			}
 
  			currentBonus = Mathf.Max(currentBonus - decrease * Time.deltaTime, 0);
 			
