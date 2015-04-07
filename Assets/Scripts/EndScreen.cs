@@ -94,7 +94,7 @@ public class EndScreen : MonoBehaviour {
 		WWWForm form = new WWWForm();
 		form.AddField("itemsRegular", till.countSoldRegular);
 		form.AddField("itemsOvertime", till.countSoldOvertime);
-		float profit = (till.countSoldRegular + till.countSoldOvertime) * marginPerItem;
+		float profit = (till.countSoldRegular + till.countSoldOvertime) * marginPerItem - till.countUnscannedItems * itemWorth;
 
 		profit -= wage/21.65f;
 
