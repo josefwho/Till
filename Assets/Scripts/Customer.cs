@@ -15,6 +15,7 @@ public class Customer : MonoBehaviour {
 	private float waitingTime;
 	private float maxWaitingTimePerItem;
 	private bool showedWaitingText;
+	private int countFreeItems;
 	
 //	public GameObject image;
 
@@ -79,6 +80,18 @@ public class Customer : MonoBehaviour {
 		//playComplainSound();
 		StartCoroutine (hideBubble ());
 
+	}
+	
+	public void onFreeItem(GameObject item)
+	{
+		++countFreeItems;	//number of free items given to this customer
+		int countFreeItemsShift = till.countUnscannedItems + countFreeItems;	//number of items not scanned in this shift
+
+		buttonObject.SetActive (true);
+		text.text = "thanks for giving me " + item.GetComponent<ItemStatus> ().name;
+
+		StartCoroutine (hideBubble ());
+		
 	}
 
 	public void onWaitTooLong()
@@ -152,38 +165,38 @@ public class Customer : MonoBehaviour {
 		imageButton.color = colorButton;
 	}
 
-	IEnumerator fadeOutBubble()
-	{	
-		Image imageButton = buttonObject.GetComponent<Image> ();
-
-		Color colorText = text.color;
-		Color colorButton = imageButton.color;
-
-		float startTime = 0.0f;
-		float fadeTime = 0.5f;
-
-		while (startTime < fadeTime) 
-		{
-			startTime += Time.deltaTime;
-
-			float newAlpha = Mathf.Lerp(1, 0, startTime/fadeTime);
-			colorText.a = newAlpha;
-			colorButton.a = newAlpha;
-
-			text.color = colorText;
-			imageButton.color = colorButton;
-
-			yield return null;
-		}
-
-		buttonObject.gameObject.SetActive (false);
-
-		//reset alpha so it's visible when shown next time
-		colorText.a = 1;
-		colorButton.a = 1;
-		text.color = colorText;
-		imageButton.color = colorButton;
-	}
+//	IEnumerator fadeOutBubble()
+//	{	
+//		Image imageButton = buttonObject.GetComponent<Image> ();
+//
+//		Color colorText = text.color;
+//		Color colorButton = imageButton.color;
+//
+//		float startTime = 0.0f;
+//		float fadeTime = 0.5f;
+//
+//		while (startTime < fadeTime) 
+//		{
+//			startTime += Time.deltaTime;
+//
+//			float newAlpha = Mathf.Lerp(1, 0, startTime/fadeTime);
+//			colorText.a = newAlpha;
+//			colorButton.a = newAlpha;
+//
+//			text.color = colorText;
+//			imageButton.color = colorButton;
+//
+//			yield return null;
+//		}
+//
+//		buttonObject.gameObject.SetActive (false);
+//
+//		//reset alpha so it's visible when shown next time
+//		colorText.a = 1;
+//		colorButton.a = 1;
+//		text.color = colorText;
+//		imageButton.color = colorButton;
+//	}
 
 	IEnumerator leaving()
 	{
