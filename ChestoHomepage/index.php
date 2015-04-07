@@ -54,41 +54,49 @@
 			$currentProfit = 0;
 			$profitToDraw = array();
 			$lastDate = null;
-			$yesterdaysProfit = 200;
+			$lastProfit = 200;
 			foreach ($totalProfit as $key => $value) 
 			{
-				$currentProfit += $value;
 
-	
+				//these are the values we will draw
 				if(strtotime($key) > strtotime("-30 days"))
 				{
 					if($lastDate != null)
 					{
 						$daysSinceLastProfit = ceil((strtotime($key) - strtotime($lastDate))/60/60/24);
-						//reduce some money, so graph can also go down a bit
-						for ($i=0; $i < $daysSinceLastProfit; $i++) 
+						//reduce some money on all days NOT played
+						for ($i=0; $i < $daysSinceLastProfit-1; $i++) 
 						{ 
-							$currentProfit -= $yesterdaysProfit * (0.6 - min($i*0.1, 0.4));
+							$currentProfit -= $lastProfit * (0.6 - min($i*0.1, 0.4));
 							array_push($profitToDraw, $currentProfit);
-							// $yesterdaysProfit = $currentProfit;
 						}
-					}
-					else
+						//finally add value on the day soneone played again
+						$currentProfit = $currentProfit + $value - $lastProfit * (0.6 - min($daysSinceLastProfit*0.1, 0.4));
 						array_push($profitToDraw, $currentProfit);
+					}
+					//first day
+					else
+					{
+						$currentProfit += $value;
+						array_push($profitToDraw, $currentProfit);
+					}
 				}
+				//this is old data. we need it so profit is correct but we dont draw it
 				else
 				{
+					$currentProfit += $value;
+					
 					if($lastDate != null)
 					{
 						$daysSinceLastProfit = ceil((strtotime($key) - strtotime($lastDate))/60/60/24);
 						//reduce some money, so graph can also go down a bit
-						$currentProfit -= $daysSinceLastProfit * ( $yesterdaysProfit * 0.6);
+						$currentProfit -= $daysSinceLastProfit * ( $lastProfit * 0.6);
 					}
 					// echo $key . ": " . $value . " -> " . $currentProfit . "<br>";
 				}
 
 				$lastDate = $key;
-				$yesterdaysProfit = $value;
+				$lastProfit = $value;
 			}		
 
 			//insert 0 profit if we don't have enough data yet
