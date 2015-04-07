@@ -17,7 +17,13 @@ public class CustomerProfile
 	public float probability;
 	public string prefabPath;
 	public CustomerVariation[] variations = new CustomerVariation[3];
-	
+
+	public string[] itemOnFloorReactions = {"You fool!"};
+	public string[] waitTooLongReactions = {"You fool!"};
+	public string[] notMyItemReactions = {"You fool!"};
+	public string[] itemMultipleScannedReactions = {"You fool!"};
+	public string[] freeItemReactions = {"You fool!"};
+
 	public CustomerVariation getRandomVariation()
 	{
 		int index = Random.Range (0, variations.Length);
@@ -108,6 +114,33 @@ public class CustomerManager : MonoBehaviour {
 			columns = lines[5].Split (',');
 			for (int v = 0; v < 3; v++)
 				currentProfile.variations[v].specificItems = columns[v+2];
+
+			if(lines.Length > 9)
+			{
+				//REACTIONS
+				//"Item On Floor!"
+				int start = lines[7].IndexOf('"')+1;
+				string raw = lines[7].Substring(start, lines[7].LastIndexOf('"')-start);
+				currentProfile.itemOnFloorReactions = raw.Split(';');
+				//"Waiting Too Long!"
+				start = lines[8].IndexOf('"')+1;
+				raw = lines[8].Substring(start, lines[8].LastIndexOf('"')-start);
+				currentProfile.waitTooLongReactions = raw.Split(';');
+				//"Item Multiple Scanned!"
+				start = lines[9].IndexOf('"')+1;
+				raw = lines[9].Substring(start, lines[9].LastIndexOf('"')-start);
+				currentProfile.itemMultipleScannedReactions = raw.Split(';');
+				//"Not My Item!"
+				start = lines[10].IndexOf('"')+1;
+				raw = lines[10].Substring(start, lines[10].LastIndexOf('"')-start);
+				currentProfile.notMyItemReactions = raw.Split(';');
+				//"Free Item!"
+				start = lines[11].IndexOf('"')+1;
+				raw = lines[11].Substring(start, lines[11].LastIndexOf('"')-start);
+				currentProfile.freeItemReactions = raw.Split(';');
+			}
+
+
 
 			//finally add the CustomerProfile to our dictionary containing all customers
 			profiles.Add (name, currentProfile);

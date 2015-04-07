@@ -16,6 +16,8 @@ public class Customer : MonoBehaviour {
 	private float maxWaitingTimePerItem;
 	private bool showedWaitingText;
 	private int countFreeItems;
+
+	IEnumerator hideBubbleCoroutine = null;
 	
 //	public GameObject image;
 
@@ -56,29 +58,53 @@ public class Customer : MonoBehaviour {
 	public void onItemOnFloor(GameObject item)
 	{
 		buttonObject.SetActive (true);
-		text.text = "hey, you dropped my " + item.GetComponent<ItemStatus> ().name + " on the floor";
+		string reaction = profile.itemOnFloorReactions [Random.Range (0, profile.itemOnFloorReactions.Length)];
+		if(reaction.IndexOf('{') > -1)
+			reaction = string.Format(reaction, item.GetComponent<ItemStatus>().name);
+		text.text = reaction;
 //		Debug.Log ("hey, you dropped my " + item.GetComponent<ItemStatus>().name + " on the floor");
 		//playComplainSound();
-		StartCoroutine (hideBubble ());
+		if(hideBubbleCoroutine != null)
+			StopCoroutine (hideBubbleCoroutine);
+		hideBubbleCoroutine = hideBubble ();
+		StartCoroutine (hideBubbleCoroutine);
 	}
 
 	public void onMultipleScanned(GameObject item)
 	{
 		buttonObject.SetActive (true);
-		text.text = "hey, you scanned my " + item.GetComponent<ItemStatus> ().name + " again, you fool!";
+
+		string reaction = profile.itemMultipleScannedReactions [Random.Range (0, profile.itemMultipleScannedReactions.Length)];
+		if(reaction.IndexOf('{') > -1)
+			reaction = string.Format(reaction, item.GetComponent<ItemStatus>().name);
+		text.text = reaction;
+
 //		Debug.Log ("hey, you scanned my " + item.GetComponent<ItemStatus>().name + " again. WTF!");
 		//playComplainSound();
-		StartCoroutine (hideBubble ());
+		
+		if(hideBubbleCoroutine != null)
+			StopCoroutine (hideBubbleCoroutine);
+		hideBubbleCoroutine = hideBubble ();
+		StartCoroutine (hideBubbleCoroutine);
 
 	}
 
 	public void onNotMyItem(GameObject item)
 	{
 		buttonObject.SetActive (true);
-		text.text = "hey, this is not my " + item.GetComponent<ItemStatus> ().name;
+
+		string reaction = profile.notMyItemReactions [Random.Range (0, profile.notMyItemReactions.Length)];
+		if(reaction.IndexOf('{') > -1)
+			reaction = string.Format(reaction, item.GetComponent<ItemStatus>().name);
+		text.text = reaction;
+
 //		Debug.Log ("hey, this is not my " + item.GetComponent<ItemStatus>().name);
 		//playComplainSound();
-		StartCoroutine (hideBubble ());
+		
+		if(hideBubbleCoroutine != null)
+			StopCoroutine (hideBubbleCoroutine);
+		hideBubbleCoroutine = hideBubble ();
+		StartCoroutine (hideBubbleCoroutine);
 
 	}
 	
@@ -86,15 +112,23 @@ public class Customer : MonoBehaviour {
 	{
 		++countFreeItems;	//number of free items given to this customer
 
-		if (countFreeItems < 2)
-			return;
+//		if (countFreeItems < 2)
+//			return;
 
-		int countFreeItemsShift = till.countUnscannedItems + countFreeItems;	//number of items not scanned in this shift
+//		int countFreeItemsShift = till.countUnscannedItems + countFreeItems;	//number of items not scanned in this shift
 
 		buttonObject.SetActive (true);
-		text.text = "thanks for giving me " + item.GetComponent<ItemStatus> ().name;
 
-		StartCoroutine (hideBubble ());
+		string reaction = profile.freeItemReactions [Random.Range (0, profile.freeItemReactions.Length)];
+		if(reaction.IndexOf('{') > -1)
+			reaction = string.Format(reaction, item.GetComponent<ItemStatus>().name);
+		text.text = reaction;
+		
+		
+		if(hideBubbleCoroutine != null)
+			StopCoroutine (hideBubbleCoroutine);
+		hideBubbleCoroutine = hideBubble ();
+		StartCoroutine (hideBubbleCoroutine);
 		
 	}
 
@@ -104,7 +138,12 @@ public class Customer : MonoBehaviour {
 		text.text = "Hey, I don't have all day. Work Faster!";
 		//		Debug.Log ("hey, this is not my " + item.GetComponent<ItemStatus>().name);
 		//playComplainSound();
-		StartCoroutine (hideBubble ());
+		
+		
+		if(hideBubbleCoroutine != null)
+			StopCoroutine (hideBubbleCoroutine);
+		hideBubbleCoroutine = hideBubble ();
+		StartCoroutine (hideBubbleCoroutine);
 	}
 
 	IEnumerator showingItems()
@@ -130,7 +169,7 @@ public class Customer : MonoBehaviour {
 
 	IEnumerator hideBubble()
 	{
-		yield return new WaitForSeconds (2.0f);
+		yield return new WaitForSeconds (3.0f);
 
 		//fade it out
 		Image imageButton = buttonObject.GetComponent<Image> ();
@@ -167,6 +206,8 @@ public class Customer : MonoBehaviour {
 		colorButton.a = 1;
 		text.color = colorText;
 		imageButton.color = colorButton;
+
+		hideBubbleCoroutine = null;
 	}
 
 //	IEnumerator fadeOutBubble()
