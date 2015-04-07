@@ -41,7 +41,12 @@ public class BasketTrigger : ItemTrigger {
 			ItemStatus status = other.gameObject.GetComponent<ItemStatus>();
 
 			if(status && status.scanned == 0)
-				status.customer.onFreeItem(other.gameObject);
+			{
+				if(!status.givenForFree)
+					status.customer.onFreeItem(other.gameObject);
+
+				status.givenForFree = true;
+			}
 		}
 	}
 }

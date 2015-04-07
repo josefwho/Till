@@ -85,6 +85,10 @@ public class Customer : MonoBehaviour {
 	public void onFreeItem(GameObject item)
 	{
 		++countFreeItems;	//number of free items given to this customer
+
+		if (countFreeItems < 2)
+			return;
+
 		int countFreeItemsShift = till.countUnscannedItems + countFreeItems;	//number of items not scanned in this shift
 
 		buttonObject.SetActive (true);

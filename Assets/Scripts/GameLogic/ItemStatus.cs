@@ -9,4 +9,5 @@ public class ItemStatus : MonoBehaviour
 	public string name;
 	public bool scannedInOvertime = false;
 	public bool autoDragged = false;
+	public bool givenForFree = false;
 }
