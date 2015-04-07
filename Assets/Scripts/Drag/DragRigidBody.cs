@@ -114,10 +114,20 @@ public class DragRigidBody : MonoBehaviour
 	IEnumerator DragObject (float distance)
 	{
 		Camera mainCamera = FindCamera();
+
+		Vector3 position;
 		while (Input.GetMouseButton (0) && springJoint)
 		{
-			Ray ray = mainCamera.ScreenPointToRay (Input.mousePosition);
-			Vector3 oldPosition = springJoint.transform.position;
+			position = Input.mousePosition;
+			
+			if (Input.multiTouchEnabled)
+			{
+				if (Input.touchCount > 0)
+					position = Input.GetTouch (0).position;
+			}
+
+			Ray ray = mainCamera.ScreenPointToRay (position);
+//			Vector3 oldPosition = springJoint.transform.position;
 			springJoint.transform.position = ray.GetPoint(distance) + dragOffset;
 //			print("dragging " +springJoint.connectedBody.name + " to new pos: " + springJoint.transform.position);
 
