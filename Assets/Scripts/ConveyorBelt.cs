@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class ConveyorBelt : MonoBehaviour {
@@ -6,6 +7,8 @@ public class ConveyorBelt : MonoBehaviour {
 	public float speed; //units/sec
 	public float length;
 	public GameObject partPrefab;
+	public Button moveButton;
+	public bool moveBelt;
 
 	private ArrayList parts;
 	private float newPartThreshold;
@@ -42,7 +45,7 @@ public class ConveyorBelt : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey (KeyCode.Space))
+		if (Input.GetKey (KeyCode.Space) || moveBelt)
 		{
 			if(distanceSinceLastNewPart > newPartThreshold)
 			{
@@ -74,4 +77,16 @@ public class ConveyorBelt : MonoBehaviour {
 			distanceSinceLastNewPart += offset;
 		}
 	}
+
+	public void startMovingBelt()
+	{
+				moveBelt = true;
+		}
+
+	public void stopMovingBelt()
+	{
+		moveBelt = false;
+	}
+
+
 }
