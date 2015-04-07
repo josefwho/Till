@@ -10,19 +10,23 @@ public class ChangeMouseSprite : MonoBehaviour {
 	void Start()
 	{
 //		Screen.showCursor = false;
-		Cursor.SetCursor (cursorImage, new Vector2(16f, 16f), CursorMode.ForceSoftware);
+		//TODO scale offset to resolution 
+		Vector2 hotSpot = new Vector2(cursorImage.width/2, cursorImage.height/2);
+		Cursor.SetCursor (cursorImage, hotSpot, CursorMode.ForceSoftware);
 
 	}
 	
 	void Update()
 	{
 		if (Input.GetMouseButtonDown(0)) {
-			Cursor.SetCursor (grabbed, new Vector2(0.0f, 0.0f), CursorMode.ForceSoftware);
+			Vector2 hotSpot = new Vector2(grabbed.width/2, grabbed.height/2);
+			Cursor.SetCursor (grabbed, hotSpot, CursorMode.Auto);
 			Debug.Log("show grabbed");
 				}
 
 		if (Input.GetMouseButtonUp(0)) {
-			Cursor.SetCursor (cursorImage, new Vector2(0.0f, 0.0f), CursorMode.Auto);
+			Vector2 hotSpot = new Vector2(cursorImage.width/2, cursorImage.height/2);
+			Cursor.SetCursor (cursorImage, hotSpot, CursorMode.Auto);
 			Debug.Log("show hand");
 				}
 //		Vector3 mousePos = Input.mousePosition;
