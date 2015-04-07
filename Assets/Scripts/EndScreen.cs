@@ -96,10 +96,7 @@ public class EndScreen : MonoBehaviour {
 		form.AddField("itemsOvertime", till.countSoldOvertime);
 		float profit = (till.countSoldRegular + till.countSoldOvertime) * marginPerItem;
 
-		if (wage > 0) {
-						float dailyWageWithoutBonus = (wage - till.bonus) / 21.65f;
-						profit = (profit - (dailyWageWithoutBonus + till.bonus / 4));
-				}
+		profit -= wage/21.65f;
 
 		form.AddField("profit", profit.ToString());
 
