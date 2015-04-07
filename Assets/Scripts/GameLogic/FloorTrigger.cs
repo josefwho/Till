@@ -13,7 +13,7 @@ public class FloorTrigger : ItemTrigger {
 
 		}
 
-	public virtual float getScore()
+	public override float getScore()
 	{
 		float malus = 0;
 		for (int i = 0; i < objectsInside.Count; i++) 
@@ -23,7 +23,7 @@ public class FloorTrigger : ItemTrigger {
 		return malus;
 	}
 
-	public virtual void OnTriggerEnter(Collider other)
+	public override void OnTriggerEnter(Collider other)
 	{
 		base.OnTriggerEnter (other);
 
