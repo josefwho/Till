@@ -23,10 +23,12 @@ public class EndScreen : MonoBehaviour {
 	private bool fired = false;
 	private bool belowWage = false;
 	private bool aboveWage = false;
-
+	float profit;
 	public float waitingSeconds = 5.0f;
 	
 	string databaseUrl = "http://brokenrul.es/games/Chesto/submit.php";
+
+	ProgressionManager progression;
 
 	// Use this for initialization
 	void Start () {
@@ -70,11 +72,16 @@ public class EndScreen : MonoBehaviour {
 		text = transform.Find("Background/wageMonthlyFinalNumber").GetComponent<Text> ();
 		text.text = string.Format(text.text, wage.ToString("N2"));
 
+		profit = (till.countSoldRegular + till.countSoldOvertime) * marginPerItem - till.countUnscannedItems * itemWorth;
+		profit -= wage/21.65f;
+
 		StartCoroutine (stagingStamps (diff, text));
 
 		submit ();
 //		Text stampText = stamp.transform.Find ("Text").GetComponent<Text> ();
 //		stampText.text = (Mathf.Abs(itemWorth * itemDiff)).ToString() + " €";
+
+		till.GetComponent<ProgressionManager>().progress (wage, profit);
 
 	}
 
@@ -94,9 +101,6 @@ public class EndScreen : MonoBehaviour {
 		WWWForm form = new WWWForm();
 		form.AddField("itemsRegular", till.countSoldRegular);
 		form.AddField("itemsOvertime", till.countSoldOvertime);
-		float profit = (till.countSoldRegular + till.countSoldOvertime) * marginPerItem - till.countUnscannedItems * itemWorth;
-
-		profit -= wage/21.65f;
 
 		form.AddField("profit", profit.ToString());
 

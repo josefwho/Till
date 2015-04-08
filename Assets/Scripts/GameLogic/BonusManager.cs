@@ -9,6 +9,7 @@ public class BonusManager : MonoBehaviour
 	public int bonusIncrement = 1;
 	public float bonusDecreaseSpeed = 0.3f;
 	public float increaseDecreaseSpeedThreshold = 3;
+	public float maxBonus = 0;
 
 	public Text currentBonusText = null;
 	public GameObject bonusAddedNotifier = null;
@@ -21,7 +22,7 @@ public class BonusManager : MonoBehaviour
 	{
 		if (bonusAddedNotifier != null) 
 		{
-//						bonusAddedNotifier.SetActive (false);
+//			bonusAddedNotifier.SetActive (false);
 //			bonusAddedNotifier.GetComponent<BonusNotifier>().enabled = false;
 		}
 
@@ -79,12 +80,18 @@ public class BonusManager : MonoBehaviour
 		
 		if (bonusAddedNotifier != null && currentBonus > 1) 
 		{
-			currentBonusText.text = string.Format(initialBonusText, calculateBonus ().ToString());
+			float roundedBonus = calculateBonus(); 
+
+			currentBonusText.text = string.Format(initialBonusText, roundedBonus.ToString());
 			//			bonusAddedNotifier.SetActive (true);
 			bonusAddedNotifier.GetComponent<BonusNotifier>().enabled = true;
+
+			if(roundedBonus > maxBonus)
+				maxBonus = roundedBonus;
 		}
 
 		currentBonus += bonusIncrement;
+
 
 		sinceLastScan = 0.0f;
 	}
@@ -98,8 +105,6 @@ public class BonusManager : MonoBehaviour
 		}
 
 		currentBonus = 0.0f;
-
-
 	}
 
 	public int calculateBonus()

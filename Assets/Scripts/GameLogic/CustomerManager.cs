@@ -50,12 +50,14 @@ public class CustomerManager : MonoBehaviour {
 	private ArrayList profileNames;	//needed to pick a random profile
 
 	private ProductRange products;
+	ProgressionManager progression;
 
 	void Awake () {
 		profileNames = new ArrayList ();
 		profiles = new Dictionary<string, CustomerProfile> ();
 
-		products = gameObject.GetComponent<ProductRange> ();
+		products = GetComponent<ProductRange> ();
+		progression = GetComponent<ProgressionManager> ();
 
 		TextAsset[] spreadsheets = Resources.LoadAll<TextAsset> ("Spreadsheets/CustomerProfiles");
 
@@ -162,7 +164,7 @@ public class CustomerManager : MonoBehaviour {
 		//pick the random customer if it exists and if it's probability is high enough
 		while (safetyCounter < 100) 
 		{
-			if (profiles.TryGetValue (profileNames [index] as string, out profile) && profile.probability >= Random.value)
+			if (profiles.TryGetValue (profileNames [index] as string, out profile) && progression.isCustomerUnlocked(profile) && profile.probability >= Random.value)
 				return profile;
 
 			index = Random.Range (0, profileNames.Count);
@@ -215,9 +217,8 @@ public class CustomerManager : MonoBehaviour {
 						uniteWith.IntersectWith(items.Keys);
 					}
 				}
-
 			}
-			//we don't have to intersect tags, so just finde all items with the tag in tUTrimmed
+			//we don't have to intersect tags, so just find all items with the tag in tUTrimmed
 			else
 			{
 				items = products.itemsWithTag(tUTrimmed);
