@@ -27,6 +27,22 @@ public class ProgressionManager : MonoBehaviour {
 		return isUnlocked(profile.name);
 	}
 
+	public bool isItemUnlocked(ItemInfo item)
+	{
+		if (item.tags.IndexOf ("starterset") > -1)
+			return true;
+
+		if (item.tags.IndexOf ("HippieSet") > -1)
+			return isUnlocked ("Hippie");
+
+		if (item.tags.IndexOf ("RichLadySet") > -1)
+			return isUnlocked ("RichLady");
+
+//		if(item.tags.IndexOf("PremiumSet"
+
+		return false;
+	}
+
 	public void progress(float wage, float profit)
 	{
 		if (!isUnlocked ("Hippie")) 
