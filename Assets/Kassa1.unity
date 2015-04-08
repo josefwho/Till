@@ -73,6 +73,7 @@ NavMeshSettings:
     minRegionArea: 2
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
+    tileSizeHint: 0
   m_NavMesh: {fileID: 0}
 --- !u!1 &7493804
 GameObject:
@@ -893,7 +894,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 146835116}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -976,7 +977,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 175846369}
   m_LocalRotation: {x: 0, y: -.707106829, z: 0, w: .707106709}
-  m_LocalPosition: {x: .230000004, y: 7.19999981, z: -.0199999996}
+  m_LocalPosition: {x: -0, y: 7.1500001, z: -.0399999991}
   m_LocalScale: {x: .254560262, y: 1.66666675, z: .277236342}
   m_Children: []
   m_Father: {fileID: 94170969}
@@ -991,7 +992,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: .5, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 3.05656672, y: 4.5899992, z: 1.01038241}
+  m_ConnectedAnchor: {x: 2.96313357, y: 4.55999994, z: 1.84000003}
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
   m_YMotion: 0
@@ -1431,7 +1432,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 216189572}
   m_LocalRotation: {x: .569351196, y: -.00155332079, z: .00119406194, w: .822092116}
-  m_LocalPosition: {x: 2.5999999, y: 20.1399994, z: -4.09000015}
+  m_LocalPosition: {x: 2.5999999, y: 17.2000008, z: -2.20000005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1614,7 +1615,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 288429292}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -2872,8 +2873,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: .974194348, y: 1}
-  m_AnchoredPosition: {x: 41.1022949, y: -.165817261}
-  m_SizeDelta: {x: -80.7954102, y: -19.1043625}
+  m_AnchoredPosition: {x: 41, y: 0}
+  m_SizeDelta: {x: -81, y: -19}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &544953692
 MonoBehaviour:
@@ -3021,8 +3022,8 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreReversedGraphics: 1
-  blockingObjects: 0
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -3993,8 +3994,8 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreReversedGraphics: 1
-  blockingObjects: 0
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -4134,8 +4135,8 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreReversedGraphics: 1
-  blockingObjects: 0
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -4305,7 +4306,7 @@ RectTransform:
   m_RootOrder: 7
   m_AnchorMin: {x: 0, y: .5}
   m_AnchorMax: {x: 1, y: .5}
-  m_AnchoredPosition: {x: -60, y: 34}
+  m_AnchoredPosition: {x: -60, y: 0}
   m_SizeDelta: {x: -206, y: 30}
   m_Pivot: {x: .5, y: .499999821}
 --- !u!114 &927755494
@@ -4653,8 +4654,8 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreReversedGraphics: 1
-  blockingObjects: 0
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -5289,8 +5290,8 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreReversedGraphics: 1
-  blockingObjects: 0
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -7534,8 +7535,6 @@ MonoBehaviour:
   speed: 1.70000005
   length: 17
   partPrefab: {fileID: 100000, guid: 2aeb48e9c34774645b5755eef434f78f, type: 2}
-  moveButton: {fileID: 0}
-  moveBelt: 0
 --- !u!4 &1608025887
 Transform:
   m_ObjectHideFlags: 0
@@ -8225,7 +8224,7 @@ RectTransform:
   m_RootOrder: 6
   m_AnchorMin: {x: 0, y: .5}
   m_AnchorMax: {x: 1, y: .5}
-  m_AnchoredPosition: {x: 181, y: 34}
+  m_AnchoredPosition: {x: 181, y: 0}
   m_SizeDelta: {x: -433, y: 30}
   m_Pivot: {x: .5, y: .499999821}
 --- !u!114 &1739405767
