@@ -117,28 +117,28 @@ public class CustomerManager : MonoBehaviour {
 			for (int v = 0; v < 3; v++)
 				currentProfile.variations[v].specificItems = columns[v+2];
 
-			if(lines.Length > 9)
+			if(lines.Length > 10)
 			{
 				//REACTIONS
 				//"Item On Floor!"
-				int start = lines[7].IndexOf('"')+1;
-				string raw = lines[7].Substring(start, lines[7].LastIndexOf('"')-start);
+				int start = lines[8].IndexOf('"')+1;
+				string raw = lines[8].Substring(start, lines[8].LastIndexOf('"')-start);
 				currentProfile.itemOnFloorReactions = raw.Split(';');
 				//"Waiting Too Long!"
-				start = lines[8].IndexOf('"')+1;
-				raw = lines[8].Substring(start, lines[8].LastIndexOf('"')-start);
-				currentProfile.waitTooLongReactions = raw.Split(';');
-				//"Item Multiple Scanned!"
 				start = lines[9].IndexOf('"')+1;
 				raw = lines[9].Substring(start, lines[9].LastIndexOf('"')-start);
-				currentProfile.itemMultipleScannedReactions = raw.Split(';');
-				//"Not My Item!"
+				currentProfile.waitTooLongReactions = raw.Split(';');
+				//"Item Multiple Scanned!"
 				start = lines[10].IndexOf('"')+1;
 				raw = lines[10].Substring(start, lines[10].LastIndexOf('"')-start);
-				currentProfile.notMyItemReactions = raw.Split(';');
-				//"Free Item!"
+				currentProfile.itemMultipleScannedReactions = raw.Split(';');
+				//"Not My Item!"
 				start = lines[11].IndexOf('"')+1;
 				raw = lines[11].Substring(start, lines[11].LastIndexOf('"')-start);
+				currentProfile.notMyItemReactions = raw.Split(';');
+				//"Free Item!"
+				start = lines[12].IndexOf('"')+1;
+				raw = lines[12].Substring(start, lines[12].LastIndexOf('"')-start);
 				currentProfile.freeItemReactions = raw.Split(';');
 			}
 
@@ -170,6 +170,8 @@ public class CustomerManager : MonoBehaviour {
 			index = Random.Range (0, profileNames.Count);
 			safetyCounter++;
 		}
+
+		Debug.LogWarning ("searched more than 100 times for a new profile but none fit. Just taking the last one: " + profile.name);
 
 		return profile;
 	}

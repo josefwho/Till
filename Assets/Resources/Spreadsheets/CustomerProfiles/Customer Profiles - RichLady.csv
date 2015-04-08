@@ -3,6 +3,7 @@ Name,RichLady,,,
 Propability to be picked,1,1.00,0.30,0.00
 Item Count Range,,3 - 5,4 - 8,5 - 8
 Tags,,luxury+premium,premium,cheap; deals
+Not Tag,,,,
 Specific Items,,,,
 Prefab Folder Path,,,,
 Item On Floor Text,"Honey, you dropped my {0} on the floor;I don’t pay for food on the floor;This {0} is for my housemaid then;Now my {0} comes with filth, thank you",,,

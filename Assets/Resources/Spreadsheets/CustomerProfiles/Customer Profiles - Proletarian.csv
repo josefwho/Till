@@ -3,6 +3,7 @@ Name,Proletarian,,,
 Propability to be picked,1,0.70,0.30,0.00
 Item Count Range,,2 - 3,4 - 6,4 - 6
 Tags,,,junk,vegetables;fruit
+Not Tag,,,,
 Specific Items,,beer_can; soda; energy_drink;sandwich,beer_can,water
 Prefab Folder Path,,,,
 Item On Floor Text,"I think it's enough when I am dirty from work;Hm, dirty {0};Dirt as side dish, yummy;Pick up my {0} you douche bag; Pick that up. Immediately",,,

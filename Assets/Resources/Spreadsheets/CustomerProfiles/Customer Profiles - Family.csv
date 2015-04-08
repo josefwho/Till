@@ -3,6 +3,7 @@ Name,Family,,,
 Propability to be picked,1,1.00,0.30,0.00
 Item Count Range,,15-20,10-20,8-15
 Tags,,cheap; junk; familypack,cheap; basic; junk,vegetables;basic+organic
+Not Tag,,,,
 Specific Items,,,,
 Prefab Folder Path,,,,
 Item On Floor Text,"Hey, you dropped our {0} on the floor;My children don't eat dirty things;I've taught my children not to eat things that have been on the floor;We don’t pay for food on the floor;My family doesn't like dirty food;Who wants to eat this {0} now you think? Not me, not my family!",,,
