@@ -113,7 +113,7 @@ public class CustomerManager : MonoBehaviour {
 			for (int v = 0; v < 3; v++)
 				currentProfile.variations[v].tags = columns[v+2];
 			//specific items
-			columns = lines[5].Split (',');
+			columns = lines[6].Split (',');
 			for (int v = 0; v < 3; v++)
 				currentProfile.variations[v].specificItems = columns[v+2];
 
