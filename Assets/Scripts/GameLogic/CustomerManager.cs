@@ -63,7 +63,7 @@ public class CustomerManager : MonoBehaviour {
 
 		foreach (TextAsset s in spreadsheets) 
 		{
-//			print ("reading in data of profile " + s.name);
+			print ("reading in data of profile " + s.name);
 			
 			string[] lines = s.text.Split ('\n');
 
@@ -147,7 +147,7 @@ public class CustomerManager : MonoBehaviour {
 			//finally add the CustomerProfile to our dictionary containing all customers
 			profiles.Add (name, currentProfile);
 
-//			print ("done reading in values");
+			print ("done reading in values");
 		}
 	}
 	

@@ -72,7 +72,7 @@ public class ProgressionManager : MonoBehaviour {
 
 	bool isUnlocked(string key)
 	{
-		return PlayerPrefs.GetInt (key) == 1;
+		return true; //PlayerPrefs.GetInt (key) == 1;
 	}
 
 	void unlock(string key)
