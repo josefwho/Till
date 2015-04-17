@@ -165,7 +165,7 @@
 				<img style="height:auto; width:auto; max-width:800px; max-height:800px" src="landingPicture.png">
 			</div> -->
 
-			<div style="background-color:rgb(87,0,142); height:400px">
+			<div style="background-color:rgb(87,0,142)" class ="clearfix">
 				<h1 style="color:white"> WHO WE ARE</h1>
 
 					<div id="left" style="width:50%">
@@ -199,7 +199,7 @@ our values.</p>
 		
 
 
-			<div style="background-color: white; height:350px">
+			<div style="background-color: white" class="clearfix">
 				<h1> INVESTORS</h1>
 				<div id="left" style="align:center; padding-left:0px">
 					
@@ -273,7 +273,7 @@ our values.</p>
 				</div>
 			</div>
 
-		<div style="background-color:rgb(87,0,142); height:350px">
+		<div style="background-color:rgb(87,0,142)" class="clearfix">
 			<h1 style="color:white"> NEWS</h1>
 			<div id="left" style="width:600px; padding-left:0px">
 				<a href="http://toniluschesiner.tumblr.com"><p id="left" style="color: white"> Meet our CEO <span>TONI SCHESINER</span> on his personal blog.</p></a>
@@ -290,7 +290,7 @@ our values.</p>
 
 		</div>
 
-		<div style="background-color:white; height:130px">
+		<div style="background-color:white" class="clearfix">
 			<h1> SHAREHOLDERS</h1>
 				<div id="left" style="width:70%">
 					<p id= "floatingTextBlack" style="color:rgb(87,0,142)"> <span>CHESTO</span> wants to thank its main shareholders <br><a href="http://www.brokenrul.es"><span>BROKEN RULES</span></a> & <a href="https://twitter.com/peregrinustyss"><span>JOSEF WHO</span></a></p>
