@@ -256,8 +256,10 @@ public class CustomerManager : MonoBehaviour {
 					Debug.LogWarning("couldn't find specific item " + sITrimmed);
 			}
 		}
+		//TODO: remove items that are still unlocked
+//		HashSet<string> toRemove;
+//		foreach(string s in itemNames)
 
-		
 		string[] temp = null;
 		if (itemNames != null) 
 		{
