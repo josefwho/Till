@@ -1,13 +1,13 @@
 ,Global,Stereotype,Standard,Anti-Stereotype
 Name,Janitor,,,
-Propability to be picked,1,1.00,0.30,0.00
-Item Count Range,,5 - 8,8 - 12,15-20
-Tags,,organic+basic;organic+vegetables;organic+fruit,organic,cheap; deals; cheap+meat; junk
-Not Tag,,meat,,
+Propability to be picked,1,1.00,0.00,0.00
+Item Count Range,,8 - 12,8 - 12,8 - 12
+Tags,,cheap; deals; cheap+meat; junk;nofood;,cheap; deals; cheap+meat; junk;nofood;,cheap; deals; cheap+meat; junk;nofood;
+Not Tag,,,,
 Specific Items,,,,
 Prefab Folder Path,,,,
-Item On Floor Text,"I should wash that before dinner;Dirt as side dish, yummy;Would you be so kind to pick this {0} up?;Now, my {0} is on the floor;You've dropped this {0} accidently, haven't you?;Now I could have taken it out of the dumpster at night as well;Dirt is a little too organic, even for me",,,
-Wating Too Long Text,"Watching you work makes me fall asleep;Is slower even possible?;Is this your first day here?;You will fall asleep if you’re getting even slower;You are the slowest cashier I’ve ever seen;Work faster, come on!",,,
-Item Multiple Scanned Text,"Do I have to pay for this again now?;Not paying for this twice, you know;I DID recognize that you scanned this {0} again!;Wake up, you’ve already scanned this {0};No, not again;Again, really?;Pay again, get one? I don't think so;You can pay for this again, not me",,,
-Not My Item Text,"This is not my {0};I don't want this {0}; This {0} is not mine;These signs are here to separate the costumers, you know?;I don’t wanna buy this {0};Buddy, not my {0}",,,
-Item Not Scanned Text,"Sure you are allowed to do that?;For free, you sure?;Hm, that’s kind of stealing. Who cares;Free {0}, cool!;Thanks, love free stuff;That’s quite generous, thx;Oh, that {0} is on you then?;Didn’t know CHESTO is giving away {0}s for free :);Come to CHESTO, free food here;CHESTO is feeling generous today",,,
+Item On Floor Text,"I'm cleaning all day, I don't want to wash all my shoppings as well!; Watch out, my {0} is on the floor!; ... ; ",,,
+Wating Too Long Text,"You're as slow as a toilet lady!; If I wait here any longer, my curls will be all crazy!;",,,
+Item Multiple Scanned Text,"Wait, you think I'm rich?; I'm definitly not going to pay twice for my {0}; Are you stupid?; Wake up, you’ve already scanned this {0};",,,
+Not My Item Text,"I would never buy this {0}; Hey I can't affor more of this {0}; This {0} is not mine; No, no, no!;",,,
+Item Not Scanned Text,"Didn't you forget to scan my {0}; ... *whistle*, *whistle*; *whisper* I'm not going to tell anyone *whisper; Thanks for the {0}!; I like you!; How are you doing?;",,,

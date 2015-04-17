@@ -1,13 +1,13 @@
 ,Global,Stereotype,Standard,Anti-Stereotype
 Name,Hipster,,,
-Propability to be picked,1,1.00,0.30,0.00
-Item Count Range,,5 - 8,8 - 12,15-20
-Tags,,organic+basic;organic+vegetables;organic+fruit,organic,cheap; deals; cheap+meat; junk
-Not Tag,,meat,,
-Specific Items,,,,
+Propability to be picked,1,1.00,0.00,0.00
+Item Count Range,,3 - 5,3 - 5,3 - 5
+Tags,,organic+basic;organic+vegetables;organic+fruit,organic+basic;organic+vegetables;organic+fruit,organic+basic;organic+vegetables;organic+fruit
+Not Tag,,,,
+Specific Items,,beer_bottle; condom,beer_bottle; condom,beer_bottle; condom
 Prefab Folder Path,,,,
-Item On Floor Text,"I should wash that before dinner;Dirt as side dish, yummy;Would you be so kind to pick this {0} up?;Now, my {0} is on the floor;You've dropped this {0} accidently, haven't you?;Now I could have taken it out of the dumpster at night as well;Dirt is a little too organic, even for me",,,
-Wating Too Long Text,"Watching you work makes me fall asleep;Is slower even possible?;Is this your first day here?;You will fall asleep if you’re getting even slower;You are the slowest cashier I’ve ever seen;Work faster, come on!",,,
-Item Multiple Scanned Text,"Do I have to pay for this again now?;Not paying for this twice, you know;I DID recognize that you scanned this {0} again!;Wake up, you’ve already scanned this {0};No, not again;Again, really?;Pay again, get one? I don't think so;You can pay for this again, not me",,,
-Not My Item Text,"This is not my {0};I don't want this {0}; This {0} is not mine;These signs are here to separate the costumers, you know?;I don’t wanna buy this {0};Buddy, not my {0}",,,
-Item Not Scanned Text,"Sure you are allowed to do that?;For free, you sure?;Hm, that’s kind of stealing. Who cares;Free {0}, cool!;Thanks, love free stuff;That’s quite generous, thx;Oh, that {0} is on you then?;Didn’t know CHESTO is giving away {0}s for free :);Come to CHESTO, free food here;CHESTO is feeling generous today",,,
+Item On Floor Text,"You think I'll eat that {0}? Do I look like a jerry to you?; LOL, you dropped that {0}!;",,,
+Wating Too Long Text,"Hey I'm all FOMO here, I need to go to the show!; You're sooooo fin, hurry up!; Come OONNNNNNN!; I need to go, you know: YOLO!",,,
+Item Multiple Scanned Text,"Are ou flippin' cray cray? Why are you scanning this again?; I'm not povo, I'll just pay for this {0} again; I noticed you scannin' my {0} again;",,,
+Not My Item Text,"This {0} is not mine...ahhhh, whatevs!;These signs are here to separate the costumers, you know?;Dude, not my {0}; This {0} belongs to this midtown guy behind me",,,
+Item Not Scanned Text,"For free? LOL!; Hey, you're cool, totes'!; This make me feel a bit Awks; Look, I'm not povo, I can pay for my {0}; If you keep this up, you'll be on the clothesline, and every midtown jerk will come for free stuff!;",,,
