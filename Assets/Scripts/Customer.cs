@@ -135,13 +135,12 @@ public class Customer : MonoBehaviour {
 	public void onWaitTooLong()
 	{
 		buttonObject.SetActive (true);
-		text.text = "Hey, I don't have all day. Work Faster!";
-		//		Debug.Log ("hey, this is not my " + item.GetComponent<ItemStatus>().name);
-		//playComplainSound();
-		
+
+		text.text = profile.waitTooLongReactions [Random.Range (0, profile.freeItemReactions.Length)];;
 		
 		if(hideBubbleCoroutine != null)
 			StopCoroutine (hideBubbleCoroutine);
+
 		hideBubbleCoroutine = hideBubble ();
 		StartCoroutine (hideBubbleCoroutine);
 	}
