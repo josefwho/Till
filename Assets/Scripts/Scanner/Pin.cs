@@ -48,7 +48,7 @@ public class Pin : MonoBehaviour {
 
 		//scale items at pin
 		originalItemSize = itemToPin.transform.localScale;
-		StartCoroutine(scale(new Vector3(scaleWhenPinned, scaleWhenPinned, scaleWhenPinned)));
+		StartCoroutine(scale(originalItemSize * scaleWhenPinned));
 
 
 		oldMaxAngularVelocity = itemToPin.rigidbody.maxAngularVelocity;
@@ -109,20 +109,20 @@ public class Pin : MonoBehaviour {
 		itemToPin.transform.Find ("Barcode").GetChild(0).gameObject.SetActive (false);
 	}
 
-		IEnumerator scale(Vector3 targetScale)
+	IEnumerator scale(Vector3 targetScale)
+	{
+		float timeTaken = 0.0f;
+		Vector3 startScale = itemToPin.transform.localScale;
+		while (timeTaken < scaleDuration) 
 		{
-			float timeTaken = 0.0f;
-			Vector3 startScale = itemToPin.transform.localScale;
-			while (timeTaken < scaleDuration) 
-			{
-				Vector3 curScale = Vector3.Lerp(startScale, targetScale, timeTaken/scaleDuration);
-				itemToPin.transform.localScale = curScale;
+			Vector3 curScale = Vector3.Lerp(startScale, targetScale, timeTaken/scaleDuration);
+			itemToPin.transform.localScale = curScale;
 
-				yield return null;
+			yield return null;
 
-				timeTaken += Time.deltaTime;
-			}
+			timeTaken += Time.deltaTime;
 		}
+	}
 
 	void removeObject(GameObject toBeRemoved)
 	{
