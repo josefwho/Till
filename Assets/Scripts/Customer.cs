@@ -136,7 +136,7 @@ public class Customer : MonoBehaviour {
 	{
 		buttonObject.SetActive (true);
 
-		text.text = profile.waitTooLongReactions [Random.Range (0, profile.freeItemReactions.Length)];;
+		text.text = profile.waitTooLongReactions [Random.Range (0, profile.waitTooLongReactions.Length)];;
 		
 		if(hideBubbleCoroutine != null)
 			StopCoroutine (hideBubbleCoroutine);
