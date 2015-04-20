@@ -51,10 +51,11 @@ public class DragRigidBody : MonoBehaviour
 			return;
 
 		if(Application.loadedLevel == 0)
-		   {
+		{
+			startDragging (hit.collider.gameObject, 8, false);
+		}
+		else
 			startDragging (hit.collider.gameObject, 14, false);
-		}else
-		startDragging (hit.collider.gameObject, 20, false);
 	}
 
 	public void startDragging(GameObject target, float dis, bool withOffset)

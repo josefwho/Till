@@ -73,6 +73,7 @@ NavMeshSettings:
     minRegionArea: 2
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
+    tileSizeHint: 0
   m_NavMesh: {fileID: 0}
 --- !u!1 &39344058
 GameObject:
@@ -291,6 +292,7 @@ MonoBehaviour:
   name: 
   scannedInOvertime: 0
   autoDragged: 0
+  givenForFree: 0
 --- !u!95 &132691967
 Animator:
   serializedVersion: 3
@@ -418,6 +420,7 @@ MonoBehaviour:
   name: 
   scannedInOvertime: 0
   autoDragged: 0
+  givenForFree: 0
 --- !u!95 &166569989
 Animator:
   serializedVersion: 3
@@ -813,8 +816,8 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreReversedGraphics: 1
-  blockingObjects: 0
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -998,6 +1001,7 @@ MonoBehaviour:
   name: 
   scannedInOvertime: 0
   autoDragged: 0
+  givenForFree: 0
 --- !u!95 &497748798
 Animator:
   serializedVersion: 3
@@ -1864,6 +1868,7 @@ MonoBehaviour:
   name: 
   scannedInOvertime: 0
   autoDragged: 0
+  givenForFree: 0
 --- !u!95 &858478580
 Animator:
   serializedVersion: 3
@@ -2066,8 +2071,8 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreReversedGraphics: 1
-  blockingObjects: 0
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -2585,6 +2590,7 @@ MonoBehaviour:
   isSpawningItems: 0
   startTime: 15
   endTime: 20
+  bonus: 0
 --- !u!4 &1384847098
 Transform:
   m_ObjectHideFlags: 0
@@ -2997,6 +3003,7 @@ MonoBehaviour:
   name: 
   scannedInOvertime: 0
   autoDragged: 0
+  givenForFree: 0
 --- !u!54 &1611662080
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3403,6 +3410,7 @@ MonoBehaviour:
   name: 
   scannedInOvertime: 0
   autoDragged: 0
+  givenForFree: 0
 --- !u!95 &1891863285
 Animator:
   serializedVersion: 3
