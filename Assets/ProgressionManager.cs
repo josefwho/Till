@@ -9,7 +9,7 @@ public class ProgressionManager : MonoBehaviour {
 	string[] unlockables;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		till = GetComponent<TillStateMachine> ();
 		bonus = GetComponent<BonusManager> ();
 
@@ -56,7 +56,7 @@ public class ProgressionManager : MonoBehaviour {
 
 //		if(item.tags.IndexOf("PremiumSet"
 
-		return true;
+		return false;
 	}
 
 	public void progress(float wage, float profit)

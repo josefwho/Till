@@ -258,8 +258,17 @@ public class CustomerManager : MonoBehaviour {
 		}
 
 		//TODO: remove items that are still unlocked
-//		HashSet<string> toRemove;
-//		foreach(string s in itemNames)
+		HashSet<string> toRemove = new HashSet<string>();
+		foreach (string s in itemNames) 
+		{
+			ItemInfo info = products.item(s);
+			if(info != null && !progression.isItemUnlocked(info))
+				toRemove.Add(s);
+		}
+
+		//savely remove item so we wont spawn it
+		foreach (string s in toRemove)
+			itemNames.Remove (s);
 
 		string[] temp = null;
 		if (itemNames != null) 

@@ -78,6 +78,14 @@ public class ProductRange : MonoBehaviour {
 		return null;
 	}
 
+	public ItemInfo item(string itemName)
+	{
+		if (!hasItem (itemName))
+			return null;
+
+		return allItems[itemName];
+	}
+
 	public bool hasItem(string itemName)
 	{
 		return allItems.ContainsKey (itemName);
