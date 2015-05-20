@@ -19,8 +19,12 @@ public class ProgressionManager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{
+		if (Debug.isDebugBuild && Input.GetKey (KeyCode.R) && Input.GetKey (KeyCode.LeftCommand)) 
+		{
+			resetProgress();
+		}
 	}
 
 	public bool isCustomerUnlocked(CustomerProfile profile)
@@ -72,11 +76,16 @@ public class ProgressionManager : MonoBehaviour {
 
 	bool isUnlocked(string key)
 	{
-		PlayerPrefs.GetInt (key) == 1;
+		return PlayerPrefs.GetInt (key) == 1;
 	}
 
 	void unlock(string key)
 	{
 		PlayerPrefs.SetInt (key, 1);
+	}
+
+	void resetProgress()
+	{
+		PlayerPrefs.DeleteAll ();
 	}
 }
