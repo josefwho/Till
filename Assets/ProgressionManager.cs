@@ -8,6 +8,8 @@ public class ProgressionManager : MonoBehaviour {
 
 	string[] unlockables;
 
+	bool unlockAll = true;
+
 	// Use this for initialization
 	void Awake () {
 		till = GetComponent<TillStateMachine> ();
@@ -29,6 +31,9 @@ public class ProgressionManager : MonoBehaviour {
 
 	public bool isCustomerUnlocked(CustomerProfile profile)
 	{
+		if (unlockAll)
+			return true;
+
 		if (profile.name == "Family" || profile.name == "Proletarian") 
 		{
 			return true;
@@ -39,6 +44,9 @@ public class ProgressionManager : MonoBehaviour {
 
 	public bool isItemUnlocked(ItemInfo item)
 	{
+		if (unlockAll)
+			return true;
+
 		if (item.tags.IndexOf ("starterset") > -1)
 			return true;
 
@@ -76,7 +84,7 @@ public class ProgressionManager : MonoBehaviour {
 
 	bool isUnlocked(string key)
 	{
-		return PlayerPrefs.GetInt (key) == 1;
+		return unlockAll || PlayerPrefs.GetInt (key) == 1;
 	}
 
 	void unlock(string key)
