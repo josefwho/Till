@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
-
+using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ProgressionManager : MonoBehaviour {
 
@@ -10,15 +11,40 @@ public class ProgressionManager : MonoBehaviour {
 	string[] unlockables;
 	int unlockedIndex = 0;
 
+	public Canvas popup;
+	Text nextUnlockable;
+
 	public bool unlockAll = false;
+
+	Dictionary<string, string> howToUnlockNext;
 
 	// Use this for initialization
 	void Awake () {
 		till = GetComponent<TillStateMachine> ();
 		bonus = GetComponent<BonusManager> ();
 
-		string[] temp = { "Hippie", "RichLady", "premium" };
+		if (popup)
+		{
+			Transform t = popup.transform.Find("Content/nextUnlockable");
+			if(t)
+				nextUnlockable = t.GetComponent<Text>();;
+		}
+
+		string[] temp = { "Hippie", "junk", "HIPSTER", "alcohol", "vegetableFruitSet", "RichLady", "premium", "exotic", "Business", "nofood", "Janitor"  };
 		unlockables = temp;
+
+		howToUnlockNext = new Dictionary<string, string> ();
+		howToUnlockNext.Add ("Hippie", "Achieve minimum wage to unlock more.");
+		howToUnlockNext.Add ("junk", "Press the \"Visit chesto.com\" button to unlock more.");
+		howToUnlockNext.Add ("Hipster", "Work in over time until 21:00 to unlock more.");
+		howToUnlockNext.Add ("alcohol", "Give a customer a shopping item for free to unlock more.");
+		howToUnlockNext.Add ("vegetableFruitSet", "Get a bonus of 6 or higher to unlock more.");
+		howToUnlockNext.Add ("RichLady", "Scan an item more than once to unlock more.");
+		howToUnlockNext.Add ("premium", "Work less than 15 minutes in unpaid overtime to unlock more.");
+		howToUnlockNext.Add ("exotic", "Get a bonus of 15 or higher to unlock more.");
+		howToUnlockNext.Add ("Business", "Earn 1200 € or more to unlock more.");
+		howToUnlockNext.Add ("nofood", "Drop 15 or more items on the floor to unlock the last customer.");
+
 
 	}
 	
@@ -131,6 +157,12 @@ public class ProgressionManager : MonoBehaviour {
 		PlayerPrefs.SetInt (key, 1);
 		
 		PlayerPrefs.Save ();
+
+		if (popup)
+		{
+			nextUnlockable.text = howToUnlockNext[key];
+			popup.enabled = true;
+		}
 	}
 
 	void resetProgress()
