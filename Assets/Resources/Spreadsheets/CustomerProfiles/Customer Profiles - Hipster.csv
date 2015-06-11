@@ -2,7 +2,7 @@
 Name,Hipster,,,
 Propability to be picked,1,1.00,0.00,0.00
 Item Count Range,,3 - 5,3 - 5,3 - 5
-Tags,,organic+basic;organic+vegetables;organic+fruit,organic+basic;organic+vegetables;organic+fruit,organic+basic;organic+vegetables;organic+fruit
+Tags,,organic+basic;organic+vegetables;organic+fruit;exotic,organic+basic;organic+vegetables;organic+fruit,organic+basic;organic+vegetables;organic+fruit
 Not Tag,,,,
 Specific Items,,beer_bottle; condom,beer_bottle; condom,beer_bottle; condom
 Prefab Folder Path,,,,

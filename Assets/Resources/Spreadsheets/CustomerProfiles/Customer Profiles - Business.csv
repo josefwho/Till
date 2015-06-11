@@ -2,9 +2,9 @@
 Name,Business,,,
 Propability to be picked,1,1.00,0.00,0.00
 Item Count Range,,3 - 5,3 - 5,3 - 5
-Tags,,premium; organic+vegetables; fruit+exotic;,premium; organic+vegetables; fruit+exotic;,premium; organic+vegetables; fruit+exotic;
+Tags,,premium; organic+vegetables; exotic,premium; organic+vegetables; fruit+exotic;,premium; organic+vegetables; fruit+exotic;
 Not Tag,,,,
-Specific Items,,water;lipstick,,
+Specific Items,,water;lipstick;fish,,
 Prefab Folder Path,,,,
 Item On Floor Text,"I like my {0} clean; Look, lady, stop this!; Heyyyyyy!; You dropped my {0}",,,
 Wating Too Long Text,"I need to be at the office 5 minutes ago!; Time is money!; No wonder YOU never made it anywhere!;I need to go, you know?",,,
