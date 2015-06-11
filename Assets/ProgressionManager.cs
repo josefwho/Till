@@ -12,6 +12,7 @@ public class ProgressionManager : MonoBehaviour {
 	int unlockedIndex = 0;
 
 	public Canvas popup;
+	public CanvasGroup popupGroup;
 	Text nextUnlockable;
 	Text newCustomerUnlocked;
 	Text newItemsUnlocked;
@@ -28,6 +29,11 @@ public class ProgressionManager : MonoBehaviour {
 
 		if (popup)
 		{
+//			popupGroup = popup.GetComponent<CanvasGroup>();
+//			popupGroup.alpha = 0;
+//			popupGroup.interactable = false;
+			popup.enabled = false;
+
 			Transform t = popup.transform.Find("Content/BackgroundPurpleBottom/nextUnlockable");
 			if(t)
 				nextUnlockable = t.GetComponent<Text>();
@@ -42,7 +48,7 @@ public class ProgressionManager : MonoBehaviour {
 
 		unlockableSprites = Resources.LoadAll<Sprite> ("UnlockableSprites");
 
-		string[] temp = { "Hippie", "junk", "HIPSTER", "alcohol", "vegetableFruitSet", "RichLady", "premium", "exotic", "Business", "nofood", "Janitor"  };
+		string[] temp = { "Hippie", "junk", "Hipster", "alcohol", "vegetableFruitSet", "RichLady", "premium", "exotic", "Business", "nofood", "Janitor"  };
 		unlockables = temp;
 
 		howToUnlockNext = new Dictionary<string, string> ();
@@ -67,6 +73,14 @@ public class ProgressionManager : MonoBehaviour {
 		{
 			resetProgress();
 		}
+
+		if (popup.enabled && Input.GetMouseButtonUp (0))
+		{
+//			popupGroup.alpha = 0;
+//			popupGroup.interactable = false;
+			popup.enabled = false;
+		}
+
 	}
 
 	public bool isCustomerUnlocked(CustomerProfile profile)
@@ -183,10 +197,11 @@ public class ProgressionManager : MonoBehaviour {
 			//a customer always starts with an uppercase letter
 			newItemsUnlocked.enabled = !char.IsUpper(key[0]);
 			newCustomerUnlocked.enabled = char.IsUpper(key[0]);
-			
 
 			nextUnlockable.text = howToUnlockNext[key];
 			popup.enabled = true;
+//			popupGroup.alpha = 1;
+//			popupGroup.interactable = true;
 		}
 	}
 

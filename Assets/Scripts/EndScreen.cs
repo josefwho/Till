@@ -93,9 +93,9 @@ public class EndScreen : MonoBehaviour {
 	{
 		Application.OpenURL("http://brokenrul.es/games/Chesto/");
 
-		//directly unlock Hipster if player is going to website
+		//unlock Hipster next frame if player is going to website
 		if (!progression.isUnlocked ("Hipster") && progression.isUnlocked ("junk"))
-				progression.unlock ("Hipster");
+			StartCoroutine (unlockHipster());
 	}
 
 	public void submit()
@@ -221,4 +221,10 @@ public class EndScreen : MonoBehaviour {
 		}
 	}
 
+	IEnumerator unlockHipster()
+	{
+		yield return null;
+
+		progression.unlock ("Hipster");
+	}
 }
