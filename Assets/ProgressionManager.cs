@@ -13,10 +13,13 @@ public class ProgressionManager : MonoBehaviour {
 
 	public Canvas popup;
 	Text nextUnlockable;
+	Text newCustomerUnlocked;
+	Text newItemsUnlocked;
 
 	public bool unlockAll = false;
 
 	Dictionary<string, string> howToUnlockNext;
+	Sprite[] unlockableSprites;
 
 	// Use this for initialization
 	void Awake () {
@@ -25,10 +28,19 @@ public class ProgressionManager : MonoBehaviour {
 
 		if (popup)
 		{
-			Transform t = popup.transform.Find("Content/nextUnlockable");
+			Transform t = popup.transform.Find("Content/BackgroundPurpleBottom/nextUnlockable");
 			if(t)
-				nextUnlockable = t.GetComponent<Text>();;
+				nextUnlockable = t.GetComponent<Text>();
+			t = popup.transform.Find ("Content/newCustomerUnlocked");
+			if(t)
+				newCustomerUnlocked = t.GetComponent<Text>();
+
+			t = popup.transform.Find ("Content/newItemsUnlocked");
+			if(t)
+				newItemsUnlocked = t.GetComponent<Text>();
 		}
+
+		unlockableSprites = Resources.LoadAll<Sprite> ("UnlockableSprites");
 
 		string[] temp = { "Hippie", "junk", "HIPSTER", "alcohol", "vegetableFruitSet", "RichLady", "premium", "exotic", "Business", "nofood", "Janitor"  };
 		unlockables = temp;
@@ -160,6 +172,19 @@ public class ProgressionManager : MonoBehaviour {
 
 		if (popup)
 		{
+			foreach(Sprite s in unlockableSprites)
+			{
+				if(s.name == key)
+				{
+					popup.transform.Find ("Content/Sprite").GetComponent<Image>().sprite = s;
+				}
+			}
+
+			//a customer always starts with an uppercase letter
+			newItemsUnlocked.enabled = !char.IsUpper(key[0]);
+			newCustomerUnlocked.enabled = char.IsUpper(key[0]);
+			
+
 			nextUnlockable.text = howToUnlockNext[key];
 			popup.enabled = true;
 		}
