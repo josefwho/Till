@@ -8,7 +8,7 @@ public class ProgressionManager : MonoBehaviour {
 
 	string[] unlockables;
 
-	bool unlockAll = true;
+	public bool unlockAll = false;
 
 	// Use this for initialization
 	void Awake () {
