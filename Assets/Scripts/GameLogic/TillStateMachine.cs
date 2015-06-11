@@ -37,6 +37,7 @@ public class TillStateMachine : MonoBehaviour
 	public int countSoldOvertime;
 	public int countMultipleScannedItems;
 	public int countUnscannedItems;
+	public int countItemsOnFloor;
 //	public GUIText countScanned;
 //	public GUIText countBasket;
 //	public GUIText countFloor;
@@ -88,10 +89,14 @@ public class TillStateMachine : MonoBehaviour
 	{
 		currentState = States.Setup;
 
-		floorTrigger = GameObject.Find ("Floor/OnFloorTrigger").GetComponent<ItemTrigger>();
-		scannerTrigger = GameObject.Find ("Scanner/Scanner Trigger").GetComponent<ItemTrigger>();
-		basketTrigger = GameObject.Find ("shopping_cart/InBasketTrigger").GetComponent<ItemTrigger>();
-		newCustomerTrigger = GameObject.Find ("NewCustomerTrigger").GetComponent<ItemTrigger>();
+		if (!GameObject.Find ("Floor/OnFloorTrigger")) 
+			return;
+
+		floorTrigger = GameObject.Find ("Floor/OnFloorTrigger").GetComponent<ItemTrigger> ();
+		scannerTrigger = GameObject.Find ("Scanner/Scanner Trigger").GetComponent<ItemTrigger> ();
+		basketTrigger = GameObject.Find ("shopping_cart/InBasketTrigger").GetComponent<ItemTrigger> ();
+		newCustomerTrigger = GameObject.Find ("NewCustomerTrigger").GetComponent<ItemTrigger> ();
+
 		
 		countScannedObjects = 0;
 //		countScanned.text = "Items Scanned: "+ countScannedObjects.ToString ();
@@ -99,11 +104,13 @@ public class TillStateMachine : MonoBehaviour
 //		countFloor.text = "Items on Floor: " + floorTrigger.getObjectsInsideCount ().ToString ();
 
 		endScreenObject = GameObject.Find ("End Screen Canvas");
-		endScreen = endScreenObject.GetComponent<EndScreen> ();
+		if(endScreenObject)
+			endScreen = endScreenObject.GetComponent<EndScreen> ();
 		customers = new ArrayList ();
 
 		pickupItemsHint = GameObject.Find ("Hint Canvas/PickupItems");
-		pickupItemsHint.SetActive (false);
+		if(pickupItemsHint)
+			pickupItemsHint.SetActive (false);
 
 		manager = GameObject.Find ("manager").GetComponent<Manager>();
 
@@ -280,6 +287,8 @@ public class TillStateMachine : MonoBehaviour
 
 	public void updateClock()
 	{
+		if (timeTakenText == null)
+						return;
 
 		float time;
 		//time goes fast till end of shift
@@ -443,10 +452,11 @@ public class TillStateMachine : MonoBehaviour
 
 	public void onItemOnFloor(GameObject item)
 	{
-				if (bonusManager != null) {
-						bonusManager.resetBonus ();
-				}
+		countItemsOnFloor++;
+		if (bonusManager != null) {
+				bonusManager.resetBonus ();
 		}
+	}
 	
 	
 	

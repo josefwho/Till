@@ -2576,6 +2576,7 @@ MonoBehaviour:
   countSoldOvertime: 0
   countMultipleScannedItems: 0
   countUnscannedItems: 0
+  countItemsOnFloor: 0
   spawnRadius: 1
   score: 0
   timeTaken: 0
