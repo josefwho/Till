@@ -33,6 +33,7 @@ public class EndScreen : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		till = GameObject.FindGameObjectWithTag ("GameController").GetComponent<TillStateMachine> ();
+		progression = till.GetComponent<ProgressionManager> ();
 
 		Text text = transform.Find("Submit Score Button/Text").GetComponent<Text> ();
 		text.text = string.Format (text.text, till.countSoldRegular + till.countSoldOvertime);
@@ -81,8 +82,6 @@ public class EndScreen : MonoBehaviour {
 //		Text stampText = stamp.transform.Find ("Text").GetComponent<Text> ();
 //		stampText.text = (Mathf.Abs(itemWorth * itemDiff)).ToString() + " €";
 
-		till.GetComponent<ProgressionManager>().progress (wage, profit);
-
 	}
 
 	// Update is called once per frame
@@ -93,6 +92,10 @@ public class EndScreen : MonoBehaviour {
 	public void goToWebsite()
 	{
 		Application.OpenURL("http://brokenrul.es/games/Chesto/");
+
+		//directly unlock Hipster if player is going to website
+		if (!progression.isUnlocked ("Hipster") && progression.isUnlocked ("junk"))
+				progression.unlock ("Hipster");
 	}
 
 	public void submit()
@@ -195,6 +198,10 @@ public class EndScreen : MonoBehaviour {
 				transform.Find ("stamp fired").GetComponent<Image> ().enabled = true;
 				StartCoroutine(scale(new Vector3(1.0f, 1.0f, 1.0f), stampFired));
 		}
+		yield return new WaitForSeconds(waitingSeconds);
+		
+		
+		progression.progress (wage, profit, minimumWage);
 			
 	}
 
