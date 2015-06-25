@@ -74,6 +74,14 @@ public class ProgressionManager : MonoBehaviour {
 			resetProgress();
 		}
 
+		
+		if (Debug.isDebugBuild && Input.GetKeyDown (KeyCode.U) && Input.GetKey (KeyCode.LeftCommand)) 
+		{
+			unlockNext();
+		}
+		
+
+
 		if (popup.enabled && Input.GetMouseButtonUp (0))
 		{
 //			popupGroup.alpha = 0;
@@ -140,7 +148,7 @@ public class ProgressionManager : MonoBehaviour {
 		} else if (isUnlocked ("RichLady")) {
 				if (till.countMultipleScannedItems > 0)
 						unlock ("premium");
-		} else if (isUnlocked ("vetegableFruitSet")) {
+		} else if (isUnlocked ("vegetableFruitSet")) {
 				if (bonus.maxBonus > 6)
 						unlock ("RichLady");
 		} else if (isUnlocked ("alcohol")) {
@@ -208,5 +216,34 @@ public class ProgressionManager : MonoBehaviour {
 	void resetProgress()
 	{
 		PlayerPrefs.DeleteAll ();
+	}
+
+	void unlockNext()
+	{
+		if (unlockAll || isUnlocked ("Janitor")) {
+			return;
+		} else if (isUnlocked ("nofood")) {
+			unlock ("Janitor");
+		} else if (isUnlocked ("Business")) {
+			unlock ("nofood");
+		} else if (isUnlocked ("exotic")) {
+			unlock ("Business");
+		} else if (isUnlocked ("premium")) {
+			unlock ("exotic");
+		} else if (isUnlocked ("RichLady")) {
+			unlock ("premium");
+		} else if (isUnlocked ("vegetableFruitSet")) {
+			unlock ("RichLady");
+		} else if (isUnlocked ("alcohol")) {
+			unlock ("vegetableFruitSet");
+		} else if (isUnlocked ("Hipster")) {
+			unlock ("alcohol");
+		} else if (isUnlocked ("junk")) {
+			unlock ("Hipster");
+		} else if (isUnlocked ("Hippie")) {
+			unlock ("junk");
+		} else {
+			unlock ("Hippie");
+		}
 	}
 }
