@@ -10,8 +10,8 @@ PlayerSettings:
   targetGlesGraphics: 1
   targetResolution: 0
   accelerometerFrequency: 60
-  companyName: BrokenRules
-  productName: Chesto
+  companyName: BrokenRules and Josef Who
+  productName: CHESTO - At the Checkout
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: -10, y: -10}
   defaultScreenWidth: 1024
@@ -110,7 +110,7 @@ PlayerSettings:
   m_BuildTargetIcons:
   - m_BuildTarget: 
     m_Icons:
-    - m_Icon: {fileID: 2800000, guid: 244c3b58593a543929b67db0f13c8cbc, type: 3}
+    - m_Icon: {fileID: 2800000, guid: d2a20042f4e634e458cb44a761aad12c, type: 3}
       m_Size: 128
   m_BuildTargetBatching:
   - m_BuildTarget: Standalone
