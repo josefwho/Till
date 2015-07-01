@@ -28,6 +28,15 @@ public class Pin : MonoBehaviour {
 		TillStateMachine.itemDestroy += removeObject;
 	}
 
+	void Update()
+	{
+		if (!pinning)
+						return;
+
+		if (Input.GetMouseButtonDown (1) || Input.GetKeyDown(KeyCode.Backspace))
+						unpinItem ();
+	}
+
 	public void pinItem(GameObject newItem)
 	{
 		//scannerTriggerPublic.SetActive (false);
