@@ -5,6 +5,7 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="http://code.highcharts.com/highcharts.js"></script>
 		<title>Chesto Supermarkets</title>
+		<meta http-equiv="refresh" content="5" >
 	</head>
 	<body>
 		<div id="dom-target" style="display: none;">
