@@ -22,10 +22,16 @@ public class Pin : MonoBehaviour {
 	
 	private float oldDrag;
 	private float oldAngularDrag;
+
+	GameObject unpinHint;
 	
 	void Start()
 	{
 		TillStateMachine.itemDestroy += removeObject;
+
+		unpinHint = GameObject.Find ("Hint Canvas/Unpin");
+		if(unpinHint)
+			unpinHint.SetActive (false);
 	}
 
 	void Update()
@@ -33,8 +39,12 @@ public class Pin : MonoBehaviour {
 		if (!pinning)
 						return;
 
-		if (Input.GetMouseButtonDown (1) || Input.GetKeyDown(KeyCode.Backspace))
-						unpinItem ();
+		if (Input.GetMouseButtonDown (1) || Input.GetKeyDown (KeyCode.Backspace)) 
+		{
+			unpinHint.GetComponent<FadeOutHint>().startFadeOut();
+
+			unpinItem ();
+		}
 	}
 
 	public void pinItem(GameObject newItem)
@@ -73,6 +83,10 @@ public class Pin : MonoBehaviour {
 		
 		itemToPin.transform.Find("Spinner").gameObject.SetActive(true);
 		itemToPin.transform.Find ("Barcode").GetChild(0).gameObject.SetActive (true);
+
+		ItemStatus s = newItem.GetComponent<ItemStatus>();
+		if (s != null && s.scanned > 0)
+						unpinHint.SetActive (true);
 	}
 	
 	
