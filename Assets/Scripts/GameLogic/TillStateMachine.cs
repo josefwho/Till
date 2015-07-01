@@ -180,6 +180,9 @@ public class TillStateMachine : MonoBehaviour
 			{
 				commentedOnOvertime = true;
 				manager.commentOnOvertime();
+
+				if (bonusManager != null && bonusManager.currentBonus > 0) 
+					bonusManager.resetBonus ();
 			}
 		}
 	}
@@ -434,8 +437,10 @@ public class TillStateMachine : MonoBehaviour
 						bonusManager.resetBonus ();
 		}
 
-		if (timeTaken > shiftDuration)
-				status.scannedInOvertime = true;
+		if (timeTaken > shiftDuration) 
+		{
+			status.scannedInOvertime = true;
+		}
 		else 
 		{
 				//only update/increase bonus during regular hours
