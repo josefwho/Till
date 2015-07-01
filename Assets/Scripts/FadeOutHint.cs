@@ -8,6 +8,10 @@ public class FadeOutHint : MonoBehaviour {
 	public float fadeDuration;
 
 	private float currentDuration;
+	
+	IEnumerator fadeOutCoroutine = null;
+
+
 	// Use this for initialization
 	void Start () {
 		
@@ -25,7 +29,12 @@ public class FadeOutHint : MonoBehaviour {
 
 	public void startFadeOut()
 	{
-		StartCoroutine(fadeOut());
+		if(fadeOutCoroutine != null)
+			StopCoroutine (fadeOutCoroutine);
+		fadeOutCoroutine = fadeOut ();
+		StartCoroutine (fadeOutCoroutine);
+		
+		currentDuration = 0;
 	}
 
 	IEnumerator fadeOut()
