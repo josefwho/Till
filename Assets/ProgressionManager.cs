@@ -19,7 +19,7 @@ public class ProgressionManager : MonoBehaviour {
 	
 	public RectTransform unlockableCanvasSprite;
 	public Vector3 scaleFactor = new Vector3(10.0f, 10.0f, 10.0f);
-	public float scaleDuration = 0.3f;
+	public float scaleDuration = 1.0f;
 
 	public bool unlockAll = false;
 
