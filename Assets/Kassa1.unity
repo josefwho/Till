@@ -7859,6 +7859,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popup: {fileID: 762948868}
   popupGroup: {fileID: 0}
+  unlockableCanvasSprite: {fileID: 346483404}
+  scaleFactor: {x: 10, y: 10, z: 10}
+  scaleDuration: .200000003
   unlockAll: 0
 --- !u!1 &1534314599
 GameObject:

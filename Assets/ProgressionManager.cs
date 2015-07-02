@@ -16,6 +16,10 @@ public class ProgressionManager : MonoBehaviour {
 	Text nextUnlockable;
 	Text newCustomerUnlocked;
 	Text newItemsUnlocked;
+	
+	public RectTransform unlockableCanvasSprite;
+	public Vector3 scaleFactor = new Vector3(10.0f, 10.0f, 10.0f);
+	public float scaleDuration = 0.3f;
 
 	public bool unlockAll = false;
 
@@ -44,6 +48,7 @@ public class ProgressionManager : MonoBehaviour {
 			t = popup.transform.Find ("Content/newItemsUnlocked");
 			if(t)
 				newItemsUnlocked = t.GetComponent<Text>();
+
 		}
 
 		unlockableSprites = Resources.LoadAll<Sprite> ("UnlockableSprites");
@@ -69,7 +74,7 @@ public class ProgressionManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (Debug.isDebugBuild && Input.GetKey (KeyCode.R) && Input.GetKey (KeyCode.LeftCommand)) 
+		if (Input.GetKey (KeyCode.R) && Input.GetKey (KeyCode.LeftCommand)) 
 		{
 			resetProgress();
 		}
@@ -192,13 +197,17 @@ public class ProgressionManager : MonoBehaviour {
 		
 		PlayerPrefs.Save ();
 
+		StartCoroutine(scale(new Vector3(0.5f, 0.5f, 0.5f), unlockableCanvasSprite));
+
 		if (popup)
 		{
+
 			foreach(Sprite s in unlockableSprites)
 			{
 				if(s.name == key)
 				{
 					popup.transform.Find ("Content/Sprite").GetComponent<Image>().sprite = s;
+
 				}
 			}
 
@@ -244,6 +253,22 @@ public class ProgressionManager : MonoBehaviour {
 			unlock ("junk");
 		} else {
 			unlock ("Hippie");
+		}
+	}
+
+	IEnumerator scale(Vector3 targetScale, RectTransform unlockableCanvas)
+	{
+		float timeTaken = 0.0f;
+		Vector3 startScale = scaleFactor;
+		unlockableCanvas.localScale = startScale;
+		while (unlockableCanvas.localScale.x > targetScale.x) 
+		{
+			Vector3 curScale = Vector3.Lerp(startScale, targetScale, timeTaken/scaleDuration);
+			unlockableCanvas.localScale = curScale;
+			
+			yield return null;
+			
+			timeTaken += Time.deltaTime;
 		}
 	}
 }
