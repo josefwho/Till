@@ -58,6 +58,7 @@ public class Customer : MonoBehaviour {
 	public void onItemOnFloor(GameObject item)
 	{
 		buttonObject.SetActive (true);
+		playOnFloorSound();
 		string reaction = profile.itemOnFloorReactions [Random.Range (0, profile.itemOnFloorReactions.Length)];
 		if(reaction.IndexOf('{') > -1)
 			reaction = string.Format(reaction, item.GetComponent<ItemStatus>().name);
@@ -68,6 +69,12 @@ public class Customer : MonoBehaviour {
 			StopCoroutine (hideBubbleCoroutine);
 		hideBubbleCoroutine = hideBubble ();
 		StartCoroutine (hideBubbleCoroutine);
+	}
+
+	void playOnFloorSound()
+	{
+		GetComponent<AudioSource>().Play();
+		
 	}
 
 	public void onMultipleScanned(GameObject item)
