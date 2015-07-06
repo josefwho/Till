@@ -6,8 +6,8 @@ Tags,,organic+basic;organic+vegetables;organic+fruit;exotic,organic+basic;organi
 Not Tag,,,,
 Specific Items,,beer_bottle; condom,beer_bottle; condom,beer_bottle; condom
 Prefab Folder Path,,,,
-Item On Floor Text,"You think I'll eat that {0}? Do I look like a jerry to you?; LOL, you dropped that {0}!",,,
-Wating Too Long Text,"Hey I'm all FOMO here, I need to go to the show!; You're sooooo fin, hurry up!; Come OONNNNNNN!; I need to go, you know: YOLO!",,,
-Item Multiple Scanned Text,"Are ou flippin' cray cray? Why are you scanning this again?; I'm not povo, I'll just pay for this {0} again; I noticed you scannin' my {0} again",,,
-Not My Item Text,"This {0} is not mine...ahhhh, whatevs!;These signs are here to separate the costumers, you know?;Dude, not my {0}; This {0} belongs to this midtown guy behind me",,,
-Item Not Scanned Text,"For free? LOL!; You're cool. Totes'!; This make me feel a bit awks; Look, I'm not povo, I can pay for my {0}; If you keep this up every midtown jerk will come for free stuff!",,,
+Item On Floor Text,"You think I'll eat that {0}? Don't like to eat dirt, do you?; Hey Idiot, you dropped that {0}!",,,
+Wating Too Long Text,"What is your problem, are you on sleeping pills?; Getting bored big time, hurry up!; Come OONNNNNNN!; I need to go, you know: NOW!",,,
+Item Multiple Scanned Text,"Are you flippin' crazy? Why are you scanning this again?; I've already paid for this {0}, won't again; I noticed you scannin' my {0} again",,,
+Not My Item Text,"This {0} is not mine...ahhhh, whatever!;These signs are here to separate the costumers, they should have told you.;Dude, not my {0}; This {0} belongs to someone else, NOT ME!",,,
+Item Not Scanned Text,"For free?; You're cool, buddy!; This makes me feel a bit awkward; Look, I'm not poor, I can pay for my {0}; If you keep this up every midtown jerk will come for free stuff!",,,
