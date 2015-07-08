@@ -281,6 +281,7 @@ public class Customer : MonoBehaviour {
 		bool result = true;
 		foreach (GameObject i in shoppingItems) 
 		{
+			//emergency escape for items that are flying around somehwere in space :)
 			Vector3 pos = i.transform.position;
 			if(pos.y < -5 || pos.y > 70 ||
 			   pos.x < -20 || pos.x > 30 ||
