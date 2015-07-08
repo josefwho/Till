@@ -281,6 +281,17 @@ public class Customer : MonoBehaviour {
 		bool result = true;
 		foreach (GameObject i in shoppingItems) 
 		{
+			Vector3 pos = i.transform.position;
+			if(pos.y < -5 || pos.y > 70 ||
+			   pos.x < -20 || pos.x > 30 ||
+			   pos.z < -23 || pos.z > 15)
+			{
+				i.rigidbody.velocity = Vector3.zero;
+				i.transform.position = till.transform.position;
+				continue;
+			}
+
+
 			ItemStatus s = i.GetComponent<ItemStatus>();
 			if(s.inTrigger == null || s.inTrigger.GetInstanceID() != trigger.gameObject.GetInstanceID())
 			{
