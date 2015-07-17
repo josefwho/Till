@@ -64,7 +64,7 @@ public class ProgressionManager : MonoBehaviour {
 		howToUnlockNext.Add ("vegetableFruitSet", "Get a bonus of 6 or higher to unlock more.");
 		howToUnlockNext.Add ("RichLady", "Scan an item more than once to unlock more.");
 		howToUnlockNext.Add ("premium", "Work less than 15 minutes in unpaid overtime to unlock more.");
-		howToUnlockNext.Add ("exotic", "Get a bonus of 15 or higher to unlock more.");
+		howToUnlockNext.Add ("exotic", "Get a bonus of 12 or higher to unlock more.");
 		howToUnlockNext.Add ("Business", "Earn 1200 € or more to unlock more.");
 		howToUnlockNext.Add ("nofood", "Drop 15 or more items on the floor to unlock the last customer.");
 
@@ -139,7 +139,7 @@ public class ProgressionManager : MonoBehaviour {
 		if (unlockAll || isUnlocked ("Janitor")) {
 				return;
 		} else if (isUnlocked ("nofood")) {
-				if(till.countItemsOnFloor > 15)
+				if(till.countItemsOnFloor > 12)
 						unlock ("Janitor");
 		} else if (isUnlocked ("Business")) {
 				if (wage > 1200)
