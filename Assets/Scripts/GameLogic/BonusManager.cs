@@ -101,7 +101,10 @@ public class BonusManager : MonoBehaviour
 		if (currentBonus > 1) 
 		{
 			currentBonusText.text = string.Format (initialBonusText, "Bonus Lost").Substring(1);
+
 			bonusAddedNotifier.GetComponent<BonusNotifier> ().enabled = true;
+
+			bonusAddedNotifier.GetComponent<BonusNotifier> ().setNewPosition(new Vector3(-4.8f, 3.0f, 1.7f));
 		}
 
 		currentBonus = 0.0f;
