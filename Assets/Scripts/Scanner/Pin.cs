@@ -37,7 +37,7 @@ public class Pin : MonoBehaviour {
 	void Update()
 	{
 		if (!pinning)
-						return;
+			return;
 
 		if (Input.GetMouseButtonDown (1) || Input.GetKeyDown (KeyCode.Backspace)) 
 		{
@@ -50,6 +50,9 @@ public class Pin : MonoBehaviour {
 	public void pinItem(GameObject newItem)
 	{
 		//scannerTriggerPublic.SetActive (false);
+
+		if (pinning)
+			return;
 
 		pinning = true;
 
@@ -86,7 +89,7 @@ public class Pin : MonoBehaviour {
 
 		ItemStatus s = newItem.GetComponent<ItemStatus>();
 		if (s != null && s.scanned > 0)
-						unpinHint.SetActive (true);
+			unpinHint.SetActive (true);
 	}
 	
 	
