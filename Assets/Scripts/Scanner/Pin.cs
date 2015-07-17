@@ -152,7 +152,8 @@ public class Pin : MonoBehaviour {
 
 	void removeObject(GameObject toBeRemoved)
 	{
-		pinning = false;
+		if (pinning && itemToPin.GetInstanceID () == toBeRemoved.GetInstanceID ())
+			unpinItem ();
 		
 		lastUnpinnedObject = itemToPin;
 	}

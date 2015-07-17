@@ -32,7 +32,14 @@ public class ScannerTrigger : ItemTrigger
 
 		if (other.gameObject.tag == "ShoppingItem") 
 		{
-			startPinning(other.gameObject);
+			GameObject toPin = other.gameObject;
+			ItemStatus status = toPin.GetComponent<ItemStatus> ();
+			if (pin.pinning || currentItem != null || (status !=null && status.autoDragged))
+				return;
+			
+			currentItem = toPin;
+
+			startPinning();
 		}
 	}
 	
@@ -45,14 +52,8 @@ public class ScannerTrigger : ItemTrigger
 //	}
 
 
-	public void startPinning(GameObject toPin)
+	public void startPinning()
 	{
-		ItemStatus status = toPin.GetComponent<ItemStatus> ();
-		if (pin.pinning || currentItem != null || (status !=null && status.autoDragged))
-				return;
-
-		currentItem = toPin;
-		
 		currentItem.transform.Find ("Dragger").gameObject.SetActive (false);
 		currentItem.rigidbody.isKinematic = true;
 		lerpStartTime = Time.time;
