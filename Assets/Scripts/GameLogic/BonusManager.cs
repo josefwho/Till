@@ -96,7 +96,7 @@ public class BonusManager : MonoBehaviour
 		sinceLastScan = 0.0f;
 	}
 
-	public void resetBonus()
+	public void resetBonus(Vector3 showAtWorldPosition)
 	{
 		if (currentBonus > 1) 
 		{
@@ -104,7 +104,8 @@ public class BonusManager : MonoBehaviour
 
 			bonusAddedNotifier.GetComponent<BonusNotifier> ().enabled = true;
 
-			bonusAddedNotifier.GetComponent<BonusNotifier> ().setNewPosition(new Vector3(-4.8f, 3.0f, 1.7f));
+			if(Vector3.Distance(showAtWorldPosition, Vector3.zero) > Mathf.Epsilon )
+				bonusAddedNotifier.GetComponent<BonusNotifier> ().setNewPosition(showAtWorldPosition);
 		}
 
 		currentBonus = 0.0f;

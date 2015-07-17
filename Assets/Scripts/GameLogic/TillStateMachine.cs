@@ -182,7 +182,7 @@ public class TillStateMachine : MonoBehaviour
 				manager.commentOnOvertime();
 
 				if (bonusManager != null && bonusManager.currentBonus > 0) 
-					bonusManager.resetBonus ();
+					bonusManager.resetBonus (Vector3.zero);
 			}
 		}
 	}
@@ -427,14 +427,14 @@ public class TillStateMachine : MonoBehaviour
 				status.customer.onMultipleScanned (status.gameObject);
 
 				if (bonusManager != null) {
-						bonusManager.resetBonus ();
+						bonusManager.resetBonus (status.transform.position);
 				}
 		}
 
 		if (currentCustomer != status.customer) {
 				currentCustomer.onNotMyItem (status.gameObject);
 				if (bonusManager != null) 
-						bonusManager.resetBonus ();
+				bonusManager.resetBonus (status.transform.position);
 		}
 
 		if (timeTaken > shiftDuration) 
@@ -459,7 +459,7 @@ public class TillStateMachine : MonoBehaviour
 	{
 		countItemsOnFloor++;
 		if (bonusManager != null) {
-				bonusManager.resetBonus ();
+				bonusManager.resetBonus (item.transform.position);
 		}
 	}
 	
