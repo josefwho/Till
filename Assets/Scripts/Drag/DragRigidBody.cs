@@ -69,7 +69,7 @@ public class DragRigidBody : MonoBehaviour
 		if (!springJoint)
 		{
 			ItemStatus s = transform.parent.gameObject.GetComponent<ItemStatus>();
-			if(s != null && s.inTrigger == trigger.gameObject && s.scanned == 0)
+			if(!GameObject.FindGameObjectWithTag ("Pin").GetComponent<Pin>().pinning && s != null && s.inTrigger == trigger.gameObject && s.scanned == 0)
 			{
 				trigger.startPinning(transform.parent.gameObject);
 				return;
