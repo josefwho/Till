@@ -52,4 +52,5 @@ void printTicket() {
   printer.doubleWidthOff();    
   printer.feed(2);
   printer.feed(whitespace);  
+  printer.feed(2);
 }
