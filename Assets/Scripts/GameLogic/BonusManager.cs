@@ -96,9 +96,9 @@ public class BonusManager : MonoBehaviour
 		sinceLastScan = 0.0f;
 	}
 
-	public void resetBonus(Vector3 showAtWorldPosition)
+	public void resetBonus(Vector3 showAtWorldPosition, bool notify = true)
 	{
-		if (currentBonus > 1) 
+		if (currentBonus > 1 && notify) 
 		{
 			currentBonusText.text = string.Format (initialBonusText, "Bonus Lost").Substring(1);
 

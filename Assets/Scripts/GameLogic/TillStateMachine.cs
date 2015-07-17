@@ -182,7 +182,7 @@ public class TillStateMachine : MonoBehaviour
 				manager.commentOnOvertime();
 
 				if (bonusManager != null && bonusManager.currentBonus > 0) 
-					bonusManager.resetBonus (Vector3.zero);
+					bonusManager.resetBonus (Vector3.zero, false);
 			}
 		}
 	}
