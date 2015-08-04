@@ -53,15 +53,15 @@ public class ProgressionManager : MonoBehaviour {
 
 		unlockableSprites = Resources.LoadAll<Sprite> ("UnlockableSprites");
 
-		string[] temp = { "Hippie", "junk", "Hipster", "alcohol", "vegetableFruitSet", "RichLady", "premium", "exotic", "Business", "nofood", "Janitor"  };
+		string[] temp = { "Hippie", "junk", "Hipster", "vegetableFruitSet", "alcohol", "RichLady", "premium", "exotic", "Business", "nofood", "Janitor"  };
 		unlockables = temp;
 
 		howToUnlockNext = new Dictionary<string, string> ();
-		howToUnlockNext.Add ("Hippie", "Achieve minimum wage to unlock more.");
+		howToUnlockNext.Add ("Hippie", "Don't get fired to unlock more.");
 		howToUnlockNext.Add ("junk", "Press the \"Visit chesto.com\" button to unlock more.");
-		howToUnlockNext.Add ("Hipster", "Work in over time until 21:00 to unlock more.");
-		howToUnlockNext.Add ("alcohol", "Give a customer a shopping item for free to unlock more.");
-		howToUnlockNext.Add ("vegetableFruitSet", "Get a bonus of 6 or higher to unlock more.");
+		howToUnlockNext.Add ("Hipster", "Give a customer a shopping item for free to unlock more.");
+		howToUnlockNext.Add ("vegetableFruitSet", "Work in over time until 21:00 to unlock more.");
+		howToUnlockNext.Add ("alcohol", "Get a bonus of 6 or higher to unlock more.");
 		howToUnlockNext.Add ("RichLady", "Scan an item more than once to unlock more.");
 		howToUnlockNext.Add ("premium", "Work less than 15 minutes in unpaid overtime to unlock more.");
 		howToUnlockNext.Add ("exotic", "Get a bonus of 12 or higher to unlock more.");
@@ -153,21 +153,21 @@ public class ProgressionManager : MonoBehaviour {
 		} else if (isUnlocked ("RichLady")) {
 				if (till.countMultipleScannedItems > 0)
 						unlock ("premium");
-		} else if (isUnlocked ("vegetableFruitSet")) {
+		} else if (isUnlocked ("alcohol")) {
 				if (bonus.maxBonus > 6)
 						unlock ("RichLady");
-		} else if (isUnlocked ("alcohol")) {
-				if (till.countUnscannedItems > 0)
-					unlock ("vegetableFruitSet");
-		} else if (isUnlocked ("Hipster")) {
+		} else if (isUnlocked ("vegetableFruitSet")) {
 				if (till.timeTaken > till.shiftDuration + 60)
 					unlock ("alcohol");
-	//this step is called directly once the "visit chesto.com button has been pressed"
+		} else if (isUnlocked ("Hipster")) {
+				if (till.countUnscannedItems > 0)
+					unlock ("vegetableFruitSet");
+			//this step is called directly once the "visit chesto.com button has been pressed"
 //				} else if (isUnlocked ("junk")) {
 //						if (till.chestoComButtonPressed)
 //							unlock ("Hipster");
 		} else if (isUnlocked ("Hippie")) {
-				if (wage > minimumWage)
+				if (wage > 0)
 					unlock ("junk");
 		} else {
 			unlock ("Hippie");
