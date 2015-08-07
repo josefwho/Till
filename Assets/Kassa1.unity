@@ -1980,10 +1980,10 @@ RectTransform:
   - {fileID: 1184477936}
   m_Father: {fileID: 906363700}
   m_RootOrder: 2
-  m_AnchorMin: {x: .468000025, y: .645000041}
-  m_AnchorMax: {x: 1, y: .755732059}
-  m_AnchoredPosition: {x: .100000001, y: -165.199997}
-  m_SizeDelta: {x: .25, y: -1}
+  m_AnchorMin: {x: .469000012, y: .0191685837}
+  m_AnchorMax: {x: 1, y: .12979725}
+  m_AnchoredPosition: {x: -.5, y: 3.74913216e-05}
+  m_SizeDelta: {x: 1.25, y: -1}
   m_Pivot: {x: .5, y: .500000179}
 --- !u!114 &325000840
 MonoBehaviour:
