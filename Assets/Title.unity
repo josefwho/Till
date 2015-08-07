@@ -73,6 +73,7 @@ NavMeshSettings:
     minRegionArea: 2
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
+    tileSizeHint: 0
   m_NavMesh: {fileID: 0}
 --- !u!1 &39344058
 GameObject:
@@ -815,8 +816,8 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreReversedGraphics: 1
-  blockingObjects: 0
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1162,10 +1163,10 @@ RectTransform:
   - {fileID: 1155953883}
   m_Father: {fileID: 1039972654}
   m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: -205.550003}
-  m_SizeDelta: {x: 273, y: 137}
+  m_AnchorMin: {x: .443000019, y: .275000006}
+  m_AnchorMax: {x: .559652627, y: .365759403}
+  m_AnchoredPosition: {x: 0, y: .199999809}
+  m_SizeDelta: {x: 50.6999969, y: 25.5}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &566179036
 MonoBehaviour:
@@ -1680,10 +1681,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1039972654}
   m_RootOrder: 4
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 241, y: -303}
-  m_SizeDelta: {x: 1060, y: 47}
+  m_AnchorMin: {x: .342347413, y: .154000014}
+  m_AnchorMax: {x: .660305202, y: .211759403}
+  m_AnchoredPosition: {x: -.400000006, y: .699999809}
+  m_SizeDelta: {x: 61.1000061, y: 7.09999847}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &828113875
 MonoBehaviour:
@@ -1702,17 +1703,15 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 134fde72ed2544b2e92ab4223c10d356, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 0
+    m_MaxSize: 120
+    m_Alignment: 4
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 1
+    m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'CMOD subotron font by Paul Busk
-
-'
+  m_Text: CMOD subotron font by Paul Busk
 --- !u!222 &828113876
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1748,10 +1747,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1039972654}
   m_RootOrder: 2
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 381, y: -32}
-  m_SizeDelta: {x: 1060, y: 47}
+  m_AnchorMin: {x: .59800005, y: .432759404}
+  m_AnchorMax: {x: .920347452, y: .51116538}
+  m_AnchoredPosition: {x: .5, y: -.199999809}
+  m_SizeDelta: {x: 61.1000061, y: 8.8999939}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &842412205
 MonoBehaviour:
@@ -1770,15 +1769,15 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 134fde72ed2544b2e92ab4223c10d356, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 120
     m_Alignment: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 1
+    m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: a playful commentary by Felix Bohatsch & Josef Wiesner
+  m_Text: "a playful commentary by \nFelix Bohatsch & Josef Wiesner"
 --- !u!222 &842412206
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2070,8 +2069,8 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreReversedGraphics: 1
-  blockingObjects: 0
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -2279,8 +2278,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 8, y: -18}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -6}
+  m_SizeDelta: {x: 0, y: -13}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1155953884
 MonoBehaviour:
@@ -2299,13 +2298,13 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 12119ca5f92094b9b9dcea4f1c81c426, type: 3}
     m_FontSize: 102
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 120
     m_Alignment: 4
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 1
+    m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: PLAY
 --- !u!222 &1155953885
@@ -2464,10 +2463,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1039972654}
   m_RootOrder: 1
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 151, y: 66}
-  m_SizeDelta: {x: 1060, y: 47}
+  m_AnchorMin: {x: .393694848, y: .522443593}
+  m_AnchorMax: {x: .981347442, y: .635518789}
+  m_AnchoredPosition: {x: -.5, y: .199999809}
+  m_SizeDelta: {x: 106.699997, y: 13}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1350044422
 MonoBehaviour:
@@ -2486,13 +2485,13 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 134fde72ed2544b2e92ab4223c10d356, type: 3}
     m_FontSize: 72
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 1
+    m_MaxSize: 120
+    m_Alignment: 4
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 1
+    m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: AT THE CHECKOUT
 --- !u!222 &1350044423
@@ -3485,10 +3484,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1039972654}
   m_RootOrder: 3
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 223, y: -271}
-  m_SizeDelta: {x: 1060, y: 47}
+  m_AnchorMin: {x: .325694829, y: .211759403}
+  m_AnchorMax: {x: .67434746, y: .275000006}
+  m_AnchoredPosition: {x: .199999988, y: -.399999619}
+  m_SizeDelta: {x: 65.5, y: 6.38899994}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1927857421
 MonoBehaviour:
@@ -3507,15 +3506,15 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 134fde72ed2544b2e92ab4223c10d356, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 0
+    m_MaxSize: 120
+    m_Alignment: 4
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 1
+    m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: music by Affenhand & Jonas De Kort
+  m_Text: Music by Affenhand & Jonas De Kort
 --- !u!222 &1927857422
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3669,6 +3668,95 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1 &1998763085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1998763089}
+  - 223: {fileID: 1998763088}
+  - 114: {fileID: 1998763087}
+  - 114: {fileID: 1998763086}
+  m_Layer: 5
+  m_Name: TickerCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1998763086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1998763085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1998763087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1998763085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+--- !u!223 &1998763088
+Canvas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1998763085}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!224 &1998763089
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1998763085}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &2041719572
 GameObject:
   m_ObjectHideFlags: 0
