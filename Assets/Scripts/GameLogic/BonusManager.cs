@@ -90,6 +90,10 @@ public class BonusManager : MonoBehaviour
 				maxBonus = roundedBonus;
 		}
 
+		//double bonus increase at start of bonus
+		if (currentBonus < 1)
+			currentBonus += bonusIncrement;
+
 		currentBonus += bonusIncrement;
 
 
