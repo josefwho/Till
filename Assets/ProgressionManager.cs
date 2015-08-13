@@ -74,7 +74,7 @@ public class ProgressionManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (Input.GetKey (KeyCode.R) && Input.GetKey (KeyCode.LeftCommand)) 
+		if (Input.GetKey (KeyCode.R) && (Input.GetKey (KeyCode.LeftCommand) || Input.GetKey (KeyCode.LeftControl))) 
 		{
 			resetProgress();
 		}
