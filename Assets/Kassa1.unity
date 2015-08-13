@@ -4142,7 +4142,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 3
   m_Type: 1
-  m_Color: {r: 1, g: .985294104, b: .889705896, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: .5
   m_Range: 10
   m_SpotAngle: 30
@@ -4178,7 +4178,7 @@ GameObject:
   - 4: {fileID: 760481446}
   - 108: {fileID: 760481447}
   m_Layer: 0
-  m_Name: Directional light 2
+  m_Name: Directional light 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8935,7 +8935,7 @@ GameObject:
   - 4: {fileID: 1627864968}
   - 108: {fileID: 1627864969}
   m_Layer: 0
-  m_Name: Directional light 2
+  m_Name: Directional light 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
