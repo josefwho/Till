@@ -3002,7 +3002,7 @@ Renderer:
   m_GameObject: {fileID: 448755432}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
@@ -4209,7 +4209,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 3
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: .737254918, g: .427450985, b: .427450985, a: 1}
   m_Intensity: .280000001
   m_Range: 10
   m_SpotAngle: 30
@@ -4228,7 +4228,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967291
   m_Lightmapping: 1
   m_ShadowSamples: 1
   m_ShadowRadius: 0
@@ -6178,7 +6178,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d77be9766b10542529698a2bd7d02bb6, type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d77be9766b10542529698a2bd7d02bb6, type: 3}
       propertyPath: m_LocalScale.z
@@ -8516,6 +8516,14 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2392402, guid: 2a7d7b6b05a3a477fac3e329828f76e7, type: 2}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392402, guid: 2a7d7b6b05a3a477fac3e329828f76e7, type: 2}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a7d7b6b05a3a477fac3e329828f76e7, type: 2}
   m_RootGameObject: {fileID: 1823718957}
@@ -8546,7 +8554,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 3
   m_Type: 1
-  m_Color: {r: 1, g: .985294104, b: .889705896, a: 1}
+  m_Color: {r: 1, g: .996078432, b: .970588207, a: 1}
   m_Intensity: .5
   m_Range: 10
   m_SpotAngle: 30
@@ -8621,7 +8629,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 403966, guid: 276682f57f4cc4f25b1d629d49278302, type: 2}
       propertyPath: m_RootOrder
-      value: 25
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 11472356, guid: 276682f57f4cc4f25b1d629d49278302, type: 2}
       propertyPath: m_Type
@@ -9006,7 +9014,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 3
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: .713725507, g: .713725507, b: .713725507, a: 1}
   m_Intensity: .25
   m_Range: 10
   m_SpotAngle: 30
@@ -10311,7 +10319,7 @@ Renderer:
   m_GameObject: {fileID: 1789681736}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
@@ -11858,6 +11866,18 @@ Prefab:
     - target: {fileID: 6592406, guid: 2a7d7b6b05a3a477fac3e329828f76e7, type: 2}
       propertyPath: m_Size.z
       value: 46.2044411
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392404, guid: 2a7d7b6b05a3a477fac3e329828f76e7, type: 2}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392404, guid: 2a7d7b6b05a3a477fac3e329828f76e7, type: 2}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392404, guid: 2a7d7b6b05a3a477fac3e329828f76e7, type: 2}
+      propertyPath: m_UseLightProbes
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a7d7b6b05a3a477fac3e329828f76e7, type: 2}
