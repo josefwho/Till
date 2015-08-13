@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: floor
-  m_Shader: {fileID: 4, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 2, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -59,7 +59,7 @@ Material:
       data:
         first:
           name: _Shininess
-        second: .427235156
+        second: .306901753
       data:
         first:
           name: _Parallax
@@ -68,11 +68,11 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .932079554, g: .885759115, b: .948529422, a: 1}
+        second: {r: .816176474, g: .81017518, b: .81017518, a: 1}
       data:
         first:
           name: _SpecColor
-        second: {r: .5, g: .5, b: .5, a: 1}
+        second: {r: .801470578, g: .801470578, b: .801470578, a: 1}
       data:
         first:
           name: _ReflectColor
