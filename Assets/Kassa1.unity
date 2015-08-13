@@ -402,7 +402,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 49136635}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: chestos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,7 +433,7 @@ GameObject:
   - 33: {fileID: 67339117}
   - 23: {fileID: 67339116}
   - 95: {fileID: 67339115}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -651,7 +651,7 @@ GameObject:
   - 33: {fileID: 115310978}
   - 23: {fileID: 115310977}
   - 95: {fileID: 115310976}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: chesto left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -709,8 +709,8 @@ Transform:
   m_PrefabParentObject: {fileID: 400000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
   m_PrefabInternal: {fileID: 349243964}
   m_GameObject: {fileID: 115310975}
-  m_LocalRotation: {x: -.216438994, y: .00236855936, z: -.000525031355, w: .976293206}
-  m_LocalPosition: {x: -.0563347638, y: 2.1364336, z: -.166622043}
+  m_LocalRotation: {x: -.349099368, y: .00241839839, z: -.000193128668, w: .937082648}
+  m_LocalPosition: {x: -.0299999993, y: 2.11999989, z: -.180000007}
   m_LocalScale: {x: .281003773, y: .281003714, z: .281003833}
   m_Children: []
   m_Father: {fileID: 1823718961}
@@ -930,7 +930,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 169953414}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: chestos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1740,7 +1740,7 @@ GameObject:
   - 33: {fileID: 302127597}
   - 23: {fileID: 302127596}
   - 95: {fileID: 302127595}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: chesto right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2284,31 +2284,31 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -.0563347638
+      value: -.0299999993
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.1364336
+      value: 2.11999989
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -.166622043
+      value: -.180000007
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -.216438994
+      value: -.349099368
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: .00236855936
+      value: .00241839839
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -.000525031355
+      value: -.000193128668
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: .976293206
+      value: .937082648
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
       propertyPath: m_RootOrder
@@ -2333,6 +2333,10 @@ Prefab:
     - target: {fileID: 100000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
       propertyPath: m_Name
       value: chesto left
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
@@ -2757,7 +2761,7 @@ GameObject:
   - 33: {fileID: 405526926}
   - 23: {fileID: 405526925}
   - 95: {fileID: 405526924}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: chesto right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2815,8 +2819,8 @@ Transform:
   m_PrefabParentObject: {fileID: 400000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
   m_PrefabInternal: {fileID: 1993383860}
   m_GameObject: {fileID: 405526923}
-  m_LocalRotation: {x: -.000910853618, y: -.976287365, z: .216437832, w: .00410885131}
-  m_LocalPosition: {x: -.0497840643, y: 2.13563299, z: -.187852442}
+  m_LocalRotation: {x: -.00173474278, y: -.999925494, z: .0114619955, w: .00383446389}
+  m_LocalPosition: {x: -.0500000007, y: 2.1400001, z: -.00999999978}
   m_LocalScale: {x: .281003654, y: .281003714, z: .281003714}
   m_Children: []
   m_Father: {fileID: 919283734}
@@ -2970,7 +2974,7 @@ GameObject:
   - 33: {fileID: 448755436}
   - 65: {fileID: 448755435}
   - 23: {fileID: 448755434}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4638,7 +4642,7 @@ GameObject:
   - 33: {fileID: 814821981}
   - 23: {fileID: 814821980}
   - 95: {fileID: 814821979}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5107,7 +5111,7 @@ GameObject:
   - 33: {fileID: 919283737}
   - 23: {fileID: 919283736}
   - 95: {fileID: 919283735}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: sign_premiumItems
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6201,7 +6205,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1074007750}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: signs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6232,7 +6236,7 @@ GameObject:
   - 4: {fileID: 1115542529}
   - 33: {fileID: 1115542534}
   - 23: {fileID: 1115542532}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: branding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6887,7 +6891,7 @@ GameObject:
   - 33: {fileID: 1175711544}
   - 65: {fileID: 1175711543}
   - 23: {fileID: 1175711542}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7172,7 +7176,7 @@ GameObject:
   - 4: {fileID: 1229767647}
   - 33: {fileID: 1229767649}
   - 23: {fileID: 1229767648}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: branding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7437,7 +7441,7 @@ GameObject:
   - 33: {fileID: 1283517555}
   - 23: {fileID: 1283517554}
   - 95: {fileID: 1283517553}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: chesto right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8012,7 +8016,7 @@ GameObject:
   - 33: {fileID: 1470554299}
   - 65: {fileID: 1470554298}
   - 23: {fileID: 1470554297}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8472,6 +8476,22 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 57f43d2589d3047079b987c458b4e44e, type: 2}
+    - target: {fileID: 192400, guid: 2a7d7b6b05a3a477fac3e329828f76e7, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 192402, guid: 2a7d7b6b05a3a477fac3e329828f76e7, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 192404, guid: 2a7d7b6b05a3a477fac3e329828f76e7, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 192406, guid: 2a7d7b6b05a3a477fac3e329828f76e7, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a7d7b6b05a3a477fac3e329828f76e7, type: 2}
   m_RootGameObject: {fileID: 1823718957}
@@ -9506,7 +9526,7 @@ GameObject:
   - 33: {fileID: 1681835914}
   - 23: {fileID: 1681835913}
   - 95: {fileID: 1681835912}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: chesto right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10239,7 +10259,7 @@ GameObject:
   - 33: {fileID: 1789681740}
   - 65: {fileID: 1789681739}
   - 23: {fileID: 1789681738}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10487,7 +10507,7 @@ GameObject:
   - 33: {fileID: 1823718960}
   - 23: {fileID: 1823718959}
   - 95: {fileID: 1823718958}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: sign_openingTimes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11470,31 +11490,31 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -.0497840643
+      value: -.0500000007
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.13563299
+      value: 2.1400001
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -.187852442
+      value: -.00999999978
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -.000910853618
+      value: -.00173474278
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -.976287365
+      value: -.999925494
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: .216437832
+      value: .0114619955
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: .00410885131
+      value: .00383446389
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
       propertyPath: m_RootOrder
@@ -11519,6 +11539,10 @@ Prefab:
     - target: {fileID: 100000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
       propertyPath: m_Name
       value: chesto right
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff1a96ca39a4b444484d3f2215d85db2, type: 3}
@@ -11771,6 +11795,22 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 57f43d2589d3047079b987c458b4e44e, type: 2}
+    - target: {fileID: 192400, guid: 2a7d7b6b05a3a477fac3e329828f76e7, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 192406, guid: 2a7d7b6b05a3a477fac3e329828f76e7, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 192402, guid: 2a7d7b6b05a3a477fac3e329828f76e7, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 192404, guid: 2a7d7b6b05a3a477fac3e329828f76e7, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a7d7b6b05a3a477fac3e329828f76e7, type: 2}
   m_RootGameObject: {fileID: 919283733}
@@ -11786,7 +11826,7 @@ GameObject:
   - 4: {fileID: 2059747066}
   - 108: {fileID: 2059747067}
   m_Layer: 0
-  m_Name: Directional light 2
+  m_Name: Directional light branding/signs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11832,7 +11872,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294965452
   m_Lightmapping: 1
   m_ShadowSamples: 1
   m_ShadowRadius: 0
