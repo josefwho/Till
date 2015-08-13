@@ -56,6 +56,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  tickerCount: 4
 --- !u!222 &22296058
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -76,7 +77,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 163.800003, y: 1.78813934e-07}
+  m_AnchoredPosition: {x: 986, y: 0}
   m_SizeDelta: {x: 327.600006, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
