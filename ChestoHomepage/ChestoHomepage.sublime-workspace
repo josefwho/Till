@@ -1,0 +1,347 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"paddin",
+				"padding-top"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"fot",
+				"font-weight"
+			],
+			[
+				"b",
+				"bolder"
+			],
+			[
+				"sty",
+				"font-style"
+			],
+			[
+				"fon",
+				"font-style"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"inlin",
+				"inline-table"
+			],
+			[
+				"padd",
+				"padding-bottom"
+			],
+			[
+				"paddi",
+				"padding-left"
+			],
+			[
+				"fo",
+				"font-weight"
+			],
+			[
+				"tab",
+				"table-column"
+			],
+			[
+				"padding",
+				"padding-right"
+			],
+			[
+				"list",
+				"list-style-type"
+			],
+			[
+				"padi",
+				"padding-top"
+			],
+			[
+				"pad",
+				"padding-right"
+			],
+			[
+				"border-s",
+				"border-style"
+			],
+			[
+				"bor",
+				"border-radius"
+			],
+			[
+				"bo",
+				"border-radius"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"i",
+				"img	Tag"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"p",
+				"position"
+			],
+			[
+				"text",
+				"text-decoration"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 11261,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "stylesheet.css",
+			"settings":
+			{
+				"buffer_size": 1555,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 49.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"build",
+				"Build: Run sketch fullscreen"
+			],
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 462.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/josefwiesner/Documents/Felix&Josef/DoubleGlasses/Till/ChestoHomepage/index.php",
+		"/Users/josefwiesner/Downloads/QUADCORE/QUADCORE.pde",
+		"/Users/josefwiesner/Documents/Felix&Josef/DoubleGlasses/Till/ChestoHomepage/index.html",
+		"/Users/josefwiesner/Documents/Felix&Josef/DoubleGlasses/Till/ChestoHomepage/stylesheet.css",
+		"/Users/josefwiesner/Documents/Felix&Josef/DoubleGlasses/Till/ChestoHomepage/Josef.jpg",
+		"/Users/josefwiesner/Documents/Felix&Josef/DoubleGlasses/Till/ChestoHomepage/script.js",
+		"/Users/josefwiesner/Documents/Homepage Irmi/impressum.html",
+		"/Users/josefwiesner/Documents/Homepage Irmi/aktuell.html",
+		"/Users/josefwiesner/Documents/Homepage Irmi/schreibe.html",
+		"/Users/josefwiesner/Documents/Homepage Irmi/kontakt.html",
+		"/Users/josefwiesner/Documents/Homepage Irmi/irmgardmariafuchs.html",
+		"/Users/josefwiesner/Documents/Homepage Irmi/intex.html",
+		"/Users/josefwiesner/Documents/Homepage Irmi/ich.html",
+		"/Users/josefwiesner/Documents/Processing/proto2/Bullet.pde",
+		"/Users/josefwiesner/Documents/Processing/proto2/Target.pde",
+		"/Users/josefwiesner/Documents/Processing/proto2/proto2.pde",
+		"/Users/josefwiesner/Documents/Processing/proto2/Collision.pde",
+		"/Users/josefwiesner/Library/Application Support/Sublime Text 2/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/josefwiesner/Documents/Processing/proto2/Player.pde",
+		"/Users/josefwiesner/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/josefwiesner/Documents/Processing/proto2/[path"
+	],
+	"find":
+	{
+		"height": 37.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"eisn",
+			"800px",
+			"easing"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 11261,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "stylesheet.css",
+					"settings":
+					{
+						"buffer_size": 1555,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 126.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}

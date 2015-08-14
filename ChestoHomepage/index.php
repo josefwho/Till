@@ -157,71 +157,22 @@
 			?>
 		</div>
 		
-			<div style="width:100%; background-color:white; height:110px">
-				<img class="chestoLogo"; align = "left"; style="height:auto; width:auto; max-width:300px; max-height:300px;" src="ChestoLogo.png">
+			<div style="background-color:white; height:210px">
+				<img class="chestoLogo"; align = "left"; style="height:auto; width:auto; max-width:530px; max-height:300px;" src="ChestoLogo.png">
+				<iframe align="right" style="padding-top:20px; background-color:rgb(87,0,142);" src="//itch.io/embed/28048" width="552" height="167" frameborder="0"></iframe>
 			</div>
+			
 
 
 <!-- 			<div style="width:100%" align="center">
 				<img style="height:auto; width:auto; max-width:800px; max-height:800px" src="landingPicture.png">
 			</div> -->
 
-			<div style="background-color:rgb(87,0,142)" class ="clearfix">
-				<h1 style="color:white"> WHO WE ARE</h1>
+			<div style="background-color:rgb(87,0,142); height: 400px;" class ="clearfix">
+				<h1 style="color:white"> INVESTORS</h1>
 
-					<div id="left" style="width:50%">
-							<p id= "floatingTextWhite"> <span>HISTORY: <br></span>CHESTO was etablished 1993 by Lu Schesiner and taken over by his son Toni Schesiner in 2013.</p>
-							<p id= "floatingTextWhite"> <span>OPERATIONS: <br></span>CHESTO is the world leading name in food retail solutions.</p>
-							<p id= "floatingTextWhite"> <span>CAREER: <br></span>CHESTO employs the best people, develops their competence, provides opportunity and inspires them to live 
-our values.</p>
-							<p id= "floatingTextWhite"> <span>INTEGRITY: <br></span>CHESTO can always be trusted to do the right thing.</p>
-
-
-					</div>
-
-					<div id ="right">
-						<p id= "floatingTextWhite" style="text-align:center; color:red"><span>PBIT</span></p>
-						<div class= "chartCircleWhite";>
-
-							<div><p id= "textWithinCircle" style="text-align:center; color:white"><span><?php echo $lastProfit; ?>&euro;<br>just now</span></p></div>
-						</div>
-						<p style="color:red; text-align:center;" id="floatingTextWhite"><span><?php echo number_format($profitToDraw[count($profitToDraw)-1],2); ?>&euro;<br> IN TOTAL</span> </p>
-						
-					</div>
-					<div id ="right">
-						<p id= "floatingTextWhite" style="text-align:center; color:red"> <span>ITEMS SOLD</span></p>
-						<div class= "chartCircleWhite";>
-							<p id= "textWithinCircle" style="text-align:center; color:white"><span>+ <?php echo $lastItemsSold; ?><br>just now</span></p>
-						</div>
-						<p id="floatingTextWhite" style="text-align:center; color:red"><span><?php echo $lastDayItems ?><br>TODAY</span></p>
- 					</div>
-				
-			</div>
-		
-
-
-			<div style="background-color: white" class="clearfix">
-				<h1> INVESTORS</h1>
-				<div id="left" style="align:center; padding-left:0px">
-					
-					<div id ="left">
-						<p id= "floatingTextPurple" style="text-align:center"> <span>OUR OPERATIONS</span></p>
-						<div class= "chartCirclePurple">
-							<div><p id="textWithinCircle"><span>23</span> <br>Countries</p></div>
-						</div>
-					</div>
-					<div id ="left">
-						<p id= "floatingTextPurple" style="text-align:center"> <span>OUR EMPLOYEES </span></p>
-						<div class= "chartCirclePurple";>
-							<div><p id="textWithinCircle"><span><?php echo $numberOfEmployees ?></span> <br> Employees</p></div>
-						</div>
-					</div>
-
-				</div>
-
-
-				<div id="graphContainer" >
-					<p id="left" style="color:red"><span>SHARE</span></p>
+					<div id="graphContainer" >
+					<p id="right" style="color:red"><span>SHARE</span></p>
 					<div>
 						<script>
 						$(function () {
@@ -272,6 +223,58 @@ our values.</p>
 						</script>
 					</div>
 				</div>
+
+					<div id ="left">
+						<p id= "floatingTextWhite" style="text-align:center; color:red"><span>PROFIT</span></p>
+						<div class= "chartCircleWhite";>
+
+							<div><p id= "textWithinCircle" style="text-align:center; color:white"><span><?php echo $lastProfit; ?>&euro;<br>just now</span></p></div>
+						</div>
+						<p style="color:red; text-align:center;" id="floatingTextWhite"><span><?php echo number_format($profitToDraw[count($profitToDraw)-1],2); ?>&euro;<br> IN TOTAL</span> </p>
+						
+					</div>
+					<div id ="left">
+						<p id= "floatingTextWhite" style="text-align:center; color:red"> <span>ITEMS SOLD</span></p>
+						<div class= "chartCircleWhite";>
+							<p id= "textWithinCircle" style="text-align:center; color:white"><span>+ <?php echo $lastItemsSold; ?><br>just now</span></p>
+						</div>
+						<p id="floatingTextWhite" style="text-align:center; color:red"><span><?php echo $lastDayItems ?><br>TODAY</span></p>
+ 					</div>
+				
+			</div>
+		
+
+
+			<div style="background-color: white" class="clearfix">
+				<h1> WHO WE ARE</h1>
+				<div id="left" style="align:center; padding-left:0px">
+					<div id="left" style="width:50%">
+						<p id= "floatingTextBlack"> <span>CAREER: <br></span>CHESTO employs the best people, develops their competence, provides opportunity and inspires them to live 
+our values.</p>
+							<p id= "floatingTextBlack"> <span>INTEGRITY: <br></span>CHESTO can always be trusted to do the right thing.</p>
+							<p id= "floatingTextBlack"> <span>HISTORY: <br></span>CHESTO was etablished 1993 by Lu Schesiner and taken over by his son Toni Schesiner in 2013.</p>
+							<p id= "floatingTextBlack"> <span>OPERATIONS: <br></span>CHESTO is the world leading name in food retail solutions.</p>
+							
+
+
+					</div>
+					<div id ="right">
+						<p id= "floatingTextPurple" style="text-align:center"> <span>OUR OPERATIONS</span></p>
+						<div class= "chartCirclePurple">
+							<div><p id="textWithinCircle"><span>23</span> <br>Countries</p></div>
+						</div>
+					</div>
+					<div id ="right">
+						<p id= "floatingTextPurple" style="text-align:center"> <span>OUR EMPLOYEES </span></p>
+						<div class= "chartCirclePurple";>
+							<div><p id="textWithinCircle"><span><?php echo $numberOfEmployees ?></span> <br> Employees</p></div>
+						</div>
+					</div>
+
+				</div>
+
+
+				
 			</div>
 
 		<div style="background-color:rgb(87,0,142)" class="clearfix">
@@ -297,10 +300,11 @@ our values.</p>
 					<p id= "floatingTextBlack" style="color:rgb(87,0,142)"> <span>CHESTO</span> wants to thank its main shareholders <br><a href="http://www.brokenrul.es"><span>BROKEN RULES</span></a> & <a href="https://twitter.com/peregrinustyss"><span>JOSEF WHO</span></a></p>
 				</div>
 				<div id="right">
-					<a id="left" href="http://www.brokenrul.es"><img style="height:auto; width:auto; max-width:80px; max-height:80px;"src="BRLogo.png"></a> 
-					<a id="left" href="https://twitter.com/peregrinustyss"><img style="height:auto; width:auto; max-height:80px;"src="Josef.jpg"> </a>
-					</div>
-		</div>
+
+				</div>
+					<a id="right" href="http://www.brokenrul.es"><img style="height:auto; width:auto; max-width:80px; max-height:80px;"src="BRLogo.png"></a> 
+					<a id="right" href="https://twitter.com/peregrinustyss"><img style="height:auto; width:auto; max-height:80px;"src="Josef.jpg"> </a>
+				</div>
 
 <!-- 			<div style="background-color:white; height:150px; width=100%">
 				<img id="left" style="height:auto; width:auto; max-height:130px; padding-top:10px; padding-left:3px"src="ShoppingItems/carrot.png">
