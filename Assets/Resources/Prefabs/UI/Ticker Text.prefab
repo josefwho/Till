@@ -11,6 +11,7 @@ GameObject:
   - 222: {fileID: 22296058}
   - 114: {fileID: 11496056}
   - 114: {fileID: 11496058}
+  - 114: {fileID: 11474252}
   m_Layer: 5
   m_Name: Ticker Text
   m_TagString: Untagged
@@ -18,6 +19,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &11474252
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 196058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5d77f09a2bfc4e35a0042168fbcd181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  show: 0
 --- !u!114 &11496056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -43,7 +56,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '+++ Total Items Scanned: 3462 +++'
+  m_Text: '+++ Blabla BLabla: 234567 +++'
 --- !u!114 &11496058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -77,8 +90,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 495, y: 0}
-  m_SizeDelta: {x: 327.600006, y: 0}
+  m_AnchoredPosition: {x: 850.400146, y: 0}
+  m_SizeDelta: {x: 565.900024, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
 Prefab:
