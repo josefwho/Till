@@ -71,6 +71,8 @@ public class TillStateMachine : MonoBehaviour
 	private GameObject endScreenObject;
 	private EndScreen endScreen;
 
+	Canvas pauseCanvas;
+
 	public delegate void OnItemDestroy(GameObject toBeDestroyed);
 	public static event OnItemDestroy itemDestroy ;
 
@@ -112,6 +114,10 @@ public class TillStateMachine : MonoBehaviour
 		if(pickupItemsHint)
 			pickupItemsHint.SetActive (false);
 
+		GameObject pCO = GameObject.Find ("Pause Canvas");
+		if (pCO != null)
+						pauseCanvas = pCO.GetComponent<Canvas> ();
+
 		manager = GameObject.Find ("manager").GetComponent<Manager>();
 
 		bonusManager = gameObject.GetComponentInChildren<BonusManager> ();
@@ -140,16 +146,26 @@ public class TillStateMachine : MonoBehaviour
 	{
 		if (currentState != States.ShiftDone) 
 		{
+			if(Input.GetKeyDown(KeyCode.Escape)) {
+				if(Time.timeScale > 0.0f) {
+					Time.timeScale = 0.0f;
+					pauseCanvas.enabled = true;
+				} else {
+					Time.timeScale = 1.0f;
+					pauseCanvas.enabled = false;
+				}
+			}
+
 			timeTaken += Time.deltaTime;
 
 			updateClock ();
 
-			if(Input.GetKeyDown("n") && Input.GetKey(KeyCode.LeftShift) && Input.GetKey (KeyCode.LeftCommand))
+			if(Debug.isDebugBuild && Input.GetKeyDown("n") && Input.GetKey(KeyCode.LeftShift) && Input.GetKey (KeyCode.LeftCommand))
 			{
 				Application.LoadLevel(0);
 			}
 			
-			if(Input.GetKeyDown("d") && Input.GetKey(KeyCode.LeftShift) && Input.GetKey (KeyCode.LeftCommand))
+			if(Debug.isDebugBuild && Input.GetKeyDown("d") && Input.GetKey(KeyCode.LeftShift) && Input.GetKey (KeyCode.LeftCommand))
 			{
 				switchToState (States.ShiftDone);
 			}
