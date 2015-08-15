@@ -315,7 +315,7 @@ public class ProgressionManager : MonoBehaviour {
 		}
 
 		//unlockables.Length-2 so we ignore "janitor"
-		for (int i = unlockables.Length-2; i < 0; i--) {
+		for (int i = unlockables.Length-2; i > 0; i--) {
 			if(isUnlocked(unlockables[i])) {
 			   return howToUnlockNext[unlockables[i]];
 			}
