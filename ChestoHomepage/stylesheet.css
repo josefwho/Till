@@ -41,6 +41,11 @@ span{
 	height:300px;
 }
 
+#graphContainerSolo{
+	width:100%; 
+	height:300px;
+}
+
 #left{
 	float: left;
 	padding-left: 20px;
