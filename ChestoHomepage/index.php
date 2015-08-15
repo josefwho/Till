@@ -87,12 +87,12 @@
 				{
 					$currentProfit += $value;
 					
-					if($lastDate != null)
-					{
-						$daysSinceLastProfit = ceil((strtotime($key) - strtotime($lastDate))/60/60/24);
-						//reduce some money, so graph can also go down a bit
-						$currentProfit -= $daysSinceLastProfit * ( $lastProfit * 0.6);
-					}
+					//reduce some money, so graph can also go down a bit
+					// if($lastDate != null)
+					// {
+					// 	$daysSinceLastProfit = ceil((strtotime($key) - strtotime($lastDate))/60/60/24);
+					// 	$currentProfit -= $daysSinceLastProfit * ( $lastProfit * 0.6);
+					// }
 					// echo $key . ": " . $value . " -> " . $currentProfit . "<br>";
 				}
 
