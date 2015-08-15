@@ -173,7 +173,19 @@ public class ProgressionManager : MonoBehaviour {
 		} else {
 			unlock ("Hippie");
 		}
-		
+
+		//save statistics
+		incrementStatistic("TotalShifts");
+		if (wage == 0) {
+				incrementStatistic ("Fired");
+		}
+		if (wage > minimumWage) {
+				incrementStatistic ("AboveMinimumWage");
+		} else {
+				incrementStatistic ("BelowMinimumWage");
+		}
+		incrementStatistic ("TotalItemsScanned", till.countScannedObjects);
+
 		
 //		if (!isUnlocked ("Hippie")) 
 //			unlock ("Hippie");
@@ -316,6 +328,10 @@ public class ProgressionManager : MonoBehaviour {
 //		} else {
 //			return "nofood";
 //		}
+	}
+
+	void incrementStatistic(string key, int increment = 1) {
+			PlayerPrefs.SetInt (key, PlayerPrefs.GetInt (key) + increment);
 	}
 
 }
