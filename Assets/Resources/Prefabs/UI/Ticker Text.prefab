@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  tickerCount: 4
+  tickerCount: 6
 --- !u!222 &22296058
 CanvasRenderer:
   m_ObjectHideFlags: 1
