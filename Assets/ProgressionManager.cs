@@ -176,6 +176,7 @@ public class ProgressionManager : MonoBehaviour {
 
 		//save statistics
 		incrementStatistic("TotalShifts");
+
 		if (wage == 0) {
 				incrementStatistic ("Fired");
 		}
@@ -184,7 +185,24 @@ public class ProgressionManager : MonoBehaviour {
 		} else {
 				incrementStatistic ("BelowMinimumWage");
 		}
+
 		incrementStatistic ("TotalItemsScanned", till.countScannedObjects);
+
+		if(till.countScannedObjects > PlayerPrefs.GetInt("MaxScannedItems")) {
+			PlayerPrefs.SetInt("MaxScannedItems", till.countScannedObjects);
+		}
+		
+		if(till.countUnscannedItems > PlayerPrefs.GetInt("MaxGiftedItems")) {
+			PlayerPrefs.SetInt("MaxGiftedItems", till.countUnscannedItems);
+		}
+
+		if(wage > PlayerPrefs.GetInt("MaxWage")) {
+			PlayerPrefs.SetInt("MaxWage", Mathf.FloorToInt(wage));
+		}
+
+		if(bonus.maxBonus > PlayerPrefs.GetInt("MaxBonus")) {
+			PlayerPrefs.SetInt("MaxBonus", (int)bonus.maxBonus);
+		}
 
 		PlayerPrefs.Save ();
 

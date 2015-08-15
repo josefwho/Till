@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class ShowStatistic : MonoBehaviour {
 
-	public enum Statistics { Fired, BelowMinimumWage, AboveMinimumWage, TotalItemsScanned, TotalShifts }
+	public enum Statistics { Fired, BelowMinimumWage, AboveMinimumWage, TotalItemsScanned, TotalShifts, MaxWage, MaxBonus, MaxScannedItems, MaxGiftedItems }
 	public Statistics show = Statistics.Fired;
 
 	// Use this for initialization
@@ -16,7 +16,11 @@ public class ShowStatistic : MonoBehaviour {
 		descriptions.Add ("BelowMinimumWage", "Below Minimum Wage Count: ");
 		descriptions.Add ("AboveMinimumWage", "Above Minimum Wage Count: ");
 		descriptions.Add ("TotalItemsScanned", "Total Items Scanned: ");
-		descriptions.Add ("TotalShifts", "Total Shifts Played: ");
+		descriptions.Add ("TotalShifts", "Total Shifts Worked: ");
+		descriptions.Add ("MaxWage", "Maximum Wage Earned: ");
+		descriptions.Add ("MaxBonus", "Maximum Bonus reached: ");
+		descriptions.Add ("MaxScannedItems", "Most Items Scanned In One Shift: ");
+		descriptions.Add ("MaxGiftedItems", "Maximum Items Given For Free: ");
 		
 		Text UIText = GetComponent<Text> ();
 		string key = show.ToString ();
