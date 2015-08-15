@@ -41,8 +41,6 @@ public class Pin : MonoBehaviour {
 
 		if (Input.GetMouseButtonDown (1) || Input.GetKeyDown (KeyCode.Backspace)) 
 		{
-			unpinHint.GetComponent<FadeOutHint>().startFadeOut();
-
 			unpinItem ();
 		}
 	}
@@ -118,6 +116,10 @@ public class Pin : MonoBehaviour {
 
 		lastUnpinnedObject = itemToPin;
 //		scannerTriggerPublic.SetActive (true);
+
+		if (unpinHint.activeSelf) {
+						unpinHint.GetComponent<FadeOutHint> ().startFadeOut ();
+				}
 	}
 	
 	
