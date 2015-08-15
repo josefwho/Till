@@ -186,6 +186,8 @@ public class ProgressionManager : MonoBehaviour {
 		}
 		incrementStatistic ("TotalItemsScanned", till.countScannedObjects);
 
+		PlayerPrefs.Save ();
+
 		
 //		if (!isUnlocked ("Hippie")) 
 //			unlock ("Hippie");
