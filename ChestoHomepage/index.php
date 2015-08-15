@@ -66,11 +66,11 @@
 					{
 						$daysSinceLastProfit = ceil((strtotime($key) - strtotime($lastDate))/60/60/24);
 						//reduce some money on first days NOT played
-						for ($i=0; $i < $daysSinceLastProfit-1; $i++) 
-						{ 
-							$currentProfit -= $lastProfit * (0.3 - min($i*0.15, 0.3));
-							array_push($profitToDraw, $currentProfit);
-						}
+						// for ($i=0; $i < $daysSinceLastProfit-1; $i++)
+						// {
+						// 	$currentProfit -= $lastProfit * (0.3 - min($i*0.15, 0.3));
+						// 	array_push($profitToDraw, $currentProfit);
+						// }
 						//finally add value on the day soneone played again
 						$currentProfit = $currentProfit + $value;// - $lastProfit * (0.6 - min($daysSinceLastProfit*0.1, 0.4));
 						array_push($profitToDraw, $currentProfit);
