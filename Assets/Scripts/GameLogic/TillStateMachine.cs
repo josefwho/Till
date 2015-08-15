@@ -86,6 +86,7 @@ public class TillStateMachine : MonoBehaviour
 	private bool commentedOnOvertime = false;
 
 	private GameObject pickupItemsHint;
+	float notAllItemsInBasketTimer = 0;
 	
 	void Start()
 	{
@@ -181,12 +182,20 @@ public class TillStateMachine : MonoBehaviour
 				if(currentCustomer.allItemsInTrigger(basketTrigger))
 					switchToState(States.NextCustomer);
 			}
-
-			if (basketTrigger.getObjectsInsideCount() + floorTrigger.getObjectsInsideCount() >= currentCustomer.shoppingItems.Count)
+			
+			
+			if(pickupItemsHint.activeSelf) {
+				notAllItemsInBasketTimer += Time.deltaTime;
+				
+				if(notAllItemsInBasketTimer > 15) {
+					pickupItemsHint.SetActive(false);
+					switchToState(States.NextCustomer);
+				}
+			} else if (basketTrigger.getObjectsInsideCount() + floorTrigger.getObjectsInsideCount() >= currentCustomer.shoppingItems.Count)
 			{
+				notAllItemsInBasketTimer = 0;
 				pickupItemsHint.SetActive(true);
 			}
-
 			if(!isSpawningItems && timeTaken < shiftDuration && nextCustomer == null && newCustomerTrigger.empty)
 			{
 				nextCustomer = getNewCustomer();
