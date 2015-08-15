@@ -11,13 +11,13 @@ public class ProgressionManager : MonoBehaviour {
 	string[] unlockables;
 	int unlockedIndex = 0;
 
-	public Canvas popup;
-	public CanvasGroup popupGroup;
+	public Canvas popup = null;
+	public CanvasGroup popupGroup = null;
 	Text nextUnlockable;
 	Text newCustomerUnlocked;
 	Text newItemsUnlocked;
 	
-	public RectTransform unlockableCanvasSprite;
+	public RectTransform unlockableCanvasSprite = null;
 	public Vector3 scaleFactor = new Vector3(10.0f, 10.0f, 10.0f);
 	public float scaleDuration = 1.0f;
 
@@ -67,6 +67,7 @@ public class ProgressionManager : MonoBehaviour {
 		howToUnlockNext.Add ("exotic", "Get a bonus of 12 or higher to unlock more.");
 		howToUnlockNext.Add ("Business", "Earn 1200 € or more to unlock more.");
 		howToUnlockNext.Add ("nofood", "Drop 15 or more items on the floor to unlock the last customer.");
+		howToUnlockNext.Add ("Janitor", "Congratulations, you've unlocked everything!");
 
 
 	}
@@ -271,4 +272,50 @@ public class ProgressionManager : MonoBehaviour {
 			timeTaken += Time.deltaTime;
 		}
 	}
+
+	public string getUnlockNextString() {
+		if (unlockAll) {
+			return howToUnlockNext[unlockables[unlockables.Length-1]];
+		}
+
+		if (!isUnlocked("Hippie")) {
+			return "Work one shift to unlock a new customer!";
+		}
+
+		//unlockables.Length-2 so we ignore "janitor"
+		for (int i = unlockables.Length-2; i < 0; i--) {
+			if(isUnlocked(unlockables[i])) {
+			   return howToUnlockNext[unlockables[i]];
+			}
+		}
+
+		return howToUnlockNext[unlockables[unlockables.Length-1]];
+
+		
+		
+		//		if (isUnlocked ("nofood")) {
+//			return howToUnlock"nofood";
+//		} else if (isUnlocked ("Business")) {
+//			return "nofood";
+//		} else if (isUnlocked ("exotic")) {
+//			return "nofood";
+//		} else if (isUnlocked ("premium")) {
+//			return "nofood";
+//		} else if (isUnlocked ("RichLady")) {
+//			return "nofood";
+//		} else if (isUnlocked ("vegetableFruitSet")) {
+//			return "nofood";
+//		} else if (isUnlocked ("alcohol")) {
+//			return "nofood";
+//		} else if (isUnlocked ("Hipster")) {
+//			return "nofood";
+//		} else if (isUnlocked ("junk")) {
+//			return "nofood";
+//		} else if (isUnlocked ("Hippie")) {
+//			return "Hippie";
+//		} else {
+//			return "nofood";
+//		}
+	}
+
 }

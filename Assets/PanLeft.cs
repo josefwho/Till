@@ -13,19 +13,13 @@ public class PanLeft : MonoBehaviour {
 
 	RectTransform rectTransform;
 
-	// Use this for initialization
 	void Start () {
 		rectTransform = (RectTransform)transform;
 
 		resetAfterMultiplesOfWidth = Mathf.Max (0, tickerCount - Screen.width / (rectTransform.rect.width));
 	}
 	
-	// Update is called once per frame
 	void Update () {
-//		float x = transform.position.x;
-//		x -= speed;
-//
-//		transform.position
 
 		transform.position -= new Vector3 (speed, 0, 0);
 
