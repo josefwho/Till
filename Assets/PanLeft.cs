@@ -5,6 +5,7 @@ public class PanLeft : MonoBehaviour {
 
 	public float speed = 2;
 	public float tickerCount = 2;
+	float resetAfterMultiplesOfWidth = 1;
 
 	float pixelsMoved = 0;
 
@@ -15,6 +16,8 @@ public class PanLeft : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rectTransform = (RectTransform)transform;
+
+		resetAfterMultiplesOfWidth = Mathf.Max (0, tickerCount - Screen.width / (rectTransform.rect.width));
 	}
 	
 	// Update is called once per frame
@@ -30,7 +33,7 @@ public class PanLeft : MonoBehaviour {
 				pastLeftEdge = true;
 		}
 
-		if (pastLeftEdge && (pixelsMoved += speed) > (tickerCount-1) * rectTransform.rect.width) {
+		if (pastLeftEdge && (pixelsMoved += speed) > resetAfterMultiplesOfWidth * rectTransform.rect.width) {
 			pixelsMoved = 0;
 			pastLeftEdge = false;
 			rectTransform.anchoredPosition = new Vector3(rectTransform.rect.width/2, 0, 0);
