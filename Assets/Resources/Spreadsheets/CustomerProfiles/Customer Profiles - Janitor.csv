@@ -2,12 +2,12 @@
 Name,Janitor,,,
 Propability to be picked,1,1.00,0.00,0.00
 Item Count Range,,8 - 12,8 - 12,8 - 12
-Tags,,cheap; deals; cheap+meat; junk;nofood;,cheap; deals; cheap+meat; junk;nofood;,cheap; deals; cheap+meat; junk;nofood;
+Tags,,cheap; deals; cheap+meat; junk;,cheap; deals; cheap+meat; junk;nofood;,cheap; deals; cheap+meat; junk;nofood;
 Not Tag,,,,
-Specific Items,,,,
+Specific Items,,cigarettes;,,
 Prefab Folder Path,,,,
-Item On Floor Text,"I'm cleaning all day, I don't want to wash all my shoppings as well!; Watch out, my {0} is on the floor!; ... ",,,
-Wating Too Long Text,"You're as slow as a toilet lady!; If I wait here any longer, my curls will be all crazy!",,,
-Item Multiple Scanned Text,"Wait, you think I'm rich?; I'm definitly not going to pay twice for my {0}; Are you stupid?; Wake up, you’ve already scanned this {0}",,,
-Not My Item Text,"I would never buy this {0}; Hey I can't affor more of this {0}; This {0} is not mine; No, no, no!",,,
-Item Not Scanned Text,"Didn't you forget to scan my {0}; ... *whistle*, *whistle*; *whisper* I'm not going to tell anyone *whisper; Thanks for the {0}!; I like you!; How are you doing?",,,
+Item On Floor Text,"I'm cleaning all day, I don't want to wash all my shoppings as well!; Watch out, my {0} is on the floor!; Now my {0} comes with filth, thank you; YOU are picking that up! ",,,
+Wating Too Long Text,"You're as slow as a toilet lady!; If I wait here any longer, my curls will be all crazy!; So slow!; You are making me tired",,,
+Item Multiple Scanned Text,"Wait, you think I'm rich?; I'm definitly not going to pay twice for my {0}; Are you stupid?; Wake up, you’ve already scanned this {0}; You think I haven't recognised you scanning this again?",,,
+Not My Item Text,"I would never buy this {0}; Hey I can't afford more of this {0}; This {0} is not mine; No, no, no!; Don't think so",,,
+Item Not Scanned Text,"Didn't you forget to scan my {0}; ... *whistle*, *whistle*; *whisper* I'm not going to tell anyone *whisper; Thanks for the {0}!; I like you!; Sorry I shouted on you before; But I don't have a coupon, you're sure?",,,
