@@ -104,10 +104,13 @@
 	"buffers":
 	[
 		{
+			"contents": "<!DOCTYPE html>\n<html>\n	<head>\n		<link type=\"text/css\" rel=\"stylesheet\" href=\"stylesheet.css\"/>\n		<script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js\"></script>\n		<script src=\"http://code.highcharts.com/highcharts.js\"></script>\n		<title>Chesto Supermarkets</title>\n		<!-- <meta http-equiv=\"refresh\" content=\"5\" > -->\n	</head>\n	<body>\n		<div id=\"dom-target\" style=\"display: none;\">\n			<?php\n		\n			$servername = \"wp338.webpack.hosteurope.de\";\n			$username = \"db12273406-chest\";\n			$password = \"lum?OTSn0us\";\n			$dbname = \"db12273406-chesto\";\n\n			// Create connection\n			$conn = new mysqli($servername, $username, $password, $dbname);\n			// Check connection\n			if ($conn->connect_error) \n			{\n				die(\"Connection failed: \" . $conn->connect_error);\n			} \n\n			$sql = \"SELECT Date,SUM(ItemsRegular) AS SummedRegular,SUM(ItemsOvertime) AS SummedOvertime,SUM(Profit) AS SummedProfit FROM `Sales`\n				GROUP BY Date\";\n		\n			$result = $conn->query($sql);\n		\n			$totalProfit = array();\n			$totalItems = 0;\n			$lastDayItems = 0;\n		\n			if ($result->num_rows > 0) \n			{\n				// output data of each row\n				$i = 0;\n				while($row = $result->fetch_assoc()) \n				{\n		\n					$totalProfit[$row[\"Date\"]] = $row[\"SummedProfit\"];\n					$totalItems += $row[\"SummedRegular\"] + $row[\"SummedOvertime\"];\n					\n					$lastDayItems = $row[\"SummedRegular\"] + $row[\"SummedOvertime\"];\n		\n					$i++;\n				}\n			} \n			else\n				echo \"0 results\";\n		\n			//calculate profit\n			$currentProfit = 0;\n			$profitToDraw = array();\n			$lastDate = null;\n			$lastProfit = 200;\n			foreach ($totalProfit as $key => $value) \n			{\n\n				//these are the values we will draw\n				if(strtotime($key) > strtotime(\"-30 days\"))\n				{\n					if($lastDate != null)\n					{\n						$daysSinceLastProfit = ceil((strtotime($key) - strtotime($lastDate))/60/60/24);\n						//reduce some money on all days NOT played\n						for ($i=0; $i < $daysSinceLastProfit-1; $i++) \n						{ \n							$currentProfit -= $lastProfit * (0.6 - min($i*0.1, 0.4));\n							array_push($profitToDraw, $currentProfit);\n						}\n						//finally add value on the day soneone played again\n						$currentProfit = $currentProfit + $value - $lastProfit * (0.6 - min($daysSinceLastProfit*0.1, 0.4));\n						array_push($profitToDraw, $currentProfit);\n					}\n					//first day\n					else\n					{\n						$currentProfit += $value;\n						array_push($profitToDraw, $currentProfit);\n					}\n				}\n				//this is old data. we need it so profit is correct but we dont draw it\n				else\n				{\n					$currentProfit += $value;\n					\n					if($lastDate != null)\n					{\n						$daysSinceLastProfit = ceil((strtotime($key) - strtotime($lastDate))/60/60/24);\n						//reduce some money, so graph can also go down a bit\n						$currentProfit -= $daysSinceLastProfit * ( $lastProfit * 0.6);\n					}\n					// echo $key . \": \" . $value . \" -> \" . $currentProfit . \"<br>\";\n				}\n\n				$lastDate = $key;\n				$lastProfit = $value;\n			}		\n\n			//insert 0 profit if we don't have enough data yet\n			$arrayLength = count($profitToDraw);\n			if($arrayLength < 30)\n			{\n				echo \"padding array. was: \" . $arrayLength . \"<br>\";\n				$profitToDraw = array_pad($profitToDraw, -30, 0);\n				echo \"is: \" . count($profitToDraw). \"<br>\";\n			}\n		\n			//calculate day where graph is starting\n			$tempDate = strtotime(\"-\". count($profitToDraw)+1 . \" days\"); \n			$tempDate = strtotime(\"-1 month\", $tempDate); //in highchart january is month 0 :)\n			$startDate = date(\"Y,m,d\", $tempDate);\n			echo \"tD: \" . $tempDate . \" sD: \" . $startDate;\n\n			$sql = \"SELECT COUNT(*) AS Employees FROM `Sales` WHERE Date > DATE_SUB(CURDATE(),INTERVAL 1 MONTH) \";\n			$result = $conn->query($sql);	\n			\n			$numberOfEmployees = 0;\n			if ($result->num_rows > 0) \n			{\n				// output data of each row\n				$i = 0;\n				while($row = $result->fetch_assoc()) \n				{\n					$numberOfEmployees = $row[\"Employees\"];\n				}\n			}  \n			else\n				echo \"0 results\";\n\n			$sql = \"SELECT * FROM `Sales` ORDER BY Date DESC, Time DESC LIMIT 1\";\n			$result = $conn->query($sql);	\n			\n			$lastProfit = 0;\n			$lastItemsSold = 0;\n			if ($result->num_rows > 0) \n			{\n				// output data of each row\n				$i = 0;\n				while($row = $result->fetch_assoc()) \n				{\n					$lastProfit = $row[\"Profit\"];\n					if($lastProfit < 0)\n						$lastProfit = \"- \" . number_format(abs($lastProfit),2);\n					else\n						$lastProfit = \"+ \" . number_format($lastProfit,2);\n					$lastItemsSold = (int)$row[\"ItemsRegular\"] + (int)$row[\"ItemsOvertime\"];\n				}\n			}  \n			else\n				echo \"0 results\";\n			\n			$conn->close();\n			?>\n		</div>\n		\n			<div style=\"background-color:white; height:210px\">\n				<img class=\"chestoLogo\"; align = \"left\"; style=\"height:auto; width:auto; max-width:530px; max-height:300px;\" src=\"ChestoLogo.png\">\n				<iframe align=\"right\" style=\"padding-top:20px; background-color:rgb(87,0,142);\" src=\"//itch.io/embed/28048\" width=\"552\" height=\"167\" frameborder=\"0\"></iframe>\n			</div>\n			\n\n\n<!-- 			<div style=\"width:100%\" align=\"center\">\n				<img style=\"height:auto; width:auto; max-width:800px; max-height:800px\" src=\"landingPicture.png\">\n			</div> -->\n\n			<div style=\"background-color:rgb(87,0,142); height: 400px;\" class =\"clearfix\">\n				<h1 style=\"color:white\"> INVESTORS</h1>\n\n					<div id=\"graphContainer\" >\n					<p id=\"right\" style=\"color:red\"><span>SHARE</span></p>\n					<div>\n						<script>\n						$(function () {\n							var options = {\n								chart: {\n									// type: 'bar'\n								},\n								title: {\n									text: 'Profit Before Interest and Tax'\n								},\n								xAxis: {\n									type: 'datetime',\n								},\n								yAxis: {\n									title: {\n										text: 'PBIT in EUR',\n									}\n								},\n								tooltip: {\n				                valueDecimals: 2,\n				                valueSuffix: ' EUR',\n								},\n								plotOptions: {\n									series: {\n										marker: {\n											enabled: false,\n											states: {\n												hover: {\n													fillColor:'#57008e',\n												}\n											}\n										},\n										lineColor: '#57008e'\n									}\n								},\n								series: [{\n									name: 'Chesto',\n									color: '#57008e',\n									pointInterval: 24 * 3600 * 1000,\n									pointStart: Date.UTC(<?php echo $startDate; ?>),\n									data: [<?php echo join($profitToDraw, ','); ?>]\n								}]\n							};\n							$('#graphContainer').highcharts(\n								options\n							);\n						});\n						</script>\n					</div>\n				</div>\n\n					<div id =\"left\">\n						<p id= \"floatingTextWhite\" style=\"text-align:center; color:red\"><span>PROFIT</span></p>\n						<div class= \"chartCircleWhite\";>\n\n							<div><p id= \"textWithinCircle\" style=\"text-align:center; color:white\"><span><?php echo $lastProfit; ?>&euro;<br>just now</span></p></div>\n						</div>\n						<p style=\"color:red; text-align:center;\" id=\"floatingTextWhite\"><span><?php echo number_format($profitToDraw[count($profitToDraw)-1],2); ?>&euro;<br> IN TOTAL</span> </p>\n						\n					</div>\n					<div id =\"left\">\n						<p id= \"floatingTextWhite\" style=\"text-align:center; color:red\"> <span>ITEMS SOLD</span></p>\n						<div class= \"chartCircleWhite\";>\n							<p id= \"textWithinCircle\" style=\"text-align:center; color:white\"><span>+ <?php echo $lastItemsSold; ?><br>just now</span></p>\n						</div>\n						<p id=\"floatingTextWhite\" style=\"text-align:center; color:red\"><span><?php echo $lastDayItems ?><br>TODAY</span></p>\n 					</div>\n				\n			</div>\n		\n\n\n			<div style=\"background-color: white\" class=\"clearfix\">\n				<h1> WHO WE ARE</h1>\n				<div id=\"left\" style=\"align:center; padding-left:0px\">\n					<div id=\"left\" style=\"width:50%\">\n						<p id= \"floatingTextBlack\"> <span>CAREER: <br></span>CHESTO employs the best people, develops their competence, provides opportunity and inspires them to live \nour values.</p>\n							<p id= \"floatingTextBlack\"> <span>INTEGRITY: <br></span>CHESTO can always be trusted to do the right thing.</p>\n							<p id= \"floatingTextBlack\"> <span>HISTORY: <br></span>CHESTO was etablished 1993 by Lu Schesiner and taken over by his son Toni Schesiner in 2013.</p>\n							<p id= \"floatingTextBlack\"> <span>OPERATIONS: <br></span>CHESTO is the world leading name in food retail solutions.</p>\n							\n\n\n					</div>\n					<div id =\"right\">\n						<p id= \"floatingTextPurple\" style=\"text-align:center\"> <span>OUR OPERATIONS</span></p>\n						<div class= \"chartCirclePurple\">\n							<div><p id=\"textWithinCircle\"><span>23</span> <br>Countries</p></div>\n						</div>\n					</div>\n					<div id =\"right\">\n						<p id= \"floatingTextPurple\" style=\"text-align:center\"> <span>OUR EMPLOYEES </span></p>\n						<div class= \"chartCirclePurple\";>\n							<div><p id=\"textWithinCircle\"><span><?php echo $numberOfEmployees ?></span> <br> Employees</p></div>\n						</div>\n					</div>\n\n				</div>\n\n\n				\n			</div>\n\n		<div style=\"background-color:rgb(87,0,142)\" class=\"clearfix\">\n			<h1 style=\"color:white\"> NEWS</h1>\n			<div id=\"left\" style=\"width:600px; padding-left:0px\">\n				<a href=\"http://toniluschesiner.tumblr.com\"><p id=\"left\" style=\"color: white\"> Meet our CEO <span>TONI SCHESINER</span> on his personal blog.</p></a>\n				<a href=\"http://toniluschesiner.tumblr.com\"><p id=\"left\" style=\"color: white\"> How does the life of one of the most <span>influential</span> men look like?</p></a>\n				<a href=\"http://toniluschesiner.tumblr.com\"><p id=\"left\" style=\"color: white\"> Do you want to have a peek inside the life of CHESTO's <span>main man</span>?</p></a>\n				<a href=\"http://toniluschesiner.tumblr.com\"><p id=\"left\" style=\"color: white\"> Visit: <span>http://toniluschesiner.tumblr.com</span></p>\n   			</div>\n<!-- 				<img id=\"left\" style=\"height:auto; width:auto; max-width:180px; max-height:180px; padding-top:25px\"src=\"ShoppingItems/soda.png\">\n				<img id=\"left\" style=\"height:auto; width:auto; max-width:180px; max-height:180px; padding-top:25px\"src=\"ShoppingItems/champagne.png\">\n -->\n			<div id= \"right\" style=\"width:10%\">\n				<a href=\"http://toniluschesiner.tumblr.com\"><img id=\"right\" style=\"height:auto; width:auto; max-width:280px; max-height:280px;\"src=\"Toni.png\"></a>\n			</div>\n\n		</div>\n\n		<div style=\"background-color:white\" class=\"clearfix\">\n			<h1> SHAREHOLDERS</h1>\n				<div id=\"left\" style=\"width:70%\">\n					<p id= \"floatingTextBlack\" style=\"color:rgb(87,0,142)\"> <span>CHESTO</span> wants to thank its main shareholders <br><a href=\"http://www.brokenrul.es\"><span>BROKEN RULES</span></a> & <a href=\"https://twitter.com/peregrinustyss\"><span>JOSEF WHO</span></a></p>\n				</div>\n				<div id=\"right\">\n\n				</div>\n					<a id=\"right\" href=\"http://www.brokenrul.es\"><img style=\"height:auto; width:auto; max-width:80px; max-height:80px;\"src=\"BRLogo.png\"></a> \n					<a id=\"right\" href=\"https://twitter.com/peregrinustyss\"><img style=\"height:auto; width:auto; max-height:80px;\"src=\"Josef.jpg\"> </a>\n				</div>\n\n<!-- 			<div style=\"background-color:white; height:150px; width=100%\">\n				<img id=\"left\" style=\"height:auto; width:auto; max-height:130px; padding-top:10px; padding-left:3px\"src=\"ShoppingItems/carrot.png\">\n				<img id=\"left\" style=\"height:auto; width:auto; max-height:130px; padding-top:10px; padding-left:3px\"src=\"ShoppingItems/carrot.png\">\n				<img id=\"left\" style=\"height:auto; width:auto; max-height:130px; padding-top:10px; padding-left:3px\"src=\"ShoppingItems/carrot.png\">\n				<img id=\"left\" style=\"height:auto; width:auto; max-height:130px; padding-top:10px; padding-left:3px\"src=\"ShoppingItems/carrot.png\">\n				<img id=\"left\" style=\"height:auto; width:auto; max-height:130px; padding-top:10px; padding-left:3px\"src=\"ShoppingItems/carrot.png\">\n\n		</div>\n -->\n	</body>\n</html>",
 			"file": "index.html",
+			"file_size": 11472,
+			"file_write_time": 1439720268000000,
 			"settings":
 			{
-				"buffer_size": 11261,
+				"buffer_size": 11472,
 				"line_ending": "Unix"
 			}
 		},
@@ -164,6 +167,8 @@
 	},
 	"file_history":
 	[
+		"/Users/josefwiesner/Documents/Felix&Josef/DoubleGlasses/Till/ChestoHomepage/iFrame/index.php",
+		"/Users/josefwiesner/Documents/Felix&Josef/DoubleGlasses/Till/ChestoHomepage/iFrame.html",
 		"/Users/josefwiesner/Documents/Felix&Josef/DoubleGlasses/Till/ChestoHomepage/index.php",
 		"/Users/josefwiesner/Downloads/QUADCORE/QUADCORE.pde",
 		"/Users/josefwiesner/Documents/Felix&Josef/DoubleGlasses/Till/ChestoHomepage/index.html",
@@ -202,12 +207,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"PBIT",
+			"pbit",
 			"eisn",
 			"800px",
 			"easing"
 		],
 		"highlight": true,
-		"in_selection": false,
+		"in_selection": true,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
@@ -222,7 +229,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -230,15 +237,15 @@
 					"file": "index.html",
 					"settings":
 					{
-						"buffer_size": 11261,
+						"buffer_size": 11472,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								5449,
+								5419
 							]
 						],
 						"settings":
@@ -246,8 +253,8 @@
 							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.x": 41.0,
+						"translation.y": 3167.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

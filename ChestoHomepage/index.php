@@ -65,14 +65,14 @@
 					if($lastDate != null)
 					{
 						$daysSinceLastProfit = ceil((strtotime($key) - strtotime($lastDate))/60/60/24);
-						//reduce some money on first days NOT played
-						// for ($i=0; $i < $daysSinceLastProfit-1; $i++)
-						// {
-						// 	$currentProfit -= $lastProfit * (0.3 - min($i*0.15, 0.3));
-						// 	array_push($profitToDraw, $currentProfit);
-						// }
+						//reduce some money on all days NOT played
+						for ($i=0; $i < $daysSinceLastProfit-1; $i++) 
+						{ 
+							$currentProfit -= $lastProfit * (0.6 - min($i*0.1, 0.4));
+							array_push($profitToDraw, $currentProfit);
+						}
 						//finally add value on the day soneone played again
-						$currentProfit = $currentProfit + $value;// - $lastProfit * (0.6 - min($daysSinceLastProfit*0.1, 0.4));
+						$currentProfit = $currentProfit + $value - $lastProfit * (0.6 - min($daysSinceLastProfit*0.1, 0.4));
 						array_push($profitToDraw, $currentProfit);
 					}
 					//first day
@@ -87,12 +87,12 @@
 				{
 					$currentProfit += $value;
 					
-					//reduce some money, so graph can also go down a bit
-					// if($lastDate != null)
-					// {
-					// 	$daysSinceLastProfit = ceil((strtotime($key) - strtotime($lastDate))/60/60/24);
-					// 	$currentProfit -= $daysSinceLastProfit * ( $lastProfit * 0.6);
-					// }
+					if($lastDate != null)
+					{
+						$daysSinceLastProfit = ceil((strtotime($key) - strtotime($lastDate))/60/60/24);
+						//reduce some money, so graph can also go down a bit
+						$currentProfit -= $daysSinceLastProfit * ( $lastProfit * 0.6);
+					}
 					// echo $key . ": " . $value . " -> " . $currentProfit . "<br>";
 				}
 
@@ -181,7 +181,7 @@
 									// type: 'bar'
 								},
 								title: {
-									text: 'PBIT'
+									text: 'Profit Before Interest and Tax'
 								},
 								xAxis: {
 									type: 'datetime',
