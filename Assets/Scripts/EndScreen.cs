@@ -71,6 +71,8 @@ public class EndScreen : MonoBehaviour {
 				wage = 0;
 
 		text = transform.Find("Background/wageMonthlyFinalNumber").GetComponent<Text> ();
+		text.text = string.Format(text.text, wage.ToString("N2"));
+		text = transform.Find("Background/diffNumber").GetComponent<Text> ();
 		text.text = string.Format(text.text, diff.ToString("N2"));
 
 		profit = (till.countSoldRegular + till.countSoldOvertime) * marginPerItem - till.countUnscannedItems * itemWorth;
