@@ -1020,15 +1020,15 @@ MonoBehaviour:
   m_Color: {r: .431034505, g: .421526372, b: .421526372, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 134fde72ed2544b2e92ab4223c10d356, type: 3}
-    m_FontSize: 20
+    m_FontSize: 28
     m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
     m_RichText: 0
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: '+++ Blabla BLabla: 234567 +++'
 --- !u!222 &430010282
@@ -1250,15 +1250,15 @@ MonoBehaviour:
   m_Color: {r: .431034505, g: .421526372, b: .421526372, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 134fde72ed2544b2e92ab4223c10d356, type: 3}
-    m_FontSize: 20
+    m_FontSize: 28
     m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
     m_RichText: 0
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: '+++ Blabla BLabla: 234567 +++'
 --- !u!222 &459891375
@@ -1348,15 +1348,15 @@ MonoBehaviour:
   m_Color: {r: .431034505, g: .421526372, b: .421526372, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 134fde72ed2544b2e92ab4223c10d356, type: 3}
-    m_FontSize: 20
+    m_FontSize: 28
     m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
     m_RichText: 0
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: '+++ Blabla BLabla: 234567 +++'
 --- !u!222 &477578648
@@ -1852,17 +1852,17 @@ MonoBehaviour:
   m_Color: {r: .431034505, g: .421526372, b: .421526372, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 134fde72ed2544b2e92ab4223c10d356, type: 3}
-    m_FontSize: 20
+    m_FontSize: 28
     m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
     m_RichText: 0
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: '+++ Blabla BLabla: 234567 +++'
+  m_Text: +++ Drop 15 or more items on the floor to unlock the last customer. +++
 --- !u!222 &579188871
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2362,15 +2362,15 @@ MonoBehaviour:
   m_Color: {r: .431034505, g: .421526372, b: .421526372, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 134fde72ed2544b2e92ab4223c10d356, type: 3}
-    m_FontSize: 20
+    m_FontSize: 28
     m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
     m_RichText: 0
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: '+++ Blabla BLabla: 234567 +++'
 --- !u!222 &802311221
@@ -3306,15 +3306,15 @@ MonoBehaviour:
   m_Color: {r: .431034505, g: .421526372, b: .421526372, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 134fde72ed2544b2e92ab4223c10d356, type: 3}
-    m_FontSize: 20
+    m_FontSize: 28
     m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
     m_RichText: 0
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: '+++ Blabla BLabla: 234567 +++'
 --- !u!222 &1050909106
@@ -3661,15 +3661,15 @@ MonoBehaviour:
   m_Color: {r: .431034505, g: .421526372, b: .421526372, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 134fde72ed2544b2e92ab4223c10d356, type: 3}
-    m_FontSize: 20
+    m_FontSize: 28
     m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
     m_RichText: 0
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: '+++ Blabla BLabla: 234567 +++'
 --- !u!222 &1264323781
@@ -4635,10 +4635,6 @@ Prefab:
       propertyPath: m_Name
       value: Total Shifts Ticker
       objectReference: {fileID: 0}
-    - target: {fileID: 11496056, guid: 44999548795c04ae4ad4d9758cbf89b3, type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 20
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44999548795c04ae4ad4d9758cbf89b3, type: 2}
   m_RootGameObject: {fileID: 1050909101}
@@ -5116,6 +5112,10 @@ Prefab:
       propertyPath: m_Color.b
       value: .421526372
       objectReference: {fileID: 0}
+    - target: {fileID: 11496056, guid: 44999548795c04ae4ad4d9758cbf89b3, type: 2}
+      propertyPath: m_Text
+      value: +++ Drop 15 or more items on the floor to unlock the last customer. +++
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11474252, guid: 44999548795c04ae4ad4d9758cbf89b3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 44999548795c04ae4ad4d9758cbf89b3, type: 2}
@@ -5470,15 +5470,15 @@ MonoBehaviour:
   m_Color: {r: .431034505, g: .421526372, b: .421526372, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 134fde72ed2544b2e92ab4223c10d356, type: 3}
-    m_FontSize: 20
+    m_FontSize: 28
     m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
     m_RichText: 0
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: '+++ Blabla BLabla: 234567 +++'
 --- !u!222 &1955559674
@@ -5573,15 +5573,15 @@ MonoBehaviour:
   m_Color: {r: .431034505, g: .421526372, b: .421526372, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 134fde72ed2544b2e92ab4223c10d356, type: 3}
-    m_FontSize: 20
+    m_FontSize: 28
     m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
     m_RichText: 0
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: '+++ Blabla BLabla: 234567 +++'
 --- !u!222 &1965637805
@@ -5966,15 +5966,15 @@ MonoBehaviour:
   m_Color: {r: .431034505, g: .421526372, b: .421526372, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 134fde72ed2544b2e92ab4223c10d356, type: 3}
-    m_FontSize: 20
+    m_FontSize: 28
     m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
     m_RichText: 0
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: '+++ Blabla BLabla: 234567 +++'
 --- !u!222 &2121453756
