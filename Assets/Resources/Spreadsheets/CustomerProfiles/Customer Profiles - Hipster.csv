@@ -6,8 +6,8 @@ Tags,,organic+basic;organic+vegetables;organic+fruit;exotic,organic+basic;organi
 Not Tag,,,,
 Specific Items,,beer_bottle; condom,beer_bottle; condom,beer_bottle; condom
 Prefab Folder Path,,,,
-Item On Floor Text,"""You think I'll eat that {0}? Don't like to eat dirt, do you?; Hey idiot, you dropped that {0}!; Pick that {0} up, immediately!""",,,
-Wating Too Long Text,"""What is your problem, are you on sleeping pills?; Getting bored big time, hurry up!; Come OONNNNNNN!; I need to go, you know? NOW!; Simple task, stupid person!""",,,
-Item Multiple Scanned Text,"""Are you flippin' crazy? Why are you scanning this again?; I've already paid for this {0}, won't again!; I've noticed you scannin' my {0} again!; You had one job...""",,,
-Not My Item Text,"""This {0} is not mine...ahhhh, whatever!;This has to be your first day here!;Dude, not my {0}!; This {0} belongs to someone else, NOT ME!; These signs are separating MINE from THEIRS, you know?""",,,
-Item Not Scanned Text,"""For free?; You're cool, buddy!; This makes me feel a bit awkward; Look, I'm not poor, I can pay for my {0}!; If you keep this up every midtown jerk will come for free stuff!; What will the others think?; What will your boss think if he finds out?""",,,
+Item On Floor Text,"You think I'll eat that {0}? Don't like to eat dirt, do you?; Hey idiot, you dropped that {0}!; Pick that {0} up, immediately!",,,
+Wating Too Long Text,"What is your problem, are you on sleeping pills?; Getting bored big time, hurry up!; Come OONNNNNNN!; I need to go, you know? NOW!; Simple task, stupid person!",,,
+Item Multiple Scanned Text,"Are you flippin' crazy? Why are you scanning this again?; I've already paid for this {0}, won't again!; I've noticed you scannin' my {0} again!; You had one job...",,,
+Not My Item Text,"This {0} is not mine...ahhhh, whatever!;This has to be your first day here!;Dude, not my {0}!; This {0} belongs to someone else, NOT ME!; These signs are separating MINE from THEIRS, you know?",,,
+Item Not Scanned Text,"For free?; You're cool, buddy!; This makes me feel a bit awkward; Look, I'm not poor, I can pay for my {0}!; If you keep this up every midtown jerk will come for free stuff!; What will the others think?; What will your boss think if he finds out?",,,
