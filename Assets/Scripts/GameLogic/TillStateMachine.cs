@@ -91,10 +91,27 @@ public class TillStateMachine : MonoBehaviour
 	void Start()
 	{
 		currentState = States.Setup;
-
+		
+		if (!Debug.isDebugBuild) {
+			Resolution[] resolutions2 = Screen.resolutions;
+			foreach (Resolution res in resolutions2) {
+				//			print(res.width + "x" + res.height);
+				if (res.width < 1023 || res.height < 640) {
+					
+					if (Screen.fullScreen == true) {
+						Screen.SetResolution (1024, 640, true);
+					} else if (Screen.fullScreen == false) { 
+						Screen.SetResolution (1024, 640, false); 
+					}
+					
+				}
+				
+			}
+		}
+		
 		if (!GameObject.Find ("Floor/OnFloorTrigger")) 
 			return;
-
+		
 		floorTrigger = GameObject.Find ("Floor/OnFloorTrigger").GetComponent<ItemTrigger> ();
 		scannerTrigger = GameObject.Find ("Scanner/Scanner Trigger").GetComponent<ItemTrigger> ();
 		basketTrigger = GameObject.Find ("shopping_cart/InBasketTrigger").GetComponent<ItemTrigger> ();
@@ -161,12 +178,12 @@ public class TillStateMachine : MonoBehaviour
 
 			updateClock ();
 
-			if(Debug.isDebugBuild && Input.GetKeyDown("n") && Input.GetKey(KeyCode.LeftShift) && Input.GetKey (KeyCode.LeftCommand))
+			if(Input.GetKeyDown("n") && Input.GetKey(KeyCode.LeftShift) && Input.GetKey (KeyCode.LeftCommand))
 			{
 				Application.LoadLevel(0);
 			}
 			
-			if(Debug.isDebugBuild && Input.GetKeyDown("d") && Input.GetKey(KeyCode.LeftShift) && Input.GetKey (KeyCode.LeftCommand))
+			if(Input.GetKeyDown("d") && Input.GetKey(KeyCode.LeftShift) && Input.GetKey (KeyCode.LeftCommand))
 			{
 				switchToState (States.ShiftDone);
 			}
