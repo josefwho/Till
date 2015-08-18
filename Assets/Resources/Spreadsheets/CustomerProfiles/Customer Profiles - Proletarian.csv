@@ -6,8 +6,8 @@ Tags,,,junk,vegetables;fruit
 Not Tag,,,,
 Specific Items,,beer_can; soda; energy_drink;sandwich,beer_can,water
 Prefab Folder Path,,,,
-Item On Floor Text,"I think it's enough when I am dirty from work;Hm, dirty {0};Dirt as side dish, yummy;Pick up my {0} you douche bag; Pick that up. Immediately",,,
-Wating Too Long Text,"I don’t have all day, work faster!;My break isn't that long;Come on, how long can it take to scan this few things;Is slower even possible?;You are wasting my time here;What is taking you so long?;I am in a hurry by the way",,,
-Item Multiple Scanned Text,"You scanned my {0} again, you fool!;Hey stupid, that {0} has already been scanned;All my items should be scanned once. ONCE!;Are you really too stupid to do your simple job correctly?;My collegues won't be amused with this double charge;Do that again and I'll bring my buddies",,,
-Not My Item Text,"You prick, that {0} isn’t mine;Not mine, dork;These signs are here to separate the costumers, you know?;Not my stuff;I don't buy this shit;Wanna charge me for other's stuff?;I haven't bought this {0}",,,
-Item Not Scanned Text,"Thanks, love free stuff;One for my collegues as well?;Free {0}, cool!;Didn’t know CHESTO is giving away {0}s for free :);Can I have one more for free, pal?;Undermining the boss? Like that",,,
+Item On Floor Text,"""I think it's enough when I am dirty from work;Hm, dirty {0}!;Dirt as side dish, yummy!;Pick up my {0} you douche bag!; Pick that up. Immediately!""",,,
+Wating Too Long Text,"""I don’t have all day, work faster!;My break isn't that long;Come on, how long can it take to scan this few things?;Is slower even possible?;You are wasting my time here!;What is taking you so long?;I am in a hurry by the way!""",,,
+Item Multiple Scanned Text,"""You scanned my {0} again, you fool!;Hey stupid, that {0} has already been scanned!;All my items should be scanned once. ONCE!;Are you really too stupid to do your simple job correctly?;My collegues won't be amused with this double charge!;Do that again and I'll bring my buddies!""",,,
+Not My Item Text,"""You prick, that {0} isn’t mine!;Not mine, dork!;These signs are here to separate the costumers, you know?;Not my stuff!;I don't buy this shit!;Wanna charge me for other's stuff?;I haven't bought this {0}!""",,,
+Item Not Scanned Text,"""Thanks, love free stuff!;One for my collegues as well?;Free {0}, cool!;Didn’t know CHESTO is giving away {0}s for free :);Can I have one more for free, pal?;Undermining the boss? Like that!""",,,
