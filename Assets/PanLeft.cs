@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PanLeft : MonoBehaviour {
@@ -19,6 +20,14 @@ public class PanLeft : MonoBehaviour {
 		rectTransform = (RectTransform)transform;
 
 		resetAfterMultiplesOfWidth = Mathf.Max (0, tickerCount - Screen.width / (rectTransform.rect.width));
+
+//		
+//		if (Screen.width >= 1680) {
+//			GetComponent<Text> ().fontSize = 60;
+//		}
+//		else if (Screen.width >= 1440) {
+//				GetComponent<Text> ().fontSize = 30;
+//		}
 	}
 	
 	void Update () {
