@@ -1,6 +1,7 @@
 #include "SoftwareSerial.h"
 #include "Adafruit_Thermal.h"
 #include "chesto.h"
+#include "qr.h"
 
 //thermal printer
 const int printer_RX_Pin = 7;  // this is the green wire
