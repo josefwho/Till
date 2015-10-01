@@ -379,7 +379,7 @@ public class TillStateMachine : MonoBehaviour
 		countCustomers++;
 
 		CustomerProfile profile = null;
-		if (countCustomers == 1) {
+		if (countCustomers == 3) {
 			profile = gameObject.GetComponent<CustomerManager> ().getProfile ("Tscherno");
 		} else {
 			profile = gameObject.GetComponent<CustomerManager> ().getRandomProfile ();
