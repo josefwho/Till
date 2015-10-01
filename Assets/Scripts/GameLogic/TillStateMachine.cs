@@ -38,6 +38,7 @@ public class TillStateMachine : MonoBehaviour
 	public int countMultipleScannedItems;
 	public int countUnscannedItems;
 	public int countItemsOnFloor;
+	public int countCustomers;
 //	public GUIText countScanned;
 //	public GUIText countBasket;
 //	public GUIText countFloor;
@@ -375,7 +376,14 @@ public class TillStateMachine : MonoBehaviour
 
 	Customer getNewCustomer()
 	{	
-		CustomerProfile profile = gameObject.GetComponent<CustomerManager>().getRandomProfile();
+		countCustomers++;
+
+		CustomerProfile profile = null;
+		if (countCustomers == 1) {
+			profile = gameObject.GetComponent<CustomerManager> ().getProfile ("Tscherno");
+		} else {
+			profile = gameObject.GetComponent<CustomerManager> ().getRandomProfile ();
+		}
 		CustomerVariation variation = profile.getRandomVariation();
 
 		string[] wishList = gameObject.GetComponent<CustomerManager>().itemWishList(variation);

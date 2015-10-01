@@ -176,6 +176,14 @@ public class CustomerManager : MonoBehaviour {
 		return profile;
 	}
 
+	public CustomerProfile getProfile(string name)
+	{
+		CustomerProfile profile = null;
+
+		profiles.TryGetValue (name, out profile);
+	
+		return profile;
+	}
 	
 	
 	public string[] itemWishList(CustomerVariation variation)
